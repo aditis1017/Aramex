@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_Dentist</name>
+   <tag></tag>
+   <elementGuidId>86355dc3-50e1-436c-913d-6cb6c5b85588</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.c-omni-suggestion-item:nth-child(1) .c-omni-suggestion-item__content__title</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' c-omni-suggestion-item ') and (position() = 1)]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' c-omni-suggestion-item__content__title ')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>#c-omni-container >> internal:text=&quot;Dentist&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>f2c0bd26-8a1d-480a-a025-e8b854b7ec6d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-qa-id</name>
+      <type>Main</type>
+      <value>omni-suggestion-main</value>
+      <webElementGuid>43e68dd4-c8fe-45ec-b434-9bb8da48adc9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>c-omni-suggestion-item__content__title</value>
+      <webElementGuid>a624a5ff-ba2c-4974-8ae7-48d2a12e2afb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Dentist</value>
+      <webElementGuid>dcca3b21-bd12-4fda-b9a7-e2588669d231</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-571cdff2ca8961cd30f454a838b04185</value>
+      <webElementGuid>491dce49-1252-4a00-947d-97fe208d55a0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' c-omni-suggestion-item ') and (position() = 1)]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' c-omni-suggestion-item__content__title ')]</value>
+      <webElementGuid>f324d100-c679-4a69-b4f8-24001ca7021e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' c-omni-suggestion-item ') and (position() = 1)]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' c-omni-suggestion-item__content__title ')]</value>
+      <webElementGuid>8ffaf3c5-bb86-4dae-bf1b-cec822b64102</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[(text() = 'Dentist' or . = 'Dentist')]</value>
+      <webElementGuid>6f8e39d5-4cab-4c6c-b6d3-e2990dee6660</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

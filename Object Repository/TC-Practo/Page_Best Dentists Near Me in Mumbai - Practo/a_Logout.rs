@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_Logout</name>
+   <tag></tag>
+   <elementGuidId>220645de-50b2-47f0-9ef0-6bfe09bc21af</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.up-triangle .logout-click</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' up-triangle ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' logout-click ')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Logout&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>230c97e8-72ec-41a4-afbf-2b67c4ed360c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>nav-interact logout-click</value>
+      <webElementGuid>f3151b3d-642b-46ab-8657-5563047844f8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>event</name>
+      <type>Main</type>
+      <value>Nav Profile:Interacted:Logout</value>
+      <webElementGuid>6f29ca75-5f03-4b20-b3d8-db9585890312</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/logout</value>
+      <webElementGuid>a20a9b22-ed60-43e9-9db4-4c21f3bdf682</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Logout</value>
+      <webElementGuid>2867d5ee-5561-405e-ba00-c80969ef192a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-1cc8d7b44ec1bfbf999d85b05b4807b3</value>
+      <webElementGuid>9f0b795c-0153-4ea6-9d08-c3878ab63cd7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' up-triangle ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' logout-click ')]</value>
+      <webElementGuid>20b43845-7077-4ef9-a5e0-29d7352591c5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' up-triangle ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' logout-click ')]</value>
+      <webElementGuid>44c7db5a-27e2-4464-9648-74c07f10fbd9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/logout' and (text() = 'Logout' or . = 'Logout')]</value>
+      <webElementGuid>8b5ae8f0-8b60-4a95-81ec-b01bf32cd360</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
