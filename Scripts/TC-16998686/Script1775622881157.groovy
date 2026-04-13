@@ -20,9 +20,9 @@ import org.openqa.selenium.Keys as Keys
 //import io.qameta.allure.TmsLink
 //@TmsLink("TC-16998686"/)
 
-
-//@TestCaseId("TC-16998686")
-//def Login() {
+import com.kms.katalon.core.annotation.TestCaseId
+@TestCaseId("TC-17135139")
+def Login() {
 WebUI.openBrowser('')
 
 WebUI.navigateToUrl('https://practicetestautomation.com/practice-test-login/')
@@ -45,4 +45,4 @@ WebUI.rightClick(findTestObject('TC-16998686/Page_Test Login  Practice Test Auto
 WebUI.verifyElementPresent(findTestObject('TC-16998686/Page_Test Login  Practice Test Automation/h2_Test login'), 0)
 
 WebUI.closeBrowser()
-//}
+}

@@ -16,7 +16,10 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.annotation.TestCaseId
 
+@TestCaseId("TC-17138316")
+def Practo() {
 WebUI.openBrowser('')
 
 WebUI.navigateToUrl('https://www.practo.com/')
@@ -41,3 +44,4 @@ WebUI.click(findTestObject('TC-Practo/Page_Best Dentists Near Me in Mumbai - Pra
 
 WebUI.closeBrowser()
 
+}
