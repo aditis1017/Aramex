@@ -1,0 +1,23 @@
+name: Katalon Test Execution
+
+on:
+push:
+branches: [ "main” ]
+
+jobs:
+katalon-test:
+runs-on: ubuntu-latest
+
+steps:
+name: Checkout Code
+uses: actions/checkout@v3
+
+name: Run Katalon Tests
+run: |
+wget https://download.katalon.com/cloud/studio/command-line/katalon.zip
+unzip katalon.zip
+./katalon -noSplash -runMode=console \
+-projectPath="$(pwd)/Dummy-Test.prj" \
+-testSuitePath="Automation-Test Suite" \
+-browserType="Chrome" \
+-apiKey="${{ 20ede496-f885-406f-8b46-a0c4c3fa2f0c }}"
