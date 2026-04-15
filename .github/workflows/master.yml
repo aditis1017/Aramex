@@ -2,7 +2,7 @@ name: Katalon Test Execution
 
 on:
 push:
-branches: [ "main” ]
+branches: [ "master” ]
 
 jobs:
 katalon-test:
@@ -18,6 +18,6 @@ wget https://download.katalon.com/cloud/studio/command-line/katalon.zip
 unzip katalon.zip
 ./katalon -noSplash -runMode=console \
 -projectPath="$(pwd)/Dummy-Test.prj" \
--testSuitePath="Automation-Test Suite" \
+-testSuitePath="Test Suites/Automation-Test Suite" \
 -browserType="Chrome" \
 -apiKey="${{ 20ede496-f885-406f-8b46-a0c4c3fa2f0c }}"
