@@ -2,7 +2,7 @@
 <TestCaseEntity>
    <description></description>
    <name>TC-Practo</name>
-   <tag></tag>
+   <tag>GenAI</tag>
    <comment></comment>
    <origin>WEB_RECORDER</origin>
    <recordOption>OTHER</recordOption>

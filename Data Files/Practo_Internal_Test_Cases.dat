@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Updated to include required columns for automation data binding: username, password. Existing manual columns preserved.</description>
+   <name>Practo_Internal_Test_Cases</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>b869860e-4924-4e0a-81c2-1b8377e5c9c9</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>User+Registration+%26+Login TC_REG_001 Login+with+valid+registered+mobile+number+and+password 1.+Open+%60https%3A%2F%2Fwww.practo.com%2F%60.%0D%0A2.+Click+Login%2FSign+up.%0D%0A3.+Enter+the+registered+mobile+number.%0D%0A4.+Choose+Password+login+%28if+prompted%29.%0D%0A5.+Enter+password.%0D%0A6.+Click+Login%2FContinue. URL%3A+https%3A%2F%2Fwww.practo.com%2F%3B+Mobile%3A+7071627000%3B+Password%3A+Global%401710 User+is+logged+in+successfully%3B+account%2Fuser+menu+is+visible+and+user+is+redirected+to+the+intended+page%2Fhome+without+error. 7071627000 Global%401710</data>
+   <data>User+Registration+%26+Login TC_REG_002 Reject+login+with+valid+mobile+number+and+wrong+password 1.+Open+Practo+home+page.%0A2.+Click+Login%2FSign+up.%0A3.+Enter+registered+mobile+number.%0A4.+Choose+Password+login+%28if+prompted%29.%0A5.+Enter+an+incorrect+password.%0A6.+Click+Login%2FContinue. Mobile%3A+7071627000%3B+Password%3A+Global%401710%23+%28invalid%29 System+shows+a+clear+authentication+error+%28e.g.%2C+invalid+credentials%29%3B+user+remains+logged+out. 7071627000 Global%401710%23</data>
+   <data>Doctor+Search+%26+Filters TC_SRCH_001 Search+doctors+by+specialty+and+city+using+autosuggest 1.+Open+%60https%3A%2F%2Fwww.practo.com%2F%60.%0A2.+In+the+search%2C+select+city%2Flocation.%0A3.+Enter+a+specialty+and+pick+an+autosuggest+option.%0A4.+Submit+search. City%3A+Bengaluru%3B+Specialty%3A+Dermatologist Search+results+page+lists+relevant+doctors%2Fclinics+for+the+selected+specialty+and+city%3B+selected+chips%2Flabels+reflect+the+chosen+values. null null</data>
+   <data>Doctor+Search+%26+Filters TC_SRCH_002 Search+with+a+valid+Indian+locality+and+verify+results+update 1.+Open+Practo+home+page.%0A2.+Set+location+to+a+locality+within+a+city.%0A3.+Search+for+a+specialty.%0A4.+Observe+results+location+context. Location%3A+Indiranagar%2C+Bengaluru%3B+Specialty%3A+Dentist Results+reflect+the+chosen+locality+%28distance%2Flocation+text+aligns%29+and+show+providers+near+the+selected+area. null null</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>Module</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>Test_Case_ID</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>Test Case Scenario</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>3</columnIndex>
+      <name>Test Steps</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>4</columnIndex>
+      <name>Test Data</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>5</columnIndex>
+      <name>Expected Result</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>6</columnIndex>
+      <name>username</name>
+      <size>4</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>7</columnIndex>
+      <name>password</name>
+      <size>4</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>
