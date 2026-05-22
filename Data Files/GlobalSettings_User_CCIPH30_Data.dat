@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>User-CCIPH-30 test data (CSV). Column names match Include/GlobalSettings-Data.xlsx (tab, targetValue, conditionField, conditionOperator, valuesComparator, destination) plus testCaseId. Re-export from Excel after edits to keep parity. Load via GsUserCciph30Data.forTestCase.</description>
+   <name>GlobalSettings_User_CCIPH30_Data</name>
+   <tag>CCIPH-30,User-CCIPH-30,GlobalSettings</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>b7e4d1c2-8a9f-4e1b-9d3c-5f6a7b8c9d0e</dataFileGUID>
+   <dataSourceUrl>GlobalSettings_User_CCIPH30_Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

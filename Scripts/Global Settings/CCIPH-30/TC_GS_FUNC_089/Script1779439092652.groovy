@@ -1,0 +1,21 @@
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import globalsettings.BusinessActions as GS
+
+def tcId = 'TC_GS_FUNC_089'
+def ruleValue = String.valueOf(System.currentTimeMillis() % 100000)
+def updatedValue = String.valueOf(System.currentTimeMillis() % 100000 +1 )
+def globalSettings = new GS()
+
+globalSettings.navigateToGlobalSettings()
+globalSettings.openTab(tab)
+globalSettings.clickAddNewRule()
+globalSettings.addCostOfGoodsFieldAndValue(ruleValue)
+globalSettings.selectTargetValueByIndex(1)
+globalSettings.saveRuleModal()
+globalSettings.clickEditRuleWithCondition(conditionField, ruleValue, conditionOperator, destination)
+globalSettings.enterConditionValue(updatedValue)
+globalSettings.saveRuleModal()
+globalSettings.verifyRuleUpdatedSuccessfullyAndClickOk()
+globalSettings.verifySavedRuleWithCondition(conditionField, updatedValue, conditionOperator, destination)
+WebUI.takeScreenshot()
+WebUI.closeBrowser()

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Duplicate Rule Elements for DDP</description>
+   <name>TC_GS_FUNC_018</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_018</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>14a44423-acb8-413c-a557-e043b92def57</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>7dccb6c3-b37d-4dcc-ba96-04c9beb5b918</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>6</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>7dccb6c3-b37d-4dcc-ba96-04c9beb5b918</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>8cb8b582-43a1-4588-9cb6-f049fc6505e4</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>7dccb6c3-b37d-4dcc-ba96-04c9beb5b918</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionField</value>
+      <variableId>31580213-b360-41c0-b8c3-c40d70f29945</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>7dccb6c3-b37d-4dcc-ba96-04c9beb5b918</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionOperator</value>
+      <variableId>c6067c5f-d109-4700-8ca3-3d125f6faa98</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>7dccb6c3-b37d-4dcc-ba96-04c9beb5b918</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>valuesComparator</value>
+      <variableId>c2111804-0193-4d61-a497-d5448c793cca</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>8cb8b582-43a1-4588-9cb6-f049fc6505e4</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>31580213-b360-41c0-b8c3-c40d70f29945</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c6067c5f-d109-4700-8ca3-3d125f6faa98</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c2111804-0193-4d61-a497-d5448c793cca</id>
+      <masked>false</masked>
+      <name>valuesComparator</name>
+   </variable>
+</TestCaseEntity>
