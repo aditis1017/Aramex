@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify user able to create New Rules</description>
+   <name>TC_GS_FUNC_014</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_014</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>0c1a6635-7121-4268-9c40-b8a6c36e67dd</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>2a02f610-a288-4d8c-8eed-d4abc531463e</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>2</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>bc340b3b-a175-4b53-815b-46053bd9655c</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>a8f9287d-6403-454a-b336-2ab183f5e44b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>09a951a1-0104-4d28-9359-d0fa61895549</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>bc340b3b-a175-4b53-815b-46053bd9655c</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>a8f9287d-6403-454a-b336-2ab183f5e44b</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>09a951a1-0104-4d28-9359-d0fa61895549</id>
+      <masked>false</masked>
+      <name>destination</name>
+   </variable>
+</TestCaseEntity>

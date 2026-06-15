@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify duplicate the rules</description>
+   <name>TC_GS_FUNC_024</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_024</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>3c366320-4fe0-4444-a030-dc686974f71c</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>dfafb634-fc3a-47aa-b2fe-21ac1f8ea16c</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>8</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>dfafb634-fc3a-47aa-b2fe-21ac1f8ea16c</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionField</value>
+      <variableId>112e3170-f4ad-4783-b22d-432cc2af644d</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>dfafb634-fc3a-47aa-b2fe-21ac1f8ea16c</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionOperator</value>
+      <variableId>140b419d-c007-4f3f-ae1c-6e441d32c354</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>dfafb634-fc3a-47aa-b2fe-21ac1f8ea16c</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>destination</value>
+      <variableId>90b53d63-38d2-4746-9f0c-eb4c7ea5139a</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>112e3170-f4ad-4783-b22d-432cc2af644d</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>140b419d-c007-4f3f-ae1c-6e441d32c354</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>90b53d63-38d2-4746-9f0c-eb4c7ea5139a</id>
+      <masked>false</masked>
+      <name>destination</name>
+   </variable>
+</TestCaseEntity>

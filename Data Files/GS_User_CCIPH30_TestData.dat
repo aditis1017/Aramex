@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Deprecated for runtime: use Data Files/GlobalSettings_User_CCIPH30_Data (CSV, mirrors Include/GlobalSettings-Data.xlsx). Kept for reference / rollback.</description>
+   <name>GS_User_CCIPH30_TestData</name>
+   <tag>CCIPH-30,User-CCIPH-30,GlobalSettings</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>a3f8c2e1-4b5d-4e9a-9c7f-1d2e3f4a5b6c</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>TC_GS_FUNC_013 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_014 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_015 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_016 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_017 DDP Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_018 DDP Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_019 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_024 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_025 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_026 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_027 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_028 DDU Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_083 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_084 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_085 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_086 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_087 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_089 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_090 Category Saudi Arabia Cost+of+Goods of</data>
+   <data>TC_GS_FUNC_091 Category Saudi Arabia Cost+of+Goods of</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>testCaseId</name>
+      <size>20</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>tab</name>
+      <size>20</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>destination</name>
+      <size>20</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>3</columnIndex>
+      <name>conditionField</name>
+      <size>20</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>4</columnIndex>
+      <name>conditionOperator</name>
+      <size>20</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>5</columnIndex>
+      <name>targetValue</name>
+      <size>20</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

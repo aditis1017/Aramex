@@ -5,23 +5,30 @@
    <tag></tag>
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
+      <description>Customs Management — Global Settings page (CCIPH-30). Set per environment; used when login/session is established separately.</description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>GLOBAL_SETTINGS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://www.practo.com/'</initValue>
+      <initValue>'https://dev-cc.aramex.com/customs-management/global-settings'</initValue>
       <name>URL</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'7071627000'</initValue>
-      <name>Username</name>
+      <initValue>'C:\\Users\\Aditi Singh\\Downloads\\Actuals-Upload-Template.xlsx'</initValue>
+      <name>UPLOAD_FILE_PATH</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'K55FCHX3Ck1R94mjDRmqTA=='</initValue>
-      <name>Password</name>
+      <initValue>'https://dev-cc.aramex.com/customs/upload-charges'</initValue>
+      <name>UPLOAD_CHARGES_URL</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>

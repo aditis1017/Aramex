@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Delete Add Condition row functionality</description>
+   <name>TC_GS_FUNC_028</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_028</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>85918ebb-7f77-4a51-a097-dcd47064b439</testCaseGuid>
+</TestCaseEntity>

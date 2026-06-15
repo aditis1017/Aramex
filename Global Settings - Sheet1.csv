@@ -1,0 +1,445 @@
+Screen Name,User Story ID,ID,Test Case Description,Automation Execution Status,Test Steps,Expected Result,Pass/Fail,Priority
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_001,Verify the Global Setting UI Page ,Yes,"1. Login as Super Admin
+2. Click the Global Setting page ","Global Setting Page should show ""DDU"", ""DDP"" , ""Category"", ""History"", ""Add New Rule""",,Medium
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_002,Verify the View Rule Listing for Global Setting UI Page ,Yes,"1. Login as Super Admin
+2. Click the Global Setting page ","system should display the list of configured rules including Rule Priority, Rule Conditions, Rule Result/Outcome, Created Date, and Last Updated Date",,High
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_003,"Verify the ""Unauthorized Action Prevention"" Global Setting UI Page for delete rule ",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Create a rule
+4. Open the postman and send rule deletion request with ""Operation Officer"" role","Recored should not get deactivated and show a notification "" Invalid Request""",,High
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_004,Verify Role based Visibility for Super Admin,Yes,"1. Login as Super Admin
+2. Click the Global Setting page ","The system should display the actions Add Rule, Edit Rule, and De-activate Rule",,Critical
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_005,Verify Role based Visibility for Custom Manager,Yes,"1. Login as Customs Manager
+2. Click the Global Setting page ","The system should display the actions Add Rule, Edit Rule, and De-activate Rule",,Critical
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_006,Verify Role based Visibility for Finance Officer,Yes,"1. Login as Finance Officer
+2. Click the Global Setting page ",The system should display the rule list in read-only mode and rule modification actions must not be visible.,,Critical
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_007,Verify Role based Visibility for Viewer,Yes,"1. Login as Viewer
+2. Click the Global Setting page ",The system should display the rule list in read-only mode and rule modification actions must not be visible.,,Critical
+Global Settings-Page,CCIPH-29,TC_GS_FUNC_008,Verify Role based Visibility for Operation Staff,Yes,"1. Login as Operation Staff
+2. Click the Global Setting page ",The system should display the rule list in read-only mode and rule modification actions must not be visible.,,Critical
+Global Settings-DDP Tab,CCIPH-29,TC_GS_FUNC_009,Verify whether by default DDP Tab is opened or not,Yes,"1. Login as Super Admin
+2. Click the Global Setting page ",By default DDP Tab should open,,Medium
+Global Settings-DDP Tab,CCIPH-29,TC_GS_FUNC_010,Verify and Validate the already Configued Rules in DDP,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Go to DDP Tab","The existing rules should be displayed in the DDP Tab with the format :
+S. No
+Destination
+Rule Criteria
+Start Date
+End date
+Actions",,High
+Global Settings-DDU Tab,CCIPH-29,TC_GS_FUNC_011,Verify and Validate the already Configued Rules in DDU,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Go to DDU Tab","The existing rules should be displayed in the DDU Tab with the format :
+S. No
+Destination
+Rule Criteria
+Start Date
+End date
+Actions",,High
+Global Settings-Category Tab,CCIPH-29,TC_GS_FUNC_012,Verify and Validate the already Configured Rules in Category,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Go to Category Tab",The existing categories should be there,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_013,"Verify the ""Add New Rule"" button functionality on Global Setting UI Page",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. verify the elements as per Requirement",Rule creation popup should be displayed,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_014,"Verify the ""Add New Rule"" Elements as per Figma",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. verify the elements as per Requirement","Rule Conditions fields , Result field , Start Date & End Date
+Save / Cancel buttons fields should be present",,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_015,"Verify the ""Rule Action
+"" Elements for DDU
+",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on DDU Tab
+3. Click on ""Add New Rule"" button
+4. verify the Rule Order as per Requirement","Rule Oder pane should show Target Value as
+DDU
+",,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_016,"Verify the ""Rule Action
+"" Elements for DDU functionality
+",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on DDU Tab
+3. Click on ""Add New Rule"" button
+4. Click on Save button ",Page should show error a rule should have some values.,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_017,"Verify the ""Rule Action
+"" Elements for DDP
+",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on DDP Tab
+3. Click on ""Add New Rule"" button
+4. verify the Rule Order as per Requirement","Rule Oder pane should show Target Value as
+DDP
+",,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_018,"Verify the ""Rule Action
+"" Elements for DDP functionality
+",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on DDP Tab
+3. Click on ""Add New Rule"" button
+4. Click on Save button ",Page should show error a rule should have some values.,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_019,Verify Cancel button functionalilty for Add New Rule screen,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on cancel button",Add New Rule Pop up screen should close,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_024,Verify duplicate the rules,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Enter values and create a new rule same like existing rule
+5.Click on Save Button
+6. verify the rule ",Rule should not be created successfully and show error message,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_025,Verify Add Condition button functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on Add condition Button",New Row with all condition field should appear on screen,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_026,"Verify Delete Icon ""Add Condition"" button on UI",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on Add condition Button",Verify deactivate icon is appearing in front of each row,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_027,"Verify Delete Icon for by default field under ""Add Condition""",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on Add condition Button",By Default deactivate icon should not appear on screen,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_028,"Verify Delete ""Add Condition"" button functionality",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on Add condition Button
+5. Click on Delete icon",Row infront of deactivate icon should be deactivated,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_029,"Verify  ""Close"" icon functionality for ""Filter Conditions"" screen",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on ""Close"" icon",Filter Conditions should disappear from screen,,High
+Global Settings-Add New Rule,CCIPH-30,TC_GS_FUNC_030,"Verify duplicate ""add Condition"" rule",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" button
+4. Click on Add condition Button
+5.Enter the values
+6. Click on ""Add New Rule"" button again
+7. Enter the same values
+8. Click on Save button","Rule should not be created successfully and show error message ""Duplicate Condition"" ",,High
+Global Settings-Landing Page,CCIPH-31,TC_GS_FUNC_031,Verify the retrospective Application of Updated Rules,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule
+4. verify the populated data
+5.Update the data on fields
+6.click on save button
+7. Check whether the updates rules are applicable to existing records",Updated rule should only be applied to new records created after the update and the updated rule should not impact or reprocess any existing or previously processed records,,High
+Global Settings-DDU & DDP ,CCIPH-31,TC_GS_FUNC_032,"Verify ""Edit"" functionality for created rule",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule",Filter Conditions should appear on screen in editable mode,,High
+Global Settings-DDU & DDP ,CCIPH-31,TC_GS_FUNC_033,Verify pre-population of existing data on filter condition screen for edit created rule,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule
+4. verify the populated data",Filter Conditions fields value should show same data as per rule,,Medium
+Global Settings-DDU & DDP ,CCIPH-31,TC_GS_FUNC_034,Verify cancel functionality on filter condition screen for edit created rule,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule
+4. verify the populated data
+5.click on cancel button",Filter Conditions should disappear from screen,,Medium
+Global Settings-DDU & DDP ,CCIPH-31,TC_GS_FUNC_035,Verify successful rule updated for edit created rule,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule
+4. verify the populated data
+5.Update the data on fields
+6.click on save button",Updated Rule should appear on screen,,High
+Global Settings-DDU & DDP ,CCIPH-31,TC_GS_FUNC_036,Verify successful rule persist after session out,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule
+4. verify the populated data
+5.Update the data on fields
+6.click on save button
+7.click on logout
+8.login again as Super admin
+9. Verify the rule",Updated Rule should appear on screen,,High
+Global Settings-DDU & DDP ,CCIPH-31,TC_GS_FUNC_037,"Verify duplicate rule condition during ""Edit""",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for existing rule
+4. verify the populated data
+5.Update the data on fields
+6.click on save button","For the updated rule if any existing rule existing.. it should show error message ""same rule already exist""",,High
+Global Settings-DDU & DDP ,CCIPH-32,TC_GS_FUNC_041,Verify Deactivated icon functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check for existing rule
+4. Click on ""Deactivate"" for existing rule
+5 Confirmation popup should appear
+6. Click on ""Deactivate"" button
+7. Navigate to DDP tab
+8. Check for existing rule
+9. Click on ""Deactivate"" button
+10. Confirmation popup should appear
+11. Click on ""Deactivate"" button",Rule should get decativated and move it in last ,,High
+Global Settings-DDU & DDP ,CCIPH-32,TC_GS_FUNC_042,Verify Deactivated icon functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check for existing rule
+4. Click on ""Deactivate"" for existing rule
+5 Confirmation popup should appear
+6. Click on ""Deactivate"" button
+7. Navigate to DDP tab
+8. Check for existing rule
+9. Click on ""Deactivate"" button
+10. Confirmation popup should appear
+11. Click on ""Deactivate"" button",Rule should not get decativated,,High
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_043,Verify email triggered on rule creation for CANCEL functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" 
+4. Enter values in Field
+5. Click on ""CANCEL"" button",Email should not triggered,,High
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_044,Verify email triggered on rule creation for SAVE functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" 
+4. Enter values in Field
+5. Click on ""SAVE"" button",Rule created Successfully message appear on screen and Mail should get triggered,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_045,Verify email Reciptent as per Role,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" 
+4. Enter values in Field
+5. Click on ""SAVE"" button
+6. Verify the mail reciptents name","As per rule, all the users who is assigned to this role should get notified through email f",,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_046,Verify Duplicate email triggered on rule creation,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Add New Rule"" 
+4. Enter values in Field
+5. Click on ""SAVE"" button twice
+6. Verify the mail reciptents name",Rule created Successfully message appear on screen and Single mail should get triggered,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_047,Verify email triggered on rule deactivation for CANCEL functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on Existing Rule
+4. Enter values in Field
+5. Click on ""CANCEL"" button",Email should not triggered,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_048,Verify email triggered on rule deactivation for SAVE functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on Existing Rule
+4. Enter values in Field
+5. Click on ""SAVE"" button",Rule created Successfully message appear on screen and Mail should get triggered,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_049,Verify email triggered on rule Update for CANCEL functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for Existing Rule
+4. Enter values in Field
+5. Click on ""CANCEL"" button",Email should not triggered,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_050,Verify email triggered on rule update for SAVE functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on ""Edit"" for Existing Rule
+4. Enter values in Field
+5. Click on ""SAVE"" button",Rule created Successfully message appear on screen and Mail should get triggered,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_051,Verify the triggered email format,Yes,"1. Open the recieved email
+2. Verify the format as per requirement","Email should have below fields with some values
+Action performed (Created / Updated / deactivated)
+
+Rule Name
+Rule Category
+Start Date
+End Date
+Created By / Modified By
+Created On / Modified Date",,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_052,Verify audit log entry creation for triggered email,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Verify the record",Audit Log should have entry for notification in defined format,,Critical
+Global Settings-Notification,CCIPH-39,TC_GS_FUNC_053,Verify Reciptent Mail in audit log entry for triggered email,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Verify the record",Reciptent email id in Audit log should be same as per eligility,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_054,Verify history button functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button",Global Settings History Page should open,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_055,Verify BACK button functionality,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on BACK button",Global Settings Page should open,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_056,Verify Global Settings History Page UI,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button","Global Settings History Page should show the Table UI as per requirement :
+TIMESTAMP
+SECTION
+USER
+CHANGE",,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_057,"Verify Global Settings History Page data for ""ALL"" Tab",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on ALL Tab",All Tab should show data for all actions,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_058,"Verify Global Settings History Page data for ""TODAY"" Tab",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on TODAY Tab",TODAY Tab should show data for all actions performed in todays date,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_059,"Verify Global Settings History Page data for ""THIS WEEK"" Tab",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on THIS WEEK Tab",THIS WEEK Tab should show data for all actions performed in THIS WEEK range,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_060,"Verify Global Settings History Page data for ""THIS MONTH"" Tab",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on THIS MONTH Tab",THIS MONTH Tab should show data for all actions performed in THIS MONTH date range,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_061,"Verify Global Settings History Page data for ""CUSTOM"" Tab",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on CUSTOM Tab",CUSTOM Tab should show data for all actions performed in CUSTOM date range,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_062,"Verify Global Settings History Page data for under ALL"" Tab for rule creation",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on Add new Rule button
+4. Enter Values in the field
+5. Click on Save button
+3. Click on History button
+4. Click on ALL Tab","For Rule Creation Entry should be available, ALong with timestamp and user information",,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_063,"Verify Global Settings History Page data for under ALL"" Tab for rule Deletion",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on Existing Rule Deactivate button
+4. Click on History button
+5. Click on ALL Tab","For Rule Deactivation Entry should be available, ALong with timestamp and user information",,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_064,"Verify Global Settings History Page data for under ALL"" Tab for rule updation",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on Existing Rule Edit button
+4. Enter Values in the field
+5. Click on Save button
+3. Click on History button
+4. Click on ALL Tab","For Rule Updation Entry should be available, ALong with timestamp and user information",,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_065,"Verify Global Settings History Page data for ""CUSTOM"" Tab where start date > end ate",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on CUSTOM Tab
+5. Enter Start Date > End Date",CUSTOM Tab should not show any data mentioned condition,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_066,"Verify Global Settings History Page ""RESET"" button",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on ""RESET button",All filters should get clear ,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_067,Verify Export button functionality on Global Settings History Page,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on Export button",Excel File should be downloaded in your local Machine,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_068,Validate the exported file format ,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on Export button
+5. Open the downloaded file",downloaded file data should be readable and show same column as per UI,,High
+Global Settings-HISTORY PAGE,CCIPH-37,TC_GS_FUNC_069,Validate the exported file data as per Global Settings History Page,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on Export button
+5. Open the Downloaded file
+6. verify the data ",Downloaded file data should match with Global Setting page ,,High
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_070,Verify that pagination is applied correctly to the dataset displayed on the screen,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check the Record count over the All Tab in the footer","By default, 50 should be the count per screen",,Medium
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_071,Verify that the correct number of records are displayed as per the selected page size,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check the Record count over the All Tab in the footer
+4. Change the record count to 10/20",Record should be updated over the screen accordingly as per the selected number,,Low
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_072,Validate whether pagination is implemented using server-side logic,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check the Record count over the All Tab in the footer
+4. Open network tab and try to find out for that API response/Pay load","No new api should be there in client side but in case of server side there should be a new call with params like page=2, limit=10, offset, etc.",,Low
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_073,Verify navigation functionality for Next and Previous page controls,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check the Record count over the All Tab in the footer
+4. CLick on next/page",Value should move,,Low
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_074,Verify that the Previous/Back button is disabled when the user is on the first page,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check the Back/Previous Page button over first page
+",Back/Previous Page should work properly,,Low
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_075,Verify that the Next button is disabled when the user is on the last page,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check the Next Page button over Last page
+",Next button should be disabled,,Low
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_076,Verify that data loads correctly after a hard refresh and default pagination settings are applied,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Move to the next page data and do the hard refresh
+",Default Pagination should be applied,,Medium
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_077,Verify the page load time when navigating between pages,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Switch in between the pages data and check the apis timing
+",Page load time should be minimal,,Medium
+Global Settings-HISTORY PAGE,CCIPH-29,TC_GS_FUNC_078,Verify system behavior and performance when handling large volumes of data,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Check out the pages data and timings for the same
+",Performance should not impact,,Medium
+Global Settings-REORDER RULES,CCIPH-201,TC_GS_FUNC_079,Verify Reorder rules UI,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the re-order rules button
+",Enable reorder mode should  active,,High
+Global Settings-REORDER RULES,CCIPH-201,TC_GS_FUNC_080,"Verify Reorder rules UI functionality for ""Cancel""",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the re-order rules button
+4. Click on rule and move it to upside/downside
+5. Click on Cancel button",Enable reorder mode should  deactivate and move it to default,,High
+Global Settings-REORDER RULES,CCIPH-201,TC_GS_FUNC_081,"Verify Reorder rules UI functionality for ""Save""",Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the re-order rules button
+4. Click on rule and move it to upside/downside
+5. Click on Save button",Reorder sequence should be saved,,High
+Global Settings-REORDER RULES,CCIPH-201,TC_GS_FUNC_082,Verify Reorder rules UI functionality after changing order,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the re-order rules button
+4. Click on rule and move it to upside/downside
+5. Click on Save button
+6. Validate the rule order functionality",Rule should activated in defined order,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_083,Verify Add rule UI for category tab,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Add New Rule"," It should show DESTINATION, Fields, Rule Action
+ fields",,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_084,Verify Add rule UI for category tab and Rule Action,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Add New Rule
+5.Click on Rule Action","Rule Action should show taret Field and Target Value and under Target Value it show values.
+1. LV
+2.HV
+3.B2B
+4.Exempted",,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_085,Verify Add rule  and Rule Action functionality for Save button,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Add New Rule
+5.Click on Rule Action
+6.Click on Save button",Rule should not save and show error messge,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_086,Verify Add rule  and Rule Action functionality for Cancel button,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Add New Rule
+5.Click on Rule Action
+6.Click on Cancel button",Rule screen should disappear from screen,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_087,Verify Add rule  and Rule Action functionality for Save button,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Add New Rule
+5.Click on Rule Action
+6.Enter the values in the fields
+7.Click on Save button",Rule should successfully under the category tab,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_088,Verify exisiting edit rule functionality for defined categories,Yes,"1. Login as Super Admin/Custom Manager
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Edit button",Rule should be editable,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_089,Verify the Save functionality for editing the exisitng rule in Category Tab,Yes,"1. Login as Super Admin/Manager
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Edit button
+5. Edit Values
+6. Click on Save button",Edited rule should be save,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_090,Verify exisiting Deactivate rule functionality for defined categories,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Deactivate Rule",User should get the Confirmation message for Deactivate rule,,High
+Global Settings-Category Tab,CCIPH-30,TC_GS_FUNC_091,Verify remove rule functionality for defined categories,Yes,"1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on the Category Tab
+4. Click on Deactivate Rule
+5. Confirm the removal",Rule should get remove,,High
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,Dependencies/Pre-requisite :,,,,,
+,,,The User Authentication Module must be implemented to ensure only authenticated users can access the system.,,,,,
+,,,,,,,,
+,,,The Role-Based Access Control (RBAC) configuration must be available to enforce permissions for each role.,,,,,
+,,,,,,,,
+,,,A Global Settings Rule database structure must exist to store rule configurations.,,,,,
+,,,,,,,,
+,,,Backend services or APIs must be available to retrieve rule data for the listing page.,,,,,
+,,,,,,,,
+,,,Navigation configuration must include the Global Settings page in the application menu.,,,,,

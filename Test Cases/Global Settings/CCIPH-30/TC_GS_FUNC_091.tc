@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify remove rule for categories</description>
+   <name>TC_GS_FUNC_091</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_091</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>1d628a84-dfe5-4745-9437-3171dfd4008d</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>84151dff-9b75-4ec4-b3bf-8e9e51122f9e</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>20</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>84151dff-9b75-4ec4-b3bf-8e9e51122f9e</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>294e5356-d7c2-480c-bb54-c78ec744c4d8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>84151dff-9b75-4ec4-b3bf-8e9e51122f9e</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionField</value>
+      <variableId>784c5fb7-7935-4ed0-8669-3ec1106e24db</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>84151dff-9b75-4ec4-b3bf-8e9e51122f9e</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionOperator</value>
+      <variableId>ec97c78c-8d8a-446b-9eb9-04b05278e016</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>84151dff-9b75-4ec4-b3bf-8e9e51122f9e</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>destination</value>
+      <variableId>b5f043f8-f46c-4093-b447-dc8c722a21c0</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>294e5356-d7c2-480c-bb54-c78ec744c4d8</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>784c5fb7-7935-4ed0-8669-3ec1106e24db</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>ec97c78c-8d8a-446b-9eb9-04b05278e016</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>b5f043f8-f46c-4093-b447-dc8c722a21c0</id>
+      <masked>false</masked>
+      <name>destination</name>
+   </variable>
+</TestCaseEntity>

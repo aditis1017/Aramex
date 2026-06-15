@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_DDP</name>
+   <tag></tag>
+   <elementGuidId>aa2f3120-d73a-4018-9c03-f6b37b13175b</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.GlobalSettingsModule-module__HzmAka__tabButtonInactive:nth-child(2)</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' GlobalSettingsModule-module__HzmAka__tabButtonInactive ') and (position() = 2)]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=button[name=&quot;DDP&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>232e6e56-2335-4cce-b628-eb1a47e4287a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>218e3376-c5ad-4d30-97c1-3d67ec9703f5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>GlobalSettingsModule-module__HzmAka__tabButton GlobalSettingsModule-module__HzmAka__tabButtonInactive</value>
+      <webElementGuid>c3aa5ada-7e39-4976-8a75-f59dc0b3710d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>DDP</value>
+      <webElementGuid>df06ac63-7494-49f6-b093-4de37a264a79</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-ff19ca91c3669db1f8ef3e030bb467ee</value>
+      <webElementGuid>2e932eac-03b3-4d8f-8fac-00866545a1db</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' GlobalSettingsModule-module__HzmAka__tabButtonInactive ') and (position() = 2)]</value>
+      <webElementGuid>f4ccf9f5-f989-412c-a4fc-bc60744ebc5b</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' GlobalSettingsModule-module__HzmAka__tabButtonInactive ') and (position() = 2)]</value>
+      <webElementGuid>0cf8e5d1-8dcf-4281-80bc-a2a4f2b28fd2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'button' and (text() = 'DDP' or . = 'DDP')]</value>
+      <webElementGuid>9d83bbf2-aee9-463e-84e4-f2c61e4514f8</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

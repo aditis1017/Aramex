@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>input_Target Value _</name>
+   <tag></tag>
+   <elementGuidId>ca6a13c0-9f92-464e-b377-ba2afafe8005</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#rule-editor-target-value</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id = 'rule-editor-target-value']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;Target Value *&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>input</value>
+      <webElementGuid>20b69f1c-3823-4ded-8043-7a493de43e25</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>rule-editor-target-value</value>
+      <webElementGuid>58104f28-a0b9-4e18-b621-a5609d62174f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>RuleEditorModal-module__hMP_SW__readonlyInput</value>
+      <webElementGuid>7e903e7b-8e07-444c-8fba-acfa0dac0555</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>-1</value>
+      <webElementGuid>03b9d471-7836-457a-9705-bcc3fb41e243</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>text</value>
+      <webElementGuid>e5040f2c-d787-46e3-86c8-2dbc4bd4e32b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>value</name>
+      <type>Main</type>
+      <value>DDU</value>
+      <webElementGuid>ace92729-5034-46fb-9272-d3ba3aa551e2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-dadabcbd839ed3f6540b75dd1e52d2a4</value>
+      <webElementGuid>283415a6-18ef-417a-9770-826ce4ade771</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@id = 'rule-editor-target-value']</value>
+      <webElementGuid>03f4aca4-cd0c-4e91-b8ec-bad098efa52a</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@id = 'rule-editor-target-value']</value>
+      <webElementGuid>387948c6-adae-4369-91dd-eeaadefc26c8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//input[@id = 'rule-editor-target-value' and @type = 'text']</value>
+      <webElementGuid>a8a7c2e0-346f-4f8f-829a-13508f0b5427</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

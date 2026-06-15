@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Upload Actuals template (.xlsx) on Upload Charges page</description>
+   <name>UploadFile</name>
+   <tag>UploadCharges,Customs</tag>
+   <comment>URL: https://dev-cc.aramex.com/customs/upload-charges | File: Profiles UPLOAD_FILE_PATH</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a8f4e2c1-9b3d-4f6a-8e1c-2d4f5a6b7c8d</testCaseGuid>
+</TestCaseEntity>

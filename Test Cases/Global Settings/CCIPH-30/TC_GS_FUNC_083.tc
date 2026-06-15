@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Add rule UI for category tab</description>
+   <name>TC_GS_FUNC_083</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_083</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>0a43d65b-b1a5-4709-9b01-07f034e859f0</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>0080725a-4b59-4e8d-8b64-4f4b0b11fbee</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>13</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>0080725a-4b59-4e8d-8b64-4f4b0b11fbee</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>292b9cf5-28b9-46c7-badf-b503f7efec28</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>292b9cf5-28b9-46c7-badf-b503f7efec28</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>

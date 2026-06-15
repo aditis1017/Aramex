@@ -1,0 +1,207 @@
+You are a Katalon Automation Engineer.
+
+Create automation for Test_Case_ID: TC_REG_001.
+
+Manual Test Cases are available as a Katalon Data File.
+
+Data File Name:
+Practo_Internal_Test_Cases
+
+Location:
+Data Files/Practo_Internal_Test_Cases
+
+====================================================
+🧪 TEST CASE DETAILS
+====================================================
+
+- Module: Login
+- Scenario: Login with registered mobile number and password
+- Objective: Verify successful login with valid registered credentials
+
+Steps:
+1. Open browser
+2. Navigate to application URL and apply wait of 2seconds
+3. Click on Login / Signup button
+4. Enter registered mobile number
+5. Enter valid password
+6. Click login button
+
+
+====================================================
+
+
+====================================================
+🏗️ FRAMEWORK PRINCIPLES (NON-NEGOTIABLE)
+====================================================
+
+1. ZERO HARDCODING:
+   - DO NOT hardcode:
+     ❌ URL
+     ❌ Username
+     ❌ Password
+     ❌ Test data
+   - Everything MUST come from:
+     👉 GlobalVariable OR Test Data
+
+2. SINGLE SOURCE OF TRUTH:
+   - URL → GlobalVariable.URL
+   - Username → GlobalVariable.USERNAME
+   - Password → GlobalVariable.PASSWORD
+
+3. DO NOT create new variables like:
+   ❌ baseUrl
+   ❌ ApplicationUrl
+   ❌ user, pass
+
+
+4.  → WebUI.setText() for both username and password
+
+
+====================================================
+🔧 ARTIFACT CREATION (MANDATORY)
+====================================================
+
+Create:
+
+1. Test Case:
+   - Name: TC_REG_001
+   - Location: Test Cases/Login/
+
+2. Business Keywords:
+   - Keywords/business/LoginKeywords.groovy
+
+3. Technical Keywords (if needed):
+   - Keywords/technical/web/WebActions.groovy
+
+4. Object Repository:
+   - Object Repository/pages/login/
+
+🔒 OBJECT REPOSITORY RULES (STRICT - MUST FOLLOW)
+====================================================
+
+1. For each Test Object:
+   - Use ONLY ONE locator strategy (Do NOT add multiple).
+   - Preferred priority:
+        1. id (if stable)
+        2. name
+        3. data-* attributes
+        4. CSS selector
+        5. XPath (ONLY if no other option)
+
+2. NEVER include:
+   - Multiple XPaths
+   - Multiple CSS selectors
+   - Combination of BASIC + XPath + CSS
+   - Dynamic or auto-generated attributes (like random IDs)
+
+3. Each Test Object must contain:
+   - One locator ONLY
+   - Clean, readable value
+   - No duplicate properties
+
+4. If locator is not stable:
+   - Create SMART XPath using:
+     - contains()
+     - normalize-space()
+   - But still ONLY ONE XPath
+
+5. DO NOT use indexing unless absolutely necessary:
+   ❌ (//input)[2]
+
+6. Avoid brittle locators:
+   ❌ absolute XPath
+   ❌ deeply nested hierarchy
+
+====================================================
+🧪 TEST CASE DESIGN (STRICT)
+====================================================
+
+- Test Case must ONLY call business keywords
+- No direct WebUI code inside test case
+- Validate:
+   - User is successfully logged in
+  - On failure use:
+  KeywordUtil.markFailedAndStop()
+
+
+====================================================
+🧠 BUSINESS KEYWORD LOGIC (IMPORTANT)
+====================================================
+
+Modify/LoginKeywords:
+
+Add method:
+
+loginWithValidCredentials(String username, String password)
+
+Inside:
+- Navigate to URL
+- Click Login button having locator "a[name='Practo login']"
+- Enter username as 7071627000
+- Enter password as Global@1710
+- Click login
+- Validate successful login:
+   - Profile/menu visibility
+   - No error message
+   
+
+====================================================
+🏗️ FRAMEWORK STRUCTURE
+====================================================
+
+- Test Cases/Login/
+- Keywords/business/
+- Keywords/technical/web/
+- Object Repository/pages/login/
+
+
+====================================================
+🧩 TEST SUITE CREATION (MANDATORY)
+====================================================
+
+After generating Test Case:
+
+1. Create Test Suite:
+   Name: TC_REG_001_Suite
+   Location: Test Suites/
+
+2. Add:
+   TC_REG_001 into TC_REG_001_Suite
+
+3. Ensure:
+   - Uses default execution profile
+   - FailureHandling = STOP_ON_FAILURE
+
+
+====================================================
+📤 OUTPUT EXPECTATION (STRICT)
+====================================================
+
+Generate:
+
+1. Test Case Script (TC_REG_001)
+2. Business Keyword method (loginWithValidCredentials)
+3. Technical Keyword (if used)
+4. Object Repository structure
+5. Test Suite (TC_REG_001_Suite)
+6. Test Suite XML (if applicable)
+7. CLI execution command
+8. Validation logic explanation
+
+
+====================================================
+✅ FINAL VALIDATION CHECKLIST
+====================================================
+
+- Data read from Data File
+- No hardcoded credentials
+- No random password used
+- Business keyword used (no WebUI in test case)
+- Successful login validation present
+- Test suite created
+- Test case added to suite
+- Execution command provided
+- Ready to run without modification
+
+
+Generate all required files now inside the project.

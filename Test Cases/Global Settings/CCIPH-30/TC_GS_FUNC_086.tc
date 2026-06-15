@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Cancel for category Add rule</description>
+   <name>TC_GS_FUNC_086</name>
+   <tag>GenAI,CCIPH-30,GlobalSettings</tag>
+   <comment>CSV: Global Settings - CCIPH-30.csv | Test data: GlobalSettings_User_CCIPH30_Data (Include/GlobalSettings-Data.xlsx) | User Story: CCIPH-30 | ID: TC_GS_FUNC_086</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f05ca855-b160-44b2-bfa0-82f3feee29f5</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>56f606e7-e398-4fe0-94af-b4b482faa96f</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>16</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>56f606e7-e398-4fe0-94af-b4b482faa96f</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>38623a25-b3b7-402b-ae13-e65cea70ec0e</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>38623a25-b3b7-402b-ae13-e65cea70ec0e</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>
