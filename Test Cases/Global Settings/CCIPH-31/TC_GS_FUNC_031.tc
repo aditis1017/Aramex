@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify the retrospective Application of Updated Rules (CCIPH-31)</description>
+   <name>TC_GS_FUNC_031</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: https://aramex.atlassian.net/browse/CCIPH-31</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a031-000000000031</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>785b17d7-8d58-437d-af9e-4acd581b6585</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>31</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>785b17d7-8d58-437d-af9e-4acd581b6585</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>57259726-d353-4e95-b5cc-dd76b820b799</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>785b17d7-8d58-437d-af9e-4acd581b6585</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionField</value>
+      <variableId>b856cc59-9ce2-4b9e-bb8e-ab1d399dd607</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>785b17d7-8d58-437d-af9e-4acd581b6585</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionOperator</value>
+      <variableId>1d102d54-676b-4453-a704-cb744517f88b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>785b17d7-8d58-437d-af9e-4acd581b6585</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>destination</value>
+      <variableId>835aade3-741b-4134-84cd-ab7bbfac53e1</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>57259726-d353-4e95-b5cc-dd76b820b799</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>b856cc59-9ce2-4b9e-bb8e-ab1d399dd607</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>1d102d54-676b-4453-a704-cb744517f88b</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>835aade3-741b-4134-84cd-ab7bbfac53e1</id>
+      <masked>false</masked>
+      <name>destination</name>
+   </variable>
+</TestCaseEntity>

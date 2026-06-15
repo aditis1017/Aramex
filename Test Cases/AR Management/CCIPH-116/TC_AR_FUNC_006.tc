@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Entity dropdown lists entities (CCIPH-116 / TC_AR_FUNC_006)</description>
+   <name>TC_AR_FUNC_006</name>
+   <tag>GenAI,ARManagement,CCIPH-116</tag>
+   <comment>CSV: AR-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-116</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ar-mgmt-116-006-4a1b-9c0d-8e7f-0000000000006</testCaseGuid>
+</TestCaseEntity>

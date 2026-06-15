@@ -8,6 +8,9 @@ repositories {
 }
 
 dependencies {
+  // IMAP: fetch Microsoft MFA / security emails for automated OTP (see Keywords/customsmanagement/MicrosoftEmailOtpFetcher.groovy)
+  implementation 'com.sun.mail:jakarta.mail:2.0.1'
+
   // sample dependencies
   // rest-assured
   // compile 'io.rest-assured:rest-assured:3.2.0'

@@ -5,9 +5,142 @@
    <tag></tag>
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
+      <description>AP Management search page (CCIPH-102). Set per environment.</description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/ap-management'</initValue>
+      <name>AP_MANAGEMENT_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR Management search page (CCIPH-116). Set per environment.</description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/ar-management'</initValue>
+      <name>AR_MANAGEMENT_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
       <description>Customs Management — Global Settings page (CCIPH-30). Set per environment; used when login/session is established separately.</description>
       <initValue>'https://dev-cc.aramex.com/customs-management/global-settings'</initValue>
       <name>GLOBAL_SETTINGS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Customs Management entry (triggers Microsoft login redirect). Set in profile per environment.</description>
+      <initValue>'http://dev-cc.aramex.com/customs-management'</initValue>
+      <name>CUSTOMS_APP_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Microsoft Entra ID — sign-in email (UPN). Required for login unless you pass the email argument or set MS_AUTO_FETCH_OTP_FROM_EMAIL=true and use the same UPN in MS_IMAP_USER. Set in your local Katalon profile; leave empty in shared repos.</description>
+      <initValue>'aditi.singh1@tothenew.com'</initValue>
+      <name>MS_LOGIN_EMAIL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Microsoft password if your tenant shows password after email. Prefer empty + device code / manual OTP. Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>MS_LOGIN_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>One-time email/Authenticator code when required. For local runs only; leave empty to use IMAP auto-fetch (MS_AUTO_FETCH_OTP_FROM_EMAIL) or manual browser entry.</description>
+      <initValue>''</initValue>
+      <name>MS_VERIFICATION_CODE</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>If true and MS_VERIFICATION_CODE is empty, polls IMAP (MS_IMAP_*) for a recent Microsoft-style OTP when the OTP field appears.</description>
+      <initValue>'false'</initValue>
+      <name>MS_AUTO_FETCH_OTP_FROM_EMAIL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP server host for OTP and notification emails (e.g. outlook.office365.com). Used when GS_EMAIL_IMAP_HOST is empty.</description>
+      <initValue>'outlook.office365.com'</initValue>
+      <name>MS_IMAP_HOST</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP SSL port (usually 993).</description>
+      <initValue>'993'</initValue>
+      <name>MS_IMAP_PORT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP username (mailbox address). When empty, MS_LOGIN_EMAIL is used for notification email tests.</description>
+      <initValue>''</initValue>
+      <name>MS_IMAP_USER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP password or app password. Never commit real values; use Profile override locally.</description>
+      <initValue>''</initValue>
+      <name>MS_IMAP_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Case-insensitive substring matched against the message From header (e.g. microsoft).</description>
+      <initValue>'microsoft'</initValue>
+      <name>MS_OTP_SENDER_CONTAINS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Only consider messages received within this many minutes when searching for an OTP.</description>
+      <initValue>'10'</initValue>
+      <name>MS_OTP_LOOKBACK_MINUTES</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Optional Java regex with one capturing group for the OTP digits. Leave empty to use built-in Microsoft-style patterns.</description>
+      <initValue>''</initValue>
+      <name>MS_OTP_REGEX</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Max seconds to poll IMAP while waiting for a matching OTP email.</description>
+      <initValue>'90'</initValue>
+      <name>MS_OTP_FETCH_MAX_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Seconds between IMAP poll attempts.</description>
+      <initValue>'5'</initValue>
+      <name>MS_OTP_FETCH_POLL_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Seconds to wait for manual MFA/OTP entry when MS_VERIFICATION_CODE is blank and OTP UI is shown.</description>
+      <initValue>'120'</initValue>
+      <name>MS_MFA_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Max seconds to wait for redirect back to dev-cc.aramex.com after Microsoft auth.</description>
+      <initValue>'180'</initValue>
+      <name>MS_LOGIN_MAX_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>If true, clicks Yes on Microsoft Stay signed in prompt when it appears.</description>
+      <initValue>'true'</initValue>
+      <name>MS_CLICK_STAY_SIGNED_IN</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
@@ -29,6 +162,118 @@
       <description></description>
       <initValue>'https://dev-cc.aramex.com/customs/upload-charges'</initValue>
       <name>UPLOAD_CHARGES_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Legacy export path hint (prefix only). Prefer HISTORY_EXPORT_* variables.</description>
+      <initValue>'C:\\Users\\Aditi Singh\\Downloads\\Global-Settings-History-'</initValue>
+      <name>EXPORT_FILE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Folder where Global Settings History export .csv is saved (TC_GS_FUNC_067+).</description>
+      <initValue>'C:\\Users\\Aditi Singh\\Downloads'</initValue>
+      <name>HISTORY_EXPORT_DOWNLOADS_DIR</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Expected substring in exported History Excel file name.</description>
+      <initValue>'Global-Settings-History_'</initValue>
+      <name>HISTORY_EXPORT_FILE_NAME_PREFIX</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/ap-management'</initValue>
+      <name>AP_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/ar-management'</initValue>
+      <name>AR_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP host for Global Settings notification emails. Falls back to MS_IMAP_HOST when empty.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_HOST</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP port for Global Settings notification emails. Falls back to MS_IMAP_PORT when empty.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_PORT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Mailbox that receives Global Settings notification emails. Falls back to MS_IMAP_USER when empty.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_USER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP password for notification mailbox. Falls back to MS_IMAP_PASSWORD. Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Case-insensitive substring matched against notification email From header (e.g. noreply).</description>
+      <initValue>'noreply'</initValue>
+      <name>GS_EMAIL_SENDER_CONTAINS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Expected subject fragment for Global Setting Created notification.</description>
+      <initValue>'Global Setting Created'</initValue>
+      <name>GS_EMAIL_SUBJECT_CREATE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Max seconds to poll IMAP while waiting for a Global Settings notification email.</description>
+      <initValue>'120'</initValue>
+      <name>GS_EMAIL_FETCH_MAX_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Seconds between IMAP poll attempts for notification email verification.</description>
+      <initValue>'10'</initValue>
+      <name>GS_EMAIL_FETCH_POLL_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Wait time for negative email tests (CANCEL — no email should arrive).</description>
+      <initValue>'60'</initValue>
+      <name>GS_EMAIL_NEGATIVE_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'svc_katalon_cc@aramex.com'</initValue>
+      <name>Automation_User</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'YHRq1EHre2x882'</initValue>
+      <name>Automation_Password</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>

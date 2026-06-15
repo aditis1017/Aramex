@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify RESET clears filters on History (CCIPH-37 / TC_GS_FUNC_066 / AC4)</description>
+   <name>TC_GS_FUNC_066</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-37 | AC4</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a066-000000000066</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>16326158-59bb-4914-9cf8-77cbc4207d81</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>66</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>16326158-59bb-4914-9cf8-77cbc4207d81</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>bfb6f854-1a15-4c55-ac0f-e6fe12645f8d</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>16326158-59bb-4914-9cf8-77cbc4207d81</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter2</value>
+      <variableId>28c62360-3fc2-4975-8c55-2531f3af00d3</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>bfb6f854-1a15-4c55-ac0f-e6fe12645f8d</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>28c62360-3fc2-4975-8c55-2531f3af00d3</id>
+      <masked>false</masked>
+      <name>history_Filter2</name>
+   </variable>
+</TestCaseEntity>

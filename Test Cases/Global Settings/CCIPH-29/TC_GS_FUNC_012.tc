@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_GS_FUNC_012</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>12310d6e-8d4c-4dd5-bdca-f3431951a025</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>6c1b1edb-b39b-49ea-ab8d-dd3bc2fcb5f3</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>12</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>6c1b1edb-b39b-49ea-ab8d-dd3bc2fcb5f3</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>1a0a60fd-0c97-430f-a5dd-6eaafdbd26fa</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>1a0a60fd-0c97-430f-a5dd-6eaafdbd26fa</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>

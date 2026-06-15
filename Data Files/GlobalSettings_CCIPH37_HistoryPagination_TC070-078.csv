@@ -1,0 +1,10 @@
+id,userStoryId,sourceCsv,description
+TC_GS_FUNC_070,CCIPH-37,Global Settings - Sheet1.csv,Default pagination page size 50
+TC_GS_FUNC_071,CCIPH-37,Global Settings - Sheet1.csv,Page size 10 and 20 update visible rows
+TC_GS_FUNC_072,CCIPH-37,Global Settings - Sheet1.csv,Network paging reminder + Next changes view
+TC_GS_FUNC_073,CCIPH-37,Global Settings - Sheet1.csv,Next pagination changes footer or first row
+TC_GS_FUNC_074,CCIPH-37,Global Settings - Sheet1.csv,Previous disabled on first page
+TC_GS_FUNC_075,CCIPH-37,Global Settings - Sheet1.csv,Next disabled on last page
+TC_GS_FUNC_076,CCIPH-37,Global Settings - Sheet1.csv,Hard refresh restores first-page window
+TC_GS_FUNC_077,CCIPH-37,Global Settings - Sheet1.csv,Page-turn load time budget
+TC_GS_FUNC_078,CCIPH-37,Global Settings - Sheet1.csv,History view load time / large dataset readiness

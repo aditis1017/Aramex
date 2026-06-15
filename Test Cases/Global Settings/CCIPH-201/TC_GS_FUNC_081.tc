@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Reorder drag then Save persists sequence (CCIPH-201 / TC_GS_FUNC_081 / AC3–AC5)</description>
+   <name>TC_GS_FUNC_081</name>
+   <tag>GenAI,CCIPH-201,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-201 | AC3, AC4, AC5</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d4e5f6a7-b8c9-4012-a081-000000000081</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>28625746-8a08-4779-91d1-67659168bbbc</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>81</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>28625746-8a08-4779-91d1-67659168bbbc</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>42c88e08-02d0-4ba9-a668-b8682438c010</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>42c88e08-02d0-4ba9-a668-b8682438c010</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>

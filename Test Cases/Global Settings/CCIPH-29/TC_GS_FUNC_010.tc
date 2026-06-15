@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_GS_FUNC_010</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>184c410f-c08e-4e43-9534-24796b51bee7</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ac82e9f1-730b-47a8-a550-3f6c25782f3b</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>10</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ac82e9f1-730b-47a8-a550-3f6c25782f3b</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>55688917-9ecc-4059-b467-540666e89342</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ac82e9f1-730b-47a8-a550-3f6c25782f3b</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab2</value>
+      <variableId>59185c9c-8769-4824-ab33-f3dee616cf26</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>55688917-9ecc-4059-b467-540666e89342</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>59185c9c-8769-4824-ab33-f3dee616cf26</id>
+      <masked>false</masked>
+      <name>tab2</name>
+   </variable>
+</TestCaseEntity>

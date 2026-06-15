@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Add new</name>
+   <tag></tag>
+   <elementGuidId>752f9d7f-2e50-4627-a1ab-ed911bd0ff46</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.ArEstimateRatesheetSettingsPanel-module__MWcpQq__btnPrimary:nth-child(1)</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ArEstimateRatesheetSettingsPanel-module__MWcpQq__btnPrimary ') and (position() = 1)]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=button[name=&quot;Add new&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>25670a88-964e-46e8-875e-33f847f151a0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>d2882817-85e2-4e86-a924-f69f1b44b7e4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ArEstimateRatesheetSettingsPanel-module__MWcpQq__btnPrimary</value>
+      <webElementGuid>21e7f066-7e22-4e18-884f-74fdc9f52fe6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Add new</value>
+      <webElementGuid>949f746f-b1da-4414-b592-49b19cb3b288</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-f64327bb3962311e332e01bddc45d319</value>
+      <webElementGuid>2dd7daca-6855-422b-8d3b-cb7dbbeeee86</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ArEstimateRatesheetSettingsPanel-module__MWcpQq__btnPrimary ') and (position() = 1)]</value>
+      <webElementGuid>d88f2212-616e-4e1c-863f-f40f5bc93474</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ArEstimateRatesheetSettingsPanel-module__MWcpQq__btnPrimary ') and (position() = 1)]</value>
+      <webElementGuid>54df632d-aa71-4a17-a008-3ef646e2ba42</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'button' and (text() = 'Add new' or . = 'Add new')]</value>
+      <webElementGuid>0dc7c1ed-c7ec-47ef-9368-e0a09962951b</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_BACKGlobal Settings HistoryView and track ch</name>
+   <tag></tag>
+   <elementGuidId>50bf08b7-b2d8-4ccb-8634-75a9dfe46091</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' GlobalSettingsModule-module__HzmAka__actionBar ')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>.GlobalSettingsModule-module__HzmAka__actionBar</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>div >> internal:has-text=/^HISTORY$/</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>98bfea35-ffa1-4e6e-b09c-ca2711753827</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>GlobalSettingsModule-module__HzmAka__actionBar</value>
+      <webElementGuid>09438046-da6b-415f-aabf-7832ca4c303f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>HISTORY</value>
+      <webElementGuid>e64d2ff5-cdf3-479a-bbd2-48111eb57a55</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-5fc326e9128390856aad3bb27a5b94d5</value>
+      <webElementGuid>f62d141c-547d-4897-97ed-e6617e576af1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' GlobalSettingsModule-module__HzmAka__actionBar ')]</value>
+      <webElementGuid>d05cec77-f3e7-4114-a279-278b07f118eb</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' GlobalSettingsModule-module__HzmAka__actionBar ')]</value>
+      <webElementGuid>952dbdf2-5006-493e-a9b6-3703b9d9756e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[(text() = 'HISTORY' or . = 'HISTORY')]</value>
+      <webElementGuid>be71c3cb-65cf-4cfe-84f1-1890c1aeed1c</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

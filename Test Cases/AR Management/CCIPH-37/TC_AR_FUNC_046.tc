@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>AR History RESET clears filters (CCIPH-37 / TC_AR_FUNC_046 / AC4)</description>
+   <name>TC_AR_FUNC_046</name>
+   <tag>GenAI,ARManagement,CCIPH-37</tag>
+   <comment>CSV: AR-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ar-mgmt-37-046-4a1b-9c0d-8e7f-0000000000046</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ar37-data-046</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>37</value>
+      </iterationEntity>
+      <testDataId>Data Files/AR-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-046</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>ar37-history-filter-var</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-046</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>39819de1-bb0f-4506-8de6-015eea1342eb</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-046</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>9657aadd-6110-479b-9021-1c229a919dcc</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-046</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>cb5f1eb5-071a-4336-b5ba-f329ef9edbe1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-046</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>67bf2fd5-a6a9-4009-901d-a49e49e90138</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>TODAY</defaultValue>
+      <description>Date filter before reset (ALL, TODAY, THIS WEEK, THIS MONTH, CUSTOM)</description>
+      <id>ar37-history-filter-var</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>39819de1-bb0f-4506-8de6-015eea1342eb</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>9657aadd-6110-479b-9021-1c229a919dcc</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cb5f1eb5-071a-4336-b5ba-f329ef9edbe1</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>67bf2fd5-a6a9-4009-901d-a49e49e90138</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Partial Account Name with Exact Match shows incorrect message (CCIPH-102 / TC_AP_FUNC_014)</description>
+   <name>TC_AP_FUNC_014</name>
+   <tag>GenAI,CCIPH-102,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-102</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph102-014-4a1b-9c0d-8e7f-000000000014</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>4eeeb481-9a31-417a-b6ba-d7a0b8325e03</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>9</value>
+      </iterationEntity>
+      <testDataId>Data Files/AP-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>4eeeb481-9a31-417a-b6ba-d7a0b8325e03</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>72b0e451-a7e5-4843-89a5-7ec97680c3b7</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>4eeeb481-9a31-417a-b6ba-d7a0b8325e03</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>857dd413-d86c-4e4a-b451-54947bae1282</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>4eeeb481-9a31-417a-b6ba-d7a0b8325e03</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>30f13ca5-3df2-4c85-887e-9c135acd8e4e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>4eeeb481-9a31-417a-b6ba-d7a0b8325e03</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>6d533f29-2c52-4b85-95fd-ba676679b863</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>72b0e451-a7e5-4843-89a5-7ec97680c3b7</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>857dd413-d86c-4e4a-b451-54947bae1282</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>30f13ca5-3df2-4c85-887e-9c135acd8e4e</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>6d533f29-2c52-4b85-95fd-ba676679b863</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

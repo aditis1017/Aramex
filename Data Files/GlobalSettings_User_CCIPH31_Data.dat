@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>CCIPH-31 Global Settings edit-rule data (CSV). Columns align with GlobalSettings_User_CCIPH30_Data for reuse in scripts. Re-export from Excel if you maintain Include/GlobalSettings-Data.xlsx separately.</description>
+   <name>GlobalSettings_User_CCIPH31_Data</name>
+   <tag>CCIPH-31,GlobalSettings</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>f1e2d3c4-b5a6-4789-8012-000000003101</dataFileGUID>
+   <dataSourceUrl>GlobalSettings_Users__Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Plus icon Rate2 (CCIPH-86 / TC_AR_FUNC_064)</description>
+   <name>TC_AR_FUNC_064</name>
+   <tag>GenAI,ARManagement,CCIPH-86</tag>
+   <comment>CSV: AR-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-86</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ar-mgmt-86-064-4a1b-9c0d-8e7f-000000000064</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ar86-data-064</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>45</value>
+      </iterationEntity>
+      <testDataId>Data Files/AR-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-064</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>26f068b4-ebe3-4b8f-9a9a-34fe7df996e5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-064</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>b42bcc47-a63f-4c92-8ad2-a7538c7ec521</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-064</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>36374cc0-653f-48b4-9a75-7491c594efa4</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-064</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-064</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rs_Shipment_Type</value>
+      <variableId>ar86-rs-shipment-type-064</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-064</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rs_Rate_Type</value>
+      <variableId>ar86-rs-rate-type-064</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>26f068b4-ebe3-4b8f-9a9a-34fe7df996e5</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>b42bcc47-a63f-4c92-8ad2-a7538c7ec521</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>36374cc0-653f-48b4-9a75-7491c594efa4</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>RateSheet shipment type</description>
+      <id>ar86-rs-shipment-type-064</id>
+      <masked>false</masked>
+      <name>rs_Shipment_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>RateSheet rate type</description>
+      <id>ar86-rs-rate-type-064</id>
+      <masked>false</masked>
+      <name>rs_Rate_Type</name>
+   </variable>
+</TestCaseEntity>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify read-only fields on AP Account Detail (CCIPH-104)</description>
+   <name>TC_AP_FUNC_032</name>
+   <tag>GenAI,CCIPH-104,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-104</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph104-032-4a1b-9c0d-8e7f-000000000032</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>c104-data-link-032</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>30</value>
+      </iterationEntity>
+      <testDataId>Data Files/AP-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>c104-data-link-032</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>c104-var-criteria-032</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c104-data-link-032</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>c104-var-searchby-032</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c104-data-link-032</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>c104-var-value-032</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c104-data-link-032</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>c104-var-entity-032</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c104-var-criteria-032</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c104-var-searchby-032</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c104-var-value-032</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c104-var-entity-032</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

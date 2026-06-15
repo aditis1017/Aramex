@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>CCIPH-86 RateSheet rows — merge into AR-Management-Data.csv or bind tests to this file</description>
+   <name>AR-Management-Data-CCIPH86</name>
+   <tag>CCIPH-86,ARManagement,RateSheet</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>ar-mgmt-data-cciph86-4a1b-9c0d-8e7f</dataFileGUID>
+   <dataSourceUrl>AR-Management-Data-CCIPH86-rows.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

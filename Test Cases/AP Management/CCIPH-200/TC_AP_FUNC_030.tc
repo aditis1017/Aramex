@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify mandatory validation when Save without required fields (CCIPH-200 / AC1)</description>
+   <name>TC_AP_FUNC_030</name>
+   <tag>GenAI,CCIPH-200,APManagement</tag>
+   <comment>CSV: AP-Management-Data.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-200</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph200-040-4a1b-9c0d-8e7f-000000000040</testCaseGuid>
+</TestCaseEntity>

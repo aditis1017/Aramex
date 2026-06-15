@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Valid search shows results grid (CCIPH-103 / TC_AP_FUNC_016 / AC7)</description>
+   <name>TC_AP_FUNC_016</name>
+   <tag>GenAI,CCIPH-103,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-103</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph103-016-4a1b-9c0d-8e7f-000000000016</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>c103-data-link-016</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>17</value>
+      </iterationEntity>
+      <testDataId>Data Files/AP-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-016</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>c103-var-criteria-016</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-016</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>c103-var-searchby-016</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-016</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>c103-var-value-016</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-016</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>c103-var-entity-016</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-criteria-016</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-searchby-016</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-value-016</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-entity-016</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

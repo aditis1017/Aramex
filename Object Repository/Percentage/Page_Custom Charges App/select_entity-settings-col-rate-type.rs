@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_entity-settings-col-rate-type</name>
+   <tag></tag>
+   <elementGuidId>b3f488f5-d281-4b3c-993a-c25ad86ce8da</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>[aria-label=&quot;entity-settings-col-rate-type&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@aria-label = 'entity-settings-col-rate-type']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;entity-settings-col-rate-type&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>070210b6-c6af-4d69-9a3f-bac2c2b2ab01</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-label</name>
+      <type>Main</type>
+      <value>entity-settings-col-rate-type</value>
+      <webElementGuid>bad36c55-75e9-4006-9e0e-34076785233a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ArEstimateRatesheetSettingsPanel-module__MWcpQq__newRecordInput</value>
+      <webElementGuid>5de8253b-3fc6-4687-b807-e04afef9d675</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Select rate typeFixedPercentage</value>
+      <webElementGuid>d1f22f96-1373-41ea-949e-5277125a29b6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-6879b87de1aebc9061d3b419afaf0a0e</value>
+      <webElementGuid>f7b3b1b9-7335-4d0e-9908-4a9563ef7853</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@aria-label = 'entity-settings-col-rate-type']</value>
+      <webElementGuid>a6cd9823-6ab8-47c0-b70e-431801067703</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@aria-label = 'entity-settings-col-rate-type']</value>
+      <webElementGuid>d839c699-0b28-4d26-897e-1b469b101b6b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[(text() = 'Select rate typeFixedPercentage' or . = 'Select rate typeFixedPercentage')]</value>
+      <webElementGuid>5807d78f-a981-4145-a927-96bb611c30f3</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

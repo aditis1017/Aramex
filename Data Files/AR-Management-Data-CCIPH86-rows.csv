@@ -1,0 +1,12 @@
+# CCIPH-86 rows merged into Data Files/AR-Management-Data.csv (iterations 41-50)
+# ID,iteration,rs_Desc_Prefix,rs_ServiceDesc_Prefix,rs_Shipment_Type,rs_Rate_Type,rs_Rate_Value,rs_Percent_Of,rs_Columns
+TC_AR_FUNC_053,41,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,Description|Service Desc|Rate Type|% of|Value|Action
+TC_AR_FUNC_056,42,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,
+TC_AR_FUNC_057,43,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,
+TC_AR_FUNC_058,44,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,
+TC_AR_FUNC_064,45,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,
+TC_AR_FUNC_065,46,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,
+TC_AR_FUNC_069,47,Automation_DescriptionTest,Automation_Service_Description,DDU,Percentage,,Cost of Goods,
+TC_AR_FUNC_070,48,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,,,
+TC_AR_FUNC_072,49,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,23,,
+TC_AR_FUNC_073,50,Automation_DescriptionTest,Automation_Service_Description,DDU,Fixed,23,,

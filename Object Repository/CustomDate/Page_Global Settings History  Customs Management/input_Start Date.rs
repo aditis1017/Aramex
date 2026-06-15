@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>input_Start Date</name>
+   <tag></tag>
+   <elementGuidId>140f678f-7d2a-4416-b663-761451838c95</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#ccfe-history-custom-start</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id = 'ccfe-history-custom-start']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>CSS</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;Start Date&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>input</value>
+      <webElementGuid>8dd2b033-16c7-4e6d-b761-96d07e0d3eb9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>ccfe-history-custom-start</value>
+      <webElementGuid>0fc09792-7d9d-454c-992b-18e337d4dd92</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>min</name>
+      <type>Main</type>
+      <value>2025-11-27</value>
+      <webElementGuid>61998d56-14fa-4b89-b1bc-9c7378038525</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>max</name>
+      <type>Main</type>
+      <value>2026-05-27</value>
+      <webElementGuid>929cdf73-dde7-4758-bcb8-c8d1f0e6c98a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>w-full rounded-md border border-[var(--palette-slate-200)] px-3 py-2 text-left text-sm focus:border-transparent focus:ring-2 focus:ring-[var(--palette-brand-500)] focus:outline-none</value>
+      <webElementGuid>92880451-7e05-4ae0-bb60-db1b90c54658</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>date</value>
+      <webElementGuid>87064346-304c-4187-9881-1a3980e77dc7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>value</name>
+      <type>Main</type>
+      <value>2025-11-27</value>
+      <webElementGuid>b071cf59-3633-4709-a9c7-70b1bbf9498e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-8d99c6af87f04a19f0c18f20f6e788e2</value>
+      <webElementGuid>bfa091f9-e7eb-4a0a-bcf0-3bec6486273d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@id = 'ccfe-history-custom-start']</value>
+      <webElementGuid>ed6aba52-725c-4e0c-9607-4aeac536484e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@id = 'ccfe-history-custom-start']</value>
+      <webElementGuid>058c2e8b-336d-420d-a823-f37ae386886d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//input[@id = 'ccfe-history-custom-start' and @type = 'date']</value>
+      <webElementGuid>9a27eb87-1e1f-4aa4-9331-604c7356fc56</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

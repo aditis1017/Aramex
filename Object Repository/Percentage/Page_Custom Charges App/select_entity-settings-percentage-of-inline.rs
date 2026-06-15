@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_entity-settings-percentage-of-inline</name>
+   <tag></tag>
+   <elementGuidId>54083860-6b16-4579-9983-0b2b4fcb5fe9</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>[aria-label=&quot;entity-settings-percentage-of-inline&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@aria-label = 'entity-settings-percentage-of-inline']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;entity-settings-percentage-of-inline&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>74b8ad9f-af43-4a05-bb9b-5639684efe2a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-label</name>
+      <type>Main</type>
+      <value>entity-settings-percentage-of-inline</value>
+      <webElementGuid>a6f41c6f-59e4-426c-bfb7-c64c6695deee</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ArEstimateRatesheetSettingsPanel-module__MWcpQq__newRecordInput </value>
+      <webElementGuid>56ee7197-ec61-41c8-a8d9-6c783b2235ba</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-invalid</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>7a1bbb97-d530-4c68-baaf-0ffa7fbb909f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>title</name>
+      <type>Main</type>
+      <value>Choose what the percentage applies to (% Of).</value>
+      <webElementGuid>38ad8c14-2a67-4980-9c0c-c9d631300550</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>SelectTotal InvoiceCost of Goods</value>
+      <webElementGuid>38ecbb87-e32f-488b-b208-5badc07cb831</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-c49db638746b5079d7881e8abcba1bf7</value>
+      <webElementGuid>738b66c8-0d55-4caf-9122-d701c4dc3ca0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@aria-label = 'entity-settings-percentage-of-inline']</value>
+      <webElementGuid>6cf4b454-0c20-4a69-be1a-34e3be2ccc77</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@aria-label = 'entity-settings-percentage-of-inline']</value>
+      <webElementGuid>98827a49-5570-4c61-b807-f9fcfedfef59</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[@title = 'Choose what the percentage applies to (% Of).' and (text() = 'SelectTotal InvoiceCost of Goods' or . = 'SelectTotal InvoiceCost of Goods')]</value>
+      <webElementGuid>687d300a-002f-4468-a0ab-2b2175438f1d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

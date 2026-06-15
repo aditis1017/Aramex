@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Partial Account Number with Exact Match shows incorrect message (CCIPH-102 / TC_AP_FUNC_011)</description>
+   <name>TC_AP_FUNC_011</name>
+   <tag>GenAI,CCIPH-102,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-102</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph102-011-4a1b-9c0d-8e7f-000000000011</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>14f9b612-eed2-4962-adf1-34d46a250e45</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>6</value>
+      </iterationEntity>
+      <testDataId>Data Files/AP-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>14f9b612-eed2-4962-adf1-34d46a250e45</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>4c03096e-56fa-4184-9026-01c36f5cd5fe</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>14f9b612-eed2-4962-adf1-34d46a250e45</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>35f326fe-9c72-4104-b23c-7e5154efb3e5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>14f9b612-eed2-4962-adf1-34d46a250e45</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>baaf7851-a50c-4702-a02a-2d3f588f060a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>14f9b612-eed2-4962-adf1-34d46a250e45</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>eb150844-3ce0-4fad-9a04-5df436716d09</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>4c03096e-56fa-4184-9026-01c36f5cd5fe</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>35f326fe-9c72-4104-b23c-7e5154efb3e5</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>baaf7851-a50c-4702-a02a-2d3f588f060a</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>eb150844-3ce0-4fad-9a04-5df436716d09</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

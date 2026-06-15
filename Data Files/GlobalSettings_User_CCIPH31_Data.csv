@@ -1,0 +1,8 @@
+testCaseId,tab,conditionField,conditionOperator,destination,notes
+TC_GS_FUNC_031,DDU,Cost of Goods,Greater than,Saudi Arabia,Edit + save; AC4 non-retro requires backend validation
+TC_GS_FUNC_032,DDP,Cost of Goods,Greater than,Saudi Arabia,Edit opens modal; Customs Type read-only DDP
+TC_GS_FUNC_033,DDU,Cost of Goods,Greater than,Saudi Arabia,Pre-populated condition value
+TC_GS_FUNC_034,DDU,Cost of Goods,Greater than,Saudi Arabia,Cancel closes modal
+TC_GS_FUNC_035,DDU,Cost of Goods,Greater than,Saudi Arabia,Save updated value visible in listing
+TC_GS_FUNC_036,DDU,Cost of Goods,Greater than,Saudi Arabia,Refresh after save (logout/login not automated)
+TC_GS_FUNC_037,DDU,Cost of Goods,Greater than,Saudi Arabia,Duplicate on edit via two rules same condition

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify rule deactivation appears under ALL on History (CCIPH-37 / TC_GS_FUNC_063)</description>
+   <name>TC_GS_FUNC_063</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a063-000000000063</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>a9fedd15-3e33-4b7b-b04d-b7be14323d81</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>63</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>a9fedd15-3e33-4b7b-b04d-b7be14323d81</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>41448894-3df1-4b46-bfe8-8ab6b9d4fc3f</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>a9fedd15-3e33-4b7b-b04d-b7be14323d81</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>3b2893b3-be75-4376-8b03-6742eb87b00f</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>a9fedd15-3e33-4b7b-b04d-b7be14323d81</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rule_Status</value>
+      <variableId>cbdacecb-12dd-46e1-8333-6cf2322073d4</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>41448894-3df1-4b46-bfe8-8ab6b9d4fc3f</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>3b2893b3-be75-4376-8b03-6742eb87b00f</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cbdacecb-12dd-46e1-8333-6cf2322073d4</id>
+      <masked>false</masked>
+      <name>rule_Status</name>
+   </variable>
+</TestCaseEntity>

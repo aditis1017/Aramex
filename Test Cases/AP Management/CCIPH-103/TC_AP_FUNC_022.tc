@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Pagination reset after refresh (CCIPH-103 / TC_AP_FUNC_022 / AC5)</description>
+   <name>TC_AP_FUNC_022</name>
+   <tag>GenAI,CCIPH-103,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-103</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph103-022-4a1b-9c0d-8e7f-000000000022</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>c103-data-link-022</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>22</value>
+      </iterationEntity>
+      <testDataId>Data Files/AP-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-022</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>c103-var-criteria-022</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-022</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>c103-var-searchby-022</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-022</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>c103-var-value-022</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>c103-data-link-022</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>c103-var-entity-022</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-criteria-022</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-searchby-022</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-value-022</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c103-var-entity-022</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

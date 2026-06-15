@@ -1,0 +1,4 @@
+ID,search_Criteria,search_By,search_Value,entity,validate_Value,dta_Field1,dta_Field2,dta_Field3,readonly_Label1,readonly_Label2,readonly_Label3,readonly_Label4,readonly_Label5,service_Columns
+TC_AR_FUNC_033,Account Name,Exact Match,Sample AR RUH DTA,JED,,,,,,,,,Service Code|Description|Ref/Desc Description|Active|Tax Code|Tax Value|Billable|Split
+TC_AR_FUNC_043,Account Name,Exact Match,Sample AR RUH DTA,JED,,,,,,,,,
+TC_AR_FUNC_044,Account Name,Exact Match,Sample AR RUH DTA,JED,,,,,,,,,Service Code|Description|Ref/Desc Description|Active|Tax Code|Tax Value|Billable|Split

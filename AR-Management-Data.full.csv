@@ -1,0 +1,52 @@
+ID,search_Criteria,search_By,search_Value,entity,validate_Value
+
+TC_AR_FUNC_001,,,,,
+
+TC_AR_FUNC_002,,,,,
+
+TC_AR_FUNC_003,,,,,
+
+TC_AR_FUNC_004,,,,,
+
+TC_AR_FUNC_005,,,,,
+
+TC_AR_FUNC_006,,,,,
+
+TC_AR_FUNC_007,Account Number,Contains,INVALID_NO_MATCH_XYZ,,
+
+TC_AR_FUNC_008,Account Name,Contains,Sample AR,,Account Name
+
+TC_AR_FUNC_009,Account Number,Exact Match,Incorrect6,JED,Account Number
+
+TC_AR_FUNC_010,Account Number,Exact Match,8003,JED,Account Number
+
+TC_AR_FUNC_011,Account Name,Contains,Sample AR RUH,JED,Account Name
+
+TC_AR_FUNC_012,Account Name,Exact Match,REPLACE_PARTIAL_AR_ACCOUNT_NAME,,
+
+TC_AR_FUNC_013,Account Name,Exact Match,Sample AR RUH DTA,JED,Account Name
+
+TC_AR_FUNC_014,Account Name,Contains,             Sample AR ,JED,Account Name
+
+TC_AR_FUNC_015,Account Name,Contains,Sample AR,,Account Name
+
+TC_AR_FUNC_016,Account Name,Contains,Sample AR,,Account Name
+
+TC_AR_FUNC_017,Account Name,Contains,Sample AR,,Account Name
+
+TC_AR_FUNC_018,Account Name,Contains,REPLACE_AR_SEARCH_MULTI_PAGE,,Account Name
+
+TC_AR_FUNC_019,Account Number,Exact Match,8003,JED,Account Number
+
+TC_AR_FUNC_020,Account Name,Contains,REPLACE_AR_SEARCH_MULTI_PAGE,,Account Name
+
+TC_AR_FUNC_021,Account Name,Contains,REPLACE_AR_SEARCH_MULTI_PAGE,,Account Name
+
+TC_AR_FUNC_022,Account Name,Contains,REPLACE_AR_SEARCH_MULTI_PAGE,,Account Name
+
+TC_AR_FUNC_023,Account Name,Contains,Sample AR,,Account Name
+
+TC_AR_FUNC_024,Account Name,Contains,Sample AR,,Account Name
+
+TC_AR_FUNC_029,Account Name,Contains,Sample AR,,Account Name
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify rule creation appears under ALL on History (CCIPH-37 / TC_GS_FUNC_062)</description>
+   <name>TC_GS_FUNC_062</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a062-000000000062</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>0cad9206-7393-4d91-8218-b23d6cfd4932</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>62</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>0cad9206-7393-4d91-8218-b23d6cfd4932</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>c9944d46-0c2f-4dce-ae3d-67db2e4329e3</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>0cad9206-7393-4d91-8218-b23d6cfd4932</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>8125a508-fe49-4979-84ec-9608edebd36b</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c9944d46-0c2f-4dce-ae3d-67db2e4329e3</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>8125a508-fe49-4979-84ec-9608edebd36b</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+</TestCaseEntity>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_Entity</name>
+   <tag></tag>
+   <elementGuidId>82bd6a83-097e-4bf0-be11-cd41138de3e8</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#ar-search-entity</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id = 'ar-search-entity']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;Entity&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>3499d508-7f81-4fcc-88c4-cd640e6a4950</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>ar-search-entity</value>
+      <webElementGuid>3a45a747-1560-4457-b3dc-5e91b9164e9e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>h-[38px] w-full appearance-none rounded-[6px] border border-[rgba(50,71,92,0.22)] bg-white px-3 text-[14px] font-normal text-[rgba(50,71,92,0.87)] focus:border-[#DC291E] focus:outline-none disabled:opacity-60</value>
+      <webElementGuid>5d688cb0-bb56-4183-95db-ca39e17be5fc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>RUHJEDDHA</value>
+      <webElementGuid>13dbdd33-378a-4f88-9dae-978fd0ac3d40</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-ab68d23696dde832a7af6b807600187d</value>
+      <webElementGuid>363a5f52-8623-4464-8523-28852cf99421</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@id = 'ar-search-entity']</value>
+      <webElementGuid>917d582e-0d1c-4a5a-8691-0ce6c6b0ce0e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@id = 'ar-search-entity']</value>
+      <webElementGuid>9589724b-4f08-4c64-83a8-d419ec92d5b0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[@id = 'ar-search-entity' and (text() = 'RUHJEDDHA' or . = 'RUHJEDDHA')]</value>
+      <webElementGuid>d3664498-bf6a-4998-9615-ea2d2b6dfd1f</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

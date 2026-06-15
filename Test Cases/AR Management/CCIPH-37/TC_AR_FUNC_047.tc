@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>AR History Export downloads CSV (CCIPH-37 / TC_AR_FUNC_047 / AC3)</description>
+   <name>TC_AR_FUNC_047</name>
+   <tag>GenAI,ARManagement,CCIPH-37</tag>
+   <comment>CSV: AR-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ar-mgmt-37-047-4a1b-9c0d-8e7f-0000000000047</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ar37-data-047</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>38</value>
+      </iterationEntity>
+      <testDataId>Data Files/AR-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-047</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>f69ea1dd-cbf0-4a0f-ae9a-8036ce57eb59</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-047</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>47f6b302-b818-41e5-be03-7c2cd029fb63</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-047</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>8db59c49-7316-4cbb-abb6-82354d87b52e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-047</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>9f084c3f-e860-495d-a79d-30a35d6b9407</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f69ea1dd-cbf0-4a0f-ae9a-8036ce57eb59</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>47f6b302-b818-41e5-be03-7c2cd029fb63</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>8db59c49-7316-4cbb-abb6-82354d87b52e</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>9f084c3f-e860-495d-a79d-30a35d6b9407</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

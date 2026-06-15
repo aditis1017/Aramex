@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//motion.div[@role='dialog']//button[contains(.,'Cancel')] | //div[@role='dialog']//button[contains(.,'Cancel')]</value>
+         <value>//button[@class='GlobalSettingsShared-module__NVU1lq__modalCancelBtn']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

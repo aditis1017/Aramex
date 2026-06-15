@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Invalid search shows No records found (CCIPH-102 / TC_AP_FUNC_017 / AC8)</description>
+   <name>TC_AP_FUNC_017</name>
+   <tag>GenAI,CCIPH-102,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-102</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph102-017-4a1b-9c0d-8e7f-000000000017</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>af71cd96-a4d3-4878-acca-c34eed079798</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>11</value>
+      </iterationEntity>
+      <testDataId>Data Files/AP-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>af71cd96-a4d3-4878-acca-c34eed079798</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>b66df0e4-a801-45a4-b936-86b8d99b7af8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>af71cd96-a4d3-4878-acca-c34eed079798</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>8ea85081-9638-4354-a509-79a4e1ea8417</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>af71cd96-a4d3-4878-acca-c34eed079798</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>fdf2569b-ff45-4268-8aa3-4aff8f1cc2cb</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>af71cd96-a4d3-4878-acca-c34eed079798</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>aa775791-5002-4542-9d09-6d4d92b48a40</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>b66df0e4-a801-45a4-b936-86b8d99b7af8</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>8ea85081-9638-4354-a509-79a4e1ea8417</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>fdf2569b-ff45-4268-8aa3-4aff8f1cc2cb</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>aa775791-5002-4542-9d09-6d4d92b48a40</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+</TestCaseEntity>

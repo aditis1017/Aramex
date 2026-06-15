@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>circle_transition-all duration-300 ease-in-out</name>
+   <tag></tag>
+   <elementGuidId>5136467e-42a0-4deb-aac2-6610c5c65da4</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.w-fit:nth-child(1) .ease-in-out</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' w-fit ') and (position() = 1)]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ease-in-out ')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>div >> internal:has-text=/^Special Service Charge Settings$/ >> circle</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>circle</value>
+      <webElementGuid>d5da0a93-bd21-4e11-98e6-f1e5660de549</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>cx</name>
+      <type>Main</type>
+      <value>27.5</value>
+      <webElementGuid>545bfbec-7a11-420d-b30c-21a0bded5d08</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>cy</name>
+      <type>Main</type>
+      <value>10.5</value>
+      <webElementGuid>51b6ab21-eef8-4cde-933a-0c52f252ddce</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>r</name>
+      <type>Main</type>
+      <value>8.5</value>
+      <webElementGuid>93348945-87e6-4ab3-bad5-dd280672c3b6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>fill</name>
+      <type>Main</type>
+      <value>#DC291E</value>
+      <webElementGuid>35e501d7-3b3e-43fd-b904-473529909f2b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>transition-all duration-300 ease-in-out</value>
+      <webElementGuid>84795277-8039-41ae-b624-5a844ad6c00a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-8ac9a7edc487798a3c3c41d22f4a1628</value>
+      <webElementGuid>49eb081a-76df-4a8c-a21a-641182c2eb34</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' w-fit ') and (position() = 1)]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ease-in-out ')]</value>
+      <webElementGuid>43beca54-a9d1-48f2-9fde-656fe286e833</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' w-fit ') and (position() = 1)]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ease-in-out ')]</value>
+      <webElementGuid>20473b1a-7cb2-4962-99b3-ca02d93c4245</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

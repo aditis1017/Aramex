@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validate exported History Excel content vs on-screen first row (CCIPH-37 / TC_GS_FUNC_069)</description>
+   <name>TC_GS_FUNC_069</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-37 | AC3</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a069-000000000069</testCaseGuid>
+</TestCaseEntity>
