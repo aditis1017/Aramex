@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Mandatory field validation on Search (CCIPH-102 / TC_AP_FUNC_003 / AC2)</description>
+   <name>TC_AP_FUNC_003</name>
+   <tag>GenAI,CCIPH-102,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-102</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph102-003-4a1b-9c0d-8e7f-000000000003</testCaseGuid>
+</TestCaseEntity>

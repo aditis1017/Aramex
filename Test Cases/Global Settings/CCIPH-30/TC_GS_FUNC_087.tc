@@ -9,33 +9,33 @@
    <testCaseGuid>a66b499a-253b-428c-8221-f00ab5da4382</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>6e3ae272-2f1e-4af8-8900-ca8f96e63af7</id>
+      <id>e6f6bf57-12bd-4346-88ae-216ed945bc03</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>17</value>
+         <value>87</value>
       </iterationEntity>
-      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>6e3ae272-2f1e-4af8-8900-ca8f96e63af7</testDataLinkId>
+      <testDataLinkId>e6f6bf57-12bd-4346-88ae-216ed945bc03</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>tab</value>
       <variableId>0d6f3118-8338-44a5-b13e-da22d0bc4156</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>6e3ae272-2f1e-4af8-8900-ca8f96e63af7</testDataLinkId>
+      <testDataLinkId>e6f6bf57-12bd-4346-88ae-216ed945bc03</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>conditionField</value>
       <variableId>bdb0f6c7-0ded-4ef3-8163-533233ade046</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>6e3ae272-2f1e-4af8-8900-ca8f96e63af7</testDataLinkId>
+      <testDataLinkId>e6f6bf57-12bd-4346-88ae-216ed945bc03</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>conditionOperator</value>
       <variableId>3d97259e-9eef-4f01-9103-bfd203dff5b9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>6e3ae272-2f1e-4af8-8900-ca8f96e63af7</testDataLinkId>
+      <testDataLinkId>e6f6bf57-12bd-4346-88ae-216ed945bc03</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>destination</value>
       <variableId>bc20ecc3-fbff-42a8-9be5-c6bd14d3417c</variableId>

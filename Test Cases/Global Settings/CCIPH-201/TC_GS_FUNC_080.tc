@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Reorder drag then Cancel reverts order (CCIPH-201 / TC_GS_FUNC_080 / AC6)</description>
+   <name>TC_GS_FUNC_080</name>
+   <tag>GenAI,CCIPH-201,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-201 | AC3, AC6</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d4e5f6a7-b8c9-4012-a080-000000000080</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>de68ed31-50d6-40ed-a270-022ca2df8c02</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>80</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>de68ed31-50d6-40ed-a270-022ca2df8c02</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>4aca45d9-6960-4d59-827e-2542f978378b</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>4aca45d9-6960-4d59-827e-2542f978378b</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>

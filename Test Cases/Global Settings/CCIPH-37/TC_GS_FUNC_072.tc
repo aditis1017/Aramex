@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Remind network paging check; verify Next changes data window (CCIPH-37 / TC_GS_FUNC_072)</description>
+   <name>TC_GS_FUNC_072</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a072-000000000072</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>021ce37c-fd81-4093-8b22-c7fa6402a5ad</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>72</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>021ce37c-fd81-4093-8b22-c7fa6402a5ad</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>bee76fce-8240-4eaf-a3d9-ede89c965132</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>bee76fce-8240-4eaf-a3d9-ede89c965132</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+</TestCaseEntity>

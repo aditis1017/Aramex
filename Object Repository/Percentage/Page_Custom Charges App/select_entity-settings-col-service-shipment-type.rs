@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_entity-settings-col-service-shipment-type</name>
+   <tag></tag>
+   <elementGuidId>28cb6216-fc7f-4a0f-9f27-7e0e384a393b</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>[aria-label=&quot;entity-settings-col-service-shipment-type&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@aria-label = 'entity-settings-col-service-shipment-type']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;entity-settings-col-service-shipment-type&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>bc12b917-5bd6-43bc-bd7f-4c9329e60fe9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ArEstimateRatesheetSettingsPanel-module__MWcpQq__newRecordInput </value>
+      <webElementGuid>092273f3-6b25-4bca-bdc6-d3381d34ab6b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-label</name>
+      <type>Main</type>
+      <value>entity-settings-col-service-shipment-type</value>
+      <webElementGuid>b125d14c-34cd-4ae2-954a-346cf2e47b0e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-invalid</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>bfa32430-0d05-41ee-82f2-a9c965e2bf68</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Select Shipment TypeDDPDDUDDO</value>
+      <webElementGuid>4fa02467-de95-41c1-88e4-23a8654e4f06</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-1ad06d2491eef04642ab20ddec026d2f</value>
+      <webElementGuid>6bf10507-f04f-4724-8802-e6eeccd07331</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@aria-label = 'entity-settings-col-service-shipment-type']</value>
+      <webElementGuid>f5434c45-5db3-47aa-a885-d0e168bc86b8</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@aria-label = 'entity-settings-col-service-shipment-type']</value>
+      <webElementGuid>beda19d5-f29b-440e-9080-06d7491e5376</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[(text() = 'Select Shipment TypeDDPDDUDDO' or . = 'Select Shipment TypeDDPDDUDDO')]</value>
+      <webElementGuid>e5c7b3d2-0400-4dd6-96b1-9635faf8c190</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

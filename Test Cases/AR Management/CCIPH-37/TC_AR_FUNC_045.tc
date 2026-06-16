@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>AR History Custom Range start > end shows no data (CCIPH-37 / TC_AR_FUNC_045 / AC2)</description>
+   <name>TC_AR_FUNC_045</name>
+   <tag>GenAI,ARManagement,CCIPH-37</tag>
+   <comment>CSV: AR-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ar-mgmt-37-045-4a1b-9c0d-8e7f-0000000000045</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ar37-data-045</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>35</value>
+      </iterationEntity>
+      <testDataId>Data Files/AR-Management-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-045</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Start_Date</value>
+      <variableId>ar37-history-start-var</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-045</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_End_Date</value>
+      <variableId>ar37-history-end-var</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Custom range start (dd-MM-yyyy)</description>
+      <id>ar37-history-start-var</id>
+      <masked>false</masked>
+      <name>history_Start_Date</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Custom range end (dd-MM-yyyy)</description>
+      <id>ar37-history-end-var</id>
+      <masked>false</masked>
+      <name>history_End_Date</name>
+   </variable>
+</TestCaseEntity>

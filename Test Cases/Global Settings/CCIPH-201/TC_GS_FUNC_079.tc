@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Reorder rules UI — default view vs reorder mode (CCIPH-201 / TC_GS_FUNC_079)</description>
+   <name>TC_GS_FUNC_079</name>
+   <tag>GenAI,CCIPH-201,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-201 | AC1, AC2</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d4e5f6a7-b8c9-4012-a079-000000000079</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>09aced1c-28f0-4683-8e69-7f3f5b47a41d</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>79</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>09aced1c-28f0-4683-8e69-7f3f5b47a41d</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>3b4616e8-e9ad-4b96-9aa6-bcace860e95c</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>3b4616e8-e9ad-4b96-9aa6-bcace860e95c</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>

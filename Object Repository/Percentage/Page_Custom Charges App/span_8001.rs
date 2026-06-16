@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_8001</name>
+   <tag></tag>
+   <elementGuidId>9f799022-c331-4259-84b7-511e2bcc9191</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.group:nth-child(1) span.font-bold</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' group ') and (position() = 1)]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' font-bold ')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=row[name=&quot;8001 Sample AR DHA DTC RUH 25/05/26 SYSTEM&quot;i] >> internal:attr=[title=&quot;8001&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>d98306b1-b126-4353-b149-7be8ac548e65</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>font-bold text-slate-700 underline decoration-slate-300 group-hover:text-[#DC291E]</value>
+      <webElementGuid>b1409959-fb19-4a63-8a94-70e13822255a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>title</name>
+      <type>Main</type>
+      <value>8001</value>
+      <webElementGuid>fe197a91-56d7-4c8b-86cc-1728140eb0ec</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>8001</value>
+      <webElementGuid>78c8dd98-7898-4050-9436-a5ddf64c161e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-9dead7cce0069c0aef02f0f390afbc1c</value>
+      <webElementGuid>dc8d8ba3-840a-4603-8690-1df5112db8dc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' group ') and (position() = 1)]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' font-bold ')]</value>
+      <webElementGuid>37cb66f1-7f5a-40db-90f9-02e31f5dac90</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' group ') and (position() = 1)]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' font-bold ')]</value>
+      <webElementGuid>55b2564a-dfb0-40da-827b-051fb1668352</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@title = '8001' and (text() = '8001' or . = '8001')]</value>
+      <webElementGuid>a5e816c8-0ce8-4a97-b06b-83034cb7fea1</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify THIS MONTH date filter on History (CCIPH-37 / TC_GS_FUNC_060)</description>
+   <name>TC_GS_FUNC_060</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-37 | AC2</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a060-000000000060</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>aafe1212-1317-468c-8212-4389e1a12bf6</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>60</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>aafe1212-1317-468c-8212-4389e1a12bf6</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>be8aa7fb-0384-4694-8c35-062769c5d1bc</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>be8aa7fb-0384-4694-8c35-062769c5d1bc</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+</TestCaseEntity>

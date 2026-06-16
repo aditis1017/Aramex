@@ -1,0 +1,2 @@
+ID,search_Criteria,search_By,search_Value,entity,validate_Value,dta_Field1,dta_Field2,dta_Field3,readonly_Labels
+TC_AR_FUNC_028,Account Name,Contains,Sample AR DHA DTC,,Account Name,,,,Account Name|Account Number|Country|Entity|Account Type|Rate Currency|Billing Currency|Customs Type|Business Type|Invoice Shipment Limit|Invoice Amount Limit|Potential Delay

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>th_Description</name>
+   <tag></tag>
+   <elementGuidId>bca59711-4a19-4c09-93ee-d7b55c322c54</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.overflow-x-auto th.tracking-wider.font-bold.text-xs.whitespace-nowrap.uppercase.text-left:nth-child(2)</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' overflow-x-auto ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' tracking-wider ') and contains(concat(' ', normalize-space(@class), ' '), ' font-bold ') and contains(concat(' ', normalize-space(@class), ' '), ' text-xs ') and contains(concat(' ', normalize-space(@class), ' '), ' whitespace-nowrap ') and contains(concat(' ', normalize-space(@class), ' '), ' uppercase ') and contains(concat(' ', normalize-space(@class), ' '), ' text-left ') and (name() = 'th') and (position() = 2)]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=cell[name=&quot;Description&quot;s]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>th</value>
+      <webElementGuid>77ea1b4c-ef19-4621-af8b-a1934318f4ea</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>bg-slate-50/50 px-4 py-3 text-xs font-bold tracking-wider whitespace-nowrap text-slate-600 uppercase text-left</value>
+      <webElementGuid>f2d2ae63-a74f-41a9-b320-e06847f48d32</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Description</value>
+      <webElementGuid>9ffa4cab-705a-4c0a-8d7c-b766920966f4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-0f5054e9dd62f242ab021f17f8241093</value>
+      <webElementGuid>f7b8ae18-8fc8-49fb-b264-8c93195131b8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' overflow-x-auto ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' tracking-wider ') and contains(concat(' ', normalize-space(@class), ' '), ' font-bold ') and contains(concat(' ', normalize-space(@class), ' '), ' text-xs ') and contains(concat(' ', normalize-space(@class), ' '), ' whitespace-nowrap ') and contains(concat(' ', normalize-space(@class), ' '), ' uppercase ') and contains(concat(' ', normalize-space(@class), ' '), ' text-left ') and (name() = 'th') and (position() = 2)]</value>
+      <webElementGuid>bfe881fc-82ff-4e6d-8614-a53e12de67e4</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' overflow-x-auto ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' tracking-wider ') and contains(concat(' ', normalize-space(@class), ' '), ' font-bold ') and contains(concat(' ', normalize-space(@class), ' '), ' text-xs ') and contains(concat(' ', normalize-space(@class), ' '), ' whitespace-nowrap ') and contains(concat(' ', normalize-space(@class), ' '), ' uppercase ') and contains(concat(' ', normalize-space(@class), ' '), ' text-left ') and (name() = 'th') and (position() = 2)]</value>
+      <webElementGuid>d9774795-d67f-4c90-9e49-e9d39b041f86</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//th[(text() = 'Description' or . = 'Description')]</value>
+      <webElementGuid>a30e6af2-4333-4282-bc0a-747cbccd3b4d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -9,21 +9,21 @@
    <testCaseGuid>294ad429-69b6-41d6-93e9-cd7515f6e162</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>d247e1eb-423a-46f0-ad52-e87c06f7e58d</id>
+      <id>a9e91a4a-3d7a-4178-abb0-c171c2f1a296</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>5</value>
+         <value>17</value>
       </iterationEntity>
-      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>d247e1eb-423a-46f0-ad52-e87c06f7e58d</testDataLinkId>
+      <testDataLinkId>a9e91a4a-3d7a-4178-abb0-c171c2f1a296</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>tab</value>
       <variableId>92fadc7b-3fa2-4f66-8e13-255880e871e2</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>d247e1eb-423a-46f0-ad52-e87c06f7e58d</testDataLinkId>
+      <testDataLinkId>a9e91a4a-3d7a-4178-abb0-c171c2f1a296</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>targetValue</value>
       <variableId>42c6c3b1-b2e8-46b0-abd7-a2e965c5c4f5</variableId>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Export</name>
+   <tag></tag>
+   <elementGuidId>4da14a07-8bf1-45eb-9f10-b4049edac41e</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and (name() = 'div') and (position() = 2)]//button[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-md ') and contains(concat(' ', normalize-space(@class), ' '), ' border ') and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' transition-colors ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ') and (@type = 'button')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div.flex:nth-child(2) button.rounded-md.border.text-sm.transition-colors.items-center[type=&quot;button&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=button[name=&quot;Export&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>fe2b0035-7bc9-477c-bcce-d6df61ff4a57</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>913ff5af-90f4-4187-bcc3-7814c7f205dd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>flex items-center gap-2 rounded-md border border-[var(--palette-brand-500)] bg-[var(--palette-surface-0)] px-4 py-2 text-sm font-medium text-[var(--palette-brand-500)] transition-colors hover:bg-[var(--palette-brand-muted-subtle)] disabled:cursor-not-allowed disabled:opacity-60</value>
+      <webElementGuid>1c7ca812-1e46-4e73-bbac-7fdc78dc8727</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Export</value>
+      <webElementGuid>ffc3be11-5232-4188-b491-f1f64ba50f82</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-58dee55fa930787752e93068ad35603d</value>
+      <webElementGuid>55f8988d-bd8d-468e-b7fd-ec1a7be4a21a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and (name() = 'div') and (position() = 2)]//button[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-md ') and contains(concat(' ', normalize-space(@class), ' '), ' border ') and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' transition-colors ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ') and (@type = 'button')]</value>
+      <webElementGuid>10f5329e-e43a-477c-b5a5-1a49b62c8ba0</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and (name() = 'div') and (position() = 2)]//button[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-md ') and contains(concat(' ', normalize-space(@class), ' '), ' border ') and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' transition-colors ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ') and (@type = 'button')]</value>
+      <webElementGuid>086611b0-d294-4b70-84d1-eacda84963c8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'button' and (text() = 'Export' or . = 'Export')]</value>
+      <webElementGuid>3f491502-5883-48e1-a33d-fea7228bd7d4</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

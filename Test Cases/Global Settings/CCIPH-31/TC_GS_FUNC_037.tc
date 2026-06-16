@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify duplicate rule condition during Edit (CCIPH-31)</description>
+   <name>TC_GS_FUNC_037</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: CCIPH-31</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a037-000000000037</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>b9dcfe00-513e-4c14-951a-d75d49ecb295</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>37</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>b9dcfe00-513e-4c14-951a-d75d49ecb295</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionField</value>
+      <variableId>85a5f5fe-a2dc-41e0-bc9d-3c5325e53643</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>b9dcfe00-513e-4c14-951a-d75d49ecb295</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionOperator</value>
+      <variableId>8fa73bef-1686-491f-b7f6-be8cd1cd1fb8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>b9dcfe00-513e-4c14-951a-d75d49ecb295</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>valuesComparator</value>
+      <variableId>06d75f36-5a30-4e1f-8e8a-5aa9a029fa6b</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>85a5f5fe-a2dc-41e0-bc9d-3c5325e53643</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>8fa73bef-1686-491f-b7f6-be8cd1cd1fb8</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>06d75f36-5a30-4e1f-8e8a-5aa9a029fa6b</id>
+      <masked>false</masked>
+      <name>valuesComparator</name>
+   </variable>
+</TestCaseEntity>

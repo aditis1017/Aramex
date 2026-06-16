@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify history button opens Global Settings History (CCIPH-37 / CSV TC_GS_FUNC_054)</description>
+   <name>TC_GS_FUNC_054</name>
+   <tag>GenAI,CCIPH-37,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c3d4e5f6-a7b8-4901-a054-000000000054</testCaseGuid>
+</TestCaseEntity>

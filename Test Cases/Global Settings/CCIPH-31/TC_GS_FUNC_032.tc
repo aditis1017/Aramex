@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Edit functionality for created rule (CCIPH-31)</description>
+   <name>TC_GS_FUNC_032</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: CCIPH-31</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a032-000000000032</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>5474028d-014f-4f11-b793-876ba31e3da4</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>32</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>5474028d-014f-4f11-b793-876ba31e3da4</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>2c48f5c9-ce54-41d4-bd08-b778490efadf</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>5474028d-014f-4f11-b793-876ba31e3da4</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab2</value>
+      <variableId>7dbfa3a1-4fd4-4518-b2e5-b8037b4a3571</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>2c48f5c9-ce54-41d4-bd08-b778490efadf</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>7dbfa3a1-4fd4-4518-b2e5-b8037b4a3571</id>
+      <masked>false</masked>
+      <name>tab2</name>
+   </variable>
+</TestCaseEntity>

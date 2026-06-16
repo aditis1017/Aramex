@@ -1,0 +1,12 @@
+testCaseId,userStoryId,searchCriteria,searchBy,entity,searchInput,notes
+TC_AP_FUNC_002,CCIPH-102,,,,,Visibility only — no search input required
+TC_AP_FUNC_003,CCIPH-102,,,,,Mandatory validation — blank search
+TC_AP_FUNC_004,CCIPH-102,Account Number,Contains,REPLACE_WITH_DEV_ENTITY,REPLACE_WITH_PARTIAL_ACCOUNT_NUMBER,Entity filter — entity + partial account number known in that entity
+TC_AP_FUNC_005,CCIPH-102,Account Number,Contains,,     REPLACE_WITH_PARTIAL_ACCOUNT_NUMBER    ,Trim handling — spaces around partial account number
+TC_AP_FUNC_010,CCIPH-102,Account Number,Contains,,REPLACE_WITH_PARTIAL_ACCOUNT_NUMBER,Contains partial account number
+TC_AP_FUNC_011,CCIPH-102,Account Number,Exact Match,,REPLACE_WITH_PARTIAL_ACCOUNT_NUMBER,Exact match with partial — expect incorrect message
+TC_AP_FUNC_012,CCIPH-102,Account Number,Exact Match,,REPLACE_WITH_FULL_ACCOUNT_NUMBER,Exact match valid account number
+TC_AP_FUNC_013,CCIPH-102,Account Name,Contains,,REPLACE_WITH_PARTIAL_ACCOUNT_NAME,Contains partial account name
+TC_AP_FUNC_014,CCIPH-102,Account Name,Exact Match,,REPLACE_WITH_PARTIAL_ACCOUNT_NAME,Exact match with partial — expect incorrect message
+TC_AP_FUNC_015,CCIPH-102,Account Name,Exact Match,,REPLACE_WITH_FULL_ACCOUNT_NAME,Exact match valid account name
+TC_AP_FUNC_017,CCIPH-102,Account Number,Contains,,INVALID_SEARCH_XYZ_000,No records found

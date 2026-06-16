@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify rule persists after refresh (session logout/login not automated) (CCIPH-31)</description>
+   <name>TC_GS_FUNC_036</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: CCIPH-31 | CSV steps 7-8 (logout/login) are preconditions only; script uses page refresh.</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a036-000000000036</testCaseGuid>
+</TestCaseEntity>

@@ -9,15 +9,15 @@
    <testCaseGuid>05047d78-b6ad-4392-abe5-1315297755c7</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>78f0777b-48d8-455c-8988-d48e025ce1e7</id>
+      <id>53e3de86-f868-43d2-bbb7-22c93916dca2</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>14</value>
+         <value>84</value>
       </iterationEntity>
-      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>78f0777b-48d8-455c-8988-d48e025ce1e7</testDataLinkId>
+      <testDataLinkId>53e3de86-f868-43d2-bbb7-22c93916dca2</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>tab</value>
       <variableId>6c28649e-2427-48e0-98c1-6217affe466a</variableId>

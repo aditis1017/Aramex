@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Reorder via drag: row 1 grip → row 3, SAVE ORDER, validate persisted order (CCIPH-201 / TC_GS_FUNC_082)</description>
+   <name>TC_GS_FUNC_082</name>
+   <tag>GenAI,CCIPH-201,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Jira: CCIPH-201 | AC3–AC5</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d4e5f6a7-b8c9-4012-a082-000000000082</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>74fbadff-da77-484b-92e3-c950581b6d42</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>82</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>74fbadff-da77-484b-92e3-c950581b6d42</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>6810c727-0a5f-43a6-af68-84a0012515e2</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>6810c727-0a5f-43a6-af68-84a0012515e2</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+</TestCaseEntity>

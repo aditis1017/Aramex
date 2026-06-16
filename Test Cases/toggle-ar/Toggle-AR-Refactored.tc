@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Refactored original Toggle-AR into keyword methods: toggle_ar.ToggleArActions</description>
+   <name>Toggle-AR-Refactored</name>
+   <tag>GenAI,toggle-ar,refactor</tag>
+   <comment></comment>
+   <origin>STUDIOASSIST</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>5dcc62a8-5691-4315-bcc8-cce3654d3e6c</testCaseGuid>
+</TestCaseEntity>

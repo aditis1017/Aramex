@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Refactored to use Custom Keyword class: Keywords/toggle_ar/ToggleArActions.groovy</description>
+   <name>Toggle-AR (refactored)</name>
+   <tag>GenAI</tag>
+   <comment></comment>
+   <origin>WEB_RECORDER</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>24834865-367e-4b3b-b6d3-2fa197f9789a</testCaseGuid>
+</TestCaseEntity>

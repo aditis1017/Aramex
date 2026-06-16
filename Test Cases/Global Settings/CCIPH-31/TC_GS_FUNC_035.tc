@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify successful rule updated for edit created rule (CCIPH-31)</description>
+   <name>TC_GS_FUNC_035</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: CCIPH-31</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a035-000000000035</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>93896ad8-db48-4b8e-8ee1-a6ba60c1f386</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>35</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>93896ad8-db48-4b8e-8ee1-a6ba60c1f386</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>c1497baf-c02f-4a6f-ae6f-5379093449bc</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>93896ad8-db48-4b8e-8ee1-a6ba60c1f386</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionField</value>
+      <variableId>c311f030-14ae-4816-8381-358c21ff2e3a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>93896ad8-db48-4b8e-8ee1-a6ba60c1f386</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>conditionOperator</value>
+      <variableId>a0d4e256-670a-464f-a96e-506dbf122d4a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>93896ad8-db48-4b8e-8ee1-a6ba60c1f386</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>destination</value>
+      <variableId>f438c1f3-c357-4104-80a3-4d2cc75bf1de</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c1497baf-c02f-4a6f-ae6f-5379093449bc</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c311f030-14ae-4816-8381-358c21ff2e3a</id>
+      <masked>false</masked>
+      <name>conditionField</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>a0d4e256-670a-464f-a96e-506dbf122d4a</id>
+      <masked>false</masked>
+      <name>conditionOperator</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f438c1f3-c357-4104-80a3-4d2cc75bf1de</id>
+      <masked>false</masked>
+      <name>destination</name>
+   </variable>
+</TestCaseEntity>

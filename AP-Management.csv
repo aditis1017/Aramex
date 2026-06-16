@@ -1,0 +1,254 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Case Procedure,Test Steps,Acceptance Criteria,Expected Result,Pass/Fail,Remarks,Priority,Sequence,System Name,Technical Lead,Department,Remarks.1,Assigned to,Status,Commets,Automation Execution Status
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_001,Verify the Account Payable UI Page as per Super Admin Role,,"1. Login as Super Admin
+2. Click the AP Management page ",,"AP Page should show UI as per requirement
+Search Criteria , Search By, Entity",,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_002,Verify the visiblity of Search functionality,,"1. Login as Super Admin
+2. Click the AP Management page ",,The search functionality should be visible and accessible,,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_003,Verify the manadatory field validation in search functionality,,"1. Login as Super Admin
+2. Click the AP Management page 
+3. Leave the input field blank
+4. Click on Search button",,The system should display a validation message and prevent search,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_004,Verify the search functionality for Entity filter,,"1. Login as Super Admin
+2. Click the AP Management page 
+3. Select the Entity Value
+4. Click on Search button",,The system should return only the records belonging to the selected entity,,,Low,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_005,Verify the Trim handling in the search functionality,,"1. Login as Super Admin
+2. Click the AP Management page 
+3. Enter the value like ""     abc  ""
+4. Click on Search button",,The system should ignore extra spaces and return accurate results,,,Low,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_006,Verify the value in Search Criteria drop down filter,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Click on Search Cirteria Dropdown",,it should reflect value as " Account Number" and "Account Name",,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_007,Verify the value in Search Type drop down filter,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Click on Search Type Dropdown",,it should reflect value as " Contains" and "Exact Match",,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_008,Verify the value in Entity drop down filter,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Click on Entity Dropdown
+4. verify the value",,it should reflect the list of All entities,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_009,Verify the Search Functionality for No data result with valid data,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show " No data Found " on screen,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_010,Verify the Search Functionality for partial Account Number and search Type = contains,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Enter the partial account Number
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show all data which have similar account number ,,,High,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_011,Verify the Search Functionality for partial Account Number and search Type = Exact Match,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Enter the partial account Number
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show message incorrect Account number,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_012,Verify the Search Functionality for valid Account Number and search Type = Exact Match,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Enter the partial account Number
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show data only those account number matching,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_013,Verify the Search Functionality for partial Account Name and search Type = contains,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Enter the partial account Name
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show all data which have similar account name,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_014,Verify the Search Functionality for partial Account Name and search Type = Exact Match,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Enter the partial account Name
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show message incorrect Account name,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_015,Verify the Search Functionality for valid Account Name and search Type = Exact Match,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Enter the partial account Name
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show data only those account name matching,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_016,Verify the Search Functionality for data result with valid data,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen",,Search Result should show data on screen,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-102,TC_AP_FUNC_017,Validate the Search functionality for invalid input,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the invalid values in the input field
+4. Click on Search button 
+5. Verify the result screen",,The system should show a “No records found” message and no grid,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_018,Verify the Column name for searched result data,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen",,"Result should show below column on screen
+Account Number 
+Account Name
+Entity
+Create Date
+Created By",,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_019,Validate the searched result data,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen",,Column should show the result values as per search criteria,,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_020,Validate the Pagination functionality,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen
+6. Click on Pagination icon",,it should show the data for next records,,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_021,Validate the Pagination functionality for less than 10 records,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen
+6. verify Pagination icon",,it should not visible on screen,,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_022,Validate the Pagination functionality after refresh,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen
+6. Click on Pagination icon
+7. Click on refresh button",,Page should reset and show 1st page result only,,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_023,Validate the Sorting functionality,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen
+6. Click on Sorting icon on ""create Date"" Column",,Screen should show the result in Ascending order of Create Date,,,Medium,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_024,Validate the Sorting functionality,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Verify the result screen
+6. Click on Sorting icon on ""create Date"" Column",,Screen should show the result in Ascending order of Create Date,,,Medium,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-103,TC_AP_FUNC_025,Validate the "Account Number" Hyperlink UI,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Hover on the Account Number",,Hand icon should come on hover account number,,,High,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-104,TC_AP_FUNC_026,Verify the "Account Number" Hyperlink functionality,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number",,"Account Payable Detail Page should open
+",,,High,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-200,TC_AP_FUNC_027,Validate Create New button,,"1. Login as Super Admin/Customs Manager 
+2. Click the AP Management page 
+3.  Click on Create New",,User should navigate to the creation page,,,High,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-200,TC_AP_FUNC_028,Verify the Creation Page of AP Account,,"1. Login as Super Admin/Customs Manager 
+2. Click the AP Management page 
+3.  Click on Create New
+4. Verify the UI ",,"Then the page should open with following fields :
+
+Account Number 
+Account Name 
+Country
+Entity 
+Rate Currency 
+Billing Currency
+Market Structure
+Status",,,Critical,,,,QA,,,,,Yes
+AP Management-Search Page,CCIPH-200,TC_AP_FUNC_029,Validate the Mandatory Fields over Creation Page of AP Account,,"1. Login as Super Admin/Customs Manager 
+2. Click the AP Management page 
+3.  Click on Create New
+4. Check the mandatory fields ",,"These fields should be mandatory and have estrict sign over them :
+
+Account Number - Mandatory
+Account Name - Mandatory
+Country - Mandatory
+Entity - Mandatory
+Rate Currency - Mandatory
+Billing Currency - Mandatory
+Status - Mandatory",,,Critical,,,,QA,,,,,No
+AP Management-Search Page,CCIPH-200,TC_AP_FUNC_030,Check the Prevention of creation of AP Account if mandatory fields are not filled,,"1. Login as Super Admin/Customs Manager 
+2. Click the AP Management page 
+3.  Click on Create New
+4. Check the mandatory fields 
+5. Click on Save button",,"Save/Create should not perform when mandatory fields are not filled, it should through an error",,,Critical,,,,QA,,,,,Yes
+AP Management-Main Page,CCIPH-104,TC_AP_FUNC_031,Verify the Account Payable Detail Page UI,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number",,"Ui should show below column on the screen
+
+AP Account Name 
+Account Number
+Country
+Entity
+Account Type
+Rate Currency
+Billing Currency
+Market Structure
+Status",,,Medium,,,,QA,,,,,Yes
+AP Management-Main Page,CCIPH-104,TC_AP_FUNC_032,"Verify the below  column on Account Payable Detail Page UI is viewable
+AP Account Name 
+Account Number
+Country
+Entity
+Account Type",,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number",,"All the mentioned column field should not be editabe.
+
+AP Account Name 
+Account Number
+Country
+Entity
+Account Type
+",,,Critical,,,,QA,,,,,Yes
+AP Management-Main Page,CCIPH-104,TC_AP_FUNC_033,"Verify the below  column on Account Payable Detail Page UI is viewable
+Rate Currency
+Billing Currency
+Market Structure
+Status",,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number",,"All the mentioned column field should be editabe/ selectable.
+
+
+Rate Currency
+Billing Currency
+Market Structure
+Status",,,High,,,,QA,,,,,No
+AP Management-Main Page,CCIPH-104,TC_AP_FUNC_034,"Verify the below  column on Account Payable Detail Page UI is viewable
+Rate Currency
+Billing Currency
+Market Structure
+Status",,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number",,"All the mentioned column field should be editabe/ selectable.
+
+
+Rate Currency
+Billing Currency
+Market Structure
+Status",,,High,,,,QA,,,,,No
+AP Management-Main Page,CCIPH-103,TC_AP_FUNC_035,Verify the Account details data in the database also,,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number
+6. Connect with Database
+7. Verify the details in the Table in Database through queries",,The information shown should match the backend data accurately,,,High,,,,QA,,,,,Yes
+AP Management-Main Page,CCIPH-104,TC_AP_FUNC_036,"Verify the read-only state of the given fields 
+AP Account Name 
+Account Number
+Country 
+Entity 
+Account Type ",,"1. Login as Super Admin
+2. Click the AP Management page 
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on the Account Number
+6. Check the state of the given fields",,"The fields should be in read-only state :
+AP Account Name (Read-only)
+Account Number (Read-only)
+Country (Read-only)
+Entity (Read-only)
+Account Type (Read-only)",,,High,,,,QA,,,,,No

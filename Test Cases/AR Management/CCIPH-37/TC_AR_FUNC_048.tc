@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>AR History export CSV has TIMESTAMP, SECTION, USER, CHANGE (CCIPH-37 / TC_AR_FUNC_048 / AC3)</description>
+   <name>TC_AR_FUNC_048</name>
+   <tag>GenAI,ARManagement,CCIPH-37</tag>
+   <comment>CSV: AR-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ar-mgmt-37-048-4a1b-9c0d-8e7f-0000000000048</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ar37-data-048</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>38</value>
+      </iterationEntity>
+      <testDataId>Data Files/AR-Management-Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

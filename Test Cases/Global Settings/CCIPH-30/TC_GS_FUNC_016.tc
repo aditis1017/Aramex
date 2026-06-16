@@ -9,27 +9,27 @@
    <testCaseGuid>b1d0facd-4cca-48d1-a6b6-84f0fd25ca76</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>c5d26113-5d2d-4719-a117-59d27869fc07</id>
+      <id>dda24e82-faeb-4c87-82bc-488ef6a79309</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>4</value>
+         <value>16</value>
       </iterationEntity>
-      <testDataId>Data Files/GlobalSettings_User_CCIPH30_Data</testDataId>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>c5d26113-5d2d-4719-a117-59d27869fc07</testDataLinkId>
+      <testDataLinkId>dda24e82-faeb-4c87-82bc-488ef6a79309</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>conditionField</value>
       <variableId>37e3a39c-c9c1-4a21-bc9a-c40cbdc6e47c</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>c5d26113-5d2d-4719-a117-59d27869fc07</testDataLinkId>
+      <testDataLinkId>dda24e82-faeb-4c87-82bc-488ef6a79309</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>conditionOperator</value>
       <variableId>808c3394-d0b9-45ef-b835-c7ddc4c78538</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>c5d26113-5d2d-4719-a117-59d27869fc07</testDataLinkId>
+      <testDataLinkId>dda24e82-faeb-4c87-82bc-488ef6a79309</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>valuesComparator</value>
       <variableId>79863107-c0ea-46a8-9bb2-742bf1121d95</variableId>

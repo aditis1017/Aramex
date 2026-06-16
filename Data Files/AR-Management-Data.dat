@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>AR Management test data (CCIPH-116/117/118/123/124/126/37/86). Source: Data Files/AR-Management-Data.csv (sync with repo root AR-Management-Data.csv)</description>
+   <name>AR-Management-Data</name>
+   <tag>CCIPH-116,CCIPH-124,CCIPH-37,CCIPH-86,ARManagement</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>b2c3d4e5-f6a7-4890-8116-000000000116</dataFileGUID>
+   <dataSourceUrl>AR-Management-Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

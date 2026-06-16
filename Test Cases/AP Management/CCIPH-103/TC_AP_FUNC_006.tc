@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Search Criteria dropdown values (CCIPH-103 / TC_AP_FUNC_006)</description>
+   <name>TC_AP_FUNC_006</name>
+   <tag>GenAI,CCIPH-103,APManagement</tag>
+   <comment>CSV: AP-Management.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-103</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph103-006-4a1b-9c0d-8e7f-000000000006</testCaseGuid>
+</TestCaseEntity>

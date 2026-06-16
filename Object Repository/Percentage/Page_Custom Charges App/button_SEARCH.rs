@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_SEARCH</name>
+   <tag></tag>
+   <elementGuidId>ff8188fe-4688-46bf-ae51-b9e9e1dde6a3</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.shadow-sm.text-white</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' shadow-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' text-white ')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=button[name=&quot;SEARCH&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>d98f4a18-d0da-464c-b285-caaf80ddc7aa</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>474025e4-43bd-42f2-a5f8-5df50f481174</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>flex h-[38px] items-center gap-2 rounded-[6px] bg-[#DC291E] px-6 text-[14px] font-medium tracking-[0.4px] text-white uppercase shadow-sm hover:bg-[#b92b21] disabled:opacity-60</value>
+      <webElementGuid>257b5577-77ac-44b1-b483-03bd6367a45c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> SEARCH</value>
+      <webElementGuid>2a836f47-5572-4204-86d2-9ec28fa4741e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-92a2adfe684454d53ae2ee7de51ca87d</value>
+      <webElementGuid>2b06776c-5340-46e3-b434-ce327a29b5d6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' shadow-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' text-white ')]</value>
+      <webElementGuid>ebac5a8a-00a7-4233-a894-3680c56fdfa8</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' shadow-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' text-white ')]</value>
+      <webElementGuid>1c0c4c07-e7fd-4e98-b66a-7af786a511b5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'button' and (text() = ' SEARCH' or . = ' SEARCH')]</value>
+      <webElementGuid>cb759f31-d080-4e09-915c-f25ff41418d6</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

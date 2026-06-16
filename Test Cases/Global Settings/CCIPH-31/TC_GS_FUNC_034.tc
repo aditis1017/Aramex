@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify cancel on filter condition for edit rule (CCIPH-31)</description>
+   <name>TC_GS_FUNC_034</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: CCIPH-31</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a034-000000000034</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>eacf5934-61ab-431f-8517-3cbe0c523b6f</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>34</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>eacf5934-61ab-431f-8517-3cbe0c523b6f</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>d4966ded-5909-4dd5-87ab-52ddf85d4d9c</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>eacf5934-61ab-431f-8517-3cbe0c523b6f</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab2</value>
+      <variableId>ad031baf-0b78-4aad-bb97-11b614901c93</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>d4966ded-5909-4dd5-87ab-52ddf85d4d9c</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>ad031baf-0b78-4aad-bb97-11b614901c93</id>
+      <masked>false</masked>
+      <name>tab2</name>
+   </variable>
+</TestCaseEntity>

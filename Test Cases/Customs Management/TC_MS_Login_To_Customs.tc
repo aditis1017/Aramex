@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Microsoft Entra ID login to dev-cc Customs Management (uses Profile: MS_LOGIN_EMAIL, optional MS_LOGIN_PASSWORD, MS_VERIFICATION_CODE).</description>
+   <name>TC_MS_Login_To_Customs</name>
+   <tag>DevCC,Microsoft,Login</tag>
+   <comment>Set MS_* variables in default profile (or override). Do not commit secrets.</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2c3d4e5-f6a7-4890-b123-00000000ee01</testCaseGuid>
+</TestCaseEntity>

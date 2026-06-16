@@ -1,0 +1,30 @@
+,,,,,
+,S. No.,Fields ,Editable,Type,Values
+,1,AP Account Number,N,Number,
+,2,Account Number,N,Number,
+,3,Country,N,Text,
+,4,Entity,N,Text,
+,5,Account Type,N,Text,
+,6,VAT Account Number,Y,Number,
+,7,VAT Activity,Y,Drop-down,"Exempt
+Standard"
+,8,Billing Currency,Y,Drop-down,List of all currencies from SysData 
+,9,Invoice Frequency,Y,Drop-down,"Monthly
+Weekly
+Daily"
+,10,Customs Type,Y,Drop-down,"DDU
+DDP"
+,11,Business Type,Y,Drop-down,"B2B
+B2C"
+,12,Eligible for Billing,Y,Drop-down,"Estimate
+Actual"
+,13,Invoice Trigger,Y,Drop-down,"Manual
+Auto"
+,14,Invoice Break By,Y,Drop-down,"HWB
+Consolidated"
+,15,Invoice Shipment Limit,Y,Number,
+,16,Invoice Amount Limit,Y,Number,
+,17,Potential Delay,Y,Drop-down,"30 Days
+45 Days
+90 Days
+"

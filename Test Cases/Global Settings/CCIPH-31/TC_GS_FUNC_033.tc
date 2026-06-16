@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify pre-population of existing data on filter condition for edit (CCIPH-31)</description>
+   <name>TC_GS_FUNC_033</name>
+   <tag>GenAI,CCIPH-31,GlobalSettings</tag>
+   <comment>CSV: Global Settings - Sheet1.csv | Data: GlobalSettings_User_CCIPH31_Data | Jira: CCIPH-31</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a1b2c3d4-e5f6-4789-a033-000000000033</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>23023fbe-a9a9-4bc8-8816-3e4903d61315</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>33</value>
+      </iterationEntity>
+      <testDataId>Data Files/GlobalSettings_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>23023fbe-a9a9-4bc8-8816-3e4903d61315</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab</value>
+      <variableId>3877d0ab-3ba9-44b1-93fc-baa8e6616172</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>23023fbe-a9a9-4bc8-8816-3e4903d61315</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tab2</value>
+      <variableId>6426bc4c-9f11-4922-a6b5-6afcdc501f34</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>3877d0ab-3ba9-44b1-93fc-baa8e6616172</id>
+      <masked>false</masked>
+      <name>tab</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>6426bc4c-9f11-4922-a6b5-6afcdc501f34</id>
+      <masked>false</masked>
+      <name>tab2</name>
+   </variable>
+</TestCaseEntity>
