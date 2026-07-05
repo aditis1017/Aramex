@@ -18,7 +18,7 @@
    <variableLinks>
       <testDataLinkId>783cf293-df21-4371-a8e5-d8ee83f92898</testDataLinkId>
       <type>DATA_COLUMN</type>
-      <value>tab</value>
+      <value>tab2</value>
       <variableId>7463f3d7-c86c-4c3a-94a1-e5f27c8c0d9f</variableId>
    </variableLinks>
    <variable>
@@ -26,6 +26,6 @@
       <description></description>
       <id>7463f3d7-c86c-4c3a-94a1-e5f27c8c0d9f</id>
       <masked>false</masked>
-      <name>tab</name>
+      <name>tab2</name>
    </variable>
 </TestCaseEntity>

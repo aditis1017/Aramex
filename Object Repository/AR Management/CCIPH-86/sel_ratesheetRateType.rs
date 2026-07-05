@@ -7,14 +7,14 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>select[aria-label='entity-settings-col-rate-type']</value>
+         <value>select[aria-label=&quot;entity-settings-col-rate-type&quot;]</value>
       </entry>
       <entry>
          <key>XPATH</key>
          <value>//select[@aria-label='entity-settings-col-rate-type']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

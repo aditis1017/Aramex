@@ -9,7 +9,7 @@ import globalsettings.BusinessActions as GS
 def login = new MSLogin()
 def globalSettings = new GS()
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 globalSettings.refreshBrowserAndVerifyHistoryDefaultFirstPageWindow()
 WebUI.takeScreenshot()

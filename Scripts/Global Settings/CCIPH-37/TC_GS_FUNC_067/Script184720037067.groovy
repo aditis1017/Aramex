@@ -11,7 +11,7 @@ long exportStart = System.currentTimeMillis()
 def login = new MSLogin()
 def globalSettings = new GS()
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 globalSettings.clickHistoryExport()
 

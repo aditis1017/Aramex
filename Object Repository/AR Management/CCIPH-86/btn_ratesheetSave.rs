@@ -9,8 +9,12 @@
          <key>XPATH</key>
          <value>//div[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__newRecordCard')]//button[normalize-space()='Save' or contains(normalize-space(.),'Save')][1]</value>
       </entry>
+      <entry>
+         <key>CSS</key>
+         <value>button[class=&quot;EntitySettingsScreen-module__ozx-sa__btnPrimary EntitySettingsScreen-module__ozx-sa__entityToolbarSaveBtn&quot;]</value>
+      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

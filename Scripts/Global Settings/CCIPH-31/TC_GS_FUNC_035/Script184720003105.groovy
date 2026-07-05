@@ -10,13 +10,15 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 	def login = new MSLogin()
 	def globalSettings = new GS()
 	def updatedVal = String.valueOf(System.currentTimeMillis() % 100000)
-	// 1) Microsoft login (session + cookies)
-	'This is for Login Profile'
-	login.loginToCustomsManagementUsingProfile()
-	'This is used for Navigating to Management'
 
-	globalSettings.navigateToGlobalSettings()
-	WebUI.delay(2)
+		// 1) Microsoft login (session + cookies)
+	'This is for Login Profile'
+    login.loginToCustomsManagementUsingAutomationProfile()
+   // login.loginToStageCustomsManagementUsingAutomationProfile()
+    'This is used for Navigating to Management'
+    globalSettings.navigateToGlobalSettings()
+   // globalSettings.navigateToStageGlobalSettings()
+//	WebUI.delay(2)
 	globalSettings.openTab(tab)
 	globalSettings.clickEditFirstRuleContainingCostOfGoods()
 	globalSettings.verifyRuleModalVisible()

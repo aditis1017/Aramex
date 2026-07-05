@@ -10,17 +10,18 @@ long exportStart = System.currentTimeMillis()
 def login = new MSLogin()
 def globalSettings = new GS()
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 String rowText = globalSettings.getFirstVisibleHistoryRowText()
 globalSettings.clickHistoryExport()
 globalSettings.verifyNewCsvDownloadPresent(exportStart)
 String path = globalSettings.getLatestHistoryExportCsvPath(exportStart)
-globalSettings.verifyExportedHistoryCsvHasColumnHeaders(path)
+globalSettings.verifyGlobalExportedHistoryCsvHasColumnHeaders(path)
 if (rowText) {
 	globalSettings.verifyExportedCsvContainsUiRowSnippet(path, rowText)
 }
-WebUI.takeScreenshot()
 
-// Rework
+WebUI.takeScreenshot()
 WebUI.closeBrowser()
+
+// Issue raised for the Date / Time format

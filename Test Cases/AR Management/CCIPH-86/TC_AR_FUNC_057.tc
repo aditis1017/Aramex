@@ -12,7 +12,7 @@
       <id>ar86-data-057</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>43</value>
+         <value>57</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
@@ -51,6 +51,12 @@
       <type>DATA_COLUMN</type>
       <value>rs_Rate_Type</value>
       <variableId>1ba8e673-41cf-4ece-a459-f8482972a798</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-057</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>serviceCode</value>
+      <variableId>6bb91eb6-5e78-488d-a0e8-df16b1eb0fda</variableId>
    </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
@@ -93,5 +99,12 @@
       <id>1ba8e673-41cf-4ece-a459-f8482972a798</id>
       <masked>false</masked>
       <name>rs_Rate_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>6bb91eb6-5e78-488d-a0e8-df16b1eb0fda</id>
+      <masked>false</masked>
+      <name>serviceCode</name>
    </variable>
 </TestCaseEntity>

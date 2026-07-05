@@ -9,8 +9,12 @@ import globalsettings.BusinessActions as GS
 def login = new MSLogin()
 def globalSettings = new GS()
 
-login.loginToCustomsManagementUsingProfile()
-globalSettings.openGlobalSettingsHistoryFromLanding()
+login.loginToCustomsManagementUsingAutomationProfile()
+//globalSettings.openGlobalSettingsHistoryFromLanding()
+globalSettings.navigateToGlobalSettings()
+globalSettings.clickGlobalSettingsHistoryButton()
+globalSettings.verifyGlobalSettingsHistoryPageLoaded()
 globalSettings.verifyHistoryPaginationDefaultPageSizeFifty()
+
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

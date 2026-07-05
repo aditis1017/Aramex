@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Stage environment Microsoft login at https://stage-cc.aramex.com/login (Automation_User / Automation_Password)</description>
+   <name>TC_Automation_Login_Stage</name>
+   <tag>Stage,Login,CustomsManagement</tag>
+   <comment>Profile: STAGE_APPLICATION, STAGE_GLOBALSETTINGS, Automation_User, Automation_Password</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>e2f68a9d-2b84-4336-8e24-c0bf8bf325e8</testCaseGuid>
+</TestCaseEntity>

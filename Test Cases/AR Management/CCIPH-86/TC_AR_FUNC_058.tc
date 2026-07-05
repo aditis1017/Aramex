@@ -12,7 +12,7 @@
       <id>ar86-data-058</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>44</value>
+         <value>58</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
@@ -51,6 +51,12 @@
       <type>DATA_COLUMN</type>
       <value>rs_Rate_Type</value>
       <variableId>ar86-rs-rate-type-058</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-058</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>serviceCode</value>
+      <variableId>152653ba-88d1-477f-91ba-e77d21ac1dae</variableId>
    </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
@@ -93,5 +99,12 @@
       <id>ar86-rs-rate-type-058</id>
       <masked>false</masked>
       <name>rs_Rate_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>152653ba-88d1-477f-91ba-e77d21ac1dae</id>
+      <masked>false</masked>
+      <name>serviceCode</name>
    </variable>
 </TestCaseEntity>

@@ -12,7 +12,7 @@
       <id>ar86-data-056</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>42</value>
+         <value>56</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
@@ -39,6 +39,12 @@
       <type>DATA_COLUMN</type>
       <value>entity</value>
       <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-056</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rateSheet_Text</value>
+      <variableId>9d6e6e98-a378-4743-8448-0177c144fa45</variableId>
    </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
@@ -67,5 +73,12 @@
       <id>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</id>
       <masked>false</masked>
       <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>9d6e6e98-a378-4743-8448-0177c144fa45</id>
+      <masked>false</masked>
+      <name>rateSheet_Text</name>
    </variable>
 </TestCaseEntity>

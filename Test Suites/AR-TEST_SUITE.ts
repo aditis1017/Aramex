@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
-   <description>AR Management CCIPH-116/117/118/123/124/126/37/86. Chrome. Microsoft login; AR_MANAGEMENT_URL; AR-Management-Data.csv.</description>
+   <description>AR Management + Entity Management CCIPH-85. Chrome. Microsoft login; AR_MANAGEMENT_URL / ENTITY_SETTINGS_URL; AR-Management-Data.csv / Entity-Management-CCIPH85-Data.csv.</description>
    <name>AR-TEST_SUITE</name>
-   <tag>ARManagement,CCIPH-86,CCIPH-118,CCIPH-116,CCIPH-117,CCIPH-124,CCIPH-37</tag>
+   <tag>ARManagement,CCIPH-86,CCIPH-118,CCIPH-85,EntityManagement,CCIPH-116,CCIPH-117,CCIPH-124,CCIPH-37</tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
@@ -12,49 +12,79 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>ar-cciph-suite-0001-4a1b-9c0d-8e7f</testSuiteGuid>
    <testCaseLink>
-      <guid>9df8f5ae-e975-44ba-9484-6409a100a255</guid>
+      <guid>5cd3674f-e7f3-4299-ba1d-0ae4f723e649</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_001</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>acfaa2c9-e017-4bec-8164-f093263827ec</guid>
+      <guid>3feea491-4d6d-4dac-a077-566f82c16cfa</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_002</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>329e673e-a9b3-421e-baec-352e3ed1df79</guid>
+      <guid>a717e9e1-c506-49b1-9fc8-920587167330</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_003</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>4b4deb3e-3773-4692-8c9f-55c9b0c0bf68</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>e1c711fb-90a5-4535-a697-9dece6ee7bce</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3bddc830-1e7c-401f-907f-e9d1efc627e7</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>42cc2669-4f69-4f75-9016-ee7720ae58e6</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>49929e18-1ce9-4eff-acba-24bafceffb59</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>8f448e32-4e21-4b37-940e-2b040de44098</guid>
+      <guid>e5883670-0362-4656-8dad-e33614642317</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_004</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>7fab1b14-ff36-46ac-81cd-1bda39535d03</guid>
+      <guid>619cee14-7436-4bf9-a005-a57bb0666bf1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_005</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>d0dfe456-4238-43f3-af07-38b18c284b71</guid>
+      <guid>f9b085ee-1b29-4be9-a823-cba4bab8f1bf</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_006</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>af223255-71c0-42f8-9393-bd58446d9c4a</guid>
+      <guid>5c81bd0e-e0b9-4fd6-97cb-3d5a6e373d6c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_007</testCaseId>
@@ -83,15 +113,9 @@
          <value></value>
          <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
       </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</variableId>
-      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>64dad273-7bd6-416f-857f-140fe95a8f12</guid>
+      <guid>c6ea2bd4-b47a-4f86-b70e-8b427ca81813</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_008</testCaseId>
@@ -128,7 +152,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>81e468c7-c147-4f1a-97a4-9866edb9f133</guid>
+      <guid>ee356379-b95b-4cac-a5f2-6fd4049f0910</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_009</testCaseId>
@@ -165,7 +189,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>6b7d387b-194a-4c55-8306-9fe5d5ed4b9c</guid>
+      <guid>9eda74de-fa76-4ec5-a437-a3d78f1fc438</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_010</testCaseId>
@@ -202,7 +226,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c240a6be-8b97-40bf-aaf3-1e7b4f06bedd</guid>
+      <guid>c1da54d8-f132-4841-8250-eaf0ed9b5a60</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_011</testCaseId>
@@ -239,7 +263,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>dfc6841d-4e56-4e01-a762-f6e68a55aa78</guid>
+      <guid>5cab7491-d3b8-41f1-9132-60745be601ea</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_012</testCaseId>
@@ -276,7 +300,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>aa07d107-ad4a-4dc2-a903-1b202798e1f3</guid>
+      <guid>7d931f20-6b11-4653-b707-de9cf512de19</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_013</testCaseId>
@@ -313,7 +337,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>cd1a8b3c-9e26-4f66-8ebc-0dd31c1a3e61</guid>
+      <guid>f73d214e-f6df-47c2-9309-53ffca7036f2</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-116/TC_AR_FUNC_014</testCaseId>
@@ -350,7 +374,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>ffe005a2-c377-4e51-9354-0cbdd1703a6b</guid>
+      <guid>077bf46c-9907-4b9a-b4d6-6e80e3194831</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_015</testCaseId>
@@ -387,7 +411,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>366de0ce-bf8d-4264-9b58-249300d432c6</guid>
+      <guid>2d8c1f3e-9ff8-4e0d-9ea2-7ab222c317e6</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_016</testCaseId>
@@ -424,7 +448,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>b6bdceb0-2dc1-4be2-bcde-1d7a7d8a24ee</guid>
+      <guid>e3567ecc-ef0a-424d-b952-eb306459596e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_017</testCaseId>
@@ -461,10 +485,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>236820ea-df7c-43bf-8baa-6b770786b056</guid>
+      <guid>cee198da-25e4-4a56-946b-f0113d145ffe</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_018</testCaseId>
+      <testCaseId>Test Cases/AR Management/CCIPH-105/TC_AR_FUNC_018</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -498,10 +522,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c78d41f6-6a87-491a-8f59-23ee3461c0cb</guid>
+      <guid>6fbad2f6-5bdd-45c8-a97e-a5373fdb76b7</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_019</testCaseId>
+      <testCaseId>Test Cases/AR Management/CCIPH-105/TC_AR_FUNC_019</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -535,10 +559,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>54be5825-3121-44be-97b3-a3fbc24f9a01</guid>
+      <guid>8888b47c-b368-4364-8592-17f901dad1aa</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_020</testCaseId>
+      <testCaseId>Test Cases/AR Management/CCIPH-105/TC_AR_FUNC_020</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -572,81 +596,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>833374bb-ae90-48e2-b267-10c216c77d83</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_021</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>26f068b4-ebe3-4b8f-9a9a-34fe7df996e5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>b42bcc47-a63f-4c92-8ad2-a7538c7ec521</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>36374cc0-653f-48b4-9a75-7491c594efa4</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>9ff4f962-3cc0-4f88-8710-e3bd2ee71a6f</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_022</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>26f068b4-ebe3-4b8f-9a9a-34fe7df996e5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>b42bcc47-a63f-4c92-8ad2-a7538c7ec521</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>36374cc0-653f-48b4-9a75-7491c594efa4</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>e9c9a6ec-6a77-4dd4-b57a-f58eb5ce8c36</guid>
+      <guid>6ea4edeb-36d7-4287-b697-50c3cb82de43</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_023</testCaseId>
@@ -683,7 +633,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>e8581883-9fe4-42e2-9750-618b9590c9c2</guid>
+      <guid>17638e05-d439-40f7-be62-c954cdeffca9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_024</testCaseId>
@@ -720,44 +670,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>4ab31f46-ad9b-4a03-a3ec-1d2d6d458b74</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-117/TC_AR_FUNC_029</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>26f068b4-ebe3-4b8f-9a9a-34fe7df996e5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>b42bcc47-a63f-4c92-8ad2-a7538c7ec521</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>36374cc0-653f-48b4-9a75-7491c594efa4</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>5b478744-6ede-4ac9-a561-7777fb970695</guid>
+      <guid>d56cfec1-a1c7-4a9c-92cd-c6b6ac15dd72</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-118/TC_AR_FUNC_025</testCaseId>
@@ -794,7 +707,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>e316c90a-fa30-452f-82aa-3560d6f09206</guid>
+      <guid>ac88c5ff-a2d0-49e9-b982-d97887f5e366</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-118/TC_AR_FUNC_026</testCaseId>
@@ -831,7 +744,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>bf3eb81e-d336-4303-bf73-79ff55472008</guid>
+      <guid>2d3f3d54-24e4-471a-8b10-be7811b7ea9b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-118/TC_AR_FUNC_027</testCaseId>
@@ -886,7 +799,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>d6b1a232-dc99-4883-99a6-d1cb2824445f</guid>
+      <guid>153f4796-0391-4b96-b628-cc3beacd972f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-123/TC_AR_FUNC_033</testCaseId>
@@ -923,7 +836,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>b5218c2a-d600-4673-a158-da2f0a3b987f</guid>
+      <guid>638528c8-ac2a-4169-b1a1-af008bbf05d8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-123/TC_AR_FUNC_043</testCaseId>
@@ -954,7 +867,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>06bb843d-b858-4aec-ab07-9faef37eaf10</guid>
+      <guid>5da12795-39c8-463a-8e3a-a8193df3e6a1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-123/TC_AR_FUNC_044</testCaseId>
@@ -991,7 +904,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>39d47a7b-334e-4017-8898-f3c3f6cd4fc9</guid>
+      <guid>54d0876c-187c-40bc-a449-325e0f10cfca</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-124/TC_AR_FUNC_074</testCaseId>
@@ -1022,7 +935,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c4a32f51-7c83-43d9-be2e-2e2f071052ae</guid>
+      <guid>4ae4ac5d-a3e0-495f-972e-5c245774187c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-124/TC_AR_FUNC_075</testCaseId>
@@ -1053,7 +966,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>f8e8c24e-e4be-45c0-b8ca-3ae1bf67cc67</guid>
+      <guid>f7d8a60b-3064-4d33-9c76-463d8b90daa1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-124/TC_AR_FUNC_076</testCaseId>
@@ -1084,7 +997,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>7dddb2e2-afc3-4b53-a949-bb85302b6ce1</guid>
+      <guid>8adf05fa-4597-4f19-9132-9cfda316b9ac</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-126/TC_AR_FUNC_028</testCaseId>
@@ -1112,12 +1025,6 @@
          <type>DEFAULT</type>
          <value></value>
          <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</variableId>
       </variableLink>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -1151,7 +1058,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>6174d90c-764f-4843-aab6-3bac77f240bc</guid>
+      <guid>49f9b08d-9ad0-4dee-adaa-1956cb9c1bc8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_045</testCaseId>
@@ -1170,7 +1077,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c0b4a41e-4758-4cb0-99e7-8cb312b0c927</guid>
+      <guid>4e403ede-5d00-49e8-91b2-719d49b30d1d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_046</testCaseId>
@@ -1207,7 +1114,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c2d9f3ed-2ba2-43ff-ba4a-1b5e66e52883</guid>
+      <guid>5b6672af-3424-4554-a3f7-9104b5ba3e1e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_047</testCaseId>
@@ -1238,21 +1145,69 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3ca25261-da22-4b55-bf4a-a795e9db1d2e</guid>
+      <guid>c0668175-2d45-4cb9-94ee-da700a855387</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_048</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>92b7873d-17c4-4cb6-8b6a-7312d9f7323b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>416e6ca9-0c74-4578-880f-1e26eab2f287</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>30b5f5e3-6a9d-42aa-8a11-e015e99429af</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>060dbd73-3a3d-4de3-81e1-1a1d7ec2b75a</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>4bcdf442-e5a9-43b7-a94f-d772f3028846</guid>
+      <guid>5cbb4d9f-a97d-48f4-a2d2-b9fe25b6060f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_049</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>973e7f6e-e729-4bf2-82a8-156dfc63e79c</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>c7aa60b3-af88-4fe3-8329-d9ab9884c2a3</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>35cca2af-d3a2-48e6-bf30-8f0965aa0637</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>fa93a3f1-37ff-4859-80bf-6d358f797b8b</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>e58d032e-ff16-4327-af7f-fd26cc3532c2</guid>
+      <guid>ef59a668-d924-4924-bc35-00975968b02f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_050</testCaseId>
@@ -1287,9 +1242,27 @@
          <value></value>
          <variableId>457cb98d-0ff1-410a-8f86-e50b5c93a6a2</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a001d754-744a-45e6-92a5-61fd24a55f57</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>49d08c11-b3ef-49c4-b12b-a35a0ae9e3a8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f8aa4efe-946f-4377-a57b-ecd4de937453</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>63545af6-cbfa-4a2b-8e15-e0fa4c813523</guid>
+      <guid>8b0a0186-e480-4a1c-b1be-303ac0c23f4f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_053</testCaseId>
@@ -1326,7 +1299,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>edb2c355-a96e-4295-a1f6-03ec038c3228</guid>
+      <guid>898a5ebb-749b-421d-980b-2c6061df5111</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_056</testCaseId>
@@ -1355,9 +1328,15 @@
          <value></value>
          <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>9d6e6e98-a378-4743-8448-0177c144fa45</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>b3ffa087-ff80-4883-9852-cb8451e1d0a9</guid>
+      <guid>e3709b33-c973-453c-abee-4f2255be2ea3</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_057</testCaseId>
@@ -1398,9 +1377,15 @@
          <value></value>
          <variableId>1ba8e673-41cf-4ece-a459-f8482972a798</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>6bb91eb6-5e78-488d-a0e8-df16b1eb0fda</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>a2ae4c65-6027-4c82-90bd-510da29276e8</guid>
+      <guid>d85f4a57-8f44-4667-8db0-2c8abca1549f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_058</testCaseId>
@@ -1441,9 +1426,15 @@
          <value></value>
          <variableId>ar86-rs-rate-type-058</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>152653ba-88d1-477f-91ba-e77d21ac1dae</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>bef8cb1d-9107-44f4-813b-3df4a4262120</guid>
+      <guid>11b8eb50-250a-40a9-8314-f783bb82b0a5</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_064</testCaseId>
@@ -1484,12 +1475,18 @@
          <value></value>
          <variableId>ar86-rs-rate-type-064</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>085f64da-d888-4725-a634-d75a267ec06e</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>7c85417b-26ca-4681-896c-fc026f454537</guid>
+      <guid>bfc5319c-f1fd-4cdf-a8b6-5750370f2770</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_065</testCaseId>
+      <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_069</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -1515,58 +1512,33 @@
          <value></value>
          <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
       </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>78a8c19d-4b9d-4754-b597-32c24918c145</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_069</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
-         <variableId>0872e326-8700-4f44-bbaa-ca4ddac968a3</variableId>
+         <variableId>ar86-rs-shipment-type-069</variableId>
       </variableLink>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
-         <variableId>50e2da3d-87b1-448c-a705-7d34f32e05f4</variableId>
+         <variableId>ar86-rs-rate-type-069</variableId>
       </variableLink>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
-         <variableId>f2b564a3-24e5-4766-ade4-8d1b36b040a2</variableId>
+         <variableId>ar86-rs-percent-of-069</variableId>
       </variableLink>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
-         <variableId>554ceb47-a528-429b-8892-8dc812565355</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>5cfea510-69fc-4602-97da-ca096f1a9602</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>e643cb1f-5924-4dbc-92e3-88b3b7b6abd9</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>01f1d4ad-be7f-4efc-8b65-2b417fbebb94</variableId>
+         <variableId>101a81d8-c498-4abf-81b7-f41e6d7cb2b2</variableId>
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>82d33024-64d4-4169-b9d0-f8ef1df77e3d</guid>
+      <guid>56408a29-7dee-4961-93e4-c4f8abc8561c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_070</testCaseId>
@@ -1597,7 +1569,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>ac79512c-0766-446d-9212-ccd6ebfda883</guid>
+      <guid>ce009b90-e2ba-4201-91b2-0b45f7467358</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_072</testCaseId>
@@ -1638,9 +1610,15 @@
          <value></value>
          <variableId>ar86-rs-rate-type-072</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>00656bf5-b833-4089-a841-54e5bfcd9c76</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>f1f9f0b1-9590-440a-a8cb-9b3b9641865f</guid>
+      <guid>96bbc2dc-e33c-4f0e-a80d-5e7b75e78558</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_073</testCaseId>
@@ -1680,6 +1658,12 @@
          <type>DEFAULT</type>
          <value></value>
          <variableId>ar86-rs-rate-type-073</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>7054d4bd-78f5-4e70-966f-a2ae68ea181b</variableId>
       </variableLink>
    </testCaseLink>
 </TestSuiteEntity>

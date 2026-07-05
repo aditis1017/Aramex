@@ -10,13 +10,13 @@ long exportStart = System.currentTimeMillis()
 def login = new MSLogin()
 def globalSettings = new GS()
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
+//login.loginToStageCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 globalSettings.clickHistoryExport()
 globalSettings.verifyNewCsvDownloadPresent(exportStart)
 String path = globalSettings.getLatestHistoryExportCsvPath(exportStart)
-globalSettings.verifyExportedHistoryCsvHasColumnHeaders(path)
-WebUI.takeScreenshot()
+globalSettings.verifyGlobalExportedHistoryCsvHasColumnHeaders(path)
 
-// Rework
+WebUI.takeScreenshot()
 WebUI.closeBrowser()

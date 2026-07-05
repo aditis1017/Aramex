@@ -12,8 +12,60 @@
       <id>ar37-data-048</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>38</value>
+         <value>48</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-048</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>92b7873d-17c4-4cb6-8b6a-7312d9f7323b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-048</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_By</value>
+      <variableId>416e6ca9-0c74-4578-880f-1e26eab2f287</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-048</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Value</value>
+      <variableId>30b5f5e3-6a9d-42aa-8a11-e015e99429af</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-048</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>060dbd73-3a3d-4de3-81e1-1a1d7ec2b75a</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>92b7873d-17c4-4cb6-8b6a-7312d9f7323b</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>416e6ca9-0c74-4578-880f-1e26eab2f287</id>
+      <masked>false</masked>
+      <name>search_By</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>30b5f5e3-6a9d-42aa-8a11-e015e99429af</id>
+      <masked>false</masked>
+      <name>search_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>060dbd73-3a3d-4de3-81e1-1a1d7ec2b75a</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
 </TestCaseEntity>

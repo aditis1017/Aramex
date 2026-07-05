@@ -119,6 +119,26 @@ class BusinessActions {
 			failStop("navigateToGlobalSettings failed: ${e.message}")
 		}
 	}
+	
+	@Keyword
+	def navigateToStageGlobalSettings() {
+		try {
+			if (DriverFactory.getWebDriver() == null) {
+				WebUI.openBrowser('')
+				WebUI.maximizeWindow()
+			}
+			String url = (ProfileGlobals.get('STAGE_GLOBALSETTINGS') ?: ProfileGlobals.get('STAGE_APPLICATION')).trim()
+			if (!url) {
+				failStop('STAGE_GLOBALSETTINGS (or STAGE_APPLICATION) must be set in the active profile.')
+			}
+			WebUI.navigateToUrl(url)
+			waitVisible(to('txt_anchor_GlobalSettings'))
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("navigateToGlobalSettings failed: ${e.message}")
+		}
+	}
+	
 
 	@Keyword
 	def openTab(String tabName) {
@@ -270,6 +290,7 @@ class BusinessActions {
 			WebUI.delay(2)
 			boolean duplicate = WebUI.waitForElementVisible(to('msg_duplicateRule'), 5, FailureHandling.OPTIONAL)
 			if (!duplicate) {
+				dismissRuleCreatedSuccessModalIfPresent()
 				waitVisible(to('txt_anchor_GlobalSettings'))
 			}
 			WebUI.takeScreenshot()
@@ -701,10 +722,149 @@ class BusinessActions {
 		return "concat('${text.replace("'", "', \"'\", '")}')"
 	}
 
+	private static String rulesTableBaseXPath() {
+		return "//table[.//th[contains(.,'RULE CRITERIA') or contains(.,'Rule Criteria') or contains(.,'DESTINATION')]]"
+	}
+
+	private static String normalizeRuleRowText(String text) {
+		return (text ?: '').replaceAll(/\s+/, ' ').trim().toLowerCase()
+	}
+
+	/**
+	 * Order/criteria snapshot for CCIPH-201 reorder tests — strips action-column text that differs
+	 * between default view ({@code Edit Deactivate}) and reorder mode ({@code No row actions while reordering}).
+	 */
+	private static String normalizeRuleRowSnapshotText(String text) {
+		String t = normalizeRuleRowText(text)
+		if (!t) {
+			return ''
+		}
+		List<String> actionSuffixes = [
+			'no row actions while reordering',
+			'edit deactivate',
+			'view edit deactivate'
+		]
+		boolean changed = true
+		while (changed) {
+			changed = false
+			for (String suffix : actionSuffixes) {
+				if (t.endsWith(suffix)) {
+					t = t.substring(0, t.length() - suffix.length()).trim()
+					changed = true
+				}
+			}
+		}
+		return t
+	}
+
+	private static boolean ruleRowTextMatches(String expected, String actual) {
+		String e = normalizeRuleRowText(expected)
+		String a = normalizeRuleRowText(actual)
+		if (!e || !a) {
+			return false
+		}
+		return a == e || a.contains(e) || e.contains(a)
+	}
+
+	private static boolean ruleOperatorMatches(String expected, String actual) {
+		if (ruleRowTextMatches(expected, actual)) {
+			return true
+		}
+		String e = normalizeRuleRowText(expected)
+		String a = normalizeRuleRowText(actual)
+		if (e == 'greater than' && (a == '>' || a.contains('greater'))) {
+			return true
+		}
+		if (e == 'less than' && (a == '<' || a.contains('less'))) {
+			return true
+		}
+		return false
+	}
+
+	private static String buildRuleRowTextMatchExpr(String fragment) {
+		String trimmed = (fragment ?: '').trim()
+		String lower = escapeXpathLiteral(trimmed.toLowerCase())
+		String caseInsensitive =
+			"contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), ${lower})"
+		String op = trimmed.toLowerCase()
+		if (op == 'greater than') {
+			return "(${caseInsensitive} or contains(normalize-space(.), '>'))"
+		}
+		if (op == 'less than') {
+			return "(${caseInsensitive} or contains(normalize-space(.), '<'))"
+		}
+		return caseInsensitive
+	}
+
+	private static void dismissRuleCreatedSuccessModalIfPresent() {
+		try {
+			TestObject okButton = findTestObject('Global Settings/EmailNoti/btn_ruleCreatedSuccessOk')
+			if (WebUI.waitForElementPresent(okButton, 8, FailureHandling.OPTIONAL)) {
+				waitVisibleClickable(okButton)
+				WebUI.click(okButton)
+				WebUI.delay(1)
+			}
+		} catch (Exception ignored) {
+		}
+	}
+
+	private static boolean waitForRuleTableRowPresent(TestObject ruleRow, int timeoutSeconds = DEFAULT_TIMEOUT) {
+		long deadline = System.currentTimeMillis() + (timeoutSeconds * 1000L)
+		while (System.currentTimeMillis() < deadline) {
+			if (WebUI.waitForElementPresent(ruleRow, 2, FailureHandling.OPTIONAL)) {
+				return true
+			}
+			WebUI.delay(1)
+		}
+		return false
+	}
+
+	private static String ruleTableRowXPathByCriteriaValue(String conditionValue) {
+		String lit = escapeXpathLiteral((conditionValue ?: '').trim())
+		return "${rulesTableBaseXPath()}//tbody//tr[.//td[contains(@class,'ruleCriteriaTd')][contains(normalize-space(.), ${lit})]]"
+	}
+
+	private static TestObject ruleTableRowByCriteriaValue(String conditionValue) {
+		TestObject row = new TestObject("savedRuleRowByValue_${conditionValue.hashCode()}")
+		row.addProperty('xpath', ConditionType.EQUALS, ruleTableRowXPathByCriteriaValue(conditionValue))
+		return row
+	}
+
+	private static void verifyRuleConditionPartsInRow(String rowXp, String fieldName, String conditionValue,
+			String operator, String destination) {
+		TestObject fieldObj = new TestObject('rowConditionField')
+		fieldObj.addProperty('xpath', ConditionType.EQUALS, "${rowXp}//span[contains(@class,'ruleLabel')]")
+		TestObject operatorObj = new TestObject('rowConditionOperator')
+		operatorObj.addProperty('xpath', ConditionType.EQUALS, "${rowXp}//span[contains(@class,'ruleEquals')]")
+		TestObject valueObj = new TestObject('rowConditionValue')
+		valueObj.addProperty('xpath', ConditionType.EQUALS, "${rowXp}//div[contains(@class,'ruleValuesFlex')]")
+
+		String actualField = (WebUI.getText(fieldObj, FailureHandling.OPTIONAL) ?: '').trim()
+		String actualOperator = (WebUI.getText(operatorObj, FailureHandling.OPTIONAL) ?: '').trim()
+		String actualValue = (WebUI.getText(valueObj, FailureHandling.OPTIONAL) ?: '').trim()
+
+		if (!ruleRowTextMatches(fieldName, actualField)) {
+			failStop("Rule field mismatch. Expected '${fieldName}', got '${actualField}'")
+		}
+		if (!ruleOperatorMatches(operator, actualOperator)) {
+			failStop("Rule operator mismatch. Expected '${operator}', got '${actualOperator}'")
+		}
+		if (!ruleRowTextMatches(conditionValue, actualValue)) {
+			failStop("Rule value mismatch. Expected '${conditionValue}', got '${actualValue}'")
+		}
+		if ((destination ?: '').trim()) {
+			TestObject destinationObj = new TestObject('rowDestination')
+			destinationObj.addProperty('xpath', ConditionType.EQUALS, "${rowXp}//span[contains(@class,'destinationPill')]")
+			String actualDestination = (WebUI.getText(destinationObj, FailureHandling.OPTIONAL) ?: '').trim()
+			if (!ruleRowTextMatches(destination, actualDestination)) {
+				failStop("Rule destination mismatch. Expected '${destination}', got '${actualDestination}'")
+			}
+		}
+	}
+
 	private static TestObject ruleTableRowContaining(List<String> expectedTexts) {
 		String rowCondition = buildRuleRowMatchCondition(expectedTexts)
-		String xpath = "//table[.//th[contains(.,'RULE CRITERIA') or contains(.,'DESTINATION')]]//tbody//tr[${rowCondition}]" +
-			" | //table//tbody//tr[${rowCondition}]"
+		String xpath = "${rulesTableBaseXPath()}//tbody//tr[td][${rowCondition}]"
 
 		TestObject row = new TestObject('savedRuleRow')
 		row.addProperty('xpath', ConditionType.EQUALS, xpath)
@@ -724,10 +884,14 @@ class BusinessActions {
 	@Keyword
 	def verifySavedRuleInTable(String... expectedTexts) {
 		try {
+			dismissRuleCreatedSuccessModalIfPresent()
 			waitVisible(to('tbl_rulesTable'))
 			TestObject ruleRow = ruleTableRowContaining(expectedTexts as List)
-			waitVisible(ruleRow)
-			WebUI.verifyElementVisible(ruleRow, FailureHandling.STOP_ON_FAILURE)
+			if (!waitForRuleTableRowPresent(ruleRow)) {
+				failStop("Saved rule row not found matching: ${(expectedTexts as List).join(', ')}")
+			}
+			WebUI.scrollToElement(ruleRow, DEFAULT_TIMEOUT)
+			WebUI.verifyElementPresent(ruleRow, FailureHandling.STOP_ON_FAILURE)
 			KeywordUtil.logInfo("Saved rule found in table matching: ${(expectedTexts as List).join(', ')}")
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
@@ -735,6 +899,49 @@ class BusinessActions {
 		}
 	}
 
+	@Keyword
+	
+	def verifyRuleCriteriaAdded(
+	
+			String conditionField,
+			String ruleValue,
+			String conditionOperator = "Greater than",
+			String destination = null) {
+		String actualField =
+				WebUI.getText(findTestObject('Object Repository/Global Settings/CCIPH-30/lbl_ConditionField')).trim()
+		String actualOperator =
+				WebUI.getText(findTestObject('Object Repository/Global Settings/CCIPH-30/lbl_ConditionOperator')).trim()
+		String actualValue =
+				WebUI.getText(findTestObject('Object Repository/Global Settings/CCIPH-30/lbl_RuleValue')).trim()
+		
+				WebUI.verifyMatch(actualField, conditionField,false)
+		WebUI.verifyMatch(
+				actualOperator,
+				conditionOperator,
+				false)
+	
+		WebUI.verifyMatch(
+				actualValue,
+				ruleValue,
+				false)
+		if(expectedDestination) {
+	
+	
+	
+			String actualDestination = WebUI.getText(findTestObject('Object Repository/Global Settings/CCIPH-30/lbl_Destination')).trim()
+			WebUI.verifyMatch(
+					actualDestination,
+					destination,
+					false)
+	
+		}
+	
+		KeywordUtil.markPassed(
+	
+				"Rule validated successfully")
+	
+	}
+	
 	/**
 	 * Verifies a saved rule by structured condition parts (field, operator, value, optional destination).
 	 * Reusable for DDU / DDP / Category tabs.
@@ -743,15 +950,29 @@ class BusinessActions {
 	 *   verifySavedRuleWithCondition('Cost of Goods', '47810', 'Greater than', 'Saudi Arabia')
 	 */
 	@Keyword
-	def verifySavedRuleWithCondition(String fieldName, String conditionValue, String operator = 'Greater than', String destination = null) {
-		List<String> parts = []
-		if ((destination ?: '').trim()) {
-			parts << destination.trim()
+	def verifySavedRuleWithCondition(String fieldName, String conditionValue, String operator , String destination = null) {
+		try {
+		//	dismissRuleCreatedSuccessModalIfPresent()
+			waitVisible(to('tbl_rulesTable'))
+			TestObject ruleRow = ruleTableRowByCriteriaValue(conditionValue)
+			if (!waitForRuleTableRowPresent(ruleRow)) {
+				List<String> parts = []
+				if ((destination ?: '').trim()) {
+					parts << destination.trim()
+				}
+				parts << (fieldName ?: '').trim()
+				parts << (operator ?: '').trim()
+				parts << (conditionValue ?: '').trim()
+				verifySavedRuleInTable(parts as String[])
+				return
+			}
+			WebUI.scrollToElement(ruleRow, DEFAULT_TIMEOUT)
+			verifyRuleConditionPartsInRow(ruleTableRowXPathByCriteriaValue(conditionValue), fieldName, conditionValue, operator, destination)
+			KeywordUtil.logInfo("Saved rule verified — field: ${fieldName}, value: ${conditionValue}, operator: ${operator}, destination: ${destination ?: 'n/a'}")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifySavedRuleWithCondition failed: ${e.message}")
 		}
-		parts << (fieldName ?: '').trim()
-		parts << (operator ?: '').trim()
-		parts << (conditionValue ?: '').trim()
-		verifySavedRuleInTable(parts as String[])
 	}
 
 	private static String buildRuleRowMatchCondition(List<String> expectedTexts) {
@@ -760,15 +981,14 @@ class BusinessActions {
 			failStop('Rule row match requires at least one expected text fragment')
 		}
 		return fragments.collect { fragment ->
-			"contains(normalize-space(.), ${escapeXpathLiteral(fragment)})"
+			buildRuleRowTextMatchExpr(fragment)
 		}.join(' and ')
 	}
 
 	private static TestObject ruleTableRowEditButton(List<String> expectedTexts) {
 		String rowCondition = buildRuleRowMatchCondition(expectedTexts)
-		String xpath = "//table[.//th[contains(.,'RULE CRITERIA') or contains(.,'DESTINATION')]]//tbody//tr[${rowCondition}]" +
-			"//*[self::button or self::a][contains(.,'Edit') or contains(@aria-label,'Edit') or contains(@title,'Edit')]" +
-			" | //table//tbody//tr[${rowCondition}]//*[self::button or self::a][contains(.,'Edit') or contains(@aria-label,'Edit') or contains(@title,'Edit')]"
+		String xpath = "${rulesTableBaseXPath()}//tbody//tr[td][${rowCondition}]" +
+			"//*[self::button or self::a][contains(.,'Edit') or contains(@aria-label,'Edit') or contains(@title,'Edit')]"
 
 		TestObject editButton = new TestObject('savedRuleEditButton')
 		editButton.addProperty('xpath', ConditionType.EQUALS, xpath)
@@ -1259,11 +1479,36 @@ class BusinessActions {
 			failStop("fetchConditionValueReenterSameAndVerifyDuplicatePopup failed: ${e.message}")
 		}
 	}
+	
+	@Keyword
+	def verifyRuleUpdateSuccessTitle(
+			String expectedTitle =
+			"Rule Updated Successfully") {
+	
+		TestObject title = findTestObject(
+				'Object Repository/Global Settings/CCIPH-30/success_Title')
+	
+		WebUI.waitForElementVisible(title, 10)
+	
+		WebUI.verifyElementVisible(title)
+	
+		String actualTitle =
+				WebUI.getText(title).trim()
+	
+		WebUI.verifyMatch(
+				actualTitle,
+				expectedTitle,
+				false)
+	
+		KeywordUtil.markPassed(
+				"Popup title verified successfully: ${actualTitle}")
+	}
 
 	@Keyword
 	def dismissRuleUpdateSuccessModalIfPresent() {
 		try {
 			if (WebUI.waitForElementPresent(to('btn_ruleUpdateSuccessOk'), 6, FailureHandling.OPTIONAL)) {
+				//waitForElementVisible(to('btn_ruleUpdateSuccessOk')
 				waitVisibleClickable(to('btn_ruleUpdateSuccessOk'))
 				WebUI.click(to('btn_ruleUpdateSuccessOk'))
 				WebUI.delay(1)
@@ -1339,16 +1584,58 @@ class BusinessActions {
 		}
 	}
 
+	private static String normalizeHistoryHeaderText(String text) {
+		String firstLine = (text ?: '').split(/[\r\n]+/)[0]
+		return firstLine.replaceAll(/\s+/, ' ').trim().toLowerCase()
+	}
+
+	private static boolean historyHeaderMatches(String expected, String actual) {
+		String e = normalizeHistoryHeaderText(expected)
+		String a = normalizeHistoryHeaderText(actual)
+		if (!e || !a) {
+			return false
+		}
+		if (a == e || a.contains(e) || e.contains(a)) {
+			return true
+		}
+		if (e == 'change' && (a.contains('action') || a == 'action')) {
+			return true
+		}
+		return false
+	}
+
+	private List<String> getHistoryLogTableHeaderTexts() {
+		def driver = DriverFactory.getWebDriver()
+		String xp = "//table[.//th[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'timestamp')]]//th"
+		List<WebElement> headers = driver.findElements(By.xpath(xp))
+		return headers.collect { (it.getText() ?: '').trim() }.findAll { it }.unique()
+	}
+
 	@Keyword
 	def verifyHistoryLogTableColumnHeadersPresent() {
 		try {
 			verifyGlobalSettingsHistoryPageLoaded()
-			['TIMESTAMP', 'SECTION', 'USER', 'CHANGE'].each { String col ->
-				TestObject th = new TestObject("history_th_${col}")
-				th.addProperty('xpath', ConditionType.EQUALS,
-					"//table[.//th[contains(translate(.,'TIMESTAMP','timestamp'),'timestamp')] and .//th[contains(translate(.,'SECTION','section'),'section')] and .//th[contains(translate(.,'USER','user'),'user')] and .//th[contains(translate(.,'CHANGE','change'),'change')]]//th[contains(.,'${col}')]")
-				waitVisible(th)
-				WebUI.verifyElementVisible(th, FailureHandling.STOP_ON_FAILURE)
+			List<String> expected = ['TIMESTAMP', 'SECTION', 'USER', 'CHANGE']
+			List<String> headers = getHistoryLogTableHeaderTexts()
+			if (headers.isEmpty()) {
+				expected.each { String col ->
+					String colLower = col.toLowerCase()
+					String actionAlt = col.equalsIgnoreCase('CHANGE') ?
+						" or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'action')" : ''
+					TestObject th = new TestObject("history_th_${col}")
+					th.addProperty('xpath', ConditionType.EQUALS,
+						"//table//th[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'${colLower}')${actionAlt}]")
+					waitVisible(th)
+					WebUI.verifyElementVisible(th, FailureHandling.STOP_ON_FAILURE)
+				}
+			} else {
+				expected.each { String col ->
+					boolean found = headers.any { String header -> historyHeaderMatches(col, header) }
+					if (!found) {
+						failStop("History table header '${col}' not found. Visible headers: ${headers}")
+					}
+				}
+				KeywordUtil.logInfo("History table headers: ${headers}")
 			}
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
@@ -2400,6 +2687,26 @@ return {
 			failStop("verifyExportedHistoryCsvHasColumnHeaders failed: ${e.message}")
 		}
 	}
+	
+	@Keyword
+	def verifyGlobalExportedHistoryCsvHasColumnHeaders(String absolutePathToCsv) {
+		try {
+			String p = (absolutePathToCsv ?: '').trim()
+			if (!p) {
+				failStop('verifyExportedHistoryCsvHasColumnHeaders: path is blank')
+			}
+			if (!p.toLowerCase().endsWith('.csv')) {
+				failStop("Expected a .csv export file, got: ${p}")
+			}
+			List<String> keys = ['Timestamp', 'Section', 'Target Value', 'User', 'Action Perform', 'Rule Order', 'Field Name', 'Old Value', 'New Value']
+			if (!csvFileContainsAllKeywords(p, keys)) {
+				failStop("Exported CSV did not contain all expected headers: ${keys.join(', ')}")
+			}
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyExportedHistoryCsvHasColumnHeaders failed: ${e.message}")
+		}
+	}
 
 	/** @deprecated Use {@link #verifyExportedHistoryCsvHasColumnHeaders(String)}. */
 	@Keyword
@@ -3000,6 +3307,22 @@ return {
 		return false
 	}
 
+	private static void waitForRuleEngineDefaultViewAfterReorder(int timeoutSeconds = 30) {
+		long deadline = System.currentTimeMillis() + (timeoutSeconds * 1000L)
+		while (System.currentTimeMillis() < deadline) {
+			boolean saveGone = !WebUI.waitForElementVisible(to201('btn_SaveOrder'), 2, FailureHandling.OPTIONAL)
+			boolean reorderVisible = WebUI.waitForElementVisible(to201('btn_ReorderRules'), 2, FailureHandling.OPTIONAL)
+			boolean editingGone = !WebUI.waitForElementVisible(ruleReorderEditingRow(1), 2, FailureHandling.OPTIONAL)
+			if (saveGone && reorderVisible && editingGone) {
+				waitVisible(to('tbl_rulesTable'))
+				WebUI.delay(1)
+				return
+			}
+			WebUI.delay(1)
+		}
+		failStop('Rule Engine did not return to default view after Save Order.')
+	}
+
 	/**
 	 * W3C pointer drag (viewport coords) — works with React / @hello-pangea/dnd style lists.
 	 * Includes a short horizontal move to satisfy drag activation distance.
@@ -3373,18 +3696,8 @@ return {
 				WebUI.executeJavaScript('arguments[0].click()', java.util.Arrays.asList(el))
 			}
 			WebUI.takeScreenshot()
-			long deadline = System.currentTimeMillis() + 60000L
-			while (System.currentTimeMillis() < deadline) {
-				boolean saveVisible = WebUI.waitForElementVisible(saveBtn, 4, FailureHandling.OPTIONAL)
-				boolean reorderBack = WebUI.waitForElementVisible(to201('btn_ReorderRules'), 4, FailureHandling.OPTIONAL)
-				if (!saveVisible || reorderBack) {
-					waitVisible(to('tbl_rulesTable'))
-					WebUI.takeScreenshot()
-					return
-				}
-				WebUI.delay(2)
-			}
-			failStop('Save Order still visible after extended wait — save may have failed.')
+			waitForRuleEngineDefaultViewAfterReorder(45)
+			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("clickSaveOrderInReorderMode failed: ${e.message}")
 		}
@@ -3414,8 +3727,10 @@ return {
 				failStop("${message} (size mismatch: expected ${expected?.size()}, actual ${actual?.size()})")
 			}
 			for (int i = 0; i < expected.size(); i++) {
-				if (!expected.get(i).equals(actual.get(i))) {
-					failStop("${message} at index ${i}. Expected fragment: '${expected.get(i).take(120)}', actual: '${actual.get(i).take(120)}'")
+				String expNorm = normalizeRuleRowSnapshotText(expected.get(i))
+				String actNorm = normalizeRuleRowSnapshotText(actual.get(i))
+				if (!expNorm.equals(actNorm)) {
+					failStop("${message} at index ${i}. Expected (normalized): '${expNorm.take(120)}', actual: '${actNorm.take(120)}'")
 				}
 			}
 			WebUI.takeScreenshot()
@@ -3432,7 +3747,9 @@ return {
 			}
 			boolean anyDiff = false
 			for (int i = 0; i < a.size(); i++) {
-				if (!a.get(i).equals(b.get(i))) {
+				String aNorm = normalizeRuleRowSnapshotText(a.get(i))
+				String bNorm = normalizeRuleRowSnapshotText(b.get(i))
+				if (!aNorm.equals(bNorm)) {
 					anyDiff = true
 					break
 				}

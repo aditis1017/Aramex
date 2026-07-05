@@ -12,7 +12,7 @@
       <id>ar86-data-069</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>47</value>
+         <value>69</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
@@ -57,6 +57,12 @@
       <type>DATA_COLUMN</type>
       <value>rs_Percent_Of</value>
       <variableId>ar86-rs-percent-of-069</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-069</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>serviceCode</value>
+      <variableId>101a81d8-c498-4abf-81b7-f41e6d7cb2b2</variableId>
    </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
@@ -106,5 +112,12 @@
       <id>ar86-rs-percent-of-069</id>
       <masked>false</masked>
       <name>rs_Percent_Of</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>101a81d8-c498-4abf-81b7-f41e6d7cb2b2</id>
+      <masked>false</masked>
+      <name>serviceCode</name>
    </variable>
 </TestCaseEntity>

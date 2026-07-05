@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Entity Management CCIPH-85 Cost-AP invoicing settings. Source: Data Files/Entity-Management-CCIPH85-Data.csv</description>
+   <name>Entity-Management-CCIPH85-Data</name>
+   <tag>CCIPH-85,EntityManagement</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>em-cciph85-data-4a1b-9c0d-8e7f-000000000085</dataFileGUID>
+   <dataSourceUrl>Entity-Management-CCIPH85-Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

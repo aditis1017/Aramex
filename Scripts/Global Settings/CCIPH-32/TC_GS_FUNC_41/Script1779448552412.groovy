@@ -6,7 +6,7 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 	def globalSettings = new GS()
 	def login = new MSLogin()
 
-	login.loginToCustomsManagementUsingProfile()
+	login.loginToCustomsManagementUsingAutomationProfile()
 	globalSettings.navigateToGlobalSettings()
 	globalSettings.clickDeactivateFirstRule()
 	globalSettings.verifyDeactivateConfirmationVisible()

@@ -10,7 +10,7 @@ import globalsettings.BusinessActions as GS
 	def login = new MSLogin()
 	def globalSettings = new GS()
 
-	login.loginToCustomsManagementUsingProfile()
+	login.loginToCustomsManagementUsingAutomationProfile()
 	globalSettings.navigateToGlobalSettings()
 	globalSettings.clickGlobalSettingsHistoryButton()
 	globalSettings.verifyGlobalSettingsHistoryPageLoaded()
