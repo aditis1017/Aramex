@@ -6,18 +6,18 @@
    <elementGuidId>86b55067-87ed-4c05-915e-0798a8eb680d</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>input[class=&quot;ArEstimateRatesheetSettingsPanel-module__MWcpQq__ratesheetCellInput &quot;]</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>input[aria-label=&quot;entity-settings-col-rate-1-edit&quot;]</value>
       </entry>
       <entry>
          <key>XPATH</key>
          <value>//input[contains(@value,'${description}')]/ancestor::tr//td[6]//input</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

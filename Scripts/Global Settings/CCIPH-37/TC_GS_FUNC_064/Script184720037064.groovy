@@ -10,7 +10,7 @@ String newVal = String.valueOf(System.currentTimeMillis() % 100000)
 def login = new MSLogin()
 def globalSettings = new GS()
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.navigateToGlobalSettings()
 globalSettings.openTab(tab)
 globalSettings.clickEditFirstRuleContainingCostOfGoods()

@@ -10,9 +10,11 @@ import globalsettings.BusinessActions as GS
 	def globalSettings = new GS()
 
 	'This is for Login Profile'
-	login.loginToCustomsManagementUsingProfile()
+	login.loginToCustomsManagementUsingAutomationProfile()
+	//login.loginToStageCustomsManagementUsingAutomationProfile()
 	'This is used for Navigating to Management'
-	globalSettings.navigateToGlobalSettings()
+	//globalSettings.navigateToGlobalSettings()
+	globalSettings.navigateToStageGlobalSettings()
 	globalSettings.openTab(tab)
 	globalSettings.verifyMinimumRuleRowsForReorder(3)
 

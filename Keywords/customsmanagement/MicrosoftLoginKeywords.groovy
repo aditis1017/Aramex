@@ -473,4 +473,191 @@ class MicrosoftLoginKeywords {
 		}
 		loginToCustomsManagement(null, user, pass, null, true)
 	}
+
+	// ---------- Stage (stage-cc.aramex.com) login — separate from dev-cc flow ----------
+
+	private static boolean isOnAramexStageHost() {
+		String u = currentUrlSafe().toLowerCase()
+		return u.contains('stage-cc.aramex.com')
+	}
+
+	private static boolean isOnStageCcApp() {
+		if (!isOnAramexStageHost()) {
+			return false
+		}
+		if (isOnMicrosoftLoginHost()) {
+			return false
+		}
+		if (isOnAramexHostedAuthLandingUrl()) {
+			return false
+		}
+		if (isAramexSignInWithMicrosoftButtonDisplayed()) {
+			return false
+		}
+		return hasAuthenticatedAppPath()
+	}
+
+	private static boolean isOnAramexStageHostAfterSsoForWait() {
+		if (!isOnAramexStageHost()) {
+			return false
+		}
+		if (isOnMicrosoftLoginHost()) {
+			return false
+		}
+		if (isOnAramexHostedAuthLandingUrl()) {
+			return false
+		}
+		if (isAramexSignInWithMicrosoftButtonDisplayed()) {
+			return false
+		}
+		return true
+	}
+
+	private static boolean waitForStageCcApp(int maxWaitSeconds) {
+		long deadline = System.currentTimeMillis() + (maxWaitSeconds * 1000L)
+		while (System.currentTimeMillis() < deadline) {
+			if (isOnAramexStageHostAfterSsoForWait()) {
+				return true
+			}
+			WebUI.delay(2)
+		}
+		return isOnAramexStageHostAfterSsoForWait()
+	}
+
+	private static boolean canShortCircuitWarmSessionAsAlreadySignedInStage() {
+		if (!isOnStageCcApp()) {
+			return false
+		}
+		long deadline = System.currentTimeMillis() + 12000L
+		while (System.currentTimeMillis() < deadline) {
+			if (isAramexSignInWithMicrosoftButtonDisplayed()) {
+				return false
+			}
+			if (isMicrosoftEmailFieldDisplayedQuick()) {
+				return false
+			}
+			if (isOnMicrosoftLoginHost()) {
+				return false
+			}
+			if (!hasAuthenticatedAppPath()) {
+				return false
+			}
+			WebUI.delay(1)
+		}
+		return isOnStageCcApp()
+	}
+
+	/** Stage login entry URL — defaults to {@code https://stage-cc.aramex.com/login}. */
+	private static String resolveStageLoginEntryUrl() {
+		String explicit = ProfileGlobals.get('STAGE_LOGIN_URL', '').trim()
+		if (explicit) {
+			return explicit
+		}
+		return 'https://stage-cc.aramex.com/login'
+	}
+
+	/** Post-login target from profile {@code STAGE_GLOBALSETTINGS} or {@code STAGE_APPLICATION} (optional validation). */
+	private static String resolveStageApplicationUrl() {
+		return (ProfileGlobals.get('STAGE_GLOBALSETTINGS') ?: ProfileGlobals.get('STAGE_APPLICATION')).trim()
+	}
+
+	/**
+	 * Opens the Stage Customs login URL ({@code https://stage-cc.aramex.com/login} by default), completes Microsoft sign-in,
+	 * and waits until {@code stage-cc.aramex.com} loads after SSO.
+	 */
+	@Keyword
+	def loginToStageCustomsManagement(String entryUrl = null, String email = null, String optionalPassword = null, String otpPlain = null, boolean skipOtp = false) {
+		try {
+			ensureBrowserOpen()
+			String startUrl = (entryUrl?.trim() ?: resolveStageLoginEntryUrl()).trim()
+			if (!startUrl) {
+				failStop('Stage login URL is blank. Set STAGE_LOGIN_URL or STAGE_APPLICATION in the active profile.')
+			}
+			String user = (email ?: ProfileGlobals.get('MS_LOGIN_EMAIL')).trim()
+			if (!user && 'true'.equalsIgnoreCase(ProfileGlobals.get('MS_AUTO_FETCH_OTP_FROM_EMAIL', 'false'))) {
+				user = ProfileGlobals.get('MS_IMAP_USER').trim()
+			}
+			if (!user) {
+				failStop('Set MS_LOGIN_EMAIL in the active profile, pass email to loginToStageCustomsManagement(...), or use loginToStageCustomsManagementUsingAutomationProfile().')
+			}
+			String passVal = (optionalPassword ?: ProfileGlobals.get('MS_LOGIN_PASSWORD')).trim()
+			String otp = (otpPlain ?: ProfileGlobals.get('MS_VERIFICATION_CODE')).trim()
+
+			KeywordUtil.logInfo("Stage login — navigating to: ${startUrl}")
+			WebUI.navigateToUrl(startUrl)
+			WebUI.delay(3)
+			WebUI.takeScreenshot()
+
+			if (canShortCircuitWarmSessionAsAlreadySignedInStage()) {
+				KeywordUtil.logInfo('Already on stage-cc app — skipping Microsoft login.')
+				return
+			}
+
+			if (!isOnMicrosoftLoginHost()) {
+				WebUI.waitForPageLoad(DEFAULT_TIMEOUT)
+				WebUI.delay(2)
+			}
+
+			if (canShortCircuitWarmSessionAsAlreadySignedInStage()) {
+				return
+			}
+
+			clickSignInWithMicrosoftOnAramexLoginIfShown()
+
+			if (canShortCircuitWarmSessionAsAlreadySignedInStage()) {
+				return
+			}
+
+			if (WebUI.waitForElementVisible(to('inp_ms_email'), 45, FailureHandling.OPTIONAL)) {
+				enterEmailAndNext(user)
+			} else if (!isOnStageCcApp() && !isOnAramexStageHostAfterSsoForWait()) {
+				failStop('Expected Microsoft email page or stage-cc Aramex app URL, but got: ' + currentUrlSafe())
+			}
+
+			enterPasswordAndSignInIfShown(passVal)
+
+			if (!skipOtp) {
+				enterOtpAndVerifyIfShown(otp)
+			}
+
+			dismissStaySignedInIfConfigured()
+
+			int totalWait = 180
+			try {
+				String tw = ProfileGlobals.get('MS_LOGIN_MAX_WAIT_SECONDS', '180')
+				totalWait = Integer.parseInt(tw)
+			} catch (NumberFormatException ignored) {
+			}
+			if (!waitForStageCcApp(totalWait)) {
+				failStop('Timed out waiting for redirect to stage-cc Aramex app after Microsoft login. Current URL: ' + currentUrlSafe())
+			}
+			String stageAppUrl = resolveStageApplicationUrl()
+			if (stageAppUrl) {
+				KeywordUtil.logInfo("Stage login complete. Profile app URL: ${stageAppUrl}")
+			}
+			KeywordUtil.logInfo('Stage Microsoft login flow finished — continuing on Aramex stage app (post-SSO).')
+			WebUI.waitForPageLoad(DEFAULT_TIMEOUT)
+			WebUI.delay(2)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("loginToStageCustomsManagement failed: ${e.message}")
+		}
+	}
+
+	/**
+	 * Stage login using profile {@code Automation_User} and {@code Automation_Password} only (no OTP / MFA step).
+	 * Navigates to {@code https://stage-cc.aramex.com/login} (or {@code STAGE_LOGIN_URL} from profile).
+	 */
+	@Keyword
+	def loginToStageCustomsManagementUsingAutomationProfile() {
+		String user = ProfileGlobals.get('Automation_User').trim()
+		String pass = ProfileGlobals.get('Automation_Password').trim()
+		if (!user) {
+			failStop('Set Automation_User in the active Katalon profile (Profiles/default.glbl).')
+		}
+		if (!pass) {
+			failStop('Set Automation_Password in the active Katalon profile (Profiles/default.glbl).')
+		}
+		loginToStageCustomsManagement(null, user, pass, null, true)
+	}
 }

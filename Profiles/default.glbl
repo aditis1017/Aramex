@@ -265,15 +265,36 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'svc_katalon_cc@aramex.com'</initValue>
+      <initValue>'SVC_CCI@aramex.com'</initValue>
       <name>Automation_User</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
+      <description>Entity Management / entity-level invoicing settings (CCIPH-85). Set per environment.</description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/entity-settings'</initValue>
+      <name>ENTITY_SETTINGS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
       <description></description>
-      <initValue>'YHRq1EHre2x882'</initValue>
+      <initValue>'Adi@1017singh\r\n'</initValue>
       <name>Automation_Password</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>STAGE_APPLICATION</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>STAGE_GLOBALSETTINGS</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>

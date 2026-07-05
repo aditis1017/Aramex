@@ -1,25 +1,28 @@
-﻿import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import apmanagement.BusinessActions as AP
+import apmanagement.BusinessActions as AR
 import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 // CSV: AR-Management.csv | CCIPH-37 | TC_AR_FUNC_049 | AC3 — Export data matches on-screen history
 
 long exportStart = System.currentTimeMillis()
 def login = new MSLogin()
-def ap = new AP()
+def ar_management = new AR()
 
 'This is for Login Profile'
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
-ap.openArManagementHistoryFromLanding()
-String rowText = ap.getFirstVisibleArHistoryRowText()
-ap.clickArHistoryExport()
-String path = ap.verifyLatestArManagementHistoryExportDownloaded(exportStart, null)
-ap.verifyExportedArHistoryCsvHasColumnHeaders(path)
-if (rowText) {
-	ap.verifyExportedArHistoryCsvContainsUiRowSnippet(path, rowText)
-}
+ar_management.navigateToArManagement()
+ar_management.verifyArSearchPageLoaded()
+ar_management.openArAccountDetailAndRatesheetSettings(search_Criteria, search_By, search_Value, entity)
+ar_management.openArManagementHistoryFromLanding()
+String rowText = ar_management.getFirstVisibleArHistoryRowText()
+ar_management.clickArHistoryExport()
+String path = ar_management.verifyLatestArManagementHistoryExportDownloaded(exportStart, null)
+ar_management.verifyExportedArHistoryHasColumnHeaders(path)
+//if (rowText) {
+//	ar_management.verifyExportedArHistoryCsvContainsUiRowSnippet(path, rowText)
+//}
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

@@ -13,7 +13,7 @@ def daysBack = 90
 
 KeywordUtil.logInfo("History_Custom: applying relative custom range (${daysBack} days back to today)")
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 globalSettings.applyCustomHistoryDateRangeRelative(daysBack)
 globalSettings.verifyHistoryCustomDateRangeRelativeApplied(daysBack)

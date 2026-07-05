@@ -18,7 +18,7 @@ def todayStr = LocalDate.now().format(dateFmt)
 
 KeywordUtil.logInfo("History-Custom-Invalid: start=today (${todayStr}), verify end cannot be tomorrow")
 
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 
 // Part 1 — Start Date = current date; End Date must not accept current date + 1

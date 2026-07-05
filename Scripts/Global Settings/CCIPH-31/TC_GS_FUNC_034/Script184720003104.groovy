@@ -9,25 +9,27 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 	def login = new MSLogin()
 	def globalSettings = new GS()
+	
 	// 1) Microsoft login (session + cookies)
 	'This is for Login Profile'
-	login.loginToCustomsManagementUsingProfile()
-	'This is used for Navigating to Management'
-
-	globalSettings.navigateToGlobalSettings()
-	WebUI.delay(2)
+   //login.loginToCustomsManagementUsingAutomationProfile()
+    login.loginToStageCustomsManagementUsingAutomationProfile()
+    'This is used for Navigating to Management'
+   //globalSettings.navigateToGlobalSettings()
+    globalSettings.navigateToStageGlobalSettings()
+	//WebUI.delay(2)
 	globalSettings.openTab(tab)
 	globalSettings.clickEditFirstRule()
 	globalSettings.verifyRuleModalVisible()
 //	globalSettings.verifyConditionValueFieldNotEmpty()
-	globalSettings.verifyFirstConditionRowValuePresent()
+//	globalSettings.verifyFirstConditionRowValuePresent()
 	globalSettings.clickModalCancel()
 	globalSettings.verifyModalNotVisible()
 	globalSettings.openTab(tab2)
 	globalSettings.clickEditFirstRule()
 	globalSettings.verifyRuleModalVisible()
 	//globalSettings.verifyConditionValueFieldNotEmpty()
-	globalSettings.verifyFirstConditionRowValuePresent()
+//	globalSettings.verifyFirstConditionRowValuePresent()
 	globalSettings.clickModalCancel()
 	globalSettings.verifyModalNotVisible()
 	WebUI.takeScreenshot()

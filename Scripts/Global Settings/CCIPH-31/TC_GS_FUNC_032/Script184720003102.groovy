@@ -10,7 +10,7 @@ import globalsettings.BusinessActions as GS
 	def globalSettings = new GS()
 	// 1) Microsoft login (session + cookies)
 	'This is for Login Profile'
-	login.loginToCustomsManagementUsingProfile()
+	login.loginToCustomsManagementUsingAutomationProfile()
 	'This is used for Navigating to Management'
 
 	globalSettings.navigateToGlobalSettings()

@@ -12,7 +12,7 @@
       <id>ar37-data-050</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>41</value>
+         <value>50</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
@@ -45,6 +45,24 @@
       <type>DATA_COLUMN</type>
       <value>entity</value>
       <variableId>457cb98d-0ff1-410a-8f86-e50b5c93a6a2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-050</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>serviceCode</value>
+      <variableId>a001d754-744a-45e6-92a5-61fd24a55f57</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-050</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rs_Shipment_Type</value>
+      <variableId>49d08c11-b3ef-49c4-b12b-a35a0ae9e3a8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar37-data-050</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rs_Rate_Type</value>
+      <variableId>f8aa4efe-946f-4377-a57b-ecd4de937453</variableId>
    </variableLinks>
    <variable>
       <defaultValue>THIS MONTH</defaultValue>
@@ -80,5 +98,26 @@
       <id>457cb98d-0ff1-410a-8f86-e50b5c93a6a2</id>
       <masked>false</masked>
       <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>a001d754-744a-45e6-92a5-61fd24a55f57</id>
+      <masked>false</masked>
+      <name>serviceCode</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>49d08c11-b3ef-49c4-b12b-a35a0ae9e3a8</id>
+      <masked>false</masked>
+      <name>rs_Shipment_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f8aa4efe-946f-4377-a57b-ecd4de937453</id>
+      <masked>false</masked>
+      <name>rs_Rate_Type</name>
    </variable>
 </TestCaseEntity>

@@ -9,9 +9,11 @@ def globalSettings = new GS()
 def login = new MSLogin()
 
 'This is for Login Profile'
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
+//login.loginToStageCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
 globalSettings.navigateToGlobalSettings()
+//globalSettings.navigateToStageGlobalSettings()
 globalSettings.openTab(tab)
 globalSettings.clickAddNewRule()
 globalSettings.addCostOfGoodsFieldAndValue(ruleValue)

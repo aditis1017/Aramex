@@ -10,7 +10,7 @@ def login = new MSLogin()
 def ap_management = new APManagement()
 
 'This is for Login Profile'
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
 ap_management.navigateToApManagement()
 ap_management.verifyApSearchPageLoaded()

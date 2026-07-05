@@ -5,15 +5,22 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 def tcId = 'TC_GS_FUNC_014'
 def ruleValue = String.valueOf(System.currentTimeMillis() % 100000)
+//def ruleValue ='93224'
 def globalSettings = new GS()
 def login = new MSLogin()
 
 'This is for Login Profile'
-login.loginToCustomsManagementUsingProfile()
+//login.loginToCustomsManagementUsingAutomationProfile()
+
+
+
+login.loginToStageCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
-globalSettings.navigateToGlobalSettings()
-WebUI.delay(2)
+//globalSettings.navigateToGlobalSettings()
+globalSettings.navigateToStageGlobalSettings()
+
 globalSettings.createDduRuleWithCostOfGoods(ruleValue)
+//globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, 'Equals', destination)
 globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, conditionOperator, destination)
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

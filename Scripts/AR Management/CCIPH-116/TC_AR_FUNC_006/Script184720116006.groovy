@@ -1,19 +1,19 @@
-﻿import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import apmanagement.BusinessActions as AP
+import apmanagement.BusinessActions as AR
 import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 // CSV: AR-Management.csv | CCIPH-116 | TC_AR_FUNC_006
 
 def login = new MSLogin()
-def ap = new AP()
+def ar_management = new AR()
 
 'This is for Login Profile'
-login.loginToCustomsManagementUsingProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
-ap.navigateToArManagement()
-ap.verifyArSearchPageLoaded()
-ap.verifyEntityDropdownHasMultipleOptions()
+ar_management.navigateToArManagement()
+ar_management.verifyArSearchPageLoaded()
+ar_management.verifyAREntityDropdownHasMultipleOptions()
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

@@ -12,7 +12,7 @@
       <id>ar126-data-028</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>29</value>
+         <value>28</value>
       </iterationEntity>
       <testDataId>Data Files/AR-Management-Data</testDataId>
    </testDataLinks>
@@ -39,12 +39,6 @@
       <type>DATA_COLUMN</type>
       <value>entity</value>
       <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId>ar126-data-028</testDataLinkId>
-      <type>DATA_COLUMN</type>
-      <value>validate_Value</value>
-      <variableId>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId>ar126-data-028</testDataLinkId>
@@ -103,13 +97,6 @@
       <id>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</id>
       <masked>false</masked>
       <name>entity</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>d8c314e7-7a72-4da7-b8ac-501dca88d3d6</id>
-      <masked>false</masked>
-      <name>validate_Value</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
