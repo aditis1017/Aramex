@@ -48,7 +48,7 @@ TC_AR_FUNC_046,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,,TODAY
 TC_AR_FUNC_047,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,ALL,,,,,,,,
 TC_AR_FUNC_048,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,ALL,,,,,,,,
 TC_AR_FUNC_049,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,ALL,,,,,,,,
-TC_AR_FUNC_050,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,,THIS MONTH,"DESCRIPTION, SERVICE DESCRIPTION, SHIPMENT TYPE, Rate 1, Rate 2, Rate 3, ACTION",DDP,Fixed,,,OF,
+TC_AR_FUNC_050,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,,THIS MONTH,"DESCRIPTION, SERVICE DESCRIPTION, SHIPMENT TYPE, Rate 1, Rate 2, Rate 3, ACTION",DDP,Fixed,,,VAT,
 TC_AR_FUNC_051,,,,,,,,,,,,,,,,,,,,,,,,
 TC_AR_FUNC_052,,,,,,,,,,,,,,,,,,,,,,,,
 TC_AR_FUNC_053,Account Name,Exact Match,Sample AR 8004 RUH,RUH,,,,,,,,,,,,,,"Service Code, Description, Shipment Type, Rate 1, Rate 2, Rate 3, ACTION",,,,Add New Record,,
