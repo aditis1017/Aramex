@@ -2963,6 +2963,11 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		}
 	}
 
+	private static File resolveDefaultUserDownloadsDirectory() {
+		String home = System.getProperty('user.home') ?: ''
+		return new File(home, 'Downloads')
+	}
+
 	private static File resolveArHistoryExportDownloadsDirectory(String explicitDownloadsPath = null) {
 		String explicit = sanitizeWindowsPath(explicitDownloadsPath)
 		if (explicit) {
@@ -2973,10 +2978,13 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 			fromProfile = sanitizeWindowsPath(ProfileGlobals.get('HISTORY_EXPORT_DOWNLOADS_DIR', ''))
 		}
 		if (fromProfile) {
-			return new File(fromProfile)
+			File profileDir = new File(fromProfile)
+			if (profileDir.isDirectory()) {
+				return profileDir
+			}
+			KeywordUtil.markWarning("Profile Downloads path does not exist (${profileDir.absolutePath}); using ${resolveDefaultUserDownloadsDirectory().absolutePath}")
 		}
-		String home = System.getProperty('user.home') ?: ''
-		return new File(home, 'Downloads')
+		return resolveDefaultUserDownloadsDirectory()
 	}
 
 	private static String resolveArHistoryExportFileNamePrefix() {
@@ -3416,7 +3424,7 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 				found = listArHistoryExportCsvModifiedAfter(dir, afterMillis, 'History')
 			}
 			if (found.isEmpty()) {
-				failStop("No AR History export .csv found in ${dir.absolutePath} after Export.")
+				failStop("No AR History export file found in ${dir.absolutePath} after Export.")
 			}
 			File latest = found[0]
 			recordDetectedArHistoryExportFile(latest)
@@ -3439,6 +3447,44 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 	@Keyword
 	String getLastArHistoryExportFileName() {
 		return lastArHistoryExportFileName ?: ''
+	}
+
+	/**
+	 * Resolved Downloads folder for AR History export validation (current user's {@code ~/Downloads} unless profile override exists).
+	 */
+	@Keyword
+	String getArHistoryExportDownloadsDirectory() {
+		return resolveArHistoryExportDownloadsDirectory(null).absolutePath
+	}
+
+	/**
+	 * Deletes the validated AR History export file from Downloads after test assertions.
+	 *
+	 * @param absolutePath optional path; defaults to last path from {@link #verifyLatestArManagementHistoryExportDownloaded(long, String)}
+	 */
+	@Keyword
+	def deleteLastArHistoryExportFile(String absolutePath = null) {
+		try {
+			String p = (absolutePath ?: lastArHistoryExportFilePath ?: '').trim()
+			if (!p) {
+				KeywordUtil.markWarning('deleteLastArHistoryExportFile: no export file path to delete')
+				return
+			}
+			File f = new File(p)
+			if (!f.isFile()) {
+				failStop("AR History export file not found for deletion: ${p}")
+			}
+			if (!f.delete()) {
+				failStop("Failed to delete AR History export file: ${p}")
+			}
+			KeywordUtil.logInfo("Deleted AR History export file: ${p}")
+			if (p == lastArHistoryExportFilePath) {
+				lastArHistoryExportFilePath = ''
+				lastArHistoryExportFileName = ''
+			}
+		} catch (Exception e) {
+			failStop("deleteLastArHistoryExportFile failed: ${e.message}")
+		}
 	}
 
 	@Keyword
