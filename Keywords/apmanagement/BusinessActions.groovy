@@ -191,7 +191,8 @@ class BusinessActions {
 	private static final String AR_RATESHEET_NEW_RECORD_CARD_XPATH =
 		"//div[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__newRecordCard')]"
 	private static final List<String> AR_RATESHEET_COLUMNS_DEFAULT = [
-		'Description', 'Service Desc', 'Rate Type', '% of', 'Value', 'Action'
+//		'Description', 'Service Desc', 'Rate Type', '% of', 'Value', 'Action'
+		'Service Code', 'Description', 'Shipment Type', 'Rate 1', 'Rate 2', 'Rate 3', 'ACTION'
 	]
 
 	private static final String AR_SERVICE_CHARGE_TABLE_XPATH =

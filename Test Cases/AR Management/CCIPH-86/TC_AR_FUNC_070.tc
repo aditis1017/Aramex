@@ -40,6 +40,24 @@
       <value>entity</value>
       <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-070</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>serviceCode</value>
+      <variableId>84fd4a9e-c0b6-43dc-b6f3-e76778362fdc</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-070</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rs_Shipment_Type</value>
+      <variableId>a4862387-7d6b-4c8e-8120-10ec6905094f</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ar86-data-070</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rs_Rate_Type</value>
+      <variableId>f199bf77-2381-4f79-914f-1887a22bd024</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
@@ -67,5 +85,26 @@
       <id>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</id>
       <masked>false</masked>
       <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>84fd4a9e-c0b6-43dc-b6f3-e76778362fdc</id>
+      <masked>false</masked>
+      <name>serviceCode</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>a4862387-7d6b-4c8e-8120-10ec6905094f</id>
+      <masked>false</masked>
+      <name>rs_Shipment_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f199bf77-2381-4f79-914f-1887a22bd024</id>
+      <masked>false</masked>
+      <name>rs_Rate_Type</name>
    </variable>
 </TestCaseEntity>
