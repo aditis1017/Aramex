@@ -10,14 +10,12 @@ def globalSettings = new GS()
 def login = new MSLogin()
 
 'This is for Login Profile'
-//login.loginToCustomsManagementUsingAutomationProfile()
+login.loginToCustomsManagementUsingAutomationProfile()
 
-
-
-login.loginToStageCustomsManagementUsingAutomationProfile()
+//login.loginToStageCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
-//globalSettings.navigateToGlobalSettings()
-globalSettings.navigateToStageGlobalSettings()
+globalSettings.navigateToGlobalSettings()
+//globalSettings.navigateToStageGlobalSettings()
 
 globalSettings.createDduRuleWithCostOfGoods(ruleValue)
 //globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, 'Equals', destination)

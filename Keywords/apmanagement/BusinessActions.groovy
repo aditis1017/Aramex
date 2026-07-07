@@ -88,6 +88,9 @@ class BusinessActions {
 	/** Last validated AR History export path ({@link #verifyLatestArManagementHistoryExportDownloaded(long, String)}). */
 	private String lastArHistoryExportFilePath = ''
 	private String lastArHistoryExportFileName = ''
+	/** Last validated AR Service Charge export path ({@link #verifyArServiceChargeSettingsExportDownloaded(long, String)}). */
+	private String lastArServiceChargeExportFilePath = ''
+	private String lastArServiceChargeExportFileName = ''
 	/** Read-only detail {@code input} — matches DevTools class list (use contains; order may change). */
 	private static final String DETAIL_READONLY_INPUT_XPATH =
 		"input[contains(@class,'h-10') and contains(@class,'min-w-0') and contains(@class,'cursor-not-allowed')]"
@@ -2054,6 +2057,11 @@ class BusinessActions {
 		return raw.replace('\u202A', '').replace('\u202B', '').replace('\u202C', '').trim()
 	}
 
+	private static File resolveDefaultUserDownloadsDirectory() {
+		String home = System.getProperty('user.home') ?: ''
+		return new File(home, 'Downloads')
+	}
+
 	private static File resolveArServiceChargeExportDownloadsDirectory(String explicitDownloadsPath = null) {
 		String explicit = sanitizeWindowsPath(explicitDownloadsPath)
 		if (explicit) {
@@ -2064,10 +2072,13 @@ class BusinessActions {
 			fromProfile = sanitizeWindowsPath(ProfileGlobals.get('HISTORY_EXPORT_DOWNLOADS_DIR', ''))
 		}
 		if (fromProfile) {
-			return new File(fromProfile)
+			File profileDir = new File(fromProfile)
+			if (profileDir.isDirectory()) {
+				return profileDir
+			}
+			KeywordUtil.markWarning("Profile Downloads path does not exist (${profileDir.absolutePath}); using ${resolveDefaultUserDownloadsDirectory().absolutePath}")
 		}
-		String home = System.getProperty('user.home') ?: ''
-		return new File(home, 'Downloads')
+		return resolveDefaultUserDownloadsDirectory()
 	}
 
 	private static String resolveArServiceChargeExportFileNamePrefix() {
@@ -2104,6 +2115,13 @@ class BusinessActions {
 		List<File> out = new ArrayList<>(java.util.Arrays.asList(files))
 		out.sort { a, b -> Long.compare(b.lastModified(), a.lastModified()) }
 		return out
+	}
+
+	private void recordDetectedArServiceChargeExportFile(File exportFile) {
+		lastArServiceChargeExportFileName = exportFile.name
+		lastArServiceChargeExportFilePath = exportFile.absolutePath
+		writeDetectedArServiceChargeExportFile(exportFile.name, exportFile.absolutePath)
+		KeywordUtil.logInfo("Detected Service Charge export full path: ${lastArServiceChargeExportFilePath}")
 	}
 
 	private static void writeDetectedArServiceChargeExportFile(String fileName, String absolutePath) {
@@ -2487,13 +2505,64 @@ class BusinessActions {
 				failStop("No Service Charge export file (.xlsx/.xls/.csv) found in ${dir.absolutePath} after export.")
 			}
 			File exportFile = found.get(0)
-			writeDetectedArServiceChargeExportFile(exportFile.name, exportFile.absolutePath)
+			recordDetectedArServiceChargeExportFile(exportFile)
+			if (!exportFile.exists() || exportFile.length() <= 0L) {
+				failStop("Service Charge export file is missing or empty: ${exportFile.absolutePath}")
+			}
 			KeywordUtil.logInfo("Service Charge export file: ${exportFile.absolutePath}")
 			WebUI.takeScreenshot()
-			return exportFile.absolutePath
+			return lastArServiceChargeExportFilePath
 		} catch (Exception e) {
 			failStop("verifyArServiceChargeSettingsExportDownloaded failed: ${e.message}")
 			return ''
+		}
+	}
+
+	/**
+	 * Resolved Downloads folder for Service Charge export validation (current user's {@code ~/Downloads} unless profile override exists).
+	 */
+	@Keyword
+	def getArServiceChargeExportDownloadsDirectory() {
+		return resolveArServiceChargeExportDownloadsDirectory(null).absolutePath
+	}
+
+	@Keyword
+	String getLastArServiceChargeExportFilePath() {
+		return lastArServiceChargeExportFilePath ?: ''
+	}
+
+	@Keyword
+	String getLastArServiceChargeExportFileName() {
+		return lastArServiceChargeExportFileName ?: ''
+	}
+
+	/**
+	 * Deletes the validated Service Charge export file from Downloads after test assertions.
+	 *
+	 * @param absolutePath optional path; defaults to last path from {@link #verifyArServiceChargeSettingsExportDownloaded(long, String)}
+	 */
+	@Keyword
+	def deleteLastArServiceChargeExportFile(String absolutePath = null) {
+		try {
+			String p = (absolutePath ?: lastArServiceChargeExportFilePath ?: '').trim()
+			if (!p) {
+				KeywordUtil.markWarning('deleteLastArServiceChargeExportFile: no export file path to delete')
+				return
+			}
+			File f = new File(p)
+			if (!f.isFile()) {
+				failStop("Service Charge export file not found for deletion: ${p}")
+			}
+			if (!f.delete()) {
+				failStop("Failed to delete Service Charge export file: ${p}")
+			}
+			KeywordUtil.logInfo("Deleted Service Charge export file: ${p}")
+			if (p == lastArServiceChargeExportFilePath) {
+				lastArServiceChargeExportFilePath = ''
+				lastArServiceChargeExportFileName = ''
+			}
+		} catch (Exception e) {
+			failStop("deleteLastArServiceChargeExportFile failed: ${e.message}")
 		}
 	}
 
@@ -2961,11 +3030,6 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		if (WebUI.waitForElementClickable(applyNearDates, 3, FailureHandling.OPTIONAL)) {
 			WebUI.click(applyNearDates)
 		}
-	}
-
-	private static File resolveDefaultUserDownloadsDirectory() {
-		String home = System.getProperty('user.home') ?: ''
-		return new File(home, 'Downloads')
 	}
 
 	private static File resolveArHistoryExportDownloadsDirectory(String explicitDownloadsPath = null) {

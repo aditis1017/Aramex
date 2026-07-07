@@ -18,8 +18,19 @@ ar_management.openArAccountDetailAndServiceChargeSettings(search_Criteria, searc
 ar_management.toggleArSpecialServiceChargeSettings()
 long exportStart = System.currentTimeMillis()
 ar_management.clickArServiceChargeSettingsExportToExcel()
-String exportPath = ar_management.verifyArServiceChargeSettingsExportDownloaded(exportStart)
+String exportPath = ar_management.verifyArServiceChargeSettingsExportDownloaded(exportStart, null)
 ar_management.verifyArServiceChargeExportFileContainsColumnHeaders(exportPath, service_Columns)
+if (exportPath) {
+	if (ar_management.respondsTo('deleteLastArServiceChargeExportFile', exportPath)) {
+		ar_management.deleteLastArServiceChargeExportFile(exportPath)
+	} else {
+		File exportFile = new File(exportPath)
+		if (exportFile.isFile()) {
+			exportFile.delete()
+			KeywordUtil.logInfo("Deleted Service Charge export file: ${exportPath}")
+		}
+	}
+}
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

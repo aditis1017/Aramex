@@ -17,6 +17,17 @@ globalSettings.clickHistoryExport()
 globalSettings.verifyNewCsvDownloadPresent(exportStart)
 String path = globalSettings.getLatestHistoryExportCsvPath(exportStart)
 globalSettings.verifyGlobalExportedHistoryCsvHasColumnHeaders(path)
+if (path) {
+	if (globalSettings.respondsTo('deleteLastHistoryExportFile', path)) {
+		globalSettings.deleteLastHistoryExportFile(path)
+	} else {
+		File exportFile = new File(path)
+		if (exportFile.isFile()) {
+			exportFile.delete()
+			KeywordUtil.logInfo("Deleted Global Settings History export file: ${path}")
+		}
+	}
+}
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

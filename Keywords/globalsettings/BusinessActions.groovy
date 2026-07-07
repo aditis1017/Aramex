@@ -321,6 +321,23 @@ class BusinessActions {
 			failStop("Duplicate rule message not displayed: ${e.message}")
 		}
 	}
+//	@Keyword
+//	def verifyDuplicateRuleMessageVisible(String expectedTitle) {
+//		try {
+//			TestObject modalTitle = to('msg_duplicateRule')
+//	
+//			waitVisible(modalTitle)
+//	
+//			WebUI.verifyElementVisible(modalTitle, FailureHandling.STOP_ON_FAILURE)
+//			WebUI.verifyElementText(modalTitle, expectedTitle, FailureHandling.STOP_ON_FAILURE)
+//	
+//			WebUI.takeScreenshot()
+//	
+//			pass("Verified modal title '${expectedTitle}' is displayed.")
+//		} catch (Exception e) {
+//			failStop("Modal title '${expectedTitle}' is not displayed: ${e.message}")
+//		}
+//	}
 
 	@Keyword
 	def verifyDuplicateConditionMessageVisible() {
@@ -2513,6 +2530,11 @@ return {
 		return raw.replace('\u202A', '').replace('\u202B', '').replace('\u202C', '').trim()
 	}
 
+	private static File resolveDefaultUserDownloadsDirectory() {
+		String home = System.getProperty('user.home') ?: ''
+		return new File(home, 'Downloads')
+	}
+
 	/**
 	 * Downloads folder for History export validation. Profile {@code HISTORY_EXPORT_DOWNLOADS_DIR} overrides default user Downloads.
 	 */
@@ -2523,10 +2545,13 @@ return {
 		}
 		String fromProfile = sanitizeWindowsPath(ProfileGlobals.get('HISTORY_EXPORT_DOWNLOADS_DIR', ''))
 		if (fromProfile) {
-			return new File(fromProfile)
+			File profileDir = new File(fromProfile)
+			if (profileDir.isDirectory()) {
+				return profileDir
+			}
+			KeywordUtil.markWarning("Profile Downloads path does not exist (${profileDir.absolutePath}); using ${resolveDefaultUserDownloadsDirectory().absolutePath}")
 		}
-		String home = System.getProperty('user.home') ?: ''
-		return new File(home, 'Downloads')
+		return resolveDefaultUserDownloadsDirectory()
 	}
 
 	private static String resolveHistoryExportFileNamePrefix() {
@@ -2638,6 +2663,44 @@ return {
 	@Keyword
 	String getLastHistoryExportFilePath() {
 		return lastHistoryExportFilePath ?: ''
+	}
+
+	/**
+	 * Resolved Downloads folder for Global Settings History export validation (current user's {@code ~/Downloads} unless profile override exists).
+	 */
+	@Keyword
+	def getHistoryExportDownloadsDirectory() {
+		return resolveHistoryExportDownloadsDirectory(null).absolutePath
+	}
+
+	/**
+	 * Deletes the validated Global Settings History export file from Downloads after test assertions.
+	 *
+	 * @param absolutePath optional path; defaults to last path from {@link #verifyLatestGlobalSettingsHistoryExportDownloaded(long, String)}
+	 */
+	@Keyword
+	def deleteLastHistoryExportFile(String absolutePath = null) {
+		try {
+			String p = (absolutePath ?: lastHistoryExportFilePath ?: '').trim()
+			if (!p) {
+				KeywordUtil.markWarning('deleteLastHistoryExportFile: no export file path to delete')
+				return
+			}
+			File f = new File(p)
+			if (!f.isFile()) {
+				failStop("Global Settings History export file not found for deletion: ${p}")
+			}
+			if (!f.delete()) {
+				failStop("Failed to delete Global Settings History export file: ${p}")
+			}
+			KeywordUtil.logInfo("Deleted Global Settings History export file: ${p}")
+			if (p == lastHistoryExportFilePath) {
+				lastHistoryExportFilePath = ''
+				lastHistoryExportFileName = ''
+			}
+		} catch (Exception e) {
+			failStop("deleteLastHistoryExportFile failed: ${e.message}")
+		}
 	}
 
 	/**
