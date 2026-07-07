@@ -13,8 +13,8 @@ import globalsettings.BusinessActions as GS
 	login.loginToCustomsManagementUsingAutomationProfile()
 	//login.loginToStageCustomsManagementUsingAutomationProfile()
 	'This is used for Navigating to Management'
-	//globalSettings.navigateToGlobalSettings()
-	globalSettings.navigateToStageGlobalSettings()
+	globalSettings.navigateToGlobalSettings()
+	//globalSettings.navigateToStageGlobalSettings()
 	globalSettings.openTab(tab)
 	globalSettings.verifyMinimumRuleRowsForReorder(3)
 

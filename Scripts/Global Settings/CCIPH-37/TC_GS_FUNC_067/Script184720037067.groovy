@@ -6,7 +6,6 @@ import globalsettings.BusinessActions as GS
 
 // CSV: Global Settings - Sheet1.csv | CCIPH-37 | TC_GS_FUNC_067 — Export Excel to Downloads
 
-String downloadsDir = 'C:\\Users\\Aditi Singh\\Downloads'
 long exportStart = System.currentTimeMillis()
 def login = new MSLogin()
 def globalSettings = new GS()
@@ -15,9 +14,20 @@ login.loginToCustomsManagementUsingAutomationProfile()
 globalSettings.openGlobalSettingsHistoryFromLanding()
 globalSettings.clickHistoryExport()
 
-String exportPath = globalSettings.verifyLatestGlobalSettingsHistoryExportDownloaded(exportStart, downloadsDir)
+String exportPath = globalSettings.verifyLatestGlobalSettingsHistoryExportDownloaded(exportStart, null)
 KeywordUtil.logInfo("Validated latest export — file name: ${globalSettings.getLastHistoryExportFileName()}")
 KeywordUtil.logInfo("Validated latest export — full path: ${exportPath}")
+if (exportPath) {
+	if (globalSettings.respondsTo('deleteLastHistoryExportFile', exportPath)) {
+		globalSettings.deleteLastHistoryExportFile(exportPath)
+	} else {
+		File exportFile = new File(exportPath)
+		if (exportFile.isFile()) {
+			exportFile.delete()
+			KeywordUtil.logInfo("Deleted Global Settings History export file: ${exportPath}")
+		}
+	}
+}
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

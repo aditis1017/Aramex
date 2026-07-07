@@ -21,7 +21,7 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 	def login = new MSLogin()
 	def globalSettings = new GS()
-
+	def ruleValue = String.valueOf(System.currentTimeMillis() % 100000)
 	// 1) Microsoft login (session + cookies)
 	'This is for Login Profile'
     login.loginToCustomsManagementUsingAutomationProfile()
@@ -30,12 +30,16 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
     globalSettings.navigateToGlobalSettings()
    //globalSettings.navigateToStageGlobalSettings()
 
-	globalSettings.clickEditFirstRule()
+//	globalSettings.clickEditFirstRule()
+	globalSettings.createDduRuleWithCostOfGoods(ruleValue)
+	//globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, 'Equals', destination)
+	//globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, conditionOperator, destination)
 
-	WebUI.delay(3)
-	globalSettings.selectConditionFieldOperatorAndValueByLabel(conditionField, conditionOperator, valuesComparator)
+	WebUI.delay(2)
+	globalSettings.createDduRuleWithCostOfGoods(ruleValue)
+	//globalSettings.selectConditionFieldOperatorAndValueByLabel(conditionField, conditionOperator, valuesComparator)
 	globalSettings.clickModalSave()
-	globalSettings.verifyDuplicateRuleMessageVisible()
+	globalSettings.verifyDuplicateRuleMessageVisible('Duplicate Rules')
 
 	WebUI.takeScreenshot()
 	WebUI.closeBrowser()

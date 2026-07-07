@@ -17,12 +17,14 @@ ar_management.verifyArSearchPageLoaded()
 ar_management.openArAccountDetailAndRatesheetSettings(search_Criteria, search_By, search_Value, entity)
 ar_management.openArManagementHistoryFromLanding()
 String rowText = ar_management.getFirstVisibleArHistoryRowText()
+String downloadsDir = ar_management.getArHistoryExportDownloadsDirectory()
 ar_management.clickArHistoryExport()
-String path = ar_management.verifyLatestArManagementHistoryExportDownloaded(exportStart, null)
+String path = ar_management.verifyLatestArManagementHistoryExportDownloaded(exportStart, downloadsDir)
 ar_management.verifyExportedArHistoryHasColumnHeaders(path)
 //if (rowText) {
 //	ar_management.verifyExportedArHistoryCsvContainsUiRowSnippet(path, rowText)
 //}
+ar_management.deleteLastArHistoryExportFile(path)
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

@@ -1058,25 +1058,6 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>49f9b08d-9ad0-4dee-adaa-1956cb9c1bc8</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-37/TC_AR_FUNC_045</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>ar37-history-start-var</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>ar37-history-end-var</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
       <guid>4e403ede-5d00-49e8-91b2-719d49b30d1d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>

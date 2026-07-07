@@ -20,6 +20,17 @@ globalSettings.verifyGlobalExportedHistoryCsvHasColumnHeaders(path)
 if (rowText) {
 	globalSettings.verifyExportedCsvContainsUiRowSnippet(path, rowText)
 }
+if (path) {
+	if (globalSettings.respondsTo('deleteLastHistoryExportFile', path)) {
+		globalSettings.deleteLastHistoryExportFile(path)
+	} else {
+		File exportFile = new File(path)
+		if (exportFile.isFile()) {
+			exportFile.delete()
+			KeywordUtil.logInfo("Deleted Global Settings History export file: ${path}")
+		}
+	}
+}
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()
