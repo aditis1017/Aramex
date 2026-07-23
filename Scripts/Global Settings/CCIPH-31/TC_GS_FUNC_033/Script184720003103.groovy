@@ -23,6 +23,6 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 //	globalSettings.clickEditFirstRule()
 //	globalSettings.verifyRuleModalVisible()
 //	globalSettings.verifyConditionValueFieldNotEmpty()
-//	WebUI.takeScreenshot()
-//	WebUI.closeBrowser()
+	WebUI.takeScreenshot()
+	WebUI.closeBrowser()
 //Need to check

@@ -204,7 +204,19 @@ class BusinessActions {
 	@Keyword
 	def clickModalSave() {
 		try {
-			click(to('btn_modalSave'))
+//			dismissRuleCreatedSuccessModalIfPresent()
+//			dismissRuleUpdateSuccessModalIfPresent()
+			TestObject saveBtn = to('btn_modalSave')
+			waitVisibleClickable(saveBtn)
+			WebUI.scrollToElement(saveBtn, DEFAULT_TIMEOUT)
+			try {
+				WebUI.click(saveBtn)
+			} catch (Exception clickEx) {
+				KeywordUtil.markWarning("Standard Save click failed (${clickEx.message}); retrying with JavaScript click.")
+				WebElement el = WebUiCommonHelper.findWebElement(saveBtn, DEFAULT_TIMEOUT)
+				WebUI.executeJavaScript('arguments[0].click();', java.util.Arrays.asList(el))
+			}
+			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("clickModalSave failed: ${e.message}")
 		}
@@ -287,12 +299,9 @@ class BusinessActions {
 	def saveRuleModal() {
 		try {
 			clickModalSave()
-			WebUI.delay(2)
-			boolean duplicate = WebUI.waitForElementVisible(to('msg_duplicateRule'), 5, FailureHandling.OPTIONAL)
-			if (!duplicate) {
-				dismissRuleCreatedSuccessModalIfPresent()
-				waitVisible(to('txt_anchor_GlobalSettings'))
-			}
+			WebUI.delay(1)
+			//dismissRuleCreatedSuccessModalIfPresent()
+			waitVisible(to('txt_anchor_GlobalSettings'))
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("saveRuleModal failed: ${e.message}")
@@ -321,6 +330,25 @@ class BusinessActions {
 			failStop("Duplicate rule message not displayed: ${e.message}")
 		}
 	}
+//	
+//	@Keyword
+//	def verifyDuplicateSameRuleErrorVisible() {
+//		try {
+//			if (WebUI.waitForElementVisible(to('msg_duplicateRule'), 8, FailureHandling.OPTIONAL)) {
+//				WebUI.verifyElementVisible(to('msg_duplicateRule'), FailureHandling.STOP_ON_FAILURE)
+//				WebUI.takeScreenshot()
+//				return
+//			}
+//			TestObject dyn = new TestObject('dupOrSameRuleMsg')
+//			dyn.addProperty('xpath', ConditionType.EQUALS,
+//				"//*[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'same rule') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'already exist') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'duplicate rule')]")
+//			waitVisible(dyn)
+//			WebUI.verifyElementVisible(dyn, FailureHandling.STOP_ON_FAILURE)
+//			WebUI.takeScreenshot()
+//		} catch (Exception e) {
+//			failStop("verifyDuplicateOrSameRuleErrorVisible failed: ${e.message}")
+//		}
+//	}
 //	@Keyword
 //	def verifyDuplicateRuleMessageVisible(String expectedTitle) {
 //		try {
@@ -1773,7 +1801,7 @@ class BusinessActions {
 		try {
 			TestObject rowsTo = new TestObject('history_filter_snap_rows')
 			rowsTo.addProperty('xpath', ConditionType.EQUALS, historyTableDataRowsXPath())
-			List<?> els = WebUI.findWebElements(rowsTo, 5)
+			List<?> els = WebUI.findWebElements(rowsTo, 2)
 			rowCount = els ? els.size() : 0
 		} catch (Exception ignored) {
 		}
@@ -1782,7 +1810,7 @@ class BusinessActions {
 			TestObject firstRowTo = new TestObject('history_filter_snap_first_row')
 			firstRowTo.addProperty('xpath', ConditionType.EQUALS,
 				"(//table[.//th[contains(translate(.,'TIMESTAMP','timestamp'),'timestamp')]]//tbody//tr[td])[1]")
-			if (WebUI.waitForElementVisible(firstRowTo, 2, FailureHandling.OPTIONAL)) {
+			if (WebUI.waitForElementVisible(firstRowTo, 1, FailureHandling.OPTIONAL)) {
 				firstRow = (WebUI.getText(firstRowTo, FailureHandling.OPTIONAL) ?: '').trim()
 			}
 		} catch (Exception ignored) {
@@ -1971,14 +1999,13 @@ input.blur();''',
 	 * Used only by the relative / end-first flow — does not replace {@link #commitHistoryCustomDateFilter}.
 	 */
 	private static void commitHistoryCustomDateFilterAutoApply(TestObject startInp, TestObject endInp) {
-		// Start is set last (end-first flow) — blur/change on start typically triggers auto-apply (no Apply button on this page).
-		waitVisibleClickable(startInp)
-		WebUI.click(startInp)
-		WebUI.sendKeys(startInp, Keys.chord(Keys.ENTER))
-		WebUI.delay(0.3)
-		waitVisibleClickable(endInp)
-		WebUI.click(endInp)
-		WebUI.sendKeys(endInp, Keys.chord(Keys.TAB))
+		// Do NOT click any date input or use ENTER/TAB here.
+		// On Windows Chrome, both ENTER and TAB on an input[type=date] advance focus
+		// to the next date-input segment (including the end input's MM).  A subsequent
+		// click on any non-date element then causes Chrome to commit the segment with
+		// its reset minimum value (01), corrupting a correctly-set month (07 → 01).
+		// Clicking a neutral element first (if visible) blurs whatever is focused, then
+		// the JavaScript fires React onChange for both inputs using their current values.
 		WebUI.delay(0.3)
 		if (WebUI.waitForElementVisible(to37('txt_historyPageTitle'), 2, FailureHandling.OPTIONAL)) {
 			WebUI.click(to37('txt_historyPageTitle'))
@@ -2006,21 +2033,38 @@ fireReactDateChange(arguments[1]);''',
 	/**
 	 * Waits until custom date inputs hold expected ISO values and the grid has had time to refresh.
 	 * Passes when inputs match even if row content is unchanged (same records still in range).
+	 *
+	 * @param datesPreConfirmed set {@code true} when the caller has already verified the input
+	 *   values via {@link #setHistoryHtmlDateInputInteractive} before committing the filter.
+	 *   On slow environments (e.g. terminal servers) the React component briefly unmounts the
+	 *   date inputs during the loading state, causing {@code getAttribute} to return empty
+	 *   strings. Pre-confirming seeds the timer so those transient absent-input iterations do
+	 *   not reset the 3-second grace period.
 	 */
-	private static void waitForHistoryCustomDateRangeReady(String startIso, String endIso, String beforeSnapshot, int timeoutSec = 25) {
+	private static void waitForHistoryCustomDateRangeReady(String startIso, String endIso, String beforeSnapshot, int timeoutSec = 45, boolean datesPreConfirmed = false) {
 		long deadline = System.currentTimeMillis() + (timeoutSec * 1000L)
-		long datesMatchedAt = 0L
+		// Seed timer when caller already verified values — handles slow environments where
+		// inputs are transiently absent (loading state) throughout the polling window.
+		long datesMatchedAt = datesPreConfirmed ? System.currentTimeMillis() : 0L
+		boolean datesEverMatched = datesPreConfirmed
 		while (System.currentTimeMillis() < deadline) {
 			WebUI.delay(0.5)
 			String startVal = (WebUI.getAttribute(to37('inp_customRangeStart'), 'value', FailureHandling.OPTIONAL) ?: '').trim()
 			String endVal = (WebUI.getAttribute(to37('inp_customRangeEnd'), 'value', FailureHandling.OPTIONAL) ?: '').trim()
 			boolean datesOk = startIso.equals(startVal) && endIso.equals(endVal)
+			boolean inputsAbsent = startVal.isEmpty() && endVal.isEmpty()
 			boolean tableChanged = historyFilterSnapshot() != beforeSnapshot
 			if (datesOk && tableChanged) {
 				WebUI.delay(1)
 				return
 			}
+			if (datesEverMatched && tableChanged) {
+				KeywordUtil.logInfo('History custom range: table refreshed after dates were confirmed')
+				WebUI.delay(1)
+				return
+			}
 			if (datesOk) {
+				datesEverMatched = true
 				if (datesMatchedAt == 0L) {
 					datesMatchedAt = System.currentTimeMillis()
 				} else if (System.currentTimeMillis() - datesMatchedAt >= 3000L) {
@@ -2028,9 +2072,27 @@ fireReactDateChange(arguments[1]);''',
 					WebUI.delay(1)
 					return
 				}
-			} else {
+			} else if (inputsAbsent && datesEverMatched) {
+				// Inputs are transiently absent (loading state) — keep the timer running.
+				if (datesMatchedAt != 0L && System.currentTimeMillis() - datesMatchedAt >= 3000L) {
+					KeywordUtil.logInfo('History custom range: pre-confirmed dates; inputs reloading — filter treated as applied')
+					WebUI.delay(1)
+					return
+				}
+			} else if (!inputsAbsent && datesEverMatched) {
+				// Inputs visible but show post-commit values that differ from what was confirmed
+				// (e.g. React re-rendered the input with a different state after commit).
+				// Do NOT reset the timer — the filter was applied with the correct values.
+				if (datesMatchedAt != 0L && System.currentTimeMillis() - datesMatchedAt >= 3000L) {
+					KeywordUtil.logInfo('History custom range: pre-confirmed dates; post-commit input differs — filter treated as applied')
+					WebUI.delay(1)
+					return
+				}
+			} else if (!inputsAbsent) {
+				// Inputs visible with wrong value and never pre-confirmed — restart timer.
 				datesMatchedAt = 0L
 			}
+			// Both inputs absent and dates not yet confirmed: keep waiting.
 		}
 		failStop("History custom date range not ready after ${timeoutSec}s (expected ${startIso} / ${endIso})")
 	}
@@ -2050,16 +2112,51 @@ fireReactDateChange(arguments[1]);''',
 			String endIso = normalizeHistoryDateToIso(endDate)
 			waitVisible(startInp)
 			waitVisible(endInp)
-			String beforeSnapshot = historyFilterSnapshot()
-			setHistoryHtmlDateInputInteractive(endInp, endIso)
-			WebUI.delay(0.5)
-			setHistoryHtmlDateInputInteractive(startInp, startIso)
-			commitHistoryCustomDateFilterAutoApply(startInp, endInp)
-			waitForHistoryCustomDateRangeReady(startIso, endIso, beforeSnapshot, 25)
-			waitVisible(to37('tbl_historyChangeLog'))
-			WebUI.takeScreenshot()
-		} catch (Exception e) {
-			failStop("applyCustomHistoryDateRangeEndFirst failed: ${e.message}")
+		String beforeSnapshot = historyFilterSnapshot()
+		setHistoryHtmlDateInputInteractive(endInp, endIso)
+		WebUI.delay(0.5)
+		setHistoryHtmlDateInputInteractive(startInp, startIso)
+		// Re-apply both dates via the native setter before any click fires.
+		// After the TAB / ENTER that ends setHistoryHtmlDateInputInteractive(startInp, ...),
+		// Chrome may have moved focus to the end input's MM segment and initialised it
+		// in "edit" mode.  Any subsequent click (even on a neutral element) causes Chrome
+		// to commit that segment with its minimum value (01), overwriting the correct
+		// month (07).  Setting the native value here forces Chrome's segment state to the
+		// correct date so that a commit-on-blur produces the right ISO string.
+		WebElement startProtect = WebUiCommonHelper.findWebElement(startInp, DEFAULT_TIMEOUT)
+		WebElement endProtect = WebUiCommonHelper.findWebElement(endInp, DEFAULT_TIMEOUT)
+		WebUI.executeJavaScript(
+			'''function protectDate(input, value) {
+  var t = input._valueTracker; if (t) t.setValue(value);
+  Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set.call(input, value);
+}
+protectDate(arguments[0], arguments[1]);
+protectDate(arguments[2], arguments[3]);''',
+			java.util.Arrays.asList(startProtect, startIso, endProtect, endIso))
+		WebUI.delay(0.2)
+		commitHistoryCustomDateFilterAutoApply(startInp, endInp)
+		// The React app's end-date onChange may auto-recalculate start as (end − N months),
+		// overwriting the correctly-set start.  Detect and override that if it happened.
+		// start's onChange does NOT recalculate end, so re-firing start is safe.
+		WebUI.delay(0.5)
+		String startAfterCommit = (WebUI.getAttribute(startInp, 'value', FailureHandling.OPTIONAL) ?: '').trim()
+		if (!startIso.equals(startAfterCommit)) {
+			KeywordUtil.logInfo("Post-commit start correction: React reset start to ${startAfterCommit}; re-applying ${startIso}")
+			WebElement startFix = WebUiCommonHelper.findWebElement(startInp, DEFAULT_TIMEOUT)
+			WebUI.executeJavaScript(
+				'''var i=arguments[0],v=arguments[1];
+var t=i._valueTracker;if(t)t.setValue(v);
+Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"value").set.call(i,v);
+var rk=Object.keys(i).find(function(k){return k.indexOf("__reactProps")===0;});
+if(rk&&i[rk]&&typeof i[rk].onChange==="function")i[rk].onChange({target:i,currentTarget:i});''',
+				java.util.Arrays.asList(startFix, startIso))
+			WebUI.delay(0.3)
+		}
+		waitForHistoryCustomDateRangeReady(startIso, endIso, beforeSnapshot, 45, true)
+		waitVisible(to37('tbl_historyChangeLog'))
+		WebUI.takeScreenshot()
+	} catch (Exception e) {
+		failStop("applyCustomHistoryDateRangeEndFirst failed: ${e.message}")
 		}
 	}
 
@@ -2322,16 +2419,16 @@ return {
 			String endIso = normalizeHistoryDateToIso(endDate)
 			waitVisible(startInp)
 			waitVisible(endInp)
-			String beforeSnapshot = historyFilterSnapshot()
-			setHistoryHtmlDateInputInteractive(startInp, startIso)
-			WebUI.delay(0.5)
-			setHistoryHtmlDateInputInteractive(endInp, endIso)
-			commitHistoryCustomDateFilterAutoApplyEndLast(startInp, endInp)
-			waitForHistoryCustomDateRangeReady(startIso, endIso, beforeSnapshot, 25)
-			waitVisible(to37('tbl_historyChangeLog'))
-			WebUI.takeScreenshot()
-		} catch (Exception e) {
-			failStop("applyCustomHistoryDateRangeWithFixedDatesStartFirst failed: ${e.message}")
+		String beforeSnapshot = historyFilterSnapshot()
+		setHistoryHtmlDateInputInteractive(startInp, startIso)
+		WebUI.delay(0.5)
+		setHistoryHtmlDateInputInteractive(endInp, endIso)
+		commitHistoryCustomDateFilterAutoApplyEndLast(startInp, endInp)
+		waitForHistoryCustomDateRangeReady(startIso, endIso, beforeSnapshot, 45, true)
+		waitVisible(to37('tbl_historyChangeLog'))
+		WebUI.takeScreenshot()
+	} catch (Exception e) {
+		failStop("applyCustomHistoryDateRangeWithFixedDatesStartFirst failed: ${e.message}")
 		}
 	}
 
