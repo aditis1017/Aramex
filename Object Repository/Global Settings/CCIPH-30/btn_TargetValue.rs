@@ -6,18 +6,18 @@
    <elementGuidId>bd3a2432-ae65-4363-9a58-e10e8e0befd3</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>CSS</key>
+         <value>select#rule-editor-target-value</value>
+      </entry>
+      <entry>
          <key>XPATH</key>
-         <value>//input[@id='rule-editor-target-value']</value>
+         <value>//select[@id='rule-editor-target-value']</value>
       </entry>
       <entry>
          <key>BASIC</key>
       </entry>
-      <entry>
-         <key>CSS</key>
-         <value>select[id=&quot;rule-editor-target-value&quot;]</value>
-      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

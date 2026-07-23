@@ -12,11 +12,11 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 	
 	// 1) Microsoft login (session + cookies)
 	'This is for Login Profile'
-   //login.loginToCustomsManagementUsingAutomationProfile()
-    login.loginToStageCustomsManagementUsingAutomationProfile()
+   login.loginToCustomsManagementUsingAutomationProfile()
+   // login.loginToStageCustomsManagementUsingAutomationProfile()
     'This is used for Navigating to Management'
-   //globalSettings.navigateToGlobalSettings()
-    globalSettings.navigateToStageGlobalSettings()
+   globalSettings.navigateToGlobalSettings()
+   // globalSettings.navigateToStageGlobalSettings()
 	//WebUI.delay(2)
 	globalSettings.openTab(tab)
 	globalSettings.clickEditFirstRule()
