@@ -45,3 +45,23 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
 	WebUI.closeBrowser()
 	
 	// rework
+
+	
+	@Keyword
+	def verifyDuplicateOrSameRuleErrorVisible() {
+		try {
+			if (WebUI.waitForElementVisible(to('msg_duplicateRule'), 8, FailureHandling.OPTIONAL)) {
+				WebUI.verifyElementVisible(to('msg_duplicateRule'), FailureHandling.STOP_ON_FAILURE)
+				WebUI.takeScreenshot()
+				return
+			}
+			TestObject dyn = new TestObject('dupOrSameRuleMsg')
+			dyn.addProperty('xpath', ConditionType.EQUALS,
+				"//*[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'same rule') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'already exist') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'duplicate rule')]")
+			waitVisible(dyn)
+			WebUI.verifyElementVisible(dyn, FailureHandling.STOP_ON_FAILURE)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyDuplicateOrSameRuleErrorVisible failed: ${e.message}")
+		}
+	}

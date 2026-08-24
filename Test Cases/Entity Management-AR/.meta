@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>Entity Management AR (Revenue) test cases</description>
+   <name>Entity Management-AR</name>
+   <tag>EntityManagement,Revenue-AR</tag>
+   <folderType>TESTCASE</folderType>
+</FolderEntity>

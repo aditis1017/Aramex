@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>EXPORT B2B TEMPLATE downloads Excel with Keyword and Match Type columns</description>
+   <name>TC_B2B_006</name>
+   <tag>GenAI,High,CCIPH-226,B2B-Shipment,CCIPH-476</tag>
+   <comment>CSV: B2B-Keywords-Manager-TestCases.csv.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-226 | Linked: https://aramex.atlassian.net/browse/CCIPH-476</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2b-cciph226-tc_b2b_006</testCaseGuid>
+</TestCaseEntity>

@@ -1,7 +1,7 @@
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import apmanagement.ApCciph102Data as ApData
-import apmanagement.BusinessActions as APManagement
+import ap_ar_management.ApCciph102Data as ApData
+import ap_ar_management.BusinessActions as APManagement
 import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 // CSV: AP-Management.csv | CCIPH-102 | TC_AP_FUNC_005 | AC9 — trim input

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Destination Entity pre-selected on mapping screen â€” CCIPH-67</description>
+   <name>TC_ECS_MAP_002</name>
+   <tag>GenAI,EntityManagement,CCIPH-67</tag>
+   <comment>CSV: Entity Management-AP.xlsx | Jira: https://aramex.atlassian.net/browse/CCIPH-67</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>em-cciph67-tc_ecs_map_002-0025</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>ff1b7942-1f8c-4fe8-b7cf-60ccc8015592</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
+      </iterationEntity>
+      <testDataId>Data Files/Entity_Management_AP_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>ff1b7942-1f8c-4fe8-b7cf-60ccc8015592</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>em67-var-entity</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ff1b7942-1f8c-4fe8-b7cf-60ccc8015592</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>alternate_Entity</value>
+      <variableId>em67-var-alt-entity</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ff1b7942-1f8c-4fe8-b7cf-60ccc8015592</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Type</value>
+      <variableId>em67-var-charge-type</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ff1b7942-1f8c-4fe8-b7cf-60ccc8015592</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>service_Columns</value>
+      <variableId>em67-var-service-columns</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>em67-var-entity</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>em67-var-alt-entity</id>
+      <masked>false</masked>
+      <name>alternate_Entity</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>em67-var-charge-type</id>
+      <masked>false</masked>
+      <name>charge_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>em67-var-service-columns</id>
+      <masked>false</masked>
+      <name>service_Columns</name>
+   </variable>
+</TestCaseEntity>

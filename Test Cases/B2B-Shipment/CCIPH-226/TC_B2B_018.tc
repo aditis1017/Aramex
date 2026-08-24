@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Upload B2B_Trim.xlsx and verify leading/trailing spaces on Keyword are trimmed in table</description>
+   <name>TC_B2B_018</name>
+   <tag>GenAI,High,CCIPH-226,B2B-Shipment,CCIPH-476</tag>
+   <comment>CSV: B2B-Keywords-Manager-TestCases.csv.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-226 | Linked: https://aramex.atlassian.net/browse/CCIPH-476 | Upload: Upload Files/B2B_Trim.xlsx</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2b-cciph226-tc_b2b_018</testCaseGuid>
+   <variable>
+      <defaultValue>'Upload Files/B2B_Trim.xlsx'</defaultValue>
+      <description>B2B keywords Excel with padded Keyword values for trim validation (project-relative path)</description>
+      <id>b2b-cciph226-tc_b2b_018-trim-upload</id>
+      <masked>false</masked>
+      <name>trim_Upload_Path</name>
+   </variable>
+</TestCaseEntity>

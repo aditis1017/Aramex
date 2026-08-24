@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description>Roles &amp; Permissions CCIPH-89 through CCIPH-97. Chrome. Super Admin login via MicrosoftLoginKeywords.</description>
+   <name>Roles&amp;Permission-TEST_SUITE</name>
+   <tag>CCIPH-97,CCIPH-95,CCIPH-96,CCIPH-89,CCIPH-91,Roles&amp;Permission,RolesPermissions,CCIPH-92</tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>30</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>urm-cciph89-suite-0001</testSuiteGuid>
+   <testCaseLink>
+      <guid>urm-cciph89-link-002</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_002</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph89-link-005</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_005</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph89-link-014</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_014</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph89-link-015</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_015</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph89-link-016</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_016</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph89-link-017</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_017</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph89-link-018</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-89/TC_URM_FUNC_018</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph91-link-019</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-91/TC_URM_FUNC_019</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph91-tc_u_rm_func_019-roleName</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph91-link-020</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-91/TC_URM_FUNC_020</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph91-tc_u_rm_func_020-roleName</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph92-link-024</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-92/TC_URM_FUNC_024</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph92-tc_u_rm_func_024-sourceRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph92-link-025</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-92/TC_URM_FUNC_025</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph92-tc_u_rm_func_025-sourceRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph92-link-026</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-92/TC_URM_FUNC_026</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph92-tc_u_rm_func_026-sourceRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph95-link-009</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-95/TC_URM_FUNC_009</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph95-tc_u_rm_func_009-detailsRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph95-link-010</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-95/TC_URM_FUNC_010</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph95-tc_u_rm_func_010-detailsRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph95-link-011</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-95/TC_URM_FUNC_011</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph95-tc_u_rm_func_011-detailsRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph95-link-012</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-95/TC_URM_FUNC_012</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph95-tc_u_rm_func_012-detailsRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph95-link-013</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-95/TC_URM_FUNC_013</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph95-tc_u_rm_func_013-noPermRole</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph96-link-021</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-96/TC_URM_FUNC_021</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph96-tc_u_rm_func_021-permRole</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph96-tc_u_rm_func_021-permModule</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph96-link-022</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-96/TC_URM_FUNC_022</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph96-tc_u_rm_func_022-permRole</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph96-tc_u_rm_func_022-permModule</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph96-link-023</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-96/TC_URM_FUNC_023</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph96-tc_u_rm_func_023-permRole</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>urm-cciph96-tc_u_rm_func_023-permModule</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph97-link-003</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-97/TC_URM_FUNC_003</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph97-link-027</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-97/TC_URM_FUNC_027</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph97-link-028</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-97/TC_URM_FUNC_028</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph97-link-029</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-97/TC_URM_FUNC_029</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>urm-cciph97-link-030</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Roles&amp;Permission/CCIPH-97/TC_URM_FUNC_030</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+</TestSuiteEntity>

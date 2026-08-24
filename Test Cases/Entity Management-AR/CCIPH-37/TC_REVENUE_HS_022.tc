@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify History handles visible dataset (perf smoke)</description>
+   <name>TC_REVENUE_HS_022</name>
+   <tag>GenAI,EntityManagement-AR,CCIPH-37,Revenue-AR-History</tag>
+   <comment>CSV: Entity Management-AR-TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>em-ar-cciph37-tc_revenue_hs_022-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>em37ar-data-22</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>22</value>
+      </iterationEntity>
+      <testDataId>Data Files/Entity-Management-CCIPH37-AR-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>em37ar-data-22</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>em37ar-22-filter</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em37ar-data-22</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter2</value>
+      <variableId>em37ar-22-filter2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em37ar-data-22</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>page_Size</value>
+      <variableId>em37ar-22-page</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em37ar-data-22</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>days_Back</value>
+      <variableId>em37ar-22-days</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'ALL'</defaultValue>
+      <description></description>
+      <id>em37ar-22-filter</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>em37ar-22-filter2</id>
+      <masked>false</masked>
+      <name>history_Filter2</name>
+   </variable>
+   <variable>
+      <defaultValue>'10'</defaultValue>
+      <description></description>
+      <id>em37ar-22-page</id>
+      <masked>false</masked>
+      <name>page_Size</name>
+   </variable>
+   <variable>
+      <defaultValue>'90'</defaultValue>
+      <description></description>
+      <id>em37ar-22-days</id>
+      <masked>false</masked>
+      <name>days_Back</name>
+   </variable>
+</TestCaseEntity>

@@ -5,9 +5,9 @@
       "command": "npx",
       "args": ["-y", "@mcp-devtools/jira@0.2.6"],
       "env": {
-        "JIRA_URL": "${env:JIRA_URL}",
-        "JIRA_API_MAIL": "${env:JIRA_API_MAIL}",
-        "JIRA_API_KEY": "${env:JIRA_API_KEY}"
+        "JIRA_URL": "${env:https://aramex.atlassian.net}",
+        "JIRA_API_MAIL": "${env:aditi.singh1@tothenew.com}",
+        "JIRA_API_KEY": "${env:ATATT3xFfGF0xR4D6Tfx_onPt22GmdxSeZXY1IentSONIEu7qjGCjwwgKZLn-8i4RRvHbOAE__9tlv0EcGVklRxv9GMD7M0w1UYbmUTzvrllV31EqAXe6TJS8fF7WVW2TWiQRPUdLLOY_Z9qWI4L-azz57G8R2EQFF3LJUrBbxwcVv5688hBzvs=336624E4}"
       }
     }
   }

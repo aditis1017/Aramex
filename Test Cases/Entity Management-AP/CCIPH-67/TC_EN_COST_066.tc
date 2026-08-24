@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify entity/charge switching does not cross-contaminate service codes â€” CCIPH-67</description>
+   <name>TC_EN_COST_066</name>
+   <tag>GenAI,EntityManagement,CCIPH-67</tag>
+   <comment>CSV: Entity Management-AP.xlsx | Jira: https://aramex.atlassian.net/browse/CCIPH-67</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>em-cciph67-tc_en_cost_066-0018</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>em67-data-18</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
+      </iterationEntity>
+      <testDataId>Data Files/Entity-Management-CCIPH67-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>em67-data-18</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>em67-var-entity</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em67-data-18</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>alternate_Entity</value>
+      <variableId>em67-var-alt-entity</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em67-data-18</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Type</value>
+      <variableId>em67-var-charge-type</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em67-data-18</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>service_Columns</value>
+      <variableId>em67-var-service-columns</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'JED'</defaultValue>
+      <description></description>
+      <id>em67-var-entity</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>'RUH'</defaultValue>
+      <description></description>
+      <id>em67-var-alt-entity</id>
+      <masked>false</masked>
+      <name>alternate_Entity</name>
+   </variable>
+   <variable>
+      <defaultValue>'ECD'</defaultValue>
+      <description></description>
+      <id>em67-var-charge-type</id>
+      <masked>false</masked>
+      <name>charge_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>'Service Code|Description|Service Description|Active|Tax Code|Tax Value|Default AP Account'</defaultValue>
+      <description></description>
+      <id>em67-var-service-columns</id>
+      <masked>false</masked>
+      <name>service_Columns</name>
+   </variable>
+</TestCaseEntity>

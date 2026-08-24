@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Entity Management-AR CCIPH-63 Revenue-AR Service Code list/export. Source: Entity-Management-CCIPH63-AR-Data.csv. Columns aligned to Jira AC1/AC2 (Billable/Split).</description>
+   <name>Entity-Management-CCIPH63-AR-Data</name>
+   <tag>CCIPH-63,EntityManagement-AR,Revenue-AR</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>em-ar-cciph63-data-4a1b-9c0d-8e7f-000000000063</dataFileGUID>
+   <dataSourceUrl>Entity-Management-CCIPH63-AR-Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

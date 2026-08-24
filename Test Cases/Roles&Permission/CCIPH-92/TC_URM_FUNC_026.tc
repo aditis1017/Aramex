@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Duplicate functionality under Roles Tab for close button</description>
+   <name>TC_URM_FUNC_026</name>
+   <tag>GenAI,High,Roles&amp;Permission,CCIPH-92</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-92 | AC4 - Cancel duplicate action</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph92-tc_u_rm_func_026</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph92-tc_u_rm_func_026-sourceRole</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Super Admin'</defaultValue>
+      <description>Source role to duplicate from ellipsis menu</description>
+      <id>urm-cciph92-tc_u_rm_func_026-sourceRole</id>
+      <masked>false</masked>
+      <name>sourceRoleName</name>
+   </variable>
+</TestCaseEntity>

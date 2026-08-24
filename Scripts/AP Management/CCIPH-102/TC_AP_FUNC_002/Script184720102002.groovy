@@ -1,6 +1,6 @@
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import apmanagement.BusinessActions as APManagement
+import ap_ar_management.BusinessActions as APManagement
 import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 // CSV: AP-Management.csv | CCIPH-102 | TC_AP_FUNC_002 | AC1 — search controls visible

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify View Details functionality under Roles Tab for no Permission</description>
+   <name>TC_URM_FUNC_013</name>
+   <tag>GenAI,High,CCIPH-95,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-95 | AC5 - No permissions assigned</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph95-tc_u_rm_func_013</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph95-tc_u_rm_func_013-noPermRole</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Viewer'</defaultValue>
+      <description>Role expected to show No permissions assigned (override per environment)</description>
+      <id>urm-cciph95-tc_u_rm_func_013-noPermRole</id>
+      <masked>false</masked>
+      <name>noPermRoleName</name>
+   </variable>
+</TestCaseEntity>

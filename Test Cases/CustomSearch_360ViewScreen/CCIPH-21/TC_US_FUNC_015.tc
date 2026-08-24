@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validated Saved Searches Edit functionality as faviourate (CCIPH-21 / TC_US_FUNC_015)</description>
+   <name>TC_US_FUNC_015</name>
+   <tag>GenAI,CCIPH-21,CustomSearch,360ViewScreen</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-21</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph21-tc-us-func-015-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs21-link-tc-us-func-015</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>14</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs21-link-tc-us-func-015</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>favorite_Label</value>
+      <variableId>cs21-var-favorite-Label</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cs21-var-favorite-Label</id>
+      <masked>false</masked>
+      <name>favorite_Label</name>
+   </variable>
+</TestCaseEntity>

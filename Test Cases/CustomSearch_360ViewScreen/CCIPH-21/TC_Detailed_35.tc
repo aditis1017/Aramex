@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify that data loads correctly after a hard refresh and default pagination settings are applied (CCIPH-21 / TC_Detailed_35)</description>
+   <name>TC_Detailed_35</name>
+   <tag>GenAI,CCIPH-21,CustomSearch,360ViewScreen</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-21</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph21-tc-detailed-35-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs21-link-tc-detailed-35</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>41</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

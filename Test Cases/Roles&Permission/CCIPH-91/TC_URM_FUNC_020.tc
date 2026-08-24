@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Cancel Edit functionality under Roles Tab</description>
+   <name>TC_URM_FUNC_020</name>
+   <tag>GenAI,High,CCIPH-91,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-91 | AC4 - Cancel edit without saving</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph91-tc_u_rm_func_020</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph91-tc_u_rm_func_020-roleName</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Super Admin'</defaultValue>
+      <description>Role card to open Edit from ellipsis menu</description>
+      <id>urm-cciph91-tc_u_rm_func_020-roleName</id>
+      <masked>false</masked>
+      <name>editRoleName</name>
+   </variable>
+</TestCaseEntity>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>tab_ECD_dropdownField</name>
+   <tag></tag>
+   <elementGuidId>093acea1-5abc-47eb-9d8f-b6a4964e586a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//select[starts-with(@id,'entity-settings-${fieldName}') or contains(@id,'${fieldName}') or starts-with(@aria-label,'entity-settings-${fieldName}') or @aria-label='entity-settings-${fieldName}']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <type>Main</type>
+      <value></value>
+      <webElementGuid>fe21ccbd-917f-4e70-86f6-7b5c6b16817c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <type>Main</type>
+      <value></value>
+      <webElementGuid>bd39729d-c933-4233-9c00-372c65195e89</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

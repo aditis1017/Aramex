@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify permissions under Permission Matrix page</description>
+   <name>TC_URM_FUNC_030</name>
+   <tag>GenAI,High,CCIPH-97,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-97 | AC4/AC6</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph97-tc_u_rm_func_030</testCaseGuid>
+</TestCaseEntity>

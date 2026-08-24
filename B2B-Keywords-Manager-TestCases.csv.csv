@@ -1,0 +1,175 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Case Procedure,Test Steps,Acceptance Criteria,Expected Result,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,"(Functional)
+Pass/Fail",Functional Remarks,Remarks.1,Assigned to,Status,Comments
+B2B Keywords Manager,CCIPH-226,TC_B2B_001,Super Admin sees B2B Keywords Manager menu above Role and Permissions,Menu visibility,"1. Open http://dev-cc.aramex.com/customs-management in Chrome
+2. Login as Super Admin user
+3. Wait for Customs Management left-hand navigation menu to be visible
+4. Locate menu item labeled B2B Keywords Manager
+5. Locate menu item labeled Role and Permissions
+6. Verify B2B Keywords Manager appears immediately above Role and Permissions in the left menu",AC4: Option to upload B2B Excel / NOTE menu placement,B2B Keywords Manager menu option is visible in the left navigation immediately above Role and Permissions.,High,QA,Yes,Not Started,Assert menu order for automation locator strategy,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_002,Click B2B Keywords Manager opens upload screen,Navigation,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Wait for left navigation to load
+3. Click left menu item B2B Keywords Manager
+4. Wait for page URL to contain /b2b-keywords-manager
+5. Wait for page heading B2B Keywords Manager to be visible
+6. Verify Upload Excel file section is visible",AC4: Option to upload B2B Excel,User is navigated to the B2B Keywords Manager screen showing the Upload Excel file section.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_003,B2B Keywords Manager page shows all primary UI controls,UI smoke layout,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Click left menu B2B Keywords Manager
+3. Wait for page heading B2B Keywords Manager
+4. Verify BACK link/button is visible at top left of content
+5. Verify Upload Excel file dropzone text Click to upload or drag and drop is visible
+6. Verify accepted format helper text Accepted format: .xlsx (max 35 MB) is visible
+7. Verify button EXPORT B2B TEMPLATE is visible
+8. Verify button SUBMIT is visible
+9. Verify section heading B2B keywords is visible
+10. Verify table column headers Keyword and Match Type are visible
+11. Verify footer text containing keywords loaded is visible",AC4 / AC5 / UI screen,"All primary controls (BACK, upload dropzone, EXPORT B2B TEMPLATE, SUBMIT, B2B keywords table with Keyword and Match Type columns, and keywords loaded footer) are visible on the page.",High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_004,SUBMIT remains disabled when no Excel file is selected,Default state,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Click left menu B2B Keywords Manager
+3. Wait for Upload Excel file section to load
+4. Do not select or drop any file into the upload dropzone
+5. Inspect the SUBMIT button enabled/disabled state",AC4 UI behaviour,SUBMIT button is disabled while no .xlsx file is staged in the upload dropzone.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_005,BACK navigates away from B2B Keywords Manager,Navigation,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Click left menu B2B Keywords Manager
+3. Wait for page heading B2B Keywords Manager
+4. Click BACK at top left of the content area
+5. Wait for navigation to complete
+6. Verify page is no longer on /b2b-keywords-manager (or previous Customs Management screen is shown)",UI navigation,Clicking BACK navigates the user away from the B2B Keywords Manager page.,Medium,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_006,EXPORT B2B TEMPLATE downloads Excel with Keyword and Match Type columns,Template download,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Click left menu B2B Keywords Manager
+3. Wait for EXPORT B2B TEMPLATE button to be clickable
+4. Note current downloads folder file list
+5. Click EXPORT B2B TEMPLATE
+6. Wait for .xlsx file download to complete
+7. Open the downloaded Excel file
+8. Verify worksheet has column header Keyword
+9. Verify worksheet has column header Match Type
+10. Verify those are the two required template columns for upload",AC5: Download Template,Downloaded B2B template Excel contains exactly the required columns Keyword and Match Type.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_007,Selecting valid .xlsx enables SUBMIT button,File staging,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Click left menu B2B Keywords Manager
+3. Prepare a valid .xlsx under 35 MB with columns Keyword and Match Type and at least one data row (e.g. Keyword=TestCorp Match Type=Contains)
+4. Click the upload dropzone (or drag and drop the file onto Click to upload or drag and drop)
+5. Wait until the staged file name/indicator is shown in the upload area
+6. Inspect the SUBMIT button enabled/disabled state",AC4 upload flow,SUBMIT button becomes enabled after a valid .xlsx file is staged in the upload dropzone.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_008,Submit valid Excel updates B2B keywords table and loaded count,Happy path upload,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Click left menu B2B Keywords Manager
+3. Note current table row count and footer keywords loaded value
+4. Prepare valid .xlsx with unique Keyword and Match Type pairs (e.g. AutoKW1/Contains and AutoKW2/Exact)
+5. Click upload dropzone and select the .xlsx file (or drag and drop)
+6. Wait for SUBMIT to become enabled
+7. Click SUBMIT
+8. Wait for success feedback (toast/message) if shown
+9. Wait for B2B keywords table to refresh
+10. Verify uploaded Keyword values appear in the Keyword column
+11. Verify corresponding Match Type values appear in the Match Type column
+12. Verify footer text N keywords loaded matches the number of rows displayed in the table",AC4 upload + Validations,After successful Submit the B2B keywords table displays the uploaded Keyword and Match Type rows and the keywords loaded footer matches the table row count.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_009,Upload row with Match Type Exact displays Exact in table,Match Type Exact,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with one unique row Keyword=ExactKW01 Match Type=Exact
+4. Upload the file via dropzone
+5. Click SUBMIT when enabled
+6. Wait for table refresh
+7. Locate row where Keyword equals ExactKW01
+8. Read Match Type cell for that row",AC Excel Match Type Exact,The B2B keywords table shows Match Type Exact for the uploaded ExactKW01 keyword row.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_010,Upload row with Match Type Contains displays Contains in table,Match Type Contains,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with one unique row Keyword=ContainsKW01 Match Type=Contains
+4. Upload the file via dropzone
+5. Click SUBMIT when enabled
+6. Wait for table refresh
+7. Locate row where Keyword equals ContainsKW01
+8. Read Match Type cell for that row",AC Excel Match Type Contains,The B2B keywords table shows Match Type Contains for the uploaded ContainsKW01 keyword row.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_011,Non-.xlsx file is rejected by upload control,Invalid file type,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare a non-.xlsx file (e.g. .csv or .pdf) under 35 MB
+4. Attempt to select/drop the file onto the upload dropzone
+5. Observe UI validation message or file rejection behaviour
+6. Verify SUBMIT remains disabled or upload is not accepted",UI format constraint: Accepted format .xlsx,The UI rejects the non-.xlsx file with a clear validation message and does not enable a successful Submit of that file.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_012,File larger than 35 MB is rejected,Max file size boundary,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare an .xlsx file larger than 35 MB
+4. Attempt to select/drop the file onto the upload dropzone
+5. Observe UI validation / rejection message
+6. Verify SUBMIT does not complete a successful upload of the oversized file",UI constraint: max 35 MB,The UI rejects the .xlsx file exceeding 35 MB with a clear user-facing validation message and does not successfully submit it.,Medium,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_013,Duplicate Keyword and Match Type combination is not allowed,Duplicate validation,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Confirm an existing table row Keyword=abc Match Type=Contains (or upload it first if missing)
+4. Prepare .xlsx containing the same combination Keyword=abc Match Type=Contains
+5. Upload the file and click SUBMIT
+6. Observe UI error/validation feedback
+7. Verify the duplicate combination is not added as an additional identical row beyond the allowed rule",Validation 2: Duplicate Keywords & Match Type,The system shows a clear UI validation error and does not allow saving a duplicate Keyword and Match Type combination.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_014,Excel with extra columns beyond Keyword and Match Type is accepted and extras ignored,Extra columns,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with columns Keyword Match Type and ExtraColumn
+4. Add one unique data row e.g. Keyword=ExtraColKW01 Match Type=Contains ExtraColumn=IgnoreMe
+5. Upload file and click SUBMIT
+6. Wait for table refresh
+7. Verify Keyword ExtraColKW01 appears with Match Type Contains
+8. Verify no ExtraColumn is required or shown as a table column",Validation 1: Extra Columns ignored,Upload succeeds and the keyword is loaded using Keyword and Match Type while additional Excel columns are ignored.,Medium,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_015,Mixed-case Match Type values Exact and Contains are accepted,Case-insensitive Match Type,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with unique rows: Keyword=MixExact01 Match Type=exact ; Keyword=MixContains01 Match Type=CONTAINS
+4. Upload file and click SUBMIT
+5. Wait for table refresh
+6. Verify MixExact01 appears with Match Type normalized/accepted as Exact (or equivalent Exact display)
+7. Verify MixContains01 appears with Match Type normalized/accepted as Contains",Validation 3: Mixed Case MatchType + NOTE case-insensitive,Mixed-case Match Type values exact/CONTAINS are accepted and displayed as valid Exact/Contains match types in the B2B keywords table.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_016,Keyword longer than 50 characters is rejected,Keyword max length,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with Keyword value of 51 characters and Match Type=Contains
+4. Upload file and click SUBMIT
+5. Observe UI validation/error feedback
+6. Verify the 51-character keyword is not successfully added to the B2B keywords table",Validation 4: Length of Keywords max 50,The UI shows a validation error and does not save a keyword longer than 50 characters.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_017,Keyword of exactly 50 characters is accepted,Keyword max length boundary,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with Keyword value of exactly 50 characters (unique) and Match Type=Contains
+4. Upload file and click SUBMIT
+5. Wait for table refresh
+6. Verify the 50-character Keyword appears in the Keyword column",Validation 4: Length of Keywords max 50,A keyword of exactly 50 characters is accepted and displayed in the B2B keywords table.,Medium,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_018,Leading and trailing spaces on Keyword are trimmed on save,Trim spaces,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare .xlsx with Keyword value padded with spaces e.g. three spaces + ABC Corp + three spaces and Match Type=Contains
+4. Upload file and click SUBMIT
+5. Wait for table refresh
+6. Locate the saved Keyword cell for that row
+7. Verify displayed Keyword equals ABC Corp without leading or trailing spaces",Validation 5: Leading/Trailing Spaces trimmed,The saved Keyword is stored and displayed as trimmed text without leading or trailing spaces.,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_019,Non Super Admin cannot access B2B Keywords Manager upload,RBAC,"1. Open http://dev-cc.aramex.com/customs-management in Chrome
+2. Login as a non Super Admin role (e.g. OPS / Customs Manager without Super Admin)
+3. Wait for left navigation to load
+4. Verify B2B Keywords Manager menu item is not visible OR is not clickable
+5. Attempt to open URL http://dev-cc.aramex.com/customs-management/b2b-keywords-manager directly
+6. Observe access denied behaviour (redirect hide or error message)",NOTE: upload available to Super Admin only,Non Super Admin users cannot access the B2B Keywords Manager upload screen (menu hidden/blocked or direct URL denied with clear UI feedback).,High,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_020,Keywords loaded footer count matches table row count,Table footer consistency,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Wait for B2B keywords table to load
+4. Count the number of data rows in the table (Keyword/Match Type rows)
+5. Read the footer text e.g. N keywords loaded
+6. Compare N to the counted number of data rows",UI table footer,The numeric value in the keywords loaded footer equals the number of Keyword rows shown in the B2B keywords table.,Medium,QA,Yes,Not Started,,,,,,,
+B2B Keywords Manager,CCIPH-226,TC_B2B_021,Drag and drop valid .xlsx onto dropzone stages the file,Drag and drop upload,"1. Login as Super Admin on http://dev-cc.aramex.com/customs-management
+2. Navigate to B2B Keywords Manager
+3. Prepare a valid .xlsx under 35 MB with Keyword and Match Type columns
+4. Drag the file and drop it onto the Click to upload or drag and drop area
+5. Wait for staged file indicator/name to appear
+6. Verify SUBMIT becomes enabled",AC4 upload UX,Dragging and dropping a valid .xlsx onto the dropzone stages the file and enables SUBMIT.,Medium,QA,Yes,Not Started,,,,,,,
+Shipment Classification,CCIPH-226,TC_B2B_022,E-Commerce BusinessType shipments are excluded from B2B classification,AC1 backend/UI verification,"1. Ensure test shipment data exists with BusinessType = E-Commerce
+2. Ensure consignee name would otherwise match a loaded B2B keyword
+3. Trigger shipment processing / classification job or open Charges Dashboard record for that shipment as available in UI
+4. Wait for classification result to be available
+5. Verify the shipment is NOT classified as B2B due to E-Commerce exclusion",AC1: Exclude E-commerce Shipments,Shipments with BusinessType E-Commerce are excluded from B2B classification even if consignee name matches a B2B keyword.,High,QA,Yes,Not Started,May require API/DB assertion if UI does not expose classification field,,,,,,
+Shipment Classification,CCIPH-226,TC_B2B_023,Non e-commerce shipment is eligible for B2B classification evaluation,AC2 eligibility,"1. Ensure test shipment exists with BusinessType not equal to E-Commerce
+2. Trigger shipment evaluation/classification
+3. Verify the shipment is considered eligible for B2B/AI classification processing (not excluded by e-commerce rule)",AC2: Identify Eligible Shipments,Non e-commerce shipments are treated as eligible for B2B classification evaluation.,Medium,QA,Yes,Not Started,Backend/integration assertion,,,,,,
+Shipment Classification,CCIPH-226,TC_B2B_024,Contains keyword match classifies consignee name as B2B,Keyword Contains matching,"1. Login as Super Admin and ensure B2B keyword Keyword=Corp Match Type=Contains is loaded via B2B Keywords Manager
+2. Create/process a non e-commerce shipment whose Consignee Name contains Corp (e.g. ABC Corp Ltd) with case variation
+3. Trigger classification
+4. Verify shipment is classified as B2B based on Contains keyword match (case-insensitive)",NOTE Match Type Contains + case-insensitive,A non e-commerce shipment whose consignee name contains the B2B keyword is classified as B2B using case-insensitive Contains matching.,High,QA,Yes,Not Started,End-to-end: UI keyword load + classification assert,,,,,,
+Shipment Classification,CCIPH-226,TC_B2B_025,Exact keyword match requires full consignee name equality,Keyword Exact matching,"1. Ensure B2B keyword Keyword=ACME LLC Match Type=Exact is loaded
+2. Process shipment with Consignee Name exactly ACME LLC (case-insensitive) and BusinessType not E-Commerce
+3. Verify shipment is classified as B2B
+4. Process another shipment with Consignee Name ACME LLC Trading (contains but not exact)
+5. Verify Exact rule does not classify the second shipment as B2B solely from that Exact keyword",NOTE Match Type Exact + case-insensitive,Exact Match Type classifies only when consignee name matches the keyword exactly (case-insensitive) and does not match longer partial names.,High,QA,Yes,Not Started,Pair with Contains case for automation data set,,,,,,
+Shipment Classification,CCIPH-226,TC_B2B_026,Classification uses Consignee Name keyword then Consignee Number AR Business Type rules,CCIPH-476 logic,"1. Ensure no B2B keyword matches the test consignee name
+2. Process shipment with Consignee Number not available and verify result B2C
+3. Process shipment with Consignee Number available and AR Business Type E-Commerce and verify B2C
+4. Process shipment with Consignee Number available and AR Business Type Wholesale and verify B2B
+5. Process shipment with Consignee Number available and AR Business Type Corporate Business and verify B2B
+6. Process shipment with Consignee Number available and AR Business Type Oil and Gas and verify B2B
+7. Process shipment with Consignee Number available and AR Business Type Retail (Cash) and verify B2C",CCIPH-476 B2B vs B2C Classification of Shipments,Shipment B2B/B2C outcome follows the documented order: B2B keyword match first then Consignee Number absence equals B2C then AR Business Type mapping for E-Commerce/Retail Cash to B2C and Wholesale/Corporate Business/Oil and Gas to B2B.,High,QA,Yes,Not Started,Split into separate automated scripts per mapping if preferred; keep seed data matrix,,,,,,

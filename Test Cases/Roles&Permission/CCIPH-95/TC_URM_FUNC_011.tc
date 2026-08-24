@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify View Details functionality under Roles Tab for close button</description>
+   <name>TC_URM_FUNC_011</name>
+   <tag>GenAI,CCIPH-95,Critical,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-95 | AC6 - Close role details</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph95-tc_u_rm_func_011</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph95-tc_u_rm_func_011-detailsRole</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Super Admin'</defaultValue>
+      <description>Role card to open View Details</description>
+      <id>urm-cciph95-tc_u_rm_func_011-detailsRole</id>
+      <masked>false</masked>
+      <name>detailsRoleName</name>
+   </variable>
+</TestCaseEntity>
