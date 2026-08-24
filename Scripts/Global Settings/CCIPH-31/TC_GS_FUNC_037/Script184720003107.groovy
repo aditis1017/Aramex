@@ -30,16 +30,16 @@ import customsmanagement.MicrosoftLoginKeywords as MSLogin
     globalSettings.navigateToGlobalSettings()
    //globalSettings.navigateToStageGlobalSettings()
 
-//	globalSettings.clickEditFirstRule()
-	globalSettings.createDduRuleWithCostOfGoods(ruleValue)
-	//globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, 'Equals', destination)
-	//globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, conditionOperator, destination)
 
-	WebUI.delay(2)
+	globalSettings.createDduRuleWithCostOfGoods(ruleValue)
+	
+	globalSettings.verifySavedRuleWithCondition(conditionField, ruleValue, conditionOperator)
+
+	WebUI.delay(1)
 	globalSettings.createDduRuleWithCostOfGoods(ruleValue)
 	//globalSettings.selectConditionFieldOperatorAndValueByLabel(conditionField, conditionOperator, valuesComparator)
-	globalSettings.clickModalSave()
-	globalSettings.verifyDuplicateRuleMessageVisible('Duplicate Rules')
+	//globalSettings.clickModalSave()
+	globalSettings.verifyDuplicateRuleMessageVisible()
 
 	WebUI.takeScreenshot()
 	WebUI.closeBrowser()

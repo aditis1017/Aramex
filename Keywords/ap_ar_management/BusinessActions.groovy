@@ -109,9 +109,14 @@ class BusinessActions {
 		'Entity',
 		'Account Type',
 	]
-	/** Editable detail {@code select} — cursor-pointer dropdown (Rate Currency, Status, etc.). */
+	/** Legacy native {@code select} on detail form — retained as fallback only. */
 	private static final String DETAIL_EDITABLE_SELECT_XPATH =
 		"select[contains(@class,'h-10') and contains(@class,'cursor-pointer') and contains(@class,'appearance-none')]"
+	/** AP Account Detail SearchableSelect trigger ({@code accountDetailsTrigger} + listbox). */
+	private static final String DETAIL_EDITABLE_SEARCHABLE_TRIGGER_XPATH =
+		"button[contains(@class,'accountDetailsTrigger') and @aria-haspopup='listbox']"
+	private static final String DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH =
+		"label[contains(@class,'accountDetailsLabel')]"
 	/** 1-based index of editable selects on detail form (left-to-right in UI). */
 	private static final Map<String, Integer> DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL = [
 		'Rate Currency'     : 1,
@@ -126,6 +131,7 @@ class BusinessActions {
 		'Billing Currency'       : 3,
 		'Invoice Frequency'      : 4,
 		'Customs Type'           : 5,
+		'Eligible For Billing'   : 6,
 		'Eligible for Billing'   : 6,
 		'Invoice Trigger'        : 7,
 		'Invoice Break By'       : 8,
@@ -674,6 +680,20 @@ class BusinessActions {
 		return headerFragment.equalsIgnoreCase('Account Name') ? 1 : 0
 	}
 
+	private static final String AP_RESULTS_TABLE_XPATH =
+		"//table[.//th[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'account number')]]"
+
+	/** First-row Account Number hyperlink; resolves column by header and tolerates non-{@code #} href values. */
+	private static TestObject apFirstRowAccountNumberLink() {
+		int col = columnIndexForHeader('Account Number')
+		int tdPos = col + 1
+		TestObject link = new TestObject('ap_first_row_account_number_link')
+		link.addProperty('xpath', ConditionType.EQUALS,
+			"${AP_RESULTS_TABLE_XPATH}//tbody/tr[contains(@class,'group')][1]/td[${tdPos}]//a | " +
+			"${AP_RESULTS_TABLE_XPATH}//tbody/tr[contains(@class,'group')][1]//a[contains(@class,'font-bold') and contains(@class,'underline')]")
+		return link
+	}
+
 	@Keyword
 	def verifyAllRowsContainInColumn(String columnHeaderFragment, String expectedSubstring) {
 		try {
@@ -1020,7 +1040,7 @@ class BusinessActions {
 	def verifyAccountNumberCellsAreHyperlinks() {
 		try {
 			verifySearchResultsTableVisible()
-			TestObject link = to103('lnk_accountNumberInFirstRow')
+			TestObject link = apFirstRowAccountNumberLink()
 			waitVisible(link)
 			WebUI.verifyElementVisible(link, FailureHandling.STOP_ON_FAILURE)
 			WebUI.takeScreenshot()
@@ -1032,7 +1052,7 @@ class BusinessActions {
 	@Keyword
 	def verifyAccountNumberLinkShowsPointerCursorOnHover() {
 		try {
-			TestObject link = to103('lnk_accountNumberInFirstRow')
+			TestObject link = apFirstRowAccountNumberLink()
 			waitVisible(link)
 			WebElement el = WebUiCommonHelper.findWebElement(link, DEFAULT_TIMEOUT)
 			new Actions(DriverFactory.getWebDriver()).moveToElement(el).perform()
@@ -1057,7 +1077,7 @@ class BusinessActions {
 		try {
 			verifySearchResultsTableVisible()
 			TestObject row = to103('tr_searchResultsFirstRow')
-			TestObject link = to103('lnk_accountNumberInFirstRow')
+			TestObject link = apFirstRowAccountNumberLink()
 			waitVisible(row)
 			waitVisibleClickable(link)
 
@@ -1539,19 +1559,40 @@ class BusinessActions {
 
 	// ---------- CCIPH-118: AR Account Detail page ----------
 
+	private static Integer arDetailEditableSelectIndexForLabel(String labelText) {
+		String label = (labelText ?: '').trim()
+		if (!label) {
+			return null
+		}
+		Integer exact = AR_DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL.get(label)
+		if (exact != null) {
+			return exact
+		}
+		String normalized = label.toLowerCase()
+		Map.Entry match = AR_DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL.find { Map.Entry entry ->
+			(entry.key ?: '').toLowerCase() == normalized
+		}
+		return match?.value as Integer
+	}
+
 	private static TestObject resolveArDetailEditableField(String labelText) {
 		String label = (labelText ?: '').trim()
 		TestObject byLabel = detailEditableFieldByLabel(label)
 		if (WebUI.waitForElementPresent(byLabel, 8, FailureHandling.OPTIONAL)) {
 			return byLabel
 		}
-		Integer idx = AR_DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL.get(label)
+		Integer idx = arDetailEditableSelectIndexForLabel(label)
 		if (idx != null) {
 			TestObject byIndex = detailEditableSelectByIndex(idx)
 			if (WebUI.waitForElementPresent(byIndex, 8, FailureHandling.OPTIONAL)) {
 				KeywordUtil.logInfo("Resolved AR editable '${label}' via select index ${idx}.")
 				return byIndex
 			}
+		}
+		TestObject bySearchable = detailEditableSearchableSelectByLabel(label)
+		if (WebUI.waitForElementPresent(bySearchable, 8, FailureHandling.OPTIONAL)) {
+			KeywordUtil.logInfo("Resolved AR editable '${label}' via SearchableSelect label.")
+			return bySearchable
 		}
 		TestObject byButton = detailEditableButtonByLabel(label)
 		if (WebUI.waitForElementPresent(byButton, 8, FailureHandling.OPTIONAL)) {
@@ -4689,18 +4730,30 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 
 	/**
 	 * Detail form field block (label + control) — scoped to avoid search-panel labels (e.g. Entity).
+	 * Matches labels with optional suffixes (e.g. {@code Status *}).
 	 */
+	private static String detailFormLabelMatchCondition(String labelText) {
+		String lit = xpathLiteral((labelText ?: '').trim())
+		return "normalize-space()=${lit} or starts-with(normalize-space(), concat(${lit}, ' '))"
+	}
+
 	private static String detailFormFieldBlockXPath(String labelText) {
-		String lit = xpathLiteral(labelText)
-		return "//div[contains(@class,'min-w-0')][.//label[normalize-space()=${lit}]]"
+		String cond = detailFormLabelMatchCondition(labelText)
+		return "//div[contains(@class,'min-w-0')][.//label[${cond}]]"
 	}
 
 	/**
 	 * Exact label on detail form: {@code //div[@class contains min-w-0]//label[normalize-space()='Entity']}
 	 */
 	private static String detailLabelExactMatchXPath(String labelText) {
-		String lit = xpathLiteral(labelText)
-		return "${detailFormFieldBlockXPath(labelText)}//label[normalize-space()=${lit}]"
+		String cond = detailFormLabelMatchCondition(labelText)
+		return "${detailFormFieldBlockXPath(labelText)}//label[${cond}]"
+	}
+
+	private static String detailFormFieldControlXPath(String labelText) {
+		String lx = detailLabelExactMatchXPath(labelText)
+		return "${lx}/ancestor::div[contains(@class,'fieldControl')][1]" +
+			" | ${detailFormFieldBlockXPath(labelText)}//div[contains(@class,'fieldControl')][1]"
 	}
 
 	private static TestObject detailLabelByExactText(String labelText) {
@@ -4728,41 +4781,69 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		return field
 	}
 
-	/** Editable select by position among all {@code cursor-pointer} selects on the detail view. */
+	/** Editable SearchableSelect by position among {@code accountDetailsTrigger} buttons (left-to-right). */
 	private static TestObject detailEditableSelectByIndex(int oneBasedIndex) {
 		TestObject field = new TestObject("ap_detail_editable_select_idx_${oneBasedIndex}")
 		field.addProperty('xpath', ConditionType.EQUALS,
-			"(//${DETAIL_EDITABLE_SELECT_XPATH})[${oneBasedIndex}]"
+			"(//${DETAIL_EDITABLE_SEARCHABLE_TRIGGER_XPATH})[${oneBasedIndex}]" +
+			" | (//${DETAIL_EDITABLE_SELECT_XPATH})[${oneBasedIndex}]"
 		)
 		return field
 	}
 
 	/** Combobox-style control (when UI uses {@code button} instead of native {@code select}). */
 	private static TestObject detailEditableButtonByLabel(String labelText) {
-		String lit = xpathLiteral(labelText)
-		String labelXp = "//label[normalize-space()=${lit}]"
+		String cond = detailFormLabelMatchCondition(labelText)
+		String labelXp = "//label[${cond}]"
+		String blockXp = detailFormFieldBlockXPath(labelText)
 		TestObject field = new TestObject("ap_detail_editable_btn_${labelText.replaceAll('[^a-zA-Z0-9]+', '_')}")
 		field.addProperty('xpath', ConditionType.EQUALS,
 			"${labelXp}/following-sibling::button[contains(@class,'cursor-pointer')][1]" +
 			" | ${labelXp}/following-sibling::button[@role='combobox'][1]" +
 			" | ${labelXp}/parent::*//button[contains(@class,'h-10') and contains(@class,'cursor-pointer')][1]" +
-			" | ${labelXp}/following::button[contains(@class,'cursor-pointer')][1]"
+			" | ${labelXp}/following::button[contains(@class,'cursor-pointer')][1]" +
+			" | ${blockXp}//button[contains(@class,'cursor-pointer') and contains(@class,'h-10')][1]"
+		)
+		return field
+	}
+
+	/** SearchableSelect listbox trigger on AP Account Detail (Rate Currency, Status, etc.). */
+	private static TestObject detailEditableSearchableSelectByLabel(String labelText) {
+		String safeId = (labelText ?: '').replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = detailFormLabelMatchCondition(labelText)
+		String labelXp = "//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]"
+		String blockXp = detailFormFieldBlockXPath(labelText)
+		TestObject field = new TestObject("ap_detail_editable_searchable_${safeId}")
+		field.addProperty('xpath', ConditionType.EQUALS,
+			"//div[contains(@class,'accountDetailsWrap')][.//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]]//${DETAIL_EDITABLE_SEARCHABLE_TRIGGER_XPATH}" +
+			" | ${labelXp}/following-sibling::${DETAIL_EDITABLE_SEARCHABLE_TRIGGER_XPATH}" +
+			" | ${blockXp}//${DETAIL_EDITABLE_SEARCHABLE_TRIGGER_XPATH}" +
+			" | //label[${cond}]/following-sibling::button[@aria-haspopup='listbox'][1]"
 		)
 		return field
 	}
 
 	/**
-	 * Editable control for a label: native {@code select} (preferred) or combobox {@code button}.
-	 * Uses label-following axis first; falls back to known select index on the detail row.
+	 * Editable control for a label — native {@code select} paths (used by AR detail fallback chain).
 	 */
 	private static TestObject detailEditableFieldByLabel(String labelText) {
+		return detailEditableNativeSelectByLabel(labelText)
+	}
+
+	private static TestObject resolveDetailEditableField(String labelText) {
+		return detailEditableSearchableSelectByLabel(labelText)
+	}
+
+	/** Legacy native {@code select} locator by label — fallback when SearchableSelect is absent. */
+	private static TestObject detailEditableNativeSelectByLabel(String labelText) {
 		String label = (labelText ?: '').trim()
 		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
-		String lit = xpathLiteral(label)
-		String labelXp = "//label[normalize-space()=${lit}]"
+		String cond = detailFormLabelMatchCondition(label)
+		String labelXp = "//label[${cond}]"
 		String sel = DETAIL_EDITABLE_SELECT_XPATH
 		String blockXp = detailFormFieldBlockXPath(label)
-		TestObject field = new TestObject("ap_detail_editable_${safeId}")
+		String fieldControl = detailFormFieldControlXPath(label)
+		TestObject field = new TestObject("ap_detail_editable_native_${safeId}")
 		field.addProperty('xpath', ConditionType.EQUALS,
 			"${labelXp}/following-sibling::${sel}" +
 			" | ${labelXp}/parent::*//${sel}" +
@@ -4770,31 +4851,11 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 			" | ${labelXp}/following-sibling::select[1]" +
 			" | ${labelXp}/parent::*//select[1]" +
 			" | ${blockXp}//${sel}" +
-			" | ${blockXp}//select[1]"
+			" | ${blockXp}//select[1]" +
+			" | ${fieldControl}//${sel}" +
+			" | ${fieldControl}//select[1]"
 		)
 		return field
-	}
-
-	private static TestObject resolveDetailEditableField(String labelText) {
-		String label = (labelText ?: '').trim()
-		TestObject byLabel = detailEditableFieldByLabel(label)
-		if (WebUI.waitForElementPresent(byLabel, 8, FailureHandling.OPTIONAL)) {
-			return byLabel
-		}
-		Integer idx = DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL.get(label)
-		if (idx != null) {
-			TestObject byIndex = detailEditableSelectByIndex(idx)
-			if (WebUI.waitForElementPresent(byIndex, 8, FailureHandling.OPTIONAL)) {
-				KeywordUtil.logInfo("Resolved editable '${label}' via select index ${idx}.")
-				return byIndex
-			}
-		}
-		TestObject byButton = detailEditableButtonByLabel(label)
-		if (WebUI.waitForElementPresent(byButton, 8, FailureHandling.OPTIONAL)) {
-			KeywordUtil.logInfo("Resolved editable '${label}' via combobox button.")
-			return byButton
-		}
-		return byLabel
 	}
 
 	/** Read-only input under a detail label ({@code cursor-not-allowed} / readonly / disabled). */
@@ -4865,7 +4926,11 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 			}
 			if (tag == 'button') {
 				String cls = el.getAttribute('class') ?: ''
-				boolean looksEditable = cls.contains('cursor-pointer') || 'combobox'.equalsIgnoreCase(el.getAttribute('role') ?: '')
+				String role = el.getAttribute('role') ?: ''
+				String haspopup = el.getAttribute('aria-haspopup') ?: ''
+				boolean looksEditable = cls.contains('cursor-pointer') ||
+					'combobox'.equalsIgnoreCase(role) ||
+					'listbox'.equalsIgnoreCase(haspopup)
 				return looksEditable && el.isEnabled() && !htmlAttributeIsSet(el.getAttribute('disabled'))
 			}
 			if (tag == 'input' || tag == 'textarea') {
@@ -4882,7 +4947,8 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 	def clickFirstAccountNumberLink() {
 		try {
 			verifySearchResultsTableVisible()
-			click(to103('lnk_accountNumberInFirstRow'))
+			TestObject link = apFirstRowAccountNumberLink()
+			clickWithJsFallback(link, 'first-row Account Number link')
 			WebUI.delay(2)
 		} catch (Exception e) {
 			failStop("clickFirstAccountNumberLink failed: ${e.message}")
@@ -4894,6 +4960,7 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		try {
 			performSearch(searchCriteria, searchBy, searchValue, entity)
 			clickFirstAccountNumberLink()
+			verifyApAccountDetailPageLoaded()
 		} catch (Exception e) {
 			failStop("openApAccountDetailFromSearchResults failed: ${e.message}")
 		}
@@ -5004,7 +5071,7 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 			}
 			verifyTextPresentOnPage(label)
 			TestObject editableField = resolveDetailEditableField(label)
-			waitPresent(editableField, "Editable control for '${label}' not found (select/button after label or index ${DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL.get(label)}).")
+			waitPresent(editableField, "Editable SearchableSelect for '${label}' not found (accountDetailsTrigger + listbox).")
 			WebUI.scrollToElement(editableField, DEFAULT_TIMEOUT)
 			if (!isDetailFieldEditable(editableField)) {
 				failStop("Expected '${label}' to be an editable select/dropdown on AP Account Detail page.")
@@ -5040,7 +5107,7 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 	def verifyApAccountDetailEditableFields() {
 		try {
 			verifyApAccountDetailPageLoaded()
-			['Status', 'Rate Currency', 'Billing Currency', 'Market Structure'].each { String label ->
+			['Rate Currency', 'Billing Currency', 'Market Structure', 'Status'].each { String label ->
 				verifyApAccountDetailFieldIsEditable(label)
 			}
 			WebUI.takeScreenshot()
