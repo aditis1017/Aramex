@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify that the Previous/Back button is disabled when the user is on the first page (CCIPH-21 / TC_Detailed_33)</description>
+   <name>TC_Detailed_33</name>
+   <tag>GenAI,CCIPH-21,CustomSearch,360ViewScreen</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-21</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph21-tc-detailed-33-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs21-link-tc-detailed-33</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>39</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

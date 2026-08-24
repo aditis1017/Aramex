@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-65 — Entity Revenue-AR Service Code edit Active &amp; Billable (reuses CCIPH-67/69 toggle/edit OR)</description>
+   <name>CCIPH-65</name>
+   <tag>CCIPH-65,Revenue-AR</tag>
+   <folderType>WEBELEMENT</folderType>
+</FolderEntity>

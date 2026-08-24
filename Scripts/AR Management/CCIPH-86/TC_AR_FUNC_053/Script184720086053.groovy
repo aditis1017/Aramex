@@ -1,6 +1,6 @@
 import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import apmanagement.BusinessActions as AR
+import ap_ar_management.BusinessActions as AR
 import customsmanagement.MicrosoftLoginKeywords as MSLogin
 
 // CSV: AR-Management.csv | CCIPH-86 | TC_AR_FUNC_053 | AC1 — RateSheet grid columns

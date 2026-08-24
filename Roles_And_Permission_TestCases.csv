@@ -1,0 +1,213 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,Functional (Pass/Fail),Functional Remarks
+"Roles & Permissions
+ Page-UI: ",CCIPH-90,TC_U&RM_FUNC_001,"Verify Roles & Permissions Page
+","1. Login as Admin
+2. Click the Roles & Permissions
+ page                                      ","Roles & Permissions Page should show Roles, user, Permission Matrix and create rule button",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_002,"Verify roles under Roles & Permissions
+page","1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Verify the roles tab as per Requirement","Roles tab should show roles as per requirement    • Super Admin
+• Custom Manager
+• Finance Officer
+• Operation Staff
+• Viewer",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-97,TC_U&RM_FUNC_003,Verify Permission Matrix under Roles & Permissions page,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Verify the Permission Matrix as per Requirement",Permission Matrix  tab should show permissions page and rolewise and should match with requirements,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_005,Verify Roles Info under Roles & Permissions page,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Verify the Role Card","Card should show these details :
+Role Name
+Role Description
+Number of users assigned
+View Details CTA",Critical,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-90,TC_U&RM_FUNC_006,Verify create role UI,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Click on Create Role Button                                       4. Verify the promt Screen",Create role screen should show role and desription field along with color name,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-90,TC_U&RM_FUNC_007,Verify create role functionality,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Click on Create Role Button                                       4. Enter Role as ""Test"" and Desciption as ""Test""    5. Click on Save button",A new Role with Name "test" should appear on roles tab,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-90,TC_U&RM_FUNC_008,Verify Duplicacy for Role Creation,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click on Create Role Button                                       
+4. Enter Role as ""Test"" and Desciption as ""Test""    
+5. Click on Save button",The system should through the error that role is already exisitng ,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-95,TC_U&RM_FUNC_009,Verify "view Details" UI under Roles Tab,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on ""view Details button on any role            
+5. Verify the UI Screen As per requirement",View Detail screen should appear and as per role assign it should show permission pagewise.,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-95,TC_U&RM_FUNC_010,Verify "view Details" functionality under Roles Tab,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on ""view Details button on any role            
+5. Click on any permission available on the page",All permission are View only. No action should be  happen .,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-95,TC_U&RM_FUNC_011,Verify "view Details" functionality under Roles Tab for close button,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on ""view Details button on any role            
+5. Click on any permission available on the page
+6.Click on Close button",View detail screen should close,Critical,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-95,TC_U&RM_FUNC_012,Verify "view Details" functionality under Roles Tab for Save changes,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on ""view Details button on any role            
+5. Click on any permission available on the page
+6. Click on Edit Permission link
+7.update the rule
+8.Click on Save changes button",View details should show updated permisison,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-95,TC_U&RM_FUNC_013,Verify "view Details" functionality under Roles Tab for no Permission,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on ""view Details button on any role            
+5. Click on any permission available on the page",View details should show "No permissions assigned" on the page,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_014,Verify "Search" functionality under Roles Tab,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on search field and enter any existing role name                                                                              
+5. Verify the search result",Role tab should show the data as per search criteria on the screen,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_015,Verify "Search" functionality under Roles Tab for Case Insensitive ,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on search field and enter admin                                                                              
+5. Verify the search result",Role tab should show the roles that contains "Admin",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_016,Verify "Search" functionality under Roles Tab for Minimum character ,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on search field and enter atleast 1 character                                                                            
+5. Verify the search result",The system should trigger search,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_017,Verify "Clear Search" functionality under Roles Tab ,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on search field and enter value                                                                            
+5. Verify the search result
+6. Clear the Search input ",The system should trigger search and show all roles,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-89,TC_U&RM_FUNC_018,Verify "Search" functionality under Roles Tab for Invalid Search,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                           
+4. Click on search field and enter any existing role name                                                                              
+5. Verify the search result for Spaces or Invalid Input",Role tab should show "No roles found",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-91,TC_U&RM_FUNC_019,Verify "Edit" functionality under Roles Tab,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+4. Click on ""Super Admin"" role 
+5. Click on elipses and click Edit field                                                                              
+6. Edit the role and user accordingly",User should be able to update role accordingly,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-91,TC_U&RM_FUNC_020,Verify " Cancel Edit" functionality under Roles Tab,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+4. Click on ""Super Admin"" role 
+5. Click on elipses and click Edit field                                                                              
+6. Edit the role and user accordingly",User should not be able to update role accordingly,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-96,TC_U&RM_FUNC_021,Verify "Edit Permission" functionality under Roles Tab for invalid permission combinations,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+4. Click on ""Super Admin"" role 
+5. Click on elipses and click Edit field                                                                              
+6. Click on view permission and make it disable
+7. Click on Save button",Error message should appear that invalid permisison combination,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-96,TC_U&RM_FUNC_022,Verify "Edit Permission" functionality under Roles Tab for cancel button,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+4. Click on ""Super Admin"" role 
+5. Click on elipses and click Edit field                                                                              
+6. Click on view permission and make it disable
+7. Click on Cancel button",Screen should disappear and no update should reflect on screen,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-96,TC_U&RM_FUNC_023,Verify " Edit Permission" functionality under Roles Tab for save button,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+4. Click on ""Super Admin"" role 
+5. Click on elipses and click Edit field                                                                              
+6. Click on delete permission and make it enable
+7. Click on Save button",Screen should show updated changes on the screen,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-92,TC_U&RM_FUNC_024,Verify "Duplicate" functionality under Roles Tab,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Verify the roles tab                                                          
+ 4. Click on ""Super Admin"" role 
+5. Click on elipses and click Duplicate field                                                                              
+5. verify the functionality",Same role new card should appear on screen,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-92,TC_U&RM_FUNC_025,Verify "Duplicate" functionality under Roles Tab for existing Role,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+ 4. Click on ""Super Admin"" role 
+5. Click on elipses and click Duplicate field                                                                              
+6. Enter the role name as exisitng one
+7. Click on Save button",Same role should not appear on screen and error message should come,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-92,TC_U&RM_FUNC_026,Verify "Duplicate" functionality under Roles Tab for close button,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    
+3. Click the roles tab                                                          
+4. Click on ""Super Admin"" role 
+5. Click on elipses and click Duplicate field                                                                              
+6. Enter the values in the field
+7.Click on Close button without saving",Window should close and new card should not appear on screen,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-97,TC_U&RM_FUNC_027,Verify Roles as columns under Permission Matrix page,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Verify the Permission Matrix as per Requirement","Permission Matrix  tab should show roles as columns like Super Admin , Customs Manager, Finance Officer, Operations Staff",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-97,TC_U&RM_FUNC_028,Verify Modules as rows under Permission Matrix page,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Verify the Permission Matrix as per Requirement","Permission Matrix  tab should show modules as rows like Documents List , AP Management , AR Management, Entity Setting, Global Setting , Custom",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-97,TC_U&RM_FUNC_029,Verify Highlight enabled permissions under Permission Matrix page,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Verify the Permission Matrix as per Requirement","Enabled permissions should be visually highlighted
+And disabled permissions should be visually distinct",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-97,TC_U&RM_FUNC_030,Verify permissions under Permission Matrix page,"1. Login as Admin
+2. Click the Roles & Permissions page                                                                                    3. Verify the Permission Matrix as per Requirement","Each Role should show permissions:
+  | View |
+  | Create |
+  | Edit |
+  | Delete |
+  | Export |",High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_054,Verify "Custom Page" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the Cusom Page                                                                                   
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_055,Verify "Documents List" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the Documents List   page                                                                             
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_056,Verify "Reports" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the Reports                                                                                   
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,Critical,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_057,Verify "Rate Calculator" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the Rate Calculator   Page                                                                               
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_058,Verify "Global Settings" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the Global Settings                                                                                 
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_059,Verify "Entity Settings" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the Entity Settings Page                                                                                 
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_060,Verify "AR Management" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the AR Management Page                                                                                   
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,High,QA,Yes,,Post MVP,Pass,
+"Roles & Permissions
+ Page-UI: ",CCIPH-101,TC_U&RM_FUNC_061,Verify "AP Management" view for Super Admin Role as per Permission Metrix rule,"1. Login as Super Admin
+2. Click the AP ManagementPage                                                                                   
+3. Verify the ""VIEW"" ""Create"" ""Edit"" ""Delete"" , ""Export""  options   ",All the option should be enabled in page as per Super Admin role,Critical,QA,Yes,,Post MVP,Pass,

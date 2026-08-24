@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify that pagination is applied correctly to the dataset displayed on the screen (CCIPH-21 / TC_Detailed_29)</description>
+   <name>TC_Detailed_29</name>
+   <tag>GenAI,CCIPH-21,CustomSearch,360ViewScreen</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-21</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph21-tc-detailed-29-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs21-link-tc-detailed-29</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>35</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

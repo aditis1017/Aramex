@@ -3,7 +3,6 @@
 bin
 
 Reports
-
 Libs
 
 output
@@ -16,3 +15,7 @@ build
 .project
 
 .cache
+
+# Katalon project Downloads — keep folder, ignore exported artifacts
+Downloads/*
+!Downloads/.gitkeep

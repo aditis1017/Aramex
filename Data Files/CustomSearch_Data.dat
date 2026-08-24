@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Custom Search CCIPH-21 test data. Source: Data Files/CustomSearch_CCIPH21_Data.csv</description>
+   <name>CustomSearch_Data</name>
+   <tag>CCIPH-21,CustomSearch,360ViewScreen</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>cs-cciph21-data-4a1b-9c0d-8e7f-000000000021</dataFileGUID>
+   <dataSourceUrl>CustomSearch_Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

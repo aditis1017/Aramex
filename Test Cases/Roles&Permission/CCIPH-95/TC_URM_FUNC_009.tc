@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify View Details UI under Roles Tab</description>
+   <name>TC_URM_FUNC_009</name>
+   <tag>GenAI,High,CCIPH-95,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-95 | AC1/AC2/AC3/AC7</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph95-tc_u_rm_func_009</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph95-tc_u_rm_func_009-detailsRole</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Super Admin'</defaultValue>
+      <description>Role card to open View Details</description>
+      <id>urm-cciph95-tc_u_rm_func_009-detailsRole</id>
+      <masked>false</masked>
+      <name>detailsRoleName</name>
+   </variable>
+</TestCaseEntity>

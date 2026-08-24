@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Exact keyword match requires full consignee name equality</description>
+   <name>TC_B2B_025</name>
+   <tag>GenAI,High,CCIPH-226,B2B-Shipment,CCIPH-476</tag>
+   <comment>CSV: B2B-Keywords-Manager-TestCases.csv.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-226 | Linked: https://aramex.atlassian.net/browse/CCIPH-476</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2b-cciph226-tc_b2b_025</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b2b-cciph226-tc_b2b_025-exact</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b2b-cciph226-tc_b2b_025-partial</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Shipment with Consignee Name exactly ACME LLC</description>
+      <id>b2b-cciph226-tc_b2b_025-exact</id>
+      <masked>false</masked>
+      <name>shipmentRefExact</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Shipment with Consignee Name ACME LLC Trading (partial)</description>
+      <id>b2b-cciph226-tc_b2b_025-partial</id>
+      <masked>false</masked>
+      <name>shipmentRefPartial</name>
+   </variable>
+</TestCaseEntity>

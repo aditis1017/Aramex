@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-86 Entity Management-AR — reuses Entity Management-AP/CCIPH-86 and AR Management/CCIPH-86 locators via entitymanagement.BusinessActions</description>
+   <name>CCIPH-86</name>
+   <tag>CCIPH-86</tag>
+   <folderType>OBJECT</folderType>
+</FolderEntity>

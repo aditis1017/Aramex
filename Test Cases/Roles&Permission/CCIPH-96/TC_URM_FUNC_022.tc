@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Edit Permission functionality under Roles Tab for cancel button</description>
+   <name>TC_URM_FUNC_022</name>
+   <tag>GenAI,High,CCIPH-96,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-96 | AC5 - Cancel permission changes</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph96-tc_u_rm_func_022</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph96-tc_u_rm_func_022-permRole</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>urm-cciph96-tc_u_rm_func_022-permModule</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Customs Manager'</defaultValue>
+      <description>Role to open View Details and edit permissions</description>
+      <id>urm-cciph96-tc_u_rm_func_022-permRole</id>
+      <masked>false</masked>
+      <name>permRoleName</name>
+   </variable>
+   <variable>
+      <defaultValue>'Customs'</defaultValue>
+      <description>Module name on role details permissions section</description>
+      <id>urm-cciph96-tc_u_rm_func_022-permModule</id>
+      <masked>false</masked>
+      <name>permModuleName</name>
+   </variable>
+</TestCaseEntity>

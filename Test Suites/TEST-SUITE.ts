@@ -2436,61 +2436,6 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>0a66d678-dcea-4051-87fd-642e3db5bbf1</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/AR Management/CCIPH-86/TC_AR_FUNC_069</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>26f068b4-ebe3-4b8f-9a9a-34fe7df996e5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>b42bcc47-a63f-4c92-8ad2-a7538c7ec521</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>36374cc0-653f-48b4-9a75-7491c594efa4</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>bca1dd3d-ca9a-4965-bcfa-eeafd1a61cc1</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>ar86-rs-shipment-type-069</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>ar86-rs-rate-type-069</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>ar86-rs-percent-of-069</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>101a81d8-c498-4abf-81b7-f41e6d7cb2b2</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
       <guid>05d32429-7ae5-4eb7-8701-af1a2a5b6ee2</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>

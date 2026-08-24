@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Export to Excel on Service Charge Settings DTC — AC2</description>
+   <name>TC_EN_REVENUE_022</name>
+   <tag>GenAI,EntityManagement-AR,CCIPH-63,Revenue-AR</tag>
+   <comment>CSV: Entity Management-AR-TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-63</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>em-ar-cciph63-tc_en_revenue_022-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>em63ar-data-5</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>5</value>
+      </iterationEntity>
+      <testDataId>Data Files/Entity-Management-CCIPH63-AR-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>em63ar-data-5</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>em63ar-5-entity</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em63ar-data-5</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Type</value>
+      <variableId>em63ar-5-charge</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em63ar-data-5</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>expected_Columns</value>
+      <variableId>em63ar-5-cols</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'JED'</defaultValue>
+      <description></description>
+      <id>em63ar-5-entity</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>
+   <variable>
+      <defaultValue>'DTC'</defaultValue>
+      <description></description>
+      <id>em63ar-5-charge</id>
+      <masked>false</masked>
+      <name>charge_Type</name>
+   </variable>
+   <variable>
+      <defaultValue>'Service Code|Description|Service Description|Active|Tax Code|Tax Value|Billable|Split'</defaultValue>
+      <description></description>
+      <id>em63ar-5-cols</id>
+      <masked>false</masked>
+      <name>expected_Columns</name>
+   </variable>
+</TestCaseEntity>

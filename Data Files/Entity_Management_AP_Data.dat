@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Entity Management CCIPH-69 Cost-AP service code edit. Source: Data Files/Entity-Management-CCIPH69-Data.csv</description>
+   <name>Entity_Management_AP_Data</name>
+   <tag>EntityManagement,CCIPH-69</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>em-cciph69-data-4a1b-9c0d-8e7f-000000000069</dataFileGUID>
+   <dataSourceUrl>Entity_Management_AP_Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

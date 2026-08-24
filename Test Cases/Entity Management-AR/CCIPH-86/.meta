@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-86 Revenue-AR Public RateSheet (+ CIF / CCIPH-326)</description>
+   <name>CCIPH-86</name>
+   <tag>CCIPH-86,CCIPH-326,EntityManagement-AR</tag>
+   <folderType>TESTCASE</folderType>
+</FolderEntity>

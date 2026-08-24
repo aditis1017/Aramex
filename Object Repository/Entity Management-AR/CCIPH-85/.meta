@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-85 — Entity Revenue-AR invoicing settings (reuses Entity Management-AP/CCIPH-85 shared field locators)</description>
+   <name>CCIPH-85</name>
+   <tag>CCIPH-85,Revenue-AR</tag>
+   <folderType>WEBELEMENT</folderType>
+</FolderEntity>

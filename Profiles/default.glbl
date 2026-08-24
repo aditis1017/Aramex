@@ -27,14 +27,14 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>Customs Management entry (triggers Microsoft login redirect). Set in profile per environment.</description>
-      <initValue>'http://dev-cc.aramex.com/customs-management'</initValue>
+      <initValue>'http://dev-cc.aramex.com/customs'</initValue>
       <name>CUSTOMS_APP_URL</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>Microsoft Entra ID — sign-in email (UPN). Required for login unless you pass the email argument or set MS_AUTO_FETCH_OTP_FROM_EMAIL=true and use the same UPN in MS_IMAP_USER. Set in your local Katalon profile; leave empty in shared repos.</description>
-      <initValue>'aditi.singh1@tothenew.com'</initValue>
+      <initValue>'SVC_CCI@aramex.com'</initValue>
       <name>MS_LOGIN_EMAIL</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
@@ -279,7 +279,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Adi@1017singh\r\n'</initValue>
+      <initValue>'Adi@1710singh\r\n'</initValue>
       <name>Automation_Password</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
@@ -295,6 +295,55 @@
       <description></description>
       <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
       <name>STAGE_GLOBALSETTINGS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>B2B Keywords Manager page URL (CCIPH-226). Used by navigateToB2BKeywordsManager() — same pattern as AP_MANAGEMENT_URL.</description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/b2b-keywords-manager'</initValue>
+      <name>B2B_Keywords_Manager_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Katalon project-relative (or absolute) folder for B2B template exports (TC_B2B_006). Default: Downloads under project root. File is deleted after verification.</description>
+      <initValue>'Downloads'</initValue>
+      <name>B2B_TEMPLATE_DOWNLOADS_DIR</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/b2b-keywords-manager'</initValue>
+      <name>B2B_Keywords_Manager_Satge_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/entity-settings'</initValue>
+      <name>ENTITY_SETTINGS_STAGE_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Roles &amp; Permissions page URL (CCIPH-89). Used by navigateToRolesAndPermissions().</description>
+      <initValue>'https://dev-cc.aramex.com/customs-management/roles-and-permissions'</initValue>
+      <name>ROLES_PERMISSIONS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/roles-permissions'</initValue>
+      <name>ROLES_PERMISSIONS_URL_STAGE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs'</initValue>
+      <name>CUSTOMS_APP_URL_STAGE</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>

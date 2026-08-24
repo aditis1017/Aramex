@@ -1,0 +1,12 @@
+ID,entity,charge_Type,alternate_Charge_Type,rs_Columns,valid_Upload_Path,invalid_Upload_Path,missing_Cols_Path,invalid_Types_Path,charge_Types_List,row_Fragment
+TC_RATE_UPLOAD_001,JED,DTC,,Description|Service Description|Start Date|End Date|Customs Type|Category|Rate 1|Rate 2|Country,,,,,,
+TC_RATE_UPLOAD_002,JED,DTC,,Description|Service Description|Start Date|End Date|Customs Type|Category|Rate 1|Rate 2|Country,,,,,,
+TC_RATE_UPLOAD_003,JED,DTC,,,Data Files/fixtures/CCIPH-87/valid_ratesheet.xlsx,,,,AUTO RS Desc
+TC_RATE_UPLOAD_004,JED,DTC,,,,Data Files/fixtures/CCIPH-87/invalid_format.txt,,,
+TC_RATE_UPLOAD_005,JED,DTC,,,,,Data Files/fixtures/CCIPH-87/missing_columns.xlsx,,
+TC_RATE_UPLOAD_006,JED,DTC,,,,,,Data Files/fixtures/CCIPH-87/invalid_types.xlsx,
+TC_RATE_UPLOAD_007,JED,DTC,,,Data Files/fixtures/CCIPH-87/valid_ratesheet.xlsx,,,,AUTO RS Desc
+TC_RATE_UPLOAD_008,JED,DTC,,,Data Files/fixtures/CCIPH-87/valid_ratesheet.xlsx,,,,AUTO RS Desc
+TC_RATE_UPLOAD_009,JED,DTC,DTA,Description|Service Description|Start Date|End Date|Customs Type|Category|Rate 1|Rate 2|Country,Data Files/fixtures/CCIPH-87/valid_ratesheet.xlsx,,,ECD|DTA|DTC,AUTO RS Desc
+TC_RATE_UPLOAD_010,JED,DTC,,,,,,,
+TC_RATE_UPLOAD_011,JED,DTC,,,Data Files/fixtures/CCIPH-87/valid_ratesheet.xlsx,Data Files/fixtures/CCIPH-87/invalid_format.txt,,,AUTO RS Desc

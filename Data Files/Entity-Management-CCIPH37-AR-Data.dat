@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Entity Management-AR CCIPH-37 Entity Settings History (Revenue-AR-History). Reuses Global Settings history page keywords. Source: Entity-Management-CCIPH37-AR-Data.csv</description>
+   <name>Entity-Management-CCIPH37-AR-Data</name>
+   <tag>CCIPH-37,EntityManagement-AR,Revenue-AR-History</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>em-ar-cciph37-data-4a1b-9c0d-8e7f-000000000037</dataFileGUID>
+   <dataSourceUrl>Entity-Management-CCIPH37-AR-Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

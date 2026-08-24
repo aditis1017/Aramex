@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Non e-commerce shipment is eligible for B2B classification evaluation</description>
+   <name>TC_B2B_023</name>
+   <tag>GenAI,CCIPH-226,Medium,B2B-Shipment,CCIPH-476</tag>
+   <comment>CSV: B2B-Keywords-Manager-TestCases.csv.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-226 | Linked: https://aramex.atlassian.net/browse/CCIPH-476</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2b-cciph226-tc_b2b_023</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b2b-cciph226-tc_b2b_023-shipmentRef</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Seed shipment reference / AWB for Charges Dashboard classification assertion</description>
+      <id>b2b-cciph226-tc_b2b_023-shipmentRef</id>
+      <masked>false</masked>
+      <name>shipmentRef</name>
+   </variable>
+</TestCaseEntity>

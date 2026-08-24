@@ -1,0 +1,861 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,"(Functional)
+Pass/Fail",Functional Remarks
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_001,Verify the Selection of Entity,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity",Entity should be selected and then Charge type should be enable,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_002,Verify Revenue-AR Charge Types,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR",DTC DTA DT3 DTS displayed,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_003,Verify the Inovice Settings for Revenue Charge types - DTC/DTA/DTS/DT3,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Check DTC/DTS/DTA/DT3",The system should display invoicing settings for all charge types,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_004,Verify revenue UI fields - DTC,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DTC 
+6. Check visibility of fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",fields displayed on DTC Section,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_005,Verify revenue UI fields - DTA,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DTA
+6. Check visibility of fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",fields displayed on DTA Section,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_006,Verify revenue UI fields - DT3,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DT3
+6. Check visibility of fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",fields displayed on DT3 Section,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_007,Verify revenue UI fields - DTS,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DTS 
+6. Check visibility of fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",fields displayed on DTS Section,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_008,Validate revenue fields ( functional ) - DTC,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DTC 
+6. Validate fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )","Fields should work as expected
+
+Sap Company code should be editable ",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_009,Validate revenue fields ( functional ) - DTA,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DTA 
+6. Validate fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",Fields should work as expected,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_010,Validate revenue fields ( functional ) - DT3,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DT3 
+6. Validate fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",Fields should work as expected,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_011,Validate revenue fields ( functional ) - DTS,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Open DTS  
+6. Validate fields ( Country, Entity, SAP Company Code, Default Cash Account , Split Invoice , Invoice Limit , Invoice Frequent , Account , Eligible for biling , Invoice Trigger )",Fields should work as expected,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_012,Verify Save configuration,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select the Entity
+4. Click on Revenue-AR
+5. Validate/enter values in the fields and click on save/search button",Configuration saved successfully and display a confirmation message,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_013,Verify the switch of entities selection,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select Entities ",User should be able to select entities,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_014,Verify the Charge Type Independence ,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page 
+3. Select Entities 
+4. Do the configuration changes in any of the charge type 
+5. Click on Save ",Configuration should save successfully and  it should not impact the settings of other charge types,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_015,Verify the permissions for Operation Staff ,"1. Login as Operation Staff
+2. Click the Entity Settings Page 
+3. Select Entities 
+4. Do the configuration changes in any of the charge type 
+5. Click on Save  
+6. Operation Staff should be able to only View",Operation Staff should be able to only View,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_016,Verify the permissions for Finance Officer,"1. Login as Finance Officer
+2. Click the Entity Settings Page 
+3. Select Entities 
+4. Do the configuration changes in any of the charge type 
+5. Click on Save  
+6. Finance Officer should be able to view only",Finance Officer should be able to view only,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-85,TC_EN_REVENUE_017,Verify the invoice configuration for other entity selection,"1. Login as Super Admin/Custom Manager
+2. Click the Entity Settings Page
+3. Select another entity 
+3. Click on Revenue-AR",Configuration should be enable and visible for another entities too for all charge types,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_018,Verify the available Service Codes for DTC,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DTC
+6. Go to Service Charge Settings;",System should display the Service codes from the predefined list,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_019,Verify the attributes in the Service Code table,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DTC
+6. Go to Service Charge Settings;
+7. Verify the attributes in the table","System should display the Service codes with the following attributes :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Billable
+Split",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_020,Validate the attributes values in the Service Code table,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DTC
+6. Go to Service Charge Settings;
+7. Validate the attributes in the table","Values of the following attributes should be correct and valid :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Billable
+Split",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_021,Verify the Hide Details/Show Details ,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DTC
+6. Go to Service Charge Settings;
+7. Validate the attributes in the table
+8.Click to Hide Details/Show Details","Hide Details and Show Details should work properly....
+
+On clicking Hide details, table should collapse and on clicking Show details, table should expand",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_022,"Verify the ""Export to Excel "" Functionality on Service Charge Settings
+page
+","1. Login as Super Admin
+2. Navigate to Entity Management and Revenue-AR
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on ""Service Charge Settings"" slider button
+7. Click on Export to Excel button",CSV file should be downloaded in your local macine,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_023,Verify the Downloaded File data,"1. Login as Super Admin
+2. Navigate to Entity Management and Revenue-AR
+3.  Enter the values in the input field
+4. Click on Search button 
+5. Click on ""Service Charge Settings"" slider button
+6. Click on Export to Excel button
+7. Open the downloaded file
+8. verify the column and data","File should not be encrypted and reflect same data as per UI :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Billable
+Split",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_029,Verify the available Service Codes for DTS,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTS
+6. Go to Service Charge Settings;
+7. Check for the Service Code Column",System should display the Service codes,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_030,Verify the attributes in the Service Code table for DTS,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTS
+6. Go to Service Charge Settings;
+7. Validate the attributes in the table
+","System should display the Service codes with the following attributes :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_031,Validate the attributes values in the Service Code for DTS,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Go to DTS and select first entity
+5. Go to Service Charge Settings;
+6. Validate the attributes in the table
+","Values of the following attributes should be correct and valid :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_032,"Verify the ""Export to Excel "" Functionality on Service Charge Settings
+page for DTS
+","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Go to DTS and select first entity
+5. Go to Service Charge Settings;
+6. Click on Export to Excel button",CSV file should be downloaded in your local macine,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_033,Verify the Downloaded File data,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Go to DTS and select first entity
+5. Go to Service Charge Settings;
+6. Click on Export to Excel button
+7. Open the downloaded file
+8. verify the column and data","File should not be encrypted and reflect same data as per UI :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_039,Verify the available Service Codes for DTA,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTA
+6. Go to Service Charge Settings;
+7. Check the Service Code Column
+",System should display the Service codes,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_040,Verify the attributes in the Service Code table for DTA,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTA
+6. Go to Service Charge Settings;
+7. Verify the attributes in the table
+","System should display the Service codes with the following attributes :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_041,Validate the attributes values in the Service Code for DTA,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTA
+6. Go to Service Charge Settings;
+7. Validate the attributes in the table
+","Values of the following attributes should be correct and valid :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_042,"Verify the ""Export to Excel "" Functionality on Service Charge Settings
+page for DTA","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTA
+6. Go to Service Charge Settings;
+7. Click on Export to Excel button",CSV file should be downloaded in your local macine,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_043,Verify the Downloaded File data for DTA,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity
+4. Click on Revenue-AR
+5. Go to DTA
+6. Go to Service Charge Settings;
+7. Click on Export to Excel button
+8. Open the downloaded file
+9. verify the column and data","File should not be encrypted and reflect same data as per UI :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_049,Verify the available Service Codes for DT3,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DT3 
+6. Go to Service Charge Settings;
+7. Check the Service Code Column
+",System should display the Service codes from the predefined list,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_050,Verify the attributes in the Service Code table for DT3,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DT3 
+6. Go to Service Charge Settings;
+7. Verify the attributes in the table
+","System should display the Service codes with the following attributes :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_051,Validate the attributes values in the Service Code for DT3,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DT3 
+6. Go to Service Charge Settings;
+7. Validate the attributes in the table
+","Values of the following attributes should be correct and valid :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_052,"Verify the ""Export to Excel "" Functionality on Service Charge Settings
+page for DT3","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DT3 
+6. Go to Service Charge Settings;
+7. Click on Export to Excel button",CSV file should be downloaded in your local macine,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_053,Verify the Downloaded File data for DT3,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Select Entity 
+4. Click on Revenue-AR
+5. Go to DT3 
+6. Go to Service Charge Settings
+7. Click on Export to Excel button
+8. Open the downloaded file
+9. verify the column and data","File should not be encrypted and reflect same data as per UI :
+Service Code
+Description
+Service Description
+Active 
+Tax Code
+Tax Value
+Default AP Account",High,QA,Yes,Post MVP,,Pass,
+Cost-AP,CCIPH-63,TC_EN_REVENUE_059,Validate the details of the table in the Service Charge Settings table for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select the Entity
+4. Go to DTC tab and click search
+5. Checkout the data on the table over UI and then cross-verify them through Database ",The details/data shown over UI should be same as per the stored data in the database for EC3 case,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_060,Validate the Service Codes in the Database for DTA case for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR 
+3. Select the Entity
+4. Go to DTA tab and click search
+5. Checkout the list of service codes on UI and then cross-verify them through Database ",The Service Codes visible over UI for EC3 should be same as the Service codes mapped in the database ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_061,Validate the details of the table in the Service Charge Settings table for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select the Entity
+4. Go to DTA tab and click search
+5. Checkout the data on the table over UI and then cross-verify them through Database ",The details/data shown over UI should be same as per the stored data in the database for EC3 case,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_062,Validate the Service Codes in the Database for DTS case for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR 
+3. Select the Entity
+4. Go to DTS tab
+4. Checkout the list of service codes on UI and then cross-verify them through Database ",The Service Codes visible over UI for EC3 should be same as the Service codes mapped in the database ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_063,Validate the details of the table in the Service Charge Settings table for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select the Entity
+4. Go to DTS tab
+5. Checkout the data on the table over UI and then cross-verify them through Database ",The details/data shown over UI should be same as per the stored data in the database for EC3 case,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_064,Validate the Service Codes in the Database for DT3 case for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR 
+3. Select the Entity
+4. Go to DT3 tab and 
+5. Checkout the list of service codes on UI and then cross-verify them through Database ",The Service Codes visible over UI for EC3 should be same as the Service codes mapped in the database ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_065,Validate the details of the table in the Service Charge Settings table for given entities,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select the Entity
+4. Go to DT3 tab
+5. Checkout the data on the table over UI and then cross-verify them through Database ",The details/data shown over UI should be same as per the stored data in the database for EC3 case,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_066,Verify the edit button functionality for DTC service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTC Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button",Edit button should be functional for DTC Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_067,Verify the edit button functionality for DTA service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTA Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button",Edit button should be functional for DTA Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_068,Verify the edit button functionality for DTS service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTS Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button",Edit button should be functional for DTS Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_069,Verify the edit button functionality for DT3 service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTA Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button",Edit button should be functional for DT3 Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_070,Verify the save config for editable field for DTC service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTC Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Save button",Field should be updated for DTC Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_071,Verify the save config for editable field for DTA service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTA Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Save button",Field should be updated for DTA Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_072,Verify the save config for editable field for DT3 service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DT3 Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Save button",Field should be updated for DT3 Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_073,Verify the save config for editable field for DTS service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTS Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Save button",Field should be updated for DTS Service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_074,Verify Inline cancel button functionality for DTC service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTC Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Cancel button",Field should not be edited for DTC service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_075,Verify Inline cancel button functionality for DTA service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTA Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Cancel button",Field should not be edited for DTA service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_076,Verify Inline cancel button functionality for DTS service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DTS Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Cancel button",Field should not be edited for DTS service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-65,TC_EN_REVENUE_077,Verify Inline cancel button functionality for DT3 service code,"1. Login as Super Admin
+2.  Navigate to Entity Management and Revenue-AR  
+3. Select from the entities and DT3 Charge tab Section
+4. Go to Service Code Table
+5. Click on Edit button
+6. Click on Cancel button",Field should not be edited for DT3 service code,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_090,Verify the permissions for Custom manager,"1. Login as Custom Manager
+2. Go to Entity Settings Page
+3. Navigate to Revenue-AR and search data through different charges and entities
+4. Go to services data table and try to modify data 
+5. Custom Manager should be able to Create ","Only Custom Mnager should be able to search/save config other than OS/FO should only able to view, not able to perform any actions",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_091,Verify the permissions for Operation Staff ,"1. Login as Operation Staff
+2. Go to Entity Settings Page
+3. Navigate to Revenue-AR and search data through different charges and entities
+4. Go to services data table and try to modify data  
+5. Operation Staff should be able to only View","Only Custom Mnager should be able to search/save config other than OS/FO should only able to view, not able to perform any actions",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-63,TC_EN_REVENUE_092,Verify the permissions for Finance Officer,"1. Login as Custom Manager
+2. Go to Entity Settings Page
+3. Navigate to Revenue-AR and search data through different charges and entities
+4. Go to services data table and try to modify data 
+5. Finance Officer should be able to view only","Only Custom Mnager should be able to search/save config other than OS/FO should only able to view, not able to perform any actions",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_093,Verify Ratesheet Settings section UI ,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Verify the UI","Ui Should show below column on the screen
+
+Description
+Service Description
+Start Date
+End Date 
+Customs Type        
+Category 
+Rate 1
+Rate 2
+Country ",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_094,"Verify "" Hide functionality"" on Ratesheet Settings section UI ","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Verify the UI
+5. Click on Hide button",Ratesheet Settings section UI should disapper from screen,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_095,"Verify ""Add New"" button functionality on Ratesheet Settings ","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button",New editable row should appear on screen,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_096,"Verify ""Save"" button functionality on Ratesheet Settings ","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Click on Save button",Row should be added on the screen,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_097,"Verify ""Delete"" button functionality on Ratesheet Settings ","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Click on Save button and then Close icon",Row should be disappear on the screen,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_104,Verify Ratesheet Creation UI,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field""
+11. Verify the UI","Ui Should show below column on the screen
+
+Rate Type
+Percentage of
+value",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_105,Verify Ratesheet Creation UI,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field""
+11. Verify the UI","Ui Should show below column on the screen
+
+Rate Type
+Percentage of
+value",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_106,Verify Rate Type Dropdown value,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field
+11. Click on ""Rate Type"" dropdown","it should show the value as ""Fixed"" and  ""Percentage""",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_107,Verify Rate Type Dropdown value,"1. Login as Super Admin
+2. Click the AR Management page 
+3. Click on Account Receivable Management section
+4. Click on Special Rate Settings icon
+5. Click on Add New new button
+6. Enter the values in the field
+7. Click on Save button
+8. Click on Rate1 value field
+9. Click on ""Rate Type"" dropdown","it should show the value as ""Fixed"" and  ""Percentage""",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_108,"Verify ""Percentage of"" Dropdown value","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field
+11. Click on ""Percentage of"" dropdown","it should show the value as ""Cost of Goods"" and  ""Total Invoice""",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_109,"Verify Rate Type Dropdown functionality for value as ""Fixed""","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field
+11. Click on ""Rate Type"" dropdown
+12. Select value as ""Fixed""",Value Field should be disappear from screen,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_110,"Verify Rate Type Dropdown functionality for value as ""Percentage""","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field
+11. Click on ""Rate Type"" dropdown
+12. Select value as ""percentage""",Value Field should be appear from screen,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_111,"Verify Save functionality for ""Ratesheet Creation
+""","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button",Value should save successfully,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_112,"Verify ""Back ""functionality for ""Ratesheet Creation
+""","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Click on Rate1 value field
+11. Click on ""Back"" button","It should redirect to ""Account Receivable Management"" screen",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_113,Verify the exisiting ratesheet for DTC for other entity,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select another entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section","Exisiting ratehsheet date should be displayed :
+Description
+Service Description
+Start Date
+End Date
+Customs Type
+Category
+Rate 1
+Rate 2
+Country",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_114,Verify the exisiting ratesheet for ECD/DTC/DTA,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTS/DTA/DT3  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section","Exisiting ratehsheet date should be displayed :
+Description
+Service Description
+Start Date
+End Date
+Customs Type
+Category
+Rate 1
+Rate 2
+Country
+
+Functioanlity should work as expected from the last Checked ",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_115,Verify the exisiting ratesheet for ECD/DTC/DTA for another entities,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select another entities and DTS/DTA/DT3  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section","Exisiting ratehsheet date should be displayed :
+Description
+Service Description
+Start Date
+End Date
+Customs Type
+Category
+Rate 1
+Rate 2
+Country
+
+Functioanlity should work as expected from the last Checked ",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_116,Verify the switching in between charges,"1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+4. Go to RateSheet Section and switch in between the charges
+5. Checkout if there is a change in the Public ratesheet or not or there is some impact",There's should be any impact out of other RateSheets of other Charges,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_117,Verify the permissions for Custom manager,"1. Login as Custom Manager
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select entity and DTC/DTS/DTA/DT3  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+4. Go to ratehseet table and try to modify data 
+5. Custom Manager should be able to Create ","Only Custom Mnager should be able to search/save config other than OS/FO should only able to view, not able to perform any actions",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_118,Verify the permissions for Operation Staff ,"1. Login as Operation Staff
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select entity and DTC/DTS/DTA/DT3  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+4. Go to ratehseet table and try to modify data 
+5. Operation Staff should be able to view only","Only Custom Mnager should be able to search/save config other than OS/FO should only able to view, not able to perform any actions",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_119,Verify the permissions for Finance Officer,"1. Login as Finance Officer
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select entity and DTC/DTS/DTA/DT3  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+4. Go to ratehseet table and try to modify data 
+5. Finance Officer should be able to view only","Only Custom Mnager should be able to search/save config other than OS/FO should only able to view, not able to perform any actions",High,QA,Yes,Post MVP,,Pass,
+Revenue-AR,CCIPH-86,TC_EN_REVENUE_102,"Verify ""RATE1"" hyperlink on Ratesheet Settings Page ","1. Login as Super Admin
+2. Click the Entity Settings Page 
+3. Click on Revenue-AR
+4. Select first entity and DTC  charge
+5. Click on Search/Save button
+6. Go to RateSheet Section
+7. Click on Add New new button
+8. Enter the values in the field
+9. Click on Save button
+10. Hover on Rate1 value field",Hand icon should come on RATE-1 ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_001,Verify history button functionality,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button",User should navigate to the History Page,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_002,Verify BACK button functionality,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on BACK button",User should get back to the previous page ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_003,Verify Entity Settings History Page UI,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button",All the data should be visible in the History Tab properly,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_004,"Verify Entity Settings History Page data for ""ALL"" Tab","1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on ALL Tab",Data should be properly visible in the tabular form in ALL Tab section of all-time,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_005,"Verify Entity Settings History Page data for ""TODAY"" Tab","1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on TODAY Tab",Data should be properly visible in the tabular form in Today Tab section for today only,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_006,"Verify Entity Settings History Page data for ""THIS WEEK"" Tab","1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on THIS WEEK Tab",Data should be properly visible in the tabular form in Week Tab section for this week only ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_007,"Verify Entity Settings History Page data for ""THIS MONTH"" Tab","1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on THIS MONTH Tab",Data should be properly visible in the tabular form in Week Tab section for the whole month,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_008,"Verify Entity Settings History Page data for ""CUSTOM"" Tab","1. Login as Super Admin
+2. Click the Global Setting page 
+3. Click on History button
+4. Click on CUSTOM Tab",Data should be visible for the last 6 months only ,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_009,"Verify Entity Settings History Page data for ""CUSTOM"" Tab where start date > end ate","1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on CUSTOM Tab
+5. Enter Start Date > End Date",Functionality for the Custom Page Data should work properly,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_010,"Verify Entity Settings History Page ""RESET"" button","1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on ""RESET button",All the data should be reset for History,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_011,Verify Export button functionality on Entity Settings History Page,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on Export button",CSV file should be downloaded in your local macine,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_012,Validate the exported file format ,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on Export button
+5. Open the downloaded file",File should not be encrypted and reflect same data as per UI,High,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_013,Validate the exported file data as per Entity Settings History Page,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Click on Export button
+5. Open the Downloaded file
+6. verify the data ",File should not be encrypted and reflect same data as per UI,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_014,Verify that pagination is applied correctly to the dataset displayed on the screen,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check the Record count over the All Tab in the footer","By default, 50 should be the count per screen",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_015,Verify that the correct number of records are displayed as per the selected page size,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check the Record count over the All Tab in the footer
+5. Change the record count to 10/20",Record should be updated over the screen accordingly as per the selected number,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_016,Validate whether pagination is implemented using server-side logic,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check the Record count over the All Tab in the footer
+5. Open network tab and try to find out for that API response/Pay load","No new api should be there in client side but in case of server side there should be a new call with params like page=2, limit=10, offset, etc.",Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_017,Verify navigation functionality for Next and Previous page controls,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check the Record count over the All Tab in the footer
+5. CLick on next/page",Value should move,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_018,Verify that the Previous/Back button is disabled when the user is on the first page,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check the Back/Previous Page button over first page
+",Back/Previous Page should work properly,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_019,Verify that the Next button is disabled when the user is on the last page,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check the Next Page button over Last page
+",Next button should be disabled,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_020,Verify that data loads correctly after a hard refresh and default pagination settings are applied,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Move to the next page data and do the hard refresh
+",Default Pagination should be applied,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_021,Verify the page load time when navigating between pages,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Switch in between the pages data and check the apis timing
+",Page load time should be minimal,Medium,QA,Yes,Post MVP,,Pass,
+Revenue-AR-History,CCIPH-37,TC_REVENUE_HS_022,Verify system behavior and performance when handling large volumes of data,"1. Login as Super Admin
+2. Click the Entity Setting page 
+3. Click on History button
+4. Check out the pages data and timings for the same
+",Performance should not impact,Medium,QA,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_001,"Verify ""CIF"" option is available in Rate Type dropdown while creating or editing a Rate Sheet","1. Login as Admin.
+2. Navigate to AR Management or Entity Settings.
+3. Open any Charge Type (ECD/DTC/ECS/DTA/DTS/DT3/EC3).
+4. Click Add/Edit Rate Sheet.
+5. Open Rate Type dropdown.",Rate Type dropdown should display both Cost of Goods and CIF options.,High,,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_002,Verify Rate Sheet calculation using CIF when shipment contains only Cost of Goods (SH013 scenario),"1. Create/Edit a Rate Sheet with Rate Type = CIF and Percentage value.
+2. Process shipment SH013 where CC Charges are not applicable.
+3. Verify calculated charge.","CIF value should be equal to Cost of Goods, and charge calculation should be based only on Cost of Goods.",Critical,,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_003,Verify Rate Sheet calculation using CIF when shipment contains Cost of Goods and CC Charges (SH267 scenario),"1. Create/Edit a Rate Sheet with Rate Type = CIF.
+2. Process shipment SH267 containing Cost of Goods and CC Charges.
+3. Verify calculated charge.","CIF value should be Cost of Goods + CC Charges, and rate calculation should use the combined CIF value.",Critical,,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_004,Verify existing Rate Sheets can be updated from Cost of Goods to CIF,"1. Open existing Rate Sheet.
+2. Change Rate Type from Cost of Goods to CIF.
+3. Save changes.
+4. Verify calculations after processing shipment.",Updated Rate Type should be saved successfully and calculation should follow CIF logic.,High,,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_005,Verify CIF Rate Type is available across all supported Charge Types,"1. Navigate to Rate Sheet configuration for ECD, DTC, ECS, DTA, DTS, DT3 and EC3.
+2. Open Add/Edit Rate Sheet for each charge type.
+3. Verify Rate Type dropdown.",CIF option should be available consistently across all supported charge types in both AR Management and Entity Settings.,High,,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_006,Verify Rate Sheet calculations remain unchanged for existing Cost of Goods Rate Type,"1. Create/Edit Rate Sheet using Rate Type = Cost of Goods.
+2. Process shipment.
+3. Compare calculation with existing logic.",Charge calculation should continue to work exactly as before without any impact from the CIF enhancement.,High,,Yes,Post MVP,,Pass,
+Rate Sheet Configuration,CCIPH-86,TC_RATE_CIF_007,Verify Rate Type selection is persisted after saving and reflected correctly in UI and Database,"1. Create/Edit Rate Sheet using Rate Type = CIF.
+2. Save Rate Sheet.
+3. Refresh page.
+4. Reopen Rate Sheet.
+5. Verify database entry.","Selected Rate Type should remain CIF after save, page refresh and should be stored correctly in the database.",Medium,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_001,Verify user can download the Public Rate Sheet Excel template,"1. Login as Super Admin/Customs Manager.
+2. Navigate to Public Rate Sheet configuration for any supported charge.
+3. Click Download Template.",System should download the predefined Excel template successfully.,High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_002,Verify downloaded template contains all mandatory columns with sample data,"1. Download template.
+2. Open Excel file.
+3. Verify headers and sample row.","Template should contain Description, Service Description, Start Date, End Date, Customs Type, Category, Rate 1, Rate 2 and Country columns with sample data.",High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_003,Verify successful upload of valid Rate Sheet Excel file,"1. Prepare valid .xlsx Rate Sheet.
+2. Click Upload.
+3. Select file.
+4. Submit.",System should accept the file and initiate validation successfully.,Critical,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_004,Verify only .xlsx files are accepted during upload,"1. Select .csv/.xls/.txt/.pdf file.
+2. Click Upload.",System should reject the file and display an appropriate invalid file format message.,High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_005,Verify validation when mandatory columns are missing from uploaded file,"1. Remove one or more mandatory columns from template.
+2. Upload modified file.",Upload should fail and appropriate validation message should be displayed.,High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_006,Verify validation of uploaded data types,"1. Enter invalid values for Date, Number and Text fields.
+2. Upload file.",System should validate field data types and reject invalid records with appropriate validation message.,High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_007,Verify uploaded Rate Sheet data is saved successfully,"1. Upload valid template.
+2. Complete processing.
+3. Verify Rate Sheet table.",Uploaded Rate Sheet records should be created correctly and displayed in the Rate Sheet table.,Critical,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_008,Verify uploaded Rate Sheet data is stored correctly in database,"1. Upload valid Rate Sheet.
+2. Verify corresponding database records.",Database should store uploaded Rate Sheet details accurately.,High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_009,Verify Upload functionality across all supported charge types,"1. Navigate to Rate Sheet configuration for ECD, ECS, EC3, DTA, DTC, DTS and DT3.
+2. Download template.
+3. Upload valid Rate Sheet file.",Download and Upload functionality should work consistently across all supported charge types in AR Management and Entity Settings.,High,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_010,Verify user cannot upload without selecting a file,"1. Open Upload dialog.
+2. Click Upload/Submit without selecting any file.",System should display mandatory validation message and prevent upload.,Medium,,Yes,Post MVP,,Pass,
+Public Rate Sheet,CCIPH-87,TC_RATE_UPLOAD_011,Verify uploaded data follows STD-EXCEL-IMPORT capability,"1. Upload valid template.
+2. Verify upload processing flow and imported records.",Upload functionality should comply with the STD-EXCEL-IMPORT capability.,Medium,,Yes,Post MVP,,Pass,

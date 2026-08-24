@@ -36,3 +36,4 @@ WebUI.takeScreenshot()
 WebUI.closeBrowser()
 
 // Issue raised for the Date / Time format
+//P3 bug

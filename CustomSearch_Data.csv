@@ -1,0 +1,13 @@
+﻿TC_ID,charge_Group,charge_Code,charge_Status,date_Type,start_date,end_Date,tracking_Numbers,invalid_Tracking_Numbers
+TC_US_FUNC_001,,,,,,,,
+TC_US_FUNC_002,Revenue,DT3,,,,,,
+TC_US_FUNC_003,Cost,ECD,Due,,,,,
+TC_US_FUNC_004,,,,All,18-08-2026,21-08-2026,,
+TC_US_FUNC_005,,,,,,,,
+TC_US_FUNC_006,,,,,,,ALOK7,
+TC_US_FUNC_007,,,,Alerting Date,,,,
+TC_US_FUNC_008,,,,,,,,122
+TC_US_FUNC_009,,,,,,,,
+TC_US_FUNC_010,,,,,,,,
+TC_US_FUNC_011,,,,,,,,
+TC_US_FUNC_012,,,,,,,,

@@ -1,0 +1,646 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,"(Functional)
+Pass/Fail",Functional Remarks
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_001,Validate Search Without Any Filters,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Search button","It should show ""No Data Found"" Message on dashboard Screen",High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_002,Validate Search with Single Filter,"1. Login as Admin
+2. Click the custome charge page
+3. Click any field Filter                                                                   4. Click on Search button",It should show data as per selection  on dashboard Screen,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_003,Validate Search Using Multiple Filters,"1. Login as Admin
+2. Click the custome charge page
+3. Click  more than one field Filter                                                        4. Click on Search button",It should show data as per selection  on dashboard Screen,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_004,Validate Search Using All Filters,"1. Login as Admin
+2. Click the custome charge page
+3. Click All field Filter's at once                                                        4. Click on Search button",It should show data as per selection  on dashboard Screen,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_005,Validate Search Using Date Range Only,"1. Login as Admin
+2. Click the custome charge page
+3. Click Start and End Date Filter's                                              4. Click on Search button",It should show data as per dates selection on dashboard Screen,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_006,Validate Search Using Tracking Number's,"1. Login as Admin
+2. Click the custome charge page
+3.Enter Multiple Tracking Numbers                                             4. Click on Search button",It should show data as per entered tracking numbers on dashboard Screen,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_007,Validate Search with Invalid Date Range,"1. Login as Admin
+2. Click the custome charge page
+3. Click Start and End Date Filter's , including End Date is before stat date                                                                              4. Click on Search button","It should show error message on the screen that ""End Date can not be ess than Start Date""",Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_008,Validate Search with Tracking Number's Format,"1. Login as Admin
+2. Click the custome charge page
+3.Enter Multiple invalid Tracking Numbers                                             4. Click on Search button","It should show message as ""Invalid Tracking numbers"" on dashboard Screen",Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_010,Validate Combined Filter Accuracy,"1. Login as Admin
+2. Click the custome charge page
+3. Apply all available filters with big data range and Enter Multiple invalid Tracking Numbers                                             4. Click on Search button",It should show data as per selection on dashboard Screen,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_011,Verify Pagination functionality,"1. Login as Admin
+2. Click the custome charge page
+3. Apply all available filters with big data range and Enter Multiple invalid Tracking Numbers                                              
+4. Click on Search button                                                                 
+5. Click on Pagination",It should show data as per pagination selection on dashboard Screen,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_012,Validate Hide and show filter functionality,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Hide filter and make it unhide",Filter screen for it should be opened as per unhide criteria. Also no value should be selected on fields by default,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_013,Verify lables and filter after activating hide/ show,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Hide filter and make it unhide                                   4. Verify Lables",Filter screen for it should be opened as per unhide criteria. Also no value should be selected on fields by default. Very the lable Names,Medium,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_014,Validated Saved Searches functionality as faviourate,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Filter and apply it                                                             4. Click on Faviourate button","Refresh the session and and open the faviourate button, saved record should be visible with correct value",High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_015,Validated Saved Searches Edit functionality as faviourate,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Filter and apply it                                                             4. Click on Edit Faviourate button","Refresh the session and and open the faviourate button,  updated saved record should be visible with correct value",High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_016,Validated Saved Searches rename label functionality as faviourate,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Filter and apply it                                                             4. Click on Edit Faviourate lable","Refresh the session and and open the faviourate button,  updated saved record should be visible with correct value",High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-21,TC_US_FUNC_017,Validate Export Functionality,"1. Login as Admin
+2. Click the custome charge page
+3. Click on Filter and apply it                                                             4. Click on export button",File should be exported to local with correct value as per filter criteria,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_018,Verify Dashboard view  ,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the details",Dashboard details should be viewed,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_019,Verify result grid displayed after successful search,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the details",Grid result should be visible,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_020,Verify each row represents one shipment charge record,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the Each row data",Each row should represent one shipment record,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_022,Verify result count matches backend data,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Connect the database
+4. Verify the details in the backend",Details at the backend should match,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_023,Verify all required columns visible in defined order,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the columns details",Columns should be in defined order,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_024,Verify Entity column data populated correctly,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the columns data",Data over Entity column should be correctly poppulated,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_025,Verify Tracking Number column values,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the Tracking number and column values",Tracking number value should be correct,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_026,Verify Account Number and Account Name columns,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the Account Number and Account Name columns",Account number and account name should be correct,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_027,"Verify Origin, Destination and 3rd Party columns","1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the origin, Destination Values","Origin, Destination and 3rd Party should be correct",High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_028,Verify Charge Group and Charge Code columns,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the Charge Group and Charge Code columns",Charge group and charge code value columns should have correct values ,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_029,Verify Total Estimate and Total Actual columns,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the Total Estimate and Total Actual columns",Total estimate and totl actual columns should represent correct values,High,QA,Yes,Post MVP,,Pass,
+User Search Custom Page-UI: ,CCIPH-26,TC_US_FUNC_030,Verify Status column visible,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Apply filters 
+3. Verify the status columns visible",Status column should be visible ,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - Multiple Search,CCIPH-21,TC_US_FUNC_031,Verify the Multiple Search button Functionality,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button",Multiple Search pop-up screen should open,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - Multiple Search,CCIPH-21,TC_US_FUNC_032,Verify the Multiple Search Screen fields,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button
+5. Verify the details over screen","Multiple Search pop-up screen should open with these fields :
+Reference dropdown field having values -- Tracking number , Console , BOE , Account Number
+Enter Search input field
+Search and Cancel buttons ",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - Multiple Search,CCIPH-21,TC_US_FUNC_033,Validate the fields over multiple search screen,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button
+5. Validate the fields over screen","Dropdown values should be selectable 
+User should be able to input values in the search input field with coma separated logic
+Search and Cancel button should be clickable",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - Multiple Search,CCIPH-21,TC_US_FUNC_034,Validate the Valid search functionality,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button
+5. Select the type of search and input value
+6. Click on Search button",Search should perform and user should get the list of records,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_035,Validate the Search button functionality for empty data for Multiple Search,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button
+5. Select the type of search and left the field empty
+6. Click on Search button","Search should not perform, it should through the error",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - Multiple Search,CCIPH-21,TC_US_FUNC_036,Validate the invalid search functionality,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button
+5. Select the type of search and input invalid value or spaces
+6. Click on Search button",Search should not perform ,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - Multiple Search,CCIPH-21,TC_US_FUNC_037,Validate the Cancel button functionality,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Multiple button
+5. Select the type of search and input invalid value or spaces
+6. Click on Cancel button",Pop-up windown should close out and no search should perform,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_038,Verify navigation to the full detail page on clicking a shipment record,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+6. Click on the Shipment record",User should navigate to the Detailed Page ,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_039,Validate the back button functionality,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+6. Click on the Shipment record
+7. Click on back button",User should move to the previous page,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_040,Verify the Search Criteria dropdown values,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown","Dropdown should open and all these values should be visible in the dropdown :
+Tracking Number
+Console
+BOE
+Account Number",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_041,Validate the Search input field for dropdown values,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Enter the correct values in the input field and click on Search button",User should be able to enter values in the field and for valid data search should perform ,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_042,Validate the Search button functionality for valid inputs ( Tracking Number ),"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Select Tracking Number
+5. Enter the correct values in the input field and click on Search button",Search should perform properly,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_043,Validate the Search button functionality for valid inputs ( Console ),"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Select Console
+5. Enter the correct values in the input field and click on Search button",Search should perform properly,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_044,Validate the Search button functionality for valid inputs ( BOE ),"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Select BOE
+5. Enter the correct values in the input field and click on Search button",Search should perform properly,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_045,Validate the Search button functionality for valid inputs ( Account Number ),"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Select Account Number
+5. Enter the correct values in the input field and click on Search button",Search should perform properly,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_046,Validate the Search button functionality for empty data,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Select any of the value
+5. Left the search field empty  
+6. Click on Search button","Search should not perform, it should through the error",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_047,Validate the Search button functionality for invalid data,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Click on the Search criteria dropdown
+4. Select any of the value
+5. Enter Invalid data in the field
+6. Click on Search button","Search should not perform, it should through the error",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_US_FUNC_048,Verify the information over the detailed page,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+6. Click on the Shipment record",All the details regarding the record should be visible to the user ,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_1,Verify Header section information of the detailed page,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Go through the header section","Header section should contain back button, Charges ( ECD, DTC ), Anaylsis, History and Prepare Document",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_2,Validate the functionality of ECD Charge ,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Go through the header section
+7. Click on ECD","On Clicking ECD, These infromation section should be visible :
+1. Tracking number and operation details strip
+2. Account Information
+3. Additional Details 
+4. Invoicing Table 
+5. Document Number details",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_3,Verify the UI for ECD selection for Tracking number and operation details trip,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD ","Tracking number, Billing Entry Billing Country MAWB( Console ) Destination Cost Status have a clear visiblity and as per the Figma design 
+
+Operation, Charge, Category, Handler have a clear visiblity and as per the figma design
+",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_4,Validate the details for ECD selection of Tracking number and operation details trip in the database,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_5,Verify the UI for ECD selection for Account Information,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD ","All the given fields and data should be as per the Figma design :
+Account Type, AP Account, AP Account name, Customs Type, Service, Goods value, CIF value, numbe rof pieces, Product Group , Delivery Information , Created date, Pickup Date, Delivery Type, Payment Type ",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_6,Validate the details for ECD selection of Tracking number and operation details trip in the database,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_7,"Verify the UI for ECD selection for Addtional Details ( Origin, Destination & 3rd Party )","1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD ","All the given fields and data should be as per the Figma design :
+Goods Summary, Origin, Destination, 3rd Pary, Seller Information ",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_8,"Validate the details for ECD selection of Addtional Details ( Origin, Destination & 3rd Party ) in the database","1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_9,Verify the UI for Invoicing Table for ECD,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD 
+7. Check the UI for the Invoicing Table","Invoicing table should be as per the figma design and have all these Columns include :
+Service Code
+DESCRIPTION
+AP ACCOUNT
+AP CURRENCY
+ESTIMATE
+ACTUAL ONE ( BOE 1 )
+ACTUAL TWO( BOE 2 )
+ACTUAL THREE ( BOE 3 )
+ACTUAL FOUR ( Additional )
+TOTAL ACTUALS
+ELIGIBLE COST
+",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_10,Verify the UI for Document Number Table for ECD,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD 
+7. Check the UI for the Document Number","Document Number table should be as per the figma design and have all these Columns include :
+Dcoument Number
+ACCOUNT
+ACCOUNT NAME
+DOCUMENT TYPE
+AMOUNT
+NUMBER OF CHARGES
+STATUS
+CREATED BY 
+DOCUMENT DATE 
+CREATED DATE",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_11,Validate the details against the Document number in SAP or Database for ECD,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for ECD details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI of Document Number should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_12,Validate the functionality of DTC Charge ,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Go through the header section
+7. Click on DTC","On Clicking ECD, it should navigate to the DTC Section and these infromation section should be visible :
+1. Tracking number and operation details strip
+2. Account Information
+3. Additional Details 
+4. Invoicing Table 
+5. Document Number details",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_13,Verify the UI for DTC selection for Tracking number and operation details trip,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC","Tracking number, Billing Entry Billing Country MAWB( Console ) Destination Cost Status have a clear visiblity and as per the Figma design 
+
+Operation, Charge, Category, Handler have a clear visiblity and as per the figma design
+",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_14,Validate the details for DTC selection of Tracking number and operation details trip in the database,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_15,Verify the UI for DTC selection for Account Information,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC ","All the given fields and data should be as per the Figma design :
+Account Type, AP Account, AP Account name, Business Type, Customs Type, Service, Goods value, CIF value, numbe rof pieces, Product Group , Delivery Information , Created date, Pickup Date, Delivery Type, Payment Type ",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_16,Validate the details for DTC selection of Tracking number and operation details trip in the database,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_17,"Verify the UI for DTC selection for Addtional Details ( Origin, Destination & 3rd Party )","1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC","All the given fields and data should be as per the Figma design :
+Goods Summary, Origin, Destination, 3rd Pary, Seller Information ",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_18,"Validate the details for DTC selection of Addtional Details ( Origin, Destination & 3rd Party ) in the database","1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI should be present in the database also,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_19,Verify the UI for Invoicing Table for DTC,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC
+7. Check the UI for the Invoicing Table","Invoicing table should be as per the figma design and have all these Columns include :
+SERVICE CODE
+DESCRIPTION
+AR ACCOUNT
+AR CURRENCY
+ESTIMATE
+INVOICE ONE ( BOE 1 )
+INVOICE TWO( BOE 2 )
+INVOICE THREE ( BOE 3 )
+INVOICE FOUR ( Additional )
+OUTSTANDING
+TOTAL INVOICES
+",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_20,Validate the details for the Invoicing Table for DC,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC
+7. Check the UI for the Invoicing Table
+8. Setup the Database and check for the values",Values must be correct,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_21,Verify the UI for Document Number Table for DTC,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC 
+7. Check the UI for the Document Number","Document Number table should be as per the figma design and have all these Columns include :
+Dcoument Number
+ACCOUNT
+ACCOUNT NAME
+DOCUMENT TYPE
+AMOUNT
+NUMBER OF CHARGES
+STATUS
+CREATED BY 
+DOCUMENT DATE 
+CREATED DATE",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_22,Validate the details against the Document number in SAP or Database for DTC,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Check for DTC details
+7. Setup the Database and tally the details in the database in the given table",Details shown out over the UI of Document Number should be present in the database also,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_23,Verify the functionality of Analysis Tab Section,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on the Analysis Section","User should navigate to the Analysis tab Section and these sub-sections should be visible to the user in a table form :
+ECD, DTC, ANALYSIS",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_24,Verify the UI and detail over the Analysis section ,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on the Analysis Section","Tracking Number, Billing Entity, Billing Country, MAWB(Console), Destination Cost Status all these information should be visible there with the table having subsections of ECD,DTC,ANALYSIS",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_25,Validate the details of subsections in the Analysis tab ,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on the Analysis Section
+7. Click on ECD/DTC/ANALYSIS","ECD should have the details regarding ECD Document, DTC should have the details regarding DTC Document and Analysis should have the comparison of both and the net invoice data",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_26,Verify the History tab Functionality,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button","On Clicking History Tab, User should move to the Custom History Screen",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_27,Verify the UI of History Screen,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button","History screen should have a table there with columns :
+Timestamp
+Subsection
+Field
+Old Value
+New Value
+User
+Type",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_28,Verify and Validate the History Section filters,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Click on Filter button","Over History Section, User can see the details through different filteres :
+
+All -- All the data till now should be shown
+Today -- Only Today's data should be shown in the table
+This Week -- Only This Week's data should be shown in the table
+This Month -- Only This Month's data should be shown in the table
+Custom Range -- Only Selected date range data should be shown",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_29,Verify that pagination is applied correctly to the dataset displayed on the screen,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on the History Tab
+7. Check the Record count over the All Tab in the footer","By default, 50 should be the count per screen",High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_30,Verify that the correct number of records are displayed as per the selected page size,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on the History Tab
+7. Check the Record count over the All Tab in the footer
+8. Change the record count to 10/20",Record should be updated over the screen accordingly as per the selected number,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_31,Validate whether pagination is implemented using server-side logic,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Check the Record count over the All Tab in the footer
+8. Open network tab and try to find out for that API response/Pay load","No new api should be there in client side but in case of server side there should be a new call with params like page=2, limit=10, offset, etc.",Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_32,Verify navigation functionality for Next and Previous page controls,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Check the Record count over the All Tab in the footer
+8. CLick on next/page",Value should move,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_33,Verify that the Previous/Back button is disabled when the user is on the first page,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Check the Back/Previous Page button over first page
+",Back/Previous Page should work properly,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_34,Verify that the Next button is disabled when the user is on the last page,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Check the Next Page button over Last page
+",Next button should be disabled,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_35,Verify that data loads correctly after a hard refresh and default pagination settings are applied,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Move to the next page data and do the hard refresh
+",Default settings should work,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-21,TC_Detailed_36,Verify the page load time when navigating between pages,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Switch in between the pages data and check the apis timing
+",Load time should be correct,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_37,Verify the back button of Custom History screen,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Click on Back button
+",User should move to the previous screen,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_38,Verify the Reset button of Custom History screen,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Click on Reset Button
+",All the details over the page should refresh and comes to the default state,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_39,Verify system behavior and performance when handling large volumes of data,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Check out the pages data and timings for the same
+",Performance should be correct,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_40,Verify Export button functionality on Custom Screen History Page,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Click on Export button",CSV file should be downloaded in your local macine,High,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_41,Validate the exported file format ,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Click on Export button
+8. Open the downloaded file",File should not be encrypted and reflect same data as per UI,Critical,QA,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-120,TC_Detailed_42,Validate the exported file data as per Custom Screen History Page,"1. Login as Super Admin
+2. Go to Customs Screen
+3. Fill out the details
+4. Click on Search button
+5. Click on the Shipment record
+6. Click on History button
+7. Click on Export button
+8. Open the Downloaded file
+9. verify the data ",File should not be encrypted and reflect same data as per UI,Critical,QA,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_001,Verify Customs Search screen loads successfully with all search filters,"1. Login as authorized user.
+2. Navigate to Customs Search screen.
+3. Verify all search filters and controls are displayed.","All search parameters, buttons and controls should be displayed successfully.",High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_002,Verify search using a valid combination of basic filters,"1. Navigate to Customs Search screen.
+2. Select Charge Country, Entity, Charge Group, Charge Code and Charge Status.
+3. Click Search.",System should display records matching all selected filters.,High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_003,Verify Charge Group controls available Charge Codes,"1. Select Charge Group as Cost.
+2. Verify available Charge Codes.
+3. Change Charge Group to Revenue.
+4. Verify Charge Codes again.","Cost should display ECD, ECS, EC3. Revenue should display DTA, DTC, DTS and DT3 only.",Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_004,Verify search using Date Type and valid date range,"1. Select Date Type.
+2. Select Start Date.
+3. Select End Date.
+4. Click Search.",Records should be filtered according to selected Date Type and date range.,High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_005,Verify End Date cannot be earlier than Start Date,"1. Select Start Date.
+2. Select an End Date earlier than Start Date.
+3. Click Search.",System should display validation message and prevent search execution.,Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_006,"Verify search using Business Type, Account Type and Category filters","1. Select Business Type.
+2. Select Account Type.
+3. Select Category.
+4. Click Search.",Search results should satisfy all selected filter values.,High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_007,Verify search using different Search Criteria values,"1. Select Search Criteria as Tracking Number.
+2. Search using valid Tracking Number.
+3. Repeat for Console, Account Number and BOE.",System should return matching shipment records for each search criteria.,Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_008,Verify Multiple Tracking Number search functionality,"1. Select Search Criteria as Tracking Number.
+2. Click Multiple button.
+3. Enter multiple Tracking Numbers.
+4. Click Search.",System should return matching records for all entered Tracking Numbers.,Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_009,Verify Additional Details filters functionality,"1. Enable Additional Details toggle.
+2. Select Origin Entity, Origin Country, Destination Entity, Destination Country, Third Party Entity and Third Party Country.
+3. Click Search.",Search should return records matching the selected additional filters.,High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_010,Verify search using multiple filter combinations,"1. Select filters from Basic Search and Additional Details.
+2. Enter valid search values.
+3. Click Search.",System should return only records satisfying all selected conditions.,Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_011,"Verify system displays ""No records found"" when no matching data exists","1. Enter filter values that do not match any shipment.
+2. Click Search.","System should display ""No records found"" message.",High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_012,Verify search results are accurate with database records,"1. Perform search using known shipment data.
+2. Compare search results with database records.",UI search results should match database records.,High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_013,Verify search performance for large result sets,"1. Perform search with broad criteria.
+2. Measure search response time.
+3. Verify records are loaded successfully.",Search should complete within acceptable response time without UI issues.,Medium,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-22,TC_SEARCH_014,Verify user can perform consecutive searches without refreshing the page,"1. Perform first search.
+2. Modify filter values.
+3. Perform another search.
+4. Repeat multiple times.",Each search should return accurate results without requiring page refresh.,Medium,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-23,TC_FILTER_001,Verify Hide Filters button availability and default state on Search screen,"1. Login as an authorized user.
+2. Navigate to the Customs Search screen.
+3. Observe the Hide Filters button before performing a search.
+4. Perform a valid search.
+5. Verify the state of the Hide Filters button after search results are displayed.",Hide Filters button should be visible in an Inactive state on initial page load and should become Active only after search results are displayed.,High,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-23,TC_FILTER_002,Verify filter section collapses successfully using Hide Filters button,"1. Navigate to the Customs Search screen.
+2. Perform a valid search.
+3. Click the Hide Filters button.
+4. Observe the filter section, search results area and button label.","Filter section should collapse, search results should expand to occupy available space and button label should change to Show Filters.",Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-23,TC_FILTER_003,Verify collapsed filter section can be expanded using Show Filters button,"1. Collapse the filter section.
+2. Click the Show Filters button.
+3. Observe the filter section and search results area.
+4. Verify the button label.","Filter section should expand to its original position, search results should resize accordingly and button label should change back to Hide Filters.",Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-23,TC_FILTER_004,Verify filter values are retained after collapsing and expanding the filter section,"1. Enter values in multiple search filters.
+2. Perform a search.
+3. Click Hide Filters.
+4. Click Show Filters.
+5. Verify all previously entered filter values.",All previously entered filter values should remain unchanged after collapsing and expanding the filter section.,Critical,,Yes,Post MVP,,Pass,
+Customs Search,CCIPH-23,TC_FILTER_005,Verify user can continue searching after toggling filter visibility multiple times,"1. Perform a valid search.
+2. Collapse and expand the filter section multiple times.
+3. Modify one or more filter values.
+4. Perform another search.
+5. Verify the search results.","System should continue functioning normally, filter values should remain editable and search results should be returned correctly after toggling.",Medium,,Yes,Post MVP,,Pass,
+Common Searchable Dropdown,CCIPH-22,TC_DROPDOWN_SEARCH_001,Verify user can search and select a value from searchable dropdown,"1. Login to the application.
+2. Navigate to any screen containing a searchable dropdown.
+3. Click the dropdown.
+4. Enter a valid keyword in the search box.
+5. Verify filtered results.
+6. Select the required value.","Dropdown should filter matching values dynamically as the user types, and the selected value should be populated successfully.",High,,Yes,Post MVP,,Pass,
+Common Searchable Dropdown,CCIPH-22,TC_DROPDOWN_SEARCH_002,Verify search behavior when no matching value exists in the dropdown,"1. Open any searchable dropdown.
+2. Enter a keyword that does not match any available value.
+3. Observe the search result.","System should display ""No Records Found"" (or equivalent message) and should not allow an invalid selection.",High,,Yes,Post MVP,,Pass,
+Common Searchable Dropdown,CCIPH-22,TC_DROPDOWN_SEARCH_003,Verify search functionality is case-insensitive across all searchable dropdowns,"1. Open a searchable dropdown.
+2. Search using lowercase, uppercase and mixed-case characters for the same value.
+3. Compare the results.","Search results should be identical irrespective of letter case, and the correct value should be displayed and selectable.",Medium,,Yes,Post MVP,,Pass,

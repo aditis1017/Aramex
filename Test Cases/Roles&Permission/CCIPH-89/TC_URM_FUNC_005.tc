@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Roles Info under Roles &amp; Permissions page</description>
+   <name>TC_URM_FUNC_005</name>
+   <tag>GenAI,CCIPH-89,Critical,Roles&amp;Permission</tag>
+   <comment>CSV: Roles_And_Permission_TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-89 | AC2 - Role card details</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>urm-cciph89-tc_u_rm_func_005</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Entity Management-AR CCIPH-85 Revenue-AR entity invoicing settings. Source: Entity-Management-CCIPH85-AR-Data.csv</description>
+   <name>Entity-Management-CCIPH85-AR-Data</name>
+   <tag>CCIPH-85,EntityManagement-AR,Revenue-AR</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>em-ar-cciph85-data-4a1b-9c0d-8e7f-000000000085</dataFileGUID>
+   <dataSourceUrl>Entity-Management-CCIPH85-AR-Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

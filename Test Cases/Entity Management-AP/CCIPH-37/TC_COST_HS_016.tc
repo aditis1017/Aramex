@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Pagination network reminder + next</description>
+   <name>TC_COST_HS_016</name>
+   <tag>GenAI,EntityManagement,CCIPH-37</tag>
+   <comment>CSV: Entity Management AP- TestCases.xlsx | Jira: https://aramex.atlassian.net/browse/CCIPH-37</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>em-cciph37-tc_cost_hs_016-0016</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>em37-data-16</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>16</value>
+      </iterationEntity>
+      <testDataId>Data Files/Entity-Management-CCIPH37-Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>em37-data-16</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter</value>
+      <variableId>em37-var-filter</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em37-data-16</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>history_Filter2</value>
+      <variableId>em37-var-filter2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em37-data-16</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>page_Size</value>
+      <variableId>em37-var-page-size</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>em37-data-16</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>days_Back</value>
+      <variableId>em37-var-days-back</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'ALL'</defaultValue>
+      <description></description>
+      <id>em37-var-filter</id>
+      <masked>false</masked>
+      <name>history_Filter</name>
+   </variable>
+   <variable>
+      <defaultValue>'ALL'</defaultValue>
+      <description></description>
+      <id>em37-var-filter2</id>
+      <masked>false</masked>
+      <name>history_Filter2</name>
+   </variable>
+   <variable>
+      <defaultValue>'10'</defaultValue>
+      <description></description>
+      <id>em37-var-page-size</id>
+      <masked>false</masked>
+      <name>page_Size</name>
+   </variable>
+   <variable>
+      <defaultValue>'90'</defaultValue>
+      <description></description>
+      <id>em37-var-days-back</id>
+      <masked>false</masked>
+      <name>days_Back</name>
+   </variable>
+</TestCaseEntity>

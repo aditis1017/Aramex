@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Selecting valid .xlsx from Upload Files/B2B_Valid.xlsx enables SUBMIT button</description>
+   <name>TC_B2B_007</name>
+   <tag>GenAI,High,CCIPH-226,B2B-Shipment,CCIPH-476</tag>
+   <comment>CSV: B2B-Keywords-Manager-TestCases.csv.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-226 | Linked: https://aramex.atlassian.net/browse/CCIPH-476 | Upload: Upload Files/B2B_Valid.xlsx</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2b-cciph226-tc_b2b_007</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b2b-cciph226-tc_b2b_007-valid-upload</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Upload Files/B2B_Valid.xlsx'</defaultValue>
+      <description>Valid B2B keywords Excel with Keyword and Match Type data (project-relative path)</description>
+      <id>b2b-cciph226-tc_b2b_007-valid-upload</id>
+      <masked>false</masked>
+      <name>valid_Upload_Path</name>
+   </variable>
+</TestCaseEntity>

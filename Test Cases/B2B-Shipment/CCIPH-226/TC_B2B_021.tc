@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Drag and drop valid .xlsx onto dropzone stages the file</description>
+   <name>TC_B2B_021</name>
+   <tag>GenAI,CCIPH-226,Medium,B2B-Shipment,CCIPH-476</tag>
+   <comment>CSV: B2B-Keywords-Manager-TestCases.csv.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-226 | Linked: https://aramex.atlassian.net/browse/CCIPH-476</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b2b-cciph226-tc_b2b_021</testCaseGuid>
+</TestCaseEntity>
