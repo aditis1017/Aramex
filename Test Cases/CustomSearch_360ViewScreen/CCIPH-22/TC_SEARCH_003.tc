@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Charge Group controls available Charge Codes (CCIPH-22 / TC_SEARCH_003)</description>
+   <name>TC_SEARCH_003</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-22</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-22</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph22-tc_search_003-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs22-link-tc_search_003</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>3</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH22_Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

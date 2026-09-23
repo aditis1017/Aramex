@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Export button functionality on Custom Screen History Page (CCIPH-120 / TC_Detailed_40)</description>
+   <name>TC_Detailed_40</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,ChargeDetail,CCIPH-120</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-120</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph120-tc_detailed_40-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs120-link-tc_detailed_40</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>32</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH120_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs120-link-tc_detailed_40</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>25b123fc-bbb5-4bcf-a839-d6d558bb1aa6</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Tracking number for Customs Search and Charge Detail navigation</description>
+      <id>25b123fc-bbb5-4bcf-a839-d6d558bb1aa6</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

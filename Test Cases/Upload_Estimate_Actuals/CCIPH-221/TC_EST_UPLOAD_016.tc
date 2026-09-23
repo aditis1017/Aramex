@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify upload audit logs are generated</description>
+   <name>TC_EST_UPLOAD_016</name>
+   <tag>GenAI,CCIPH-75,Medium,CCIPH-221,Upload_Estimate_Actuals</tag>
+   <comment>CSV: Upload Estimate_Actuals.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-221</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>uea-cciph221-tc_est_upload_016</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>f353c889-c3f1-4752-b24a-1f9626732f77</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f353c889-c3f1-4752-b24a-1f9626732f77</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

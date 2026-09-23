@@ -1,0 +1,4 @@
+"ID","product_Group","shipper_Account_Number","destination_Entity","tracking_Number","expected_Shipment_Type","expect_Auto_Ddu","flow_Type","charge_Group","charge_Code"
+"TC_DOM_DDU_001","DOM","72104493","RUH","","DDU","Y","DB_UI","Cost","ECD"
+"TC_DOM_DDU_002","DOM","72104493","JED","","NOT_DDU","N","DB_UI","Cost","ECD"
+"TC_DOM_DDU_003","DOM","00000001","RUH","","NOT_DDU","N","DB_UI","Cost","ECD"

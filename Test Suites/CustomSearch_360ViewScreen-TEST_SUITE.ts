@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
-   <description>Custom Search / 360 View Screen - CCIPH-21. Chrome. Login via MicrosoftLoginKeywords dev automation profile. Replace REPLACE_WITH_* placeholders in scripts/Data Files/CustomSearch_CCIPH21_Data.csv with environment-specific values before execution.</description>
+   <description>Custom Search / 360 View Screen - CCIPH-21, CCIPH-22, CCIPH-23, CCIPH-26 and CCIPH-120. Chrome. Login via MicrosoftLoginKeywords stage automation profile. Update Data Files/CustomSearch_CCIPH21_Data.csv, CustomSearch_CCIPH22_Data.csv, CustomSearch_CCIPH23_Data.csv, CustomSearch_CCIPH26_Data.csv and CustomSearch_CCIPH120_Data.csv with environment-specific values before execution.</description>
    <name>CustomSearch_360ViewScreen-TEST_SUITE</name>
-   <tag>CCIPH-21,CustomSearch,CustomSearch_360ViewScreen</tag>
+   <tag>CCIPH-21,CustomSearch,CustomSearch_360ViewScreen,CCIPH-22,CCIPH-23,CCIPH-26,CCIPH-120</tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
@@ -151,6 +151,12 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_US_FUNC_010</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>5704dc30-fbd4-4d9e-a2e6-559c1e240102</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000011</guid>
@@ -158,6 +164,12 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_US_FUNC_011</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>fa39afab-24ad-4bf7-b631-19da624c1df9</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000012</guid>
@@ -245,6 +257,12 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_US_FUNC_033</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>e82de737-600b-4f60-ad7d-a9c8bd5d4be9</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000034</guid>
@@ -284,6 +302,12 @@
          <value></value>
          <variableId>cs21-var-invalid-Search-Value</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>4ccbd9f3-5f80-4ff4-b701-f42bad21ac3a</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000037</guid>
@@ -291,6 +315,18 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_US_FUNC_037</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>367d914d-fc16-4ec2-a0b3-a2e635fb0d39</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>644ba59f-5077-45a4-8897-8dc98b690161</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000038</guid>
@@ -298,6 +334,12 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_US_FUNC_038</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>886a7726-3c7b-4c40-bbf5-b78466fce641</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000039</guid>
@@ -305,6 +347,12 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_US_FUNC_039</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>98d15cf6-0f10-4309-9ffb-cf8e28f23a0a</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000040</guid>
@@ -344,6 +392,12 @@
          <value></value>
          <variableId>cs21-var-search-Value</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>b606929d-3773-491c-a0b7-345d0d90b575</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000043</guid>
@@ -356,6 +410,12 @@
          <type>DEFAULT</type>
          <value></value>
          <variableId>cs21-var-search-Value</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>66a22d7a-567e-44ad-a3d0-5c4326a9dcf5</variableId>
       </variableLink>
    </testCaseLink>
    <testCaseLink>
@@ -370,6 +430,12 @@
          <value></value>
          <variableId>cs21-var-search-Value</variableId>
       </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>8915b6d3-74e7-4d71-a8fa-00a836ee3d84</variableId>
+      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>a1000001-0000-4000-8000-000000000045</guid>
@@ -382,6 +448,12 @@
          <type>DEFAULT</type>
          <value></value>
          <variableId>cs21-var-search-Value</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>bb1fc9ce-91e5-4800-b3e7-0875e280f083</variableId>
       </variableLink>
    </testCaseLink>
    <testCaseLink>
@@ -460,5 +532,1021 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-21/TC_Detailed_36</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000001</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_001</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000002</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_002</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_country</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_group</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_code</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_status</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000003</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_003</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000004</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_004</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-date_type</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-start_date</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-end_date</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000005</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_005</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-date_type</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-start_date</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-end_date</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000006</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_006</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-account_type</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-business_type</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-category</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000007</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_007</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000008</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_008</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-tracking_numbers</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000009</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_009</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-origin_entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-origin_country</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dest_entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dest_country</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-third_party_entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-third_party_country</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000010</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_010</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_country</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_group</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_code</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-charge_status</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-account_type</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-business_type</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-category</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-search_criteria</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-origin_entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-origin_country</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dest_entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dest_country</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-third_party_entity</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-third_party_country</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000011</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_011</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-search_criteria</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000012</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_012</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-search_criteria</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>6dc2d028-063c-4cbb-a792-53ced848ba2f</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000013</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_013</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000014</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_SEARCH_014</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>d8e3b7b5-1c93-4503-ba91-4899399270a2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>ea066eec-7c87-4217-a0cb-a1ffe236e146</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>adbd7f32-9529-4069-ad26-1d08472e4f4d</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>acfa0352-8462-4f75-8127-cc6e6235bcc5</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000015</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_DROPDOWN_SEARCH_001</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_label</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_search_keyword</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_select_value</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000016</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_DROPDOWN_SEARCH_002</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_label</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_invalid_keyword</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>b2000001-0000-4000-8000-000000000017</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-22/TC_DROPDOWN_SEARCH_003</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_label</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_select_value</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_case_variant_1</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_case_variant_2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs22-var-dropdown_case_variant_3</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>c3000001-0000-4000-8000-000000000001</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-23/TC_FILTER_001</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3f09bc36-ffad-4616-a9cd-68e0bb60be30</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>c3000001-0000-4000-8000-000000000002</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-23/TC_FILTER_002</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>c3000001-0000-4000-8000-000000000003</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-23/TC_FILTER_003</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>c3000001-0000-4000-8000-000000000004</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-23/TC_FILTER_004</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>54bde6e5-26c3-4514-a926-0f872101d50c</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>c3000001-0000-4000-8000-000000000005</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-23/TC_FILTER_005</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cs23-var-charge_group</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000018</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_018</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000019</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_019</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000020</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_020</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000022</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_022</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000023</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_023</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000024</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_024</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000025</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_025</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000026</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_026</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000027</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_027</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000028</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_028</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000029</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_029</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4000001-0000-4000-8000-000000000030</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-26/TC_US_FUNC_030</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000001</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_01</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>8dc197be-bf60-44fc-91b4-132c6dea4905</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000002</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_02</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>b3797af3-0f46-40d5-9a03-23b230803e17</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000003</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_03</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>6b60c0dd-118e-4a47-909d-1f78021829e2</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000004</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_04</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>22cc159a-67b5-46ba-b8f2-1b934e31b486</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000005</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_05</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>0f44c251-d036-4122-b47c-3b2d8508eb59</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000006</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_06</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>9f3ad189-0912-414b-9fde-3a7bf86a1e55</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000007</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_07</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cd9a1716-7573-4c4c-9f34-f64ff4c36e00</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000008</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_08</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3eb2419c-9cbd-4b68-8e64-4e8b426c9fdc</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000009</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_09</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>78193123-f4df-44dd-9794-3939208a902d</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000010</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_10</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cd747ea1-71b7-4833-9cc9-f93542c2e9a0</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000011</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_11</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>44ac36bf-ef44-488f-8e62-4809344c2c33</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000012</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_12</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>60eaa3ef-ac4e-4c5a-8615-7c5f9bcf0f99</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000013</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_13</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>b13fd484-cfab-4395-ad7e-d59389229f49</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000014</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_14</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>11168244-42b8-40ad-adc8-0c2d0e3bd84b</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000015</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_15</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>6662f989-dda1-4dba-bf7a-95318d255fc9</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000016</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_16</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>c8f6267f-0034-47fb-8456-4168075c45ac</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000017</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_17</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>17e70529-4ccd-418c-9bef-e1c3757a558f</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000018</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_18</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>07410a35-6078-4e8f-a26e-c688de523f87</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000019</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_19</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>019772d8-5eab-45d7-8a1d-8bc4d9bb4a97</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000020</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_20</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>df053292-5105-4bcd-982f-5c500a26aee9</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000021</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_21</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>722081d2-07fb-4de0-8ede-61ef044a48c8</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000022</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_22</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>37e10e85-61a6-4110-83af-d5b476095960</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000023</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_23</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>c4919d9d-f4e6-4107-833f-fee30f02f153</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000024</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_24</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>b4363c64-3cc9-4920-851a-b13aa2a22002</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000025</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_25</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>36042814-fe4a-442a-aaf5-2d4f96f5e7e6</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000026</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_26</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>d076e5a1-20de-497e-90aa-3167fdf67f84</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000027</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_27</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>fe7f99d2-3cfb-4156-a013-e550d2e86244</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000028</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_28</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>0d8048ce-66ca-4a27-8f84-42f6e15f73ba</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000037</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_37</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a03fdb8b-9f6c-49b5-8a25-5a8748c8d415</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000038</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_38</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>526d1962-b13d-4e7e-b339-f2b3b2874878</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000039</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_39</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a0ad06bb-06d2-46af-99e3-a0311f061695</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000040</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_40</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>25b123fc-bbb5-4bcf-a839-d6d558bb1aa6</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000041</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_41</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>e7555426-ad48-4f48-9eba-ace367cec187</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e1200001-0000-4000-8000-000000000042</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/CustomSearch_360ViewScreen/CCIPH-120/TC_Detailed_42</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a3ee9515-c54f-45d2-aaa1-071fe26d536b</variableId>
+      </variableLink>
    </testCaseLink>
 </TestSuiteEntity>

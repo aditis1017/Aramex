@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify search functionality is case-insensitive across all searchable dropdowns (CCIPH-22 / TC_DROPDOWN_SEARCH_003)</description>
+   <name>TC_DROPDOWN_SEARCH_003</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-22</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-22</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph22-tc_dropdown_search_003-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs22-link-tc_dropdown_search_003</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>17</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH22_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Label</value>
+      <variableId>cs22-var-dropdown_label</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Select_Value</value>
+      <variableId>cs22-var-dropdown_select_value</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Case_Variant_1</value>
+      <variableId>cs22-var-dropdown_case_variant_1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Case_Variant_2</value>
+      <variableId>cs22-var-dropdown_case_variant_2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Case_Variant_3</value>
+      <variableId>cs22-var-dropdown_case_variant_3</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Label from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_label</id>
+      <masked>false</masked>
+      <name>dropdown_Label</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Select_Value from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_select_value</id>
+      <masked>false</masked>
+      <name>dropdown_Select_Value</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Case_Variant_1 from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_case_variant_1</id>
+      <masked>false</masked>
+      <name>dropdown_Case_Variant_1</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Case_Variant_2 from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_case_variant_2</id>
+      <masked>false</masked>
+      <name>dropdown_Case_Variant_2</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Case_Variant_3 from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_case_variant_3</id>
+      <masked>false</masked>
+      <name>dropdown_Case_Variant_3</name>
+   </variable>
+</TestCaseEntity>

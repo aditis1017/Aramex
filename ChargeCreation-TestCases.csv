@@ -1,0 +1,1022 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Remarks,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,"(Functional)
+Pass/Fail",Functional Remarks
+ECD,CCIPH-74,TC_ECD_001,Verify ECD auto-created as Pending Calculation when shipment created without estimations,"1. Check shipment
+2. Process shipment
+3. Check the Status
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.","Single ECD created with status Pending Calculation
+
+Charges should include : 
+Duty
+VAT
+Other Charges.",,Critical,QA,Yes,,,Pass,
+ECD,CCIPH-74,TC_ECD_002,Verify ECD auto-created as Due when shipment created with estimations available,"1. Check shipment
+2. Process shipment
+3. Check the Status
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.","Single ECD created with status Due.
+
+Charges should include :
+Duty
+VAT
+Other Charges.",,High,QA,Yes,,,Pass,
+ECD,CCIPH-74,TC_ECD_003,Verify Pending Calculation ECD updated from Excel upload and status changed to Due,"1. Ensure ECD Pending Calculation
+2. Upload Excel
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Existing ECD updated and status Due. Status should be updated and visible consistently in UI / DB.,,High,QA,Yes,,,Pass,
+ECD,CCIPH-74,TC_ECD_004,Verify Due ECD updated from Excel upload and remains Due,"1. Ensure ECD Due
+2. Upload Excel
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Existing ECD updated and status remains Due.,,Critical,QA,Yes,,,Pass,
+ECD,CCIPH-74,TC_ECD_005,Verify duplicate ECD is not created on Excel upload,"1. Ensure existing ECD
+2. Upload Excel
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",No new ECD record; only existing updated. No duplicate records should be generated.,,High,QA,Yes,,,Pass,
+ECD,CCIPH-74,TC_ECD_008,Verify multiple Excel uploads keep one Due ECD record,"1. Ensure ECD Due
+2. Upload file A
+3. Upload file B
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Same ECD updated each time; only one record exists.,,Critical,QA,Yes,,,Pass,
+ECD,CCIPH-74,TC_ECD_009,Verify invalid Excel rows do not create duplicate ECD,"1. Ensure existing ECD
+2. Upload invalid/duplicate rows
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",System rejects duplicates or updates one record only.,,Critical,QA,Yes,,,Pass,
+ECD High Value Calculation,CCIPH-74,TC_ECD_HV_001,Verify high value charge calculation uses uploaded document/action data,"1. Mark shipment High Value
+2. Upload docs/actions
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Charges calculated from uploaded inputs.,,Critical,QA,Yes,,,Pass,
+ECD High Value Calc,CCIPH-74,TC_ECD_HV_002,Verify recalculation after updated upload overwrites previous values,"1. High value Due ECD
+2. Upload revised file
+3. Recalculate
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Latest uploaded values reflected.,,Critical,QA,Yes,,,Pass,
+ECD High Value Calc,CCIPH-74,TC_ECD_HV_003,Verify missing mandatory upload keeps status pending/error as per rule,"1. High value shipment
+2. Run calc missing docs
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Calculation blocked or pending based on config. Status should be updated and visible consistently in UI / DB.,,Critical,QA,Yes,,,Pass,
+ECD Low Value Calc,CCIPH-74,TC_ECD_LV_001,Verify low value charge calculation uses rate sheet from entity settings,"1. Mark shipment Low Value
+2. Configure rate sheet
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",System fetches rate sheet and calculates charge.,,High,QA,Yes,,,Pass,
+ECD Low Value Calc,CCIPH-74,TC_ECD_LV_002,Verify updated entity rate sheet impacts new calculations,"1. Update rate sheet
+2. Run new shipment calc
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Latest configured rates applied.,,Critical,QA,Yes,,,Pass,
+ECD Low Value Calc,CCIPH-74,TC_ECD_LV_003,Verify missing rate sheet handles gracefully,"1. Remove rate sheet
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Error/log shown and charge not incorrectly calculated.,,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_001,Validate one ECD record created on shipment creation,"1. Check shipment
+2. Run select by shipment id
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",One ECD row exists for shipment. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_002,Validate status stored as Pending Calculation when no estimation,"1. Check shipment without estimation
+2. Query charge table
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.","Status should be ""Pending Calculation"". Status should be updated and visible consistently in UI / DB. Stored database values should match business rules.",,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_003,Validate status stored as Due when estimation exists,"1. Check shipment with estimation
+2. Query charge table
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.","Status should be ""Due"". Status should be updated and visible consistently in UI / DB. Stored database values should match business rules.",,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_004,Validate existing ECD updated not inserted after Excel upload,"1. Note count
+2. Upload Excel
+3. Query count
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Count unchanged; same record updated. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_005,Validate charge amount fields updated from Excel values,"1. Upload Excel
+2. Query amount/tax columns
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",DB values match uploaded values. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_006,Validate status changed to Due after upload from Pending,"1. Pending ECD
+2. Upload Excel
+3. Query
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Status updated to Due. Status should be updated and visible consistently in UI / DB. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_008,Validate invoicing party fields blank/blocked for private shipment,"1. Private shipment
+2. Query invoice columns
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Intercompany/Consignee invoice fields blocked/null. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_009,Validate audit columns updated on each re-upload,"1. Upload file twice
+2. Query updated_at/by
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Latest update timestamp/user stored. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DB Validation,CCIPH-74,TC_ECD_DB_010,Validate duplicate prevention unique key by shipment + charge code,"1. Trigger multiple uploads
+2. Query duplicates
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",No duplicate ECD rows found. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+Custom Detailed page,CCIPH-74,TC_ECD_DB_011,Verify the values over Shipment Detailed Page ,"1. Login as Super Admin/Custom Manager
+2. Go to Cutoms Page
+3. Search for the Particular Shipment Record
+4. Now for ECD, Verify the Estimation Charges
+5. Open relevant shipment / charge details screen.
+6. Verify impacted record after process completion.",Charges should be correct there. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+Custom Detailed page,CCIPH-74,TC_ECD_DB_012,Validate the values over Shipment Detailed Page in database,"1. Login as Super Admin/Custom Manager
+2. Go to Cutoms Page
+3. Search for the Particular Shipment Record
+4. Now for ECD, Validate the Estimation Charges in database
+5. Connect to database using authorized credentials.
+6. Execute query on relevant table using shipment / charge reference.
+7. Verify returned data against expected business values.",Charges should be correct there. Stored database values should match business rules. Displayed values should match underlying system data.,,High,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_001,Verify DTA charge record created for qualifying shipment,"1. Check qualifying shipment
+2. Process shipment
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.","DTA charge records created using revenue elements configured in Contract Management :
+Charges should include : 
+Duty
+VAT
+Other Charges
+Revenue.",,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_002,Verify billing context identified as Intercompany and assigned to ASL001,"1. Check shipment
+2. Trigger DTA flow
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Billing context set to Intercompany and charges assigned to ASL001.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_003,Verify error when shipper account unavailable,"1. Remove shipper account
+2. Trigger DTA flow
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Error raised and processing stopped.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_004,Verify debiting entity derived from origin and third-party mapping,"1. Configure mapping
+2. Process shipment
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Correct debiting entity identified.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_005,Verify error when debiting entity mapping missing,"1. Remove mapping
+2. Process shipment
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Error raised for missing mapping.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_006,Verify AR contract rate applied with highest priority,"1. Configure AR rate
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Contract rate sheet selected and applied.,,High,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_007,Verify entity public rate used when AR contract not available,"1. Remove AR rate
+2. Configure entity rate
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Entity public rate applied.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_008,Verify seller rate used when AR and entity rates unavailable,"1. Remove AR & Entity rates
+2. Configure seller rate
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Seller rate applied.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_009,Verify error when no rates available,"1. Remove all rates
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Error displayed and charge not created.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_010,Verify all revenue elements calculated from selected rate sheet,"1. Configure revenue elements
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",All revenue elements calculated correctly.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_011,Verify fixed rate calculated once during creation,"1. Configure fixed rate
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Fixed amount created once.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_012,Verify fixed rate not recalculated after estimate update,"1. Fixed charge exists
+2. Update estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge amount remains unchanged.,,Critical,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_013,Verify percentage rate calculated using defined identifier,"1. Configure % rate
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Percentage charge calculated correctly.,,High,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_014,Verify percentage rate recalculated after estimate update,"1. % charge exists
+2. Update estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge recalculated using latest estimate.,,High,QA,Yes,,,Pass,
+DTA,CCIPH-77,TC_DTA_015,Verify percentage rate recalculated after actual update,"1. % charge exists
+2. Update actual
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge recalculated using latest actual.,,High,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_001,Validate DTA row created in DB,"1. Check shipment
+2. Query charge table
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",One DTA row exists for shipment. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_002,Validate charge code stored as DTA,"1. Query row by shipment id
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Charge code = DTA. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_003,Validate billing account stored as ASL001,"1. Query billing account field
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",ASL001 stored correctly. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_004,Validate debiting entity stored correctly,"1. Query entity columns
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Correct debiting entity saved. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_005,Validate selected rate source stored,"1. Run calculation
+2. Query source columns
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",AR / Entity / Seller source saved correctly. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_006,Validate fixed amount persisted correctly,"1. Run fixed calculation
+2. Query amount
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Stored amount matches expected. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_007,Validate recalculated amount updated for percentage rate,"1. Update estimate
+2. Query amount
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Latest recalculated amount saved. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_008,Validate no duplicate DTA rows on reprocess,"1. Reprocess shipment
+2. Query duplicates
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",No duplicate rows found. No duplicate records should be generated. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTA DB Validation,CCIPH-77,TC_DTA_DB_009,Validate audit fields updated on recalculation,"1. Recalculate charge
+2. Query updated_at/by
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Audit fields updated correctly. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+Custom Detailed page,CCIPH-77,TC_DTA_UI_001,Verify DTA values on Shipment Detailed Page,"1. Login as Super Admin/Custom Manager/Finance Officer/Operation Staff
+2. Open shipment detail
+3. Verify DTA charges
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Displayed DTA charges are correct. Displayed values should match underlying system data.,,High,QA,Yes,,,Pass,
+Custom Detailed page,CCIPH-77,TC_DTA_UI_002,Validate Shipment Detailed Page values with DB,"1. Open shipment detail
+2. Query DB3.Compare
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",UI values match DB records. Stored database values should match business rules. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_001,Verify DTS / DT3 charge record created for qualifying shipment,"1. Process shipment
+2. Open relevant shipment / charge details screen.
+3. Check CMT=3/CMT=P
+3. Verify impacted record after process completion.","DTS or DT3 charge records created using configured revenue elements
+
+Charges should include : 
+Duty
+VAT
+Other Charges
+Revenue.",,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_002,Verify shipment payment type identified as Prepaid / Account,"1. Process Shipments
+2. Check prepaid/account shipment
+3. Trigger flow
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Shipment classified correctly as Prepaid / Account.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_003,Verify shipment payment type identified as 3rd Party,"1. Process Shipments
+2. Check 3rd Party shipment
+3. Trigger flow
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Shipment classified correctly as 3rd Party.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_004,Verify DTS charge created for Prepaid / Account shipment,"1. Check prepaid shipment
+2. Process shipment
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.","DTS charge created
+
+Charges should include : 
+Duty
+VAT
+Other Charges
+Revenue.",,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_005,Verify DT3 charge created for 3rd Party shipment,"1. Check 3rd party shipment
+2. Process shipment
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.","DT3 charge created
+
+Charges should include : 
+Duty
+VAT
+Other Charges
+Revenue.",,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_006,Verify contract rate applied for Account shipment,"1. Check account shipment
+2. Configure AR rate
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Contract rate sheet applied.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_007,Verify public rate applied when contract rate unavailable,"1. Remove AR rate
+2. Configure entity rate
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Public entity rate applied.,,High,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_008,Verify public rate applied for Prepaid shipment,"1. Check prepaid shipment
+2. Configure entity rate
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Public entity rate applied.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_009,Verify public rate applied for 3rd Party shipment,"1. Check 3rd party shipment
+2. Configure entity rate
+3. Run calculation
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Public entity rate applied.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_010,Verify exception raised when no rate sheet available,"1. Remove AR and Entity rates
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Exception raised and processing stopped.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_011,Verify calculation applied to all revenue elements,"1. Configure service codes
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",All revenue elements calculated correctly.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_012,Verify fixed rate calculated once during creation,"1. Configure fixed rate
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Fixed amount created once.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_013,Verify fixed rate not recalculated on estimate update,"1. Fixed charge exists
+2. Update estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge amount remains unchanged.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_014,Verify fixed rate not recalculated on actual update,"1. Fixed charge exists
+2. Update actual
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge amount remains unchanged.,,High,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_015,Verify percentage rate calculated using identifier,"1. Configure % rate
+2. Run calculation
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Percentage charge calculated correctly.,,High,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_016,Verify percentage rate recalculated on estimate update,"1. % charge exists
+2. Update estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge recalculated.,,High,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_017,Verify percentage rate recalculated on actual update,"1. % charge exists
+2. Update actual
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge recalculated.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_018,Verify non-invoiced charges recalculated after estimate change,"1. Non-invoiced DTS/DT3 exists
+2. Update estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Applicable revenue elements recalculated.,,Critical,QA,Yes,,,Pass,
+DTS / DT3,CCIPH-79,TC_DTS_019,Verify settled/invoiced charge uses variance logic after actual update,"1. Settled charge exists
+2. Update actual
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Difference processed using variance logic.,,High,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_001,Validate DTS / DT3 row created in DB,"1. Check shipment
+2. Query charge table
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Charge row exists. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_002,Validate charge code stored correctly as DTS,"1. Query row
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Charge code = DTS. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_003,Validate charge code stored correctly as DT3,"1. Query row
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Charge code = DT3. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_004,Validate selected rate source stored,"1. Run calculation
+2. Query source
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",AR or Entity source saved correctly. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_005,Validate fixed amount persisted correctly,"1. Run calculation
+2. Query amount
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Amount stored correctly. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_006,Validate recalculated amount updated for percentage rate,"1. Update estimate
+2. Query amount
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Latest amount saved. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_007,Validate no duplicate charges on reprocess,"1. Reprocess shipment
+2. Query duplicates
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",No duplicate rows found. No duplicate records should be generated. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_008,Validate audit fields updated after recalculation,"1. Recalculate charge
+2. Query updated_at/by
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Audit fields updated. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTS / DT3 DB Validation,CCIPH-79,TC_DTS_DB_009,Validate variance record created after settlement update,"1. Update actual
+2. Query variance table
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Variance row created. Stored database values should match business rules.,,Critical,QA,Yes,,,N/A,The functionality is out of MVP Scope for now
+Custom Detailed page,CCIPH-79,TC_DTS_UI_001,Verify DTS / DT3 values on Shipment Detailed Page,"1. Login as Super admin/Custom manager/finance officer/Operation Staff
+2. Open shipment detail
+3. Verify charges
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Charges displayed correctly. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+Custom Detailed page,CCIPH-79,TC_DTS_UI_002,Validate Shipment Detailed Page values with DB,"1. Open shipment detail
+2. Query DB
+3. Compare
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",UI values match DB records. Stored database values should match business rules. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_001,Verify DTC charge record created for qualifying shipment,"1. Check qualifying shipment
+2. Process shipment
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.","DTC charge records created
+
+Charges should include : 
+Duty
+VAT
+Other Charges
+Revenue.",,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_002,Verify Cash shipment uses entity public rate,"1. Check cash shipment
+2. Run calc
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Public entity rate applied.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_003,Verify Account shipment uses AR contract rate,"1. Check account shipment
+2. Configure AR rate
+3. Run calc
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Contract rate applied.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_004,Verify Account shipment fallback to entity rate,"1. Remove AR rate
+2. Configure entity rate
+3. Run calc
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Entity public rate applied.,,High,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_005,Verify error when no rate sheet configured,"1. Remove all rates
+2. Run calc
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Error displayed.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_006,Verify revenue elements calculated for selected rate sheet,"1. Configure service codes
+2. Run calc
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",All service codes calculated.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_007,Verify fixed rate not recalculated after estimate update,"1. Fixed charge exists
+2. Update estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Amount unchanged.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_008,Verify percentage rate recalculated after estimate change,"1. % charge exists
+2. Change estimate
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charge recalculated.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_009,Verify non invoiced charge recalculates on ECD update,"1. Non invoiced DTC
+2. Update ECD
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Charges recalculated.,,Critical,QA,Yes,,,Pass,
+DTC,CCIPH-76,TC_DTC_010,Verify settled charge uses variance on actual update,"1. Settled DTC
+2. Update actual
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",Variance processed.,,Critical,QA,Yes,,,N/A,The functionality is out of MVP Scope for now
+DTC DB Validation,CCIPH-76,TC_DTC_DB_001,Validate DTC row created in DB,"1. Query by shipment id
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",DTC row exists. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DB Validation,CCIPH-76,TC_DTC_DB_002,Validate charge code as DTC,"1. Query charge row
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Charge code = DTC. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DB Validation,CCIPH-76,TC_DTC_DB_003,Validate rate source stored as AR/Entity,"1. Run calc
+2. Query source
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Correct source saved. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DB Validation,CCIPH-76,TC_DTC_DB_004,Validate no duplicate rows on reprocess,"1. Reprocess shipment
+2. Query duplicates
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",No duplicates. No duplicate records should be generated. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTC DB Validation,CCIPH-76,TC_DTC_DB_005,Validate updated amount after recalculation,"1. Change estimate
+2. Query amount
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Latest amount saved. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTC DB Validation,CCIPH-76,TC_DTC_DB_006,Validate variance row created,"1. Update actual settled
+2. Query variance
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",Variance row exists. Stored database values should match business rules.,,High,QA,Yes,,,N/A,The functionality is out of MVP Scope for now
+Custom Detailed page,CCIPH-76,TC_DTC_UI_001,Verify DTC values on Shipment Detail page,"1. Login
+2. Open shipment
+3. Verify DTC
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Values correct. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+Custom Detailed page,CCIPH-76,TC_DTC_UI_002,Validate DTC UI values with DB,"1. Open shipment
+2. Query DB
+3. Compare
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",UI matches DB. Stored database values should match business rules. Displayed values should match underlying system data.,,High,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_001,Verify eligible shipment proceeds for ECD creation,"1. Create shipment record
+2. Meet all DDO eligibility conditions
+3. Run charge creation job
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Shipment marked eligible and proceeds for ECD creation.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_002,Verify ineligible shipment does not proceed for ECD creation,"1. Create shipment2.Keep one mandatory condition unmet3.Run job
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Shipment blocked from ECD creation.,,High,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_003,Verify only eligible shipments processed in batch run,"1. Create eligible and ineligible shipments2.Run batch job
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Only eligible shipments receive ECD records.,,High,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_004,Verify ECD charge record created for eligible shipment,"1. Create eligible shipment2.Run creation process
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",One ECD charge record created.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_005,Verify only ECD charge code created and no extra charges generated,"1. Create eligible shipment2.Run process
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.","Only ECD charge created, no additional charge codes.",,High,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_006,Verify ECD created with blank amount fields,"1. Create eligible shipment2.Run process3.Open charge record
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.","Estimate, Actual, Net, Tax amounts remain blank/null/zero as per design.",,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_007,Verify ECD charge status set as Exempted on creation,"1. Create eligible shipment2.Run process
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Charge status = Exempted. Status should be updated and visible consistently in UI / DB.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_008,Verify estimate values not updated from Duty Calculator,"1. Create ECD charge2.Send Duty Calculator data
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No estimate values updated in ECD.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_009,Verify estimate values not updated from uploaded estimate file,"1. Create ECD charge2.Upload estimate file
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No estimate values updated in ECD.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_010,Verify repeated Duty Calculator updates do not populate values,"1. Create ECD charge2.Send Duty data multiple times
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Values remain unchanged.,,Critical,QA,Yes,,,N/A,The functionality is out of MVP Scope for now
+ECD DDO,CCIPH-121,TC_ECDD_011,Verify repeated file uploads do not populate values,"1. Create ECD charge2.Upload multiple files
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Values remain unchanged.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_012,Verify no rate sheet fetched during ECD processing,"1. Create eligible shipment2.Run process with configured ratesheets
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No rate sheet lookup used for ECD DDO.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_013,Verify no charge calculation executed during processing,"1. Create eligible shipment2.Run process
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No formula/rate calculation executed.,,High,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_014,Verify no recalculation triggered after external updates,"1. Create ECD charge2.Upload files / send duty data
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Charge remains exempted with no amounts.,,Critical,QA,Yes,,,Pass,
+ECD DDO,CCIPH-121,TC_ECDD_015,Verify duplicate ECD not created on rerun for same shipment,"1. Create eligible shipment2.Run process twice
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Only one ECD record exists. No duplicate records should be generated.,,Critical,QA,Yes,,,Pass,
+ECD DDO API,CCIPH-121,TC_ECDD_API_001,Verify charge creation API returns success for eligible shipment,"1. Call API with eligible shipment
+2. Connect to API endpoint with valid authentication.
+3. Send request payload and capture response.
+4. Verify HTTP status code and response body.",Success response received. API should return expected status code and schema.,,Critical,QA,Yes,,,Pass,
+ECD DDO API,CCIPH-121,TC_ECDD_API_002,Verify API rejects invalid shipment payload,"1. Call API with missing fields
+2. Connect to API endpoint with valid authentication.
+3. Send request payload and capture response.
+4. Verify HTTP status code and response body.",Validation error returned. API should return expected status code and schema.,,Critical,QA,Yes,,,Pass,
+ECD DDO API,CCIPH-121,TC_ECDD_API_003,Verify API response contains created charge reference,"1. Call successful API
+2. Connect to API endpoint with valid authentication.
+3. Send request payload and capture response.
+4. Verify HTTP status code and response body.",Response contains shipment/charge identifier. API should return expected status code and schema.,,Critical,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_001,Validate ECD row inserted in charge table,"1. Process eligible shipment2.Query charge table
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",One ECD row exists for shipment. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_002,Validate charge status stored as Exempted,"1. Process shipment2.Query status column
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Status = Exempted. Status should be updated and visible consistently in UI / DB. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_003,Validate amount columns remain null/zero,"1. Process shipment2.Query amount fields
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",No monetary values stored. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_004,Validate no estimate values updated after file upload,"1. Create ECD2.Upload file3.Query DB
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Estimate columns unchanged. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_005,Validate no estimate values updated after Duty Calculator input,"1. Create ECD2.Send duty data3.Query DB
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",Estimate columns unchanged. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_006,Validate no duplicate ECD rows on rerun,"1. Process shipment
+2. Connect with DB
+3. Check ECD row in Table
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Single ECD row exists. No duplicate records should be generated. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+ECD DDO DB Validation,CCIPH-121,TC_ECDD_DB_007,Validate audit columns populated on creation,"1. Process shipment
+2. Connect with DB
+3. RunQuery created_at/by
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Audit fields populated. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+ECD DDO UI Validation,CCIPH-121,TC_ECDD_UI_001,Verify ECD displayed on Shipment Detailed Page,"1. Login as Super admin/Custom Manager
+2. Go to Customs Screen
+3. Check the shipment detail
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",ECD charge should be visible there. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+ECD DDO UI Validation,CCIPH-121,TC_ECDD_UI_002,Verify UI shows Exempted status for ECD,"1. Login as Super admin/Custom Manager
+2. Go to Customs Screen
+3. Check the shipment detail
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",Status displayed as Exempted. Status should be updated and visible consistently in UI / DB. Displayed values should match underlying system data.,,High,QA,Yes,,,Pass,
+ECD DDO UI Validation,CCIPH-121,TC_ECDD_UI_003,Verify UI shows blank/zero amount fields,"1. Login as Super admin/Custom Manager
+2. Go to Customs Screen
+3. Check the shipment detail
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",No amounts displayed. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+ECD DDO Performance,CCIPH-121,TC_ECDD_PERF_001,Verify bulk eligible shipments processed within SLA,"1. Create 1000 eligible shipments
+2. Run batch
+3. Open relevant shipment / charge details screen.
+4. Verify impacted record after process completion.",All ECD records created within SLA.,,High,QA,Yes,,,Pass,
+ECD DDO Security,CCIPH-121,TC_ECDD_SEC_001,Verify unauthorized users cannot trigger charge creation API,"1. Send API request
+2. Auth should not be there
+3. Check status
+4. Connect to API endpoint with valid authentication.
+5. Send request payload and capture response.
+6. Verify HTTP status code and response body.",Access denied. API should return expected status code and schema.,,High,QA,Yes,,,N/A,The functionality is out of MVP Scope for now
+DTC DDO,CCIPH-122,TC_DTC_DDO_001,Verify DTC charge is created when ECD charge exists,"1. Create shipment 2.Ensure ECD exists 3.Run DTC creation process
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Single DTC charge record created.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_002,Verify one DTC created per corresponding ECD charge,"1. Create ECD 2.Run job
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Exactly one DTC created against one ECD.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_003,Verify multiple ECD service lines create corresponding DTC records,"1. Create multiple ECD rows 2.Run job
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Matching count of DTC records created.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_004,Verify DTC not created for shipment failing ECD eligibility,"1. Create ineligible shipment 2.Run job
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No DTC record created. No duplicate records should be generated.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_005,Verify DTC not created when ECD status invalid,"1. Create ECD blocked 2.Run job
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No DTC created. No duplicate records should be generated. Status should be updated and visible consistently in UI / DB.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_006,Verify DTC created only once when same ECD processed repeatedly,"1. Create ECD 2.Run job twice
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Only one DTC exists.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_007,Verify DTC created without estimate values,"1. Run creation 2.Open charge details
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Estimate amount fields blank/zero.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_008,Verify DTC created without actual values,"1. Run creation 2.Check amounts
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Actual amount fields blank/zero.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_009,Verify tax/value fields remain blank on DTC initialization,"1. Run job 2.Check all monetary fields
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Charge/tax/currency values blank or default.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_010,Verify DTC charges are locked for user edit,"1. Create DTC 2.Login user 3.Open record
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Edit/Delete controls disabled.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_011,Verify API update on locked DTC is rejected,"1. Create DTC 2.Call update API
+2. Connect to API endpoint with valid authentication.
+3. Send request payload and capture response.
+4. Verify HTTP status code and response body.",API returns forbidden/validation error. API should return expected status code and schema.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_012,Verify bulk action cannot process locked DTC,"1. Create DTC 2.Try approve/delete
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Action not allowed message shown.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_013,Verify DTC status set as Exempted on creation,"1. Run creation 2.Check status
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",DTC status = Exempted. Status should be updated and visible consistently in UI / DB.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_014,Verify Exempted status visible in UI,"1. Create DTC 2.Open UI
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",Status shown as Exempted. Status should be updated and visible consistently in UI / DB. Displayed values should match underlying system data.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_015,Verify no rate sheet lookup occurs during DTC creation,"1. Run job 2.Check logs
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No rate engine call found.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_016,Verify no calculation executed for DTC,"1. Run creation 2.Check engine logs
+2. Open relevant shipment / charge details screen.
+3. Verify impacted record after process completion.",No calc transaction created.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_DB_017,Validate DTC row inserted in charge table,"1. Run process 2.Select by shipment id
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",One DTC row present. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_DB_018,Validate DTC linked with source ECD record,"1. Create ECD+DTC 2.Query mapping
+2. Connect to database using authorized credentials.
+3. Execute query on relevant table using shipment / charge reference.
+4. Verify returned data against expected business values.",DTC contains ECD reference id. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_DB_019,Validate status stored as Exempted in DB,"1. Create DTC
+2. Select row
+3. Check the status
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Status = Exempted. Status should be updated and visible consistently in UI / DB. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_DB_020,Validate amount fields null/zero in DB,"1. Create DTC
+2. Check estimate/actual columns
+3. Connect to database using authorized credentials.
+4. Execute query on relevant table using shipment / charge reference.
+5. Verify returned data against expected business values.",All monetary fields null/0. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_DB_021,Validate locked flag stored in DB,"1. Create DTC
+2. Connect to the DB
+3. Check the Flag
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Locked flag = Y/True. Stored database values should match business rules.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_DB_022,Validate duplicate prevention key works,"1. Run creation twice
+2. Connect to the DB
+3. Check the duplicacy
+4. Connect to database using authorized credentials.
+5. Execute query on relevant table using shipment / charge reference.
+6. Verify returned data against expected business values.",Single DTC per shipment/ECD key. Stored database values should match business rules.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_023,Verify downstream creation API success response,"1. Send request
+2. Check response
+3. Connect to API endpoint with valid authentication.
+4. Send request payload and capture response.
+5. Verify HTTP status code and response body.",HTTP success with created message. API should return expected status code and schema.,,Critical,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_024,Verify API rejects invalid shipment reference,"1. Send the API Request
+2. Check the response
+3. Check the error
+4. Connect to API endpoint with valid authentication.
+5. Send request payload and capture response.
+6. Verify HTTP status code and response body.",Error response returned. API should return expected status code and schema.,,High,QA,Yes,,,Pass,
+DTC DDO,CCIPH-122,TC_DTC_DDO_025,Verify DTC visible on shipment detailed page,"1. Search shipment
+2. Open charges tab
+3. Look for the Charge Details
+4. Open relevant shipment / charge details screen.
+5. Verify impacted record after process completion.",DTC row visible with Exempted status. Displayed values should match underlying system data.,,High,QA,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_001,Verify ECS charge is created automatically for eligible shipment (CMT = P),"1. Create a shipment with Payment Type (CMT)=P.
+2. Complete shipment processing.
+3. Navigate to Charge Details.
+4. Verify generated charges.",ECS charge should be created automatically at the Origin Entity with all shipment details populated correctly.,,Critical,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_002,Verify EC3 charge is created automatically for eligible shipment (CMT = 3),"1. Create a shipment with Payment Type (CMT)=3.
+2. Complete shipment processing.
+3. Navigate to Charge Details.
+4. Verify generated charges.",EC3 charge should be created automatically at the Origin Entity with all shipment details populated correctly.,,Critical,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_003,Verify ECS/EC3 charge is linked with corresponding DTA charge,"1. Create an eligible shipment.
+2. Allow DTA charge generation.
+3. Verify ECS/EC3 charge creation.
+4. Compare DTA and ECS/EC3 charge values.
+5. Verify reference linkage in UI/DB.",ECS/EC3 should be linked with the corresponding DTA charge and both charges should contain identical charge values.,,Critical,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_004,Verify ECS/EC3 charge amount is recalculated when Estimate values are updated before invoicing,"1. Generate ECS/EC3 charge.
+2. Ensure charge status is not Invoiced.
+3. Upload updated Estimate file.
+4. Complete estimate processing.
+5. Verify updated charge amount.",ECS/EC3 charge amount should be recalculated and updated according to latest estimate values.,,Critical,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_005,Verify invoiced ECS/EC3 charge is not recalculated after Estimate update,"1. Generate ECS/EC3 charge.
+2. Mark charge as Invoiced.
+3. Upload revised Estimate file.
+4. Verify charge values.","Once the charge is invoiced, estimate updates should not modify the existing ECS/EC3 charge.",,High,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_006,Verify ECD charge is created automatically during shipment creation with Pending Calculation status,"1. Create a shipment.
+2. Allow shipment processing.
+3. Open Charge Details.
+4. Verify ECD charge.
+5. Verify charge status.",ECD charge should be created automatically with Status = Pending Calculation.,,Critical,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_007,Verify ECD status changes to Due after successful Estimate upload,"1. Create shipment.
+2. Verify ECD status is Pending Calculation.
+3. Upload valid Estimate file.
+4. Complete processing.
+5. Verify updated status.",ECD charge status should change from Pending Calculation to Due after successful estimate processing.,,Critical,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_008,Verify estimate values are updated correctly in ECD after Estimate upload,"1. Upload Estimate file containing Customs Duty, VAT and Other Charges.
+2. Complete processing.
+3. Verify ECD charge details.
+4. Compare uploaded values with stored values.",All estimate values should be updated accurately in the corresponding ECD charge record.,,High,,Yes,,,Pass,
+ECS/EC3 Charge Creation,CCIPH-78,TC_ECS_009,Verify no ECS/EC3 charge is created for shipment not satisfying ECS/EC3 creation criteria,"1. Create a shipment that does not qualify for ECS or EC3 charge creation.
+2. Complete shipment processing.
+3. Navigate to Charge Details.
+4. Verify generated charges.",System should not create ECS/EC3 charges for shipments that do not satisfy the eligibility criteria.,,High,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_001,Verify Cost of Goods is converted to SAR while calculating ECD and DTC charges,"1. Configure Rate Sheet for ECD/DTC.
+2. Process shipment having Cost of Goods in non-SAR currency.
+3. Verify exchange rate API call.
+4. Verify calculated charges.",System should convert Cost of Goods to SAR using GetExchangeRate API before calculating ECD/DTC charges.,,Critical,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_002,"Verify Cost of Goods is converted to USD while calculating ECS, DTA and EC3 charges","1. Configure Rate Sheet for ECS/DTA/EC3.
+2. Process shipment with non-USD Cost of Goods.
+3. Verify exchange rate API.
+4. Validate calculated charges.","System should convert Cost of Goods to USD before calculating ECS, DTA and EC3 charges.",,Critical,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_003,Verify DTS and DT3 charges are calculated using Shipment Origin currency,"1. Process shipment with Origin other than Saudi Arabia (e.g., UAE, India, USA).
+2. Verify Origin Currency.
+3. Validate DTS/DT3 calculation.",DTS and DT3 should always be calculated in the shipment's Origin currency using applicable exchange rate.,,Critical,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_004,Verify GetExchangeRate API is invoked during shipment charge calculation,"1. Process shipment.
+2. Capture API logs.
+3. Verify request and response.",System should invoke GetExchangeRate API and use returned exchange rate for calculation.,,High,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_005,Verify system behavior when GetExchangeRate API returns invalid response or fails,"1. Simulate API failure or invalid response.
+2. Process shipment.
+3. Observe system behavior.",System should display/log appropriate error and should not calculate incorrect charges.,,High,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_006,Verify exchange rate is correctly applied in charge calculation,"1. Get known exchange rate.
+2. Process shipment.
+3. Manually calculate expected amount.
+4. Compare with system calculation.",Charge amount should exactly match manual calculation using fetched exchange rate.,,Critical,,Yes,,,Pass,
+Currency Conversion,CCIPH-74,TC_CURR_007,Verify converted currency values are stored correctly in database and displayed in UI,"1. Process shipment requiring currency conversion.
+2. Verify calculated values in UI.
+3. Verify corresponding database records.",Converted currency values and calculated charges should be consistent across UI and database.,,High,,Yes,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_EC_001,Eligible Cost equals Estimate when Actuals are unavailable ,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDP shipment Origin=DXB Destination=RUH COGS=100 SAR.
+4. Upload Estimate file for AWB doc-example-AWB with VAT service code Estimate=30 SAR; do not upload Actuals.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. 7. On the Service Charges grid locate the target service code row and read Eligible Cost, Contract Rate, and Total Outstanding columns.
+8. Verify Eligible Cost for VAT = 30 SAR and equals Estimate column value.",Eligible Cost = Estimate when no Actuals exist (Doc rule 1).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_EC_002,Eligible Cost derived from Actuals when Actuals are available,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Upload Estimate then Actuals for AWB doc-example-AWB with VAT Actual=40 SAR.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+6. 6. On the Service Charges grid locate the target service code row and read Eligible Cost, Contract Rate, and Total Outstanding columns.
+7. Verify Eligible Cost=40 SAR (Actual); not the prior Estimate value.",Eligible Cost uses Actual values when Actuals are available (Doc rule 2).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_EC_003,Eligible Cost is sum of all Actual uploads,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Upload three Actual files for AWB doc-example-AWB: Customs Duty Actuals 20+15+10 SAR.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+6. Verify Eligible Cost for Customs Duty = 45 SAR.",Eligible Cost = sum of all Actual records when multiple Actuals exist (Doc rule 3).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_CIF_001,CIF Value = COGS + Shipping Charges,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process shipment COGS=100 SAR; send SH267 with Shipping=20 SAR.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. Open 360 view Customs & Goods section.
+6. Verify CIF Value = 120 SAR (100+20 SAR).",CIF = COGS + Shipping = 120 SAR per document example.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_TAX_001,Tax Code and Tax Value excluded from charge calculation,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure service code with Tax Code and Tax Value on rate sheet row.
+4. Process DTA revenue charge and calculate.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTA, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify calculated service charge and Total Outstanding exclude Tax Value.",Tax is not included in service charge or Outstanding calculation in MVP1.0.,,Critical,,No,,,Pass,
+Entity Management - Service Charge Mapping,CCIPH-501,TC_CALC_MAP_001,Handling Fee + VAT mapped to Handling Fee sums both values,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Entity RUH ECD: map source Handling Fee and VAT both to target Handling Fee.
+4. Upload Estimate Handling Fee=10 SAR and VAT=5 SAR for AWB doc-example-AWB.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Handling Fee Eligible Cost = 15 SAR (10+5).",Sum of mapped source values (Handling 10 + VAT 5) = 15 SAR on target service code.,,Critical,,Yes,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_OUT_001,Outstanding=Contracted when Eligible=Y and Contracted=Y,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure DTA service code with both Eligible Cost and Contract Rate populated.
+4. Process DDP shipment on RUH.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTA, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. 7. On the Service Charges grid locate the target service code row and read Eligible Cost, Contract Rate, and Total Outstanding columns.
+8. Verify Total Outstanding equals Contract Rate value only.","Eligible=Y, Contracted=Y → Outstanding = Contracted (Doc table).",,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_OUT_002,Outstanding=Eligible when Eligible=Y and Contracted=N,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure DTC service code with Eligible populated and no Contract Rate.
+4. Process DDU shipment.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Total Outstanding equals Eligible Cost value.","Eligible=Y, Contracted=N → Outstanding = Eligible (Doc table).",,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_OUT_003,Outstanding=Contracted when Eligible=N and Contracted=Y,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure DTS service code with Contract Rate only (no Eligible).
+4. Process DDP shipment creating DTS at DXB.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTS, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Total Outstanding equals Contract Rate.","Eligible=N, Contracted=Y → Outstanding = Contracted (Doc table).",,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_OUT_004,Outstanding is NOT sum of Eligible and Contracted when both exist ,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DTA with Eligible=E and Contract Rate=C both non-zero.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to DTA, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+6. Verify Total Outstanding = C and NOT E+C.",Outstanding uses Contracted only; never arithmetic sum of Eligible + Contracted.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_FLD_001,Cost charges ECD ECS EC3 display Eligible Cost only — no Outstanding,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDP shipment creating ECD (RUH) and ECS (DXB).
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. Open 360 for ECD and ECS.
+6. Verify Eligible Cost column populated; Total Outstanding column absent or N/A on cost charges.","Cost charges (ECD, ECS, EC3) show Eligible Cost only; Outstanding not applicable.",,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_FLD_002,Revenue charges DTC DTA DTS DT3 display Total Outstanding,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDU (DTC) and DDP (DTA, DTS) shipments.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. Open 360 for DTC, DTA, DTS.
+6. Verify Total Outstanding column displayed and calculated per decision table.","Revenue charges (DTC, DTA, DTS, DT3) display and calculate Outstanding.",,Critical,,No,,,Pass,
+Entity Management - Public Rate Sheet,CCIPH-501,TC_CALC_CONT_001,Cash shipment uses Entity Public Rate Sheet (CCIPH-76),"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure distinguishable Public Rate on RUH DTC (e.g. Fixed 10 SAR).
+4. Process cash DDU shipment on RUH.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Contract Rate column reflects Entity Public Rate Sheet value.",Cash shipment applies Entity Public Rate Sheet for contracted rate.,,Critical,,No,,,Pass,
+Entity Management - Public Rate Sheet,CCIPH-501,TC_CALC_CONT_002,Account shipment uses AR Contract Rate Sheet when configured (CCIPH-76),"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure AR Account contract rate distinct from entity public rate on DTC.
+4. Process account DDU shipment.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Contract Rate uses AR Contract values not public fallback.",Account shipment with contract rate sheet uses AR Contract rates.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_ECD_DDP,DDP ECD VAT = 15% COGS + 17.25 SAR = 32.5 SAR,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure RUH ECD rate: VAT Rate1=15% of COGS, Rate2=Fixed 17.25 SAR.
+4. Process DDP shipment COGS=100 SAR Origin=DXB Destination=RUH.
+5. Upload Estimate; trigger calculation.
+6. 6. From the left navigation menu, click Charges Dashboard.
+7. 7. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+8. Verify VAT Eligible Cost = 32.5 SAR (15+17.25); no Outstanding on ECD.",DDP ECD: VAT = 15% of 100 SAR + 17.25 = 32.5 SAR. Cost charge: Eligible only.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_ECD_DDU,DDU ECD VAT = 15% CIF + 17.25 SAR = 35.25 SAR,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure RUH ECD rate: VAT 15% of CIF + Fixed 17.25 SAR.
+4. Process DDU shipment CIF=120 SAR.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify VAT Eligible Cost = 35.25 SAR (18+17.25).",DDU ECD: VAT = 15% of 120 SAR CIF + 17.25 = 35.25 SAR.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_DTA_DDP,DDP DTA Other Charges = 10% COGS(USD)+5 USD = 7.67 USD,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure RUH DTA: Other Charges Rate1=10% COGS in USD, Rate2=Fixed 5 USD.
+4. Process DDP shipment COGS=100 SAR.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTA, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Other Charges Contract Rate = 7.67 USD.
+8. Verify Total Outstanding follows decision table for Other Charges row.",DDP DTA: Other Charges = 10% of 26.67 USD + 5 USD = 7.67 USD; Outstanding per table.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_DTC_DDU,DDU DTC Other Charges Fixed = 10 SAR,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure RUH DTC: Other Charges Rate1=Fixed 10 SAR.
+4. Process DDU shipment.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Other Charges Contract Rate/Outstanding = 10 SAR.",DDU DTC: Other Charges fixed contracted rate = 10 SAR.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_DTC_OUT,DDU DTC Total Outstanding = 10 + 35.25 = 45.25 SAR,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Complete DDU flow: ECD VAT Eligible=35.25 mirrors to DTC; DTC Other=10 SAR contracted.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+6. Verify VAT row Outstanding uses Eligible 35.25 (no contracted rate for VAT per doc NOTE).
+7. Verify Total Outstanding = 45.25 SAR.",DDU DTC Total Outstanding = Other Charges 10 SAR + VAT Eligible 35.25 SAR = 45.25 SAR.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_DTS_DDP,DDP DTS Other=19.79 AED and Cost=10.87 AED,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure DXB DTS: Other 10% COGS AED + Fixed 10 AED; Cost 5% CIF AED + Fixed 5 AED.
+4. Process DDP shipment COGS=100 SAR CIF=120 SAR creating DTS at DXB.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DTS, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Other Charges = 19.79 AED and Cost = 10.87 AED.
+8. Verify Total Outstanding per decision table on revenue charge.",DTS: Other=19.79 AED (9.79+10); Cost=10.87 AED (5.87+5); Outstanding on revenue.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_CALC_DT3_DDP,DDP DT3 uses same formula pattern as DTS,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure DXB DT3 rates matching DTS formula.
+4. Process DDP 3rd-party shipment creating DT3.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to DT3, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Other Charges = 19.79 AED and Cost = 10.87 AED for same COGS/CIF inputs.",DT3 calculation follows same Other/Cost formulas as DTS per document.,,High,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDU_001,DDU: ECD Eligible Cost mirrors exact to DTC Eligible Cost on create,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDU Origin=DXB Destination=RUH; upload Estimate populating ECD VAT Eligible.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — record VAT Eligible Cost value E.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — verify VAT Eligible Cost = E exactly.
+7. Confirm ECD has no Outstanding (cost charge).",DDU: ECD Eligible mirrors exact to DTC Eligible for mapped service codes.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDU_002,DDU: DTC Total Outstanding calculated on revenue — not mirrored from ECD,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Complete DDU shipment with DTC contracted rate configured.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — confirm no Outstanding column.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — verify Total Outstanding calculated per REQ-OUT rules using mirrored Eligible + contracted rates.",DTC Outstanding is revenue-calculated; not copied from ECD (cost charge has no Outstanding).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDU_003,DDU: Mirror chain updates when ECD Actual uploaded — Actual priority,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. DDU AWB doc-example-AWB: upload Estimate VAT=30 then Actual VAT=40 on ECD.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — Eligible=40 SAR.
+6. 6. Set Charge Code filter to DTC, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — Eligible mirrors 40 SAR.
+7. Verify DTC Outstanding recalculated.",ECD Actual priority updates Eligible; DTC Eligible re-mirrors; DTC Outstanding recalculates.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_001,DDP: ECD Eligible Cost mirrors exact to DTA Eligible Cost,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDP Origin=DXB Destination=RUH; upload Estimate.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECD, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — record Eligible E for mapped code.
+6. 6. Set Charge Code filter to DTA, click Search, open Charge Detail 360 view for AWB doc-example-AWB. — verify Eligible = E.",DDP hop 1: ECD Eligible → DTA Eligible (exact mirror).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_002,DDP: DTA Total Outstanding calculated per decision table,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. After REQ-M-DDP-01 flow, open DTA 360.
+4. 4. On the Service Charges grid locate the target service code row and read Eligible Cost, Contract Rate, and Total Outstanding columns.
+5. For each service code verify Outstanding follows REQ-OUT-01/02/03 per Eligible/Contracted availability.",DDP hop 2: DTA Outstanding = decision table result on revenue charge.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_003,DDP: DTA Outstanding becomes ECS Estimate at origin DXB,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Complete DDP chain to DTA with known Outstanding O on mapped service code.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. 5. Set Charge Code filter to ECS, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+6. Verify Estimate column = O for mapped code.
+7. Confirm ECS has no Outstanding (cost charge).",DDP hop 3: DTA Outstanding → ECS Estimate (Doc: charges mirrored from DTA).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_004,DDP: ECS Estimate becomes ECS Eligible Cost on same charge,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Open ECS 360 after REQ-M-DDP-03.
+4. Verify Eligible Cost equals Estimate value for mapped service code.
+5. Confirm no Outstanding on ECS.",DDP hop 4: ECS Estimate → ECS Eligible (cost charge).,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_005,DDP: ECS Eligible Cost mirrors exact to DTS Eligible Cost,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Open ECS and DTS 360 views for same AWB.
+4. Record ECS Eligible E.
+5. Verify DTS Eligible = E for mapped code.
+6. Verify DTS Total Outstanding calculated separately on revenue charge.",DDP hop 5: ECS Eligible → DTS Eligible; DTS Outstanding calculated on revenue.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_006,DDP 3rd-party: DTA Outstanding → EC3 Estimate → EC3 Eligible → DT3 Eligible,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDP 3rd-party payment shipment creating EC3+DT3 at DXB.
+4. 4. From the left navigation menu, click Charges Dashboard.
+5. Verify DTA Outstanding O → EC3 Estimate=O → EC3 Eligible=O → DT3 Eligible=O.
+6. Verify DT3 Outstanding per revenue rules.",DDP EC3/DT3 chain mirrors same pattern as ECS/DTS for 3rd-party payment.,,Critical,,No,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_007,DDP: Full mirror chain re-flows on ECD Estimate/Actual update,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDP; capture values at ECD, DTA, ECS, DTS.
+4. Upload revised Estimate or Actual on ECD changing Eligible.
+5. Re-open ECD→DTA→ECS→DTS 360 views.
+6. Verify entire chain recalculated through each hop.",Update at ECD re-triggers mirror chain through DTA→ECS→DTS on create and update.,,Critical,,No,,,Pass,
+Entity Management - Service Charge Mapping,CCIPH-501,TC_MIRROR_DDP_008,DDP: Only mapped service codes mirror — unmapped codes excluded (CCIPH-519),"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Configure partial DTA→ECS mapping (map Code A only).
+4. Process DDP with multiple service codes on DTA.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. Compare DTA and ECS grids: Code A mirrored; Code B not on ECS.",Only explicitly mapped service codes propagate through mirror chain.,,Critical,,Yes,,,Pass,
+Charge Detail 360 View - Service Charges,CCIPH-501,TC_MIRROR_DDP_009,DDP: Actuals not applied on ECS EC3 — mirror only (Doc §ECS NOTE),"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process DDP with ECS charge.
+4. Upload Actuals targeting ECS AWB.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to ECS, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify Actual column empty; values from DTA mirror chain only.",ECS/EC3 do not use Actual upload in MVP; values from DTA Outstanding mirror only.,,Critical,,No,,,Pass,
+Entity Management - Public Rate Sheet,CCIPH-501,TC_MIRROR_DDP_010,DDP: ECS EC3 rate sheet discarded if configured,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Create ECS rate sheet on DXB with dummy Fixed 999.99.
+4. Process DDP ECS shipment.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. 6. Set Charge Code filter to ECS, click Search, open Charge Detail 360 view for AWB doc-example-AWB.
+7. Verify values mirror DTA chain; not 999.99.",ECS/EC3 rate sheet UI config is discarded; mirroring from DTA drives values.,,Critical,,Yes,,,Pass,
+Charges Dashboard - Charge Calculation,CCIPH-501,TC_E2E_DDU_DOC,E2E DDU doc example: ECD VAT 35.25 → DTC; DTC Outstanding 45.25 SAR,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Shipment: Origin=DXB Destination=RUH CIF=120 SAR COGS=100 SAR.
+4. Configure rates per doc; upload Estimate.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. ECD: VAT Eligible=35.25 (no Outstanding).
+7. DTC: VAT Eligible mirrors 35.25; Other=10 SAR; Total Outstanding=45.25 SAR.",Full DDU doc example validated end-to-end per Calculation&MirroringLogic.docx.,,Critical,,No,,,Pass,
+Charges Dashboard - Charge Calculation,CCIPH-501,TC_E2E_DDP_DOC,E2E DDP doc example: ECD 32.5 → DTA 7.67 USD → ECS mirror → DTS 19.79/10.87 AED,"1. Open http://dev-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Shipment per doc: Origin=DXB Destination=RUH COGS=100 SAR CIF=120 SAR.
+4. Configure all rates per doc; upload Estimate.
+5. 5. From the left navigation menu, click Charges Dashboard.
+6. ECD VAT Eligible=32.5 SAR.
+7. DTA Other=7.67 USD Outstanding per table.
+8. ECS Estimate=DTA Outstanding; ECS Eligible=Estimate.
+9. DTS Eligible mirrors ECS; Other=19.79 AED; Cost=10.87 AED.",Full DDP doc example validated end-to-end through mirror chain per document.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-001,Verify that a shipment record is created when a valid SH013 message is received.,1. Publish a valid SH013 message for a new shipment.2. Allow the CCI system to consume the message.3. Search for the shipment in CCI.4. Verify Cost of Goods.,Shipment record should be created successfully and Cost of Goods should be populated from the SH013 message.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-002,Verify that Cost of Goods is sourced from PICode SH013.,1. Send SH013 message with a known Cost of Goods value.2. Process the message.3. Verify the shipment record.,Cost of Goods should exactly match the value received through SH013.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-003,Verify that a valid SH267 message is consumed for an existing SH013 shipment.,1. Create shipment using SH013.2. Send SH267 for the same shipment.3. Verify queue/message processing.4. Open shipment details.,SH267 should be consumed successfully and processed against the corresponding shipment record.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-004,Verify that CC Charges are extracted from the <Comment1> tag of SH267.,1. Create shipment through SH013.2. Send SH267 containing a valid CC Charges value in <Comment1>.3. Process SH267.4. Verify Shipping Charges.,Shipping Charges should be populated with the exact value received in <Comment1>.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-005,Verify CIF calculation when both Cost of Goods and CC Charges are available.,1. Process SH013 with Cost of Goods = 100.2. Process SH267 with CC Charges = 20.3. Open shipment details.4. Verify CIF.,CIF Value should be calculated as 100 + 20 = 120.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-006,Verify CIF value is correctly stored in the database after calculation.,1. Process SH013 with known COG value.2. Process SH267 with known CC Charges.3. Verify CIF in UI.4. Validate corresponding CIF value in DB.,CIF value stored in DB should exactly match the calculated value displayed in CCI.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-007,Verify that SH267 received before SH013 is discarded.,1. Ensure no shipment record exists.2. Send SH267 for the shipment.3. Process the message.4. Verify shipment data.5. Send SH013 for the same shipment.6. Verify CIF/Shipping Charges.,SH267 should be discarded when the shipment record does not exist. SH267 charges should not be retrospectively applied after SH013 unless explicitly supported by the requirement.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-008,Verify that SH267 is applied only when the corresponding SH013 shipment record exists.,1. Create shipment using SH013.2. Send SH267 for the same shipment.3. Process the message.4. Verify Shipping Charges and CIF.,SH267 should be successfully associated with the existing shipment and used for CIF calculation.,,Critical,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-009,Verify behavior when <Comment1> is missing from SH267.,1. Create shipment through SH013.2. Send SH267 without <Comment1>.3. Process the message.4. Verify Shipping Charges and CIF.,System should not update Shipping Charges. Existing Shipping Charges value should remain unchanged.,,High,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-010,Verify behavior when <Comment1> is present but empty in SH267.,1. Create shipment through SH013.2. Send SH267 with empty <Comment1>.3. Process the message.4. Verify shipment.,System should not overwrite Shipping Charges with a blank/null value. Existing value should be retained.,,High,,No,,,Pass,
+CIF / Shipment Processing,CCIPH-326,CIF-011,Verify that a subsequent SH267 message updates the existing CC Charges value.,1. Process SH013 with COG = 100.2. Process SH267 with CC Charges = 20.3. Verify Shipping Charges = 20.4. Send another SH267 with CC Charges = 30.5. Process the message.,Shipping Charges should be updated from 20 to the latest value of 30.,,Critical,,No,,,Pass,

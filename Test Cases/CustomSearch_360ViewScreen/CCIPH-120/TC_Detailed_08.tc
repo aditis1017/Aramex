@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validate ECD Additional Details against database (CCIPH-120 / TC_Detailed_8)</description>
+   <name>TC_Detailed_08</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,ChargeDetail,CCIPH-120</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-120</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph120-tc_detailed_8-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs120-link-tc_detailed_8</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>8</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH120_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs120-link-tc_detailed_8</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>3eb2419c-9cbd-4b68-8e64-4e8b426c9fdc</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Tracking number for Customs Search and Charge Detail navigation</description>
+      <id>3eb2419c-9cbd-4b68-8e64-4e8b426c9fdc</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

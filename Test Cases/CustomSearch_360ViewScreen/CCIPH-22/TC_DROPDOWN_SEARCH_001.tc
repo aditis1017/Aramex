@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify user can search and select a value from searchable dropdown (CCIPH-22 / TC_DROPDOWN_SEARCH_001)</description>
+   <name>TC_DROPDOWN_SEARCH_001</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-22</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-22</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph22-tc_dropdown_search_001-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs22-link-tc_dropdown_search_001</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>15</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH22_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_001</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Label</value>
+      <variableId>cs22-var-dropdown_label</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_001</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Search_Keyword</value>
+      <variableId>cs22-var-dropdown_search_keyword</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_001</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Select_Value</value>
+      <variableId>cs22-var-dropdown_select_value</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Label from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_label</id>
+      <masked>false</masked>
+      <name>dropdown_Label</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Search_Keyword from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_search_keyword</id>
+      <masked>false</masked>
+      <name>dropdown_Search_Keyword</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Select_Value from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_select_value</id>
+      <masked>false</masked>
+      <name>dropdown_Select_Value</name>
+   </variable>
+</TestCaseEntity>

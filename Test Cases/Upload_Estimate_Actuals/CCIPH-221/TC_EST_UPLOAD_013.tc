@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify upload with blank mandatory field values</description>
+   <name>TC_EST_UPLOAD_013</name>
+   <tag>GenAI,High,CCIPH-75,CCIPH-221,Upload_Estimate_Actuals</tag>
+   <comment>CSV: Upload Estimate_Actuals.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-221</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>uea-cciph221-tc_est_upload_013</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,435 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Priority,Automation (Y/N),Automation Execution Status,Automation Remarks,"(Functional)
+Pass/Fail",Functional Remarks
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_001,Verify successful validation when AWB exists in shipment records,"1. Login as System Admin
+2. Navigate to Actuals Upload module
+3. Upload file containing valid AWB
+4. Trigger validation process
+5. Observe validation status",Validation status marked as “Successful” and record proceeds to cost booking queue,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_002,Verify system prevents automatic cost booking when AWB does not exist,"1. Login as Finance Officer
+2. Upload actuals file with invalid AWB
+3. Run validation
+4. Check processing result",Record flagged for override and excluded from automatic cost booking,Critical,Yes,,,N/A,The functionality is out of MVP Scope for now
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_003,Verify validation works for multiple valid AWBs in single upload,"1. Prepare file with 100 valid AWBs
+2. Upload file
+3. Execute validation
+4. Review all statuses",All records marked successful without failures,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_004,Verify mixed upload handling for valid and invalid AWBs,"1. Upload mixed dataset file
+2. Trigger validation
+3. Verify validation outcomes",Only valid AWBs move to cost booking; invalid ones flagged,Critical,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_005,Verify system handles duplicate AWB entries in upload file,"1. Prepare duplicate AWB records
+2. Upload file
+3. Trigger validation
+4. Observe response",Duplicate handling message displayed and duplicate processing controlled,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_006,Verify AWB field mandatory validation,"1. Create file with empty AWB
+2. Upload file
+3. Validate records",Validation error displayed for missing AWB,Critical,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_007,Verify AWB format validation for invalid characters,"1. Create record with invalid AWB format
+2. Upload file
+3. Run validation",Invalid format error displayed,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_008,Verify AWB validation with leading/trailing spaces,"1. Create AWB with spaces
+2. Upload file
+3. Execute validation",AWB validated successfully after trimming spaces,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_009,Verify validation for AWB with lowercase and uppercase combination,"1. Prepare mixed-case AWB
+2. Upload file
+3. Run validation",Validation processed successfully,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_010,Verify validation performance for large upload file,"1. Prepare large dataset
+2. Upload file
+3. Monitor processing time",System processes records without timeout/crash,Critical,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_011,Verify system behavior when InfoAXS Integration API is unavailable,"1. Trigger API downtime
+2. Upload file
+3. Run validation",User receives integration error message and processing stops safely,Critical,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_012,Verify retry mechanism after temporary API failure,"1. Upload valid file
+2. Trigger intermittent API timeout
+3. Retry validation",Validation succeeds after retry or proper failure logged,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_013,Verify error logging for failed AWB validation,"1. Upload invalid AWB
+2. Run validation
+3. Check logs/database entries",Proper audit/error logs created with timestamp and reason,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_014,Verify eligibility override flag generation for invalid AWBs,"1. Upload invalid AWB
+2. Execute validation
+3. Review override queue",Override flag/status visible in system,Critical,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_015,Verify Viewer role has read-only access to validation results,"1. Login as Viewer
+2. Open validation results
+3. Attempt modifications",Edit/upload actions disabled for Viewer role,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_016,Verify System Admin can upload and validate records,"1. Login as Admin
+2. Upload file
+3. Run validation",Upload and validation actions successful,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_017,Verify Customs Manager access permissions,"1. Login as Customs Manager
+2. Perform validation activity",Validation accessible as per permissions,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_018,Verify Operations Staff can upload actuals file,"1. Upload valid file
+2. Trigger validation",File uploaded and processed correctly,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_019,Verify UI displays validation status correctly,"1. Upload mixed records
+2. Review validation grid",Proper labels/icons/colors displayed,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_020,Verify upload progress indicator functionality,"1. Start upload
+2. Observe progress bar/loading indicator",Progress indicator displayed accurately,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_021,Verify validation results export functionality,"1. Complete validation
+2. Click Export",Downloaded file contains correct validation statuses,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_022,Verify system behavior for null shipment response from API,"1. Mock null response
+2. Run validation",Proper error handling without crash,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_023,Verify system prevents duplicate cost booking for same AWB,"1. Upload previously processed AWB
+2. Run validation",Warning/error displayed and duplicate blocked,Critical,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_024,Verify audit trail creation for validation activities,"1. Upload file
+2. Execute validation
+3. Review audit logs","Audit logs capture user, action, timestamp",High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_025,Verify concurrent uploads by multiple users,"1. Login with multiple users
+2. Upload files simultaneously",No data corruption or performance degradation,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_026,Verify unsupported file format upload handling,"1. Upload .txt/.exe file
+2. Attempt validation",Proper validation message displayed,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_027,Verify empty upload file handling,"1. Upload empty file
+2. Trigger validation",Appropriate error displayed,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_028,Verify partially corrupted upload file handling,"1. Upload corrupted dataset
+2. Run validation",Error message displayed without crash,High,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_029,Verify session timeout during upload/validation,"1. Start upload
+2. Wait for timeout
+3. Continue action",User redirected to login with no data corruption,Medium,Yes,,,Pass,
+Actuals Upload Validation Screen,CCIPH-59,TC_AWB_030,Verify validation summary dashboard accuracy,"1. Upload mixed records
+2. Review dashboard counts",Success/failure counts match processed data,Medium,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_001,Verify system accepts first actual upload when estimate exists,"1.Login as Customs System Admin 
+2.Navigate to Actuals Upload screen 
+3.Select shipment with estimate available 
+4.Upload valid actual cost file 
+5.Submit upload",Actual 1 should be recorded successfully and total actual cost should match uploaded amount,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_002,Verify system accepts second actual upload for same shipment,"1.Open shipment with Actual 1 already uploaded 
+2.Upload second actual file 
+3.Submit",Actual 2 should be stored successfully and total actual should equal Actual1 + Actual2,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_003,Verify system accepts third actual upload for same shipment,"1.Open shipment having Actual 1 and Actual 2 
+2.Upload third actual file 
+3.Submit",Actual 3 should be stored and totals recalculated correctly,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_004,Verify system blocks fourth actual upload,"1.Open shipment already having 3 actual uploads 
+2.Upload another actual file 
+3.Submit",Error message should appear indicating upload limit exceeded,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_005,Verify total actual cost is sum of all uploaded actuals,"1.Upload Actual 1 
+2.Upload Actual 2 
+3.Upload Actual 3 
+4.Verify totals",Total actual displayed and stored correctly,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_006,Verify comparison against estimated cost after upload,"1.Ensure estimate exists 
+2.Upload actual file 
+3.Trigger comparison",Comparison result generated correctly,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_007,Verify outstanding amount calculation after upload,"1.Upload actual file 
+2.Verify total invoiced value 
+3.Check outstanding amount",Outstanding value displayed accurately,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_008,Verify matched status when estimate equals actual,"1.Create shipment with estimate=1000 
+2.Upload actual=1000 
+3.Trigger comparison",Status displayed as Matched and outstanding value should be 0,Critical,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_009,Verify unmatched status when estimate differs from actual,"1.Create shipment with estimate=1000 
+2.Upload actual=1200 
+3.Trigger comparison",Variance and outstanding amount displayed correctly,Critical,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_010,Verify positive variance calculation,"1.Estimate=1000 
+2.Actual=1500 
+3.Compare values",Variance should display +500,High,Yes,,,N/A,The functionality is out of MVP Scope for now
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_011,Verify negative variance calculation,"1.Estimate=1500 
+2.Actual=1000 
+3.Compare values",Variance should display -500,High,Yes,,,N/A,The functionality is out of MVP Scope for now
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_012,Verify comparison when estimate does not exist,"1.Select shipment without estimate 
+2.Upload actual file 
+3.Trigger comparison",Comparison should happen using estimate=0,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_013,Verify eligible cost equals total actual cost when actual exists,"1.Upload actual values 
+2.Trigger calculation",Eligible cost displayed correctly,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_014,Verify eligible cost equals estimate when total actual is 0,"1.Ensure no actual uploaded 
+2.Estimate available 
+3.Trigger calculation",Eligible cost should display estimate value,High,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_015,Verify outstanding amount formula,"1.Set eligible cost=5000 
+2.Set invoiced value=3000 
+3.Trigger calculation",Outstanding should display 2000,Critical,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_016,Verify outstanding value becomes negative when invoiced value exceeds eligible cost,"1.Eligible cost=3000 
+2.Invoiced value=5000 
+3.Trigger calculation",Outstanding should display -2000 or business approved handling,Medium,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_017,Verify outstanding equals total actual cost for Due revenue charges,"1.Set revenue charge status=Due 
+2.Upload actual values 
+3.Trigger comparison",Outstanding displayed should match total actual cost,Critical,Yes,,,Pass,
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_018,Verify small variance within tolerance is treated as zero,"1.Configure tolerance=10 
+2.Estimate=1000 
+3.Actual=1005 
+4.Compare",Status should display Matched and variance should display 0,Critical,Yes,,,N/A,The functionality is out of MVP Scope for now
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_019,Verify variance exceeding tolerance is not treated as matched,"1.Configure tolerance=10 
+2.Estimate=1000 
+3.Actual=1015 
+4.Compare",Status should not be Matched,High,Yes,,,N/A,The functionality is out of MVP Scope for now
+Actuals/Estimate Upload & Comparison Screen,CCIPH-60,TC_ACT_EST_020,Verify recalculation after each actual upload,"1.Upload Actual 1 
+2.Verify totals 
+3.Upload Actual 2 
+4.Verify totals again",Updated totals and outstanding should reflect latest upload,Critical,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_001,Verify Upload Actual Cost screen is accessible to authorized users,"1. Login as authorized user.
+2. Navigate to Upload Actual Cost screen.",Upload screen should open successfully.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_002,Verify successful upload of valid Actual Cost Excel file,"1. Prepare valid Actual Cost Excel (.xlsx).
+2. Upload file.
+3. Click Submit.",System should accept file and initiate processing.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_003,Verify Upload Reference ID is generated after successful upload,"1. Upload valid file.
+2. Complete processing.
+3. Verify upload details.",Unique Upload Reference ID should be generated.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_004,Verify only .xlsx files are accepted,"1. Upload .pdf/.csv/.txt/.xls file.
+2. Click Submit.","System should reject upload and display ""Invalid file format"".",High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_005,Verify Submit without selecting a file,"1. Open Upload screen.
+2. Click Submit without uploading a file.",Validation message should be displayed.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_006,Verify upload of corrupted Excel file,"1. Select corrupted .xlsx file.
+2. Upload file.",System should reject the upload with appropriate error.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_007,Verify processing of file containing only valid records,"1. Prepare file with valid records.
+2. Upload file.
+3. Complete processing.",All shipment records should be processed successfully.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_008,Verify processing of file containing both valid and invalid records,"1. Prepare file with valid and invalid records.
+2. Upload file.
+3. Complete processing.",Valid records should be processed while invalid records should fail. Entire file should not be rejected.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_009,Verify failed records report generation,"1. Upload mixed data file.
+2. Wait for processing completion.
+3. Verify report generation.",Failed Records Excel should be generated.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_010,Verify failed records report contains required columns,"1. Download failed records report.
+2. Verify report headers.","Report should contain Row Number, AWB, Declaration Number and Validation Error columns.",High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_011,Verify email notification is sent when failed records exist,"1. Upload mixed records file.
+2. Wait for processing completion.
+3. Check registered email.",Email should be received with failed report download link.,High,No,,Email notifications not covered in Automation due to security concerns,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_012,Verify secure download link for failed report,"1. Open email.
+2. Click download link.
+3. Download report.",Secure link should download failed records report successfully.,Medium,No,,covered in Security,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_013,Verify upload allows multiple rows having same AWB,"1. Prepare file containing same AWB in multiple rows.
+2. Upload file.
+3. Complete processing.",File should be accepted without duplicate AWB validation error.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_014,Verify multiple declarations for same AWB are not allowed,"1. Prepare file containing same AWB with multiple Declaration Numbers.
+2. Upload file.",Validation error should be displayed for duplicate declarations.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_015,Verify maximum three Actual uploads are supported for a shipment,"1. Upload Actual Cost file three times for same shipment.
+2. Verify upload status.",System should accept maximum three uploads.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_016,Verify fourth Actual upload is restricted,"1. Upload Actual Cost file four times for same shipment.
+2. Verify system response.",Fourth upload should be rejected as per business rule.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_017,Verify total Actual Cost calculation after multiple uploads,"1. Upload Actual Cost file three times.
+2. Verify shipment financial details.",Total Actual Cost should equal sum of all uploaded Actual Cost files.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_018,Verify uploaded values are updated correctly against shipment,"1. Upload valid file.
+2. Verify shipment record in UI and Database.",Uploaded Actual Cost values should match stored shipment values.,High,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_019,Verify upload audit logs are generated,"1. Upload valid file.
+2. Verify audit logs.","Audit logs should contain Upload Reference ID, User, Date & Time.",Medium,Yes,,,Pass,
+Upload Actual Cost,CCIPH-58,TC_ACTUAL_UPLOAD_020,Verify Upload functionality complies with STD-EXCEL-IMPORT capability,"1. Upload valid Excel template.
+2. Verify processing flow.3. Validate imported data.",Upload functionality should comply with STD-EXCEL-IMPORT capability.,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_001,Verify that the “EXPORT ACTUALS COST TEMPLATE” button is displayed for authorized users,"1. Login as System Admin
+2. Navigate to Upload Charges screen
+3. Observe page actions section",“EXPORT ACTUALS COST TEMPLATE” button should be visible and enabled for authorized users,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_002,Verify that Customs Manager can access template export functionality,"1. Login as Customs Manager
+2. Navigate to Upload Charges screen
+3. Verify export button state",Export template button should be visible and clickable,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_003,Verify that Finance Officer can access template export functionality,"1. Login as Finance Officer
+2. Open Upload Charges screen
+3. Verify export button visibility",Export template button should be visible and enabled,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_004,Verify that Operations Staff can access template export functionality,"1. Login as Operations Staff
+2. Navigate to Upload Charges screen
+3. Validate export button visibility",Export template button should be visible and enabled,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_005,Verify that Viewer role cannot access template export functionality,"1. Login as Viewer
+2. Navigate to Upload Charges screen
+3. Observe export button state",Export button should be hidden or disabled,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_006,Verify successful download of Actuals Cost template,"1. Login as authorized user
+2. Open Upload Charges screen
+3. Click “EXPORT ACTUALS COST TEMPLATE”",Excel template should download successfully without errors,Critical,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_007,Verify downloaded file format is Excel (.xlsx),"1. Download template
+2. Check downloaded file extension",Downloaded file should be in valid Excel format (.xlsx),High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_008,Verify downloaded file name follows naming convention,"1. Download template
+2. Verify file name",File name should follow agreed business naming convention,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_009,Verify downloaded template opens successfully in Microsoft Excel,"1. Download template
+2. Open in Microsoft Excel",File should open without corruption or compatibility warning,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_010,Verify downloaded template opens successfully in Google Sheets,"1. Download template
+2. Upload to Google Sheets",Template should open correctly without formatting issues,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_011,Verify downloaded template contains all required columns,"1. Download template
+2. Open template
+3. Verify column headers",Template should contain all predefined columns,Critical,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_012,Verify column sequence in downloaded template,"1. Download template
+2. Open template
+3. Verify sequence of columns",Columns should appear in correct business-defined order,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_013,Verify template contains AWB column,"1. Download template
+2. Verify AWB column",AWB column should exist in template,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_014,Verify template contains Paying Entity column,"1. Download template
+2. Verify Paying Entity column",Paying Entity column should exist in template,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_015,Verify template contains AP Account column,"1. Download template
+2. Verify AP Account column",AP Account column should exist in template,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_016,Verify template contains Consol Group column,"1. Download template
+2. Verify Consol Group column",Consol Group column should exist in template,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_017,Verify template contains Declaration Number column,"1. Download template
+2. Verify Declaration Number column",Declaration Number column should exist in template,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_018,Verify template contains Saddad column,"1. Download template
+2. Verify Saddad column",Saddad column should exist in template,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_019,Verify template contains Customs Duty column,"1. Download template
+2. Verify Customs Duty column",Customs Duty column should exist in template,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_020,Verify template contains Import VAT column,"1. Download template
+2. Verify Import VAT column",Import VAT column should exist in template,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_021,Verify template contains Demarrage column,"1. Download template
+2. Verify Demarrage column",Demarrage column should exist in template,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_022,Verify template contains Other Charges column,"1. Download template
+2. Verify Other Charges column",Other Charges column should exist in template,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_023,Verify all rows are blank except headers in downloaded template,"1. Download template
+2. Open template
+3. Verify data rows",Only column headers should be populated; remaining rows should be blank,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_024,Verify no additional unwanted columns are present in template,"1. Download template
+2. Compare headers with BRD/User Story",No extra columns should be present,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_025,Verify column headers spelling and capitalization,"1. Download template
+2. Verify exact header names",Headers should match approved business terminology,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_026,Verify export button alignment and UI consistency,"1. Open Upload Charges screen
+2. Observe export button alignment, font, padding, size",Button should comply with approved UI design,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_027,Verify export button tooltip/help text if applicable,1. Hover over export button,Tooltip/help text should display correctly if configured,Low,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_028,Verify export button functionality on Google Chrome browser,"1. Open application in Chrome
+2. Download template",Template should download successfully in Chrome,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_029,Verify export button functionality on Microsoft Edge browser,"1. Open application in Edge
+2. Download template",Template should download successfully in Edge,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_030,Verify export button functionality on Mozilla Firefox browser,"1. Open application in Firefox
+2. Download template",Template should download successfully in Firefox,Medium,Yes,,,N/A,The functionality is out of MVP Scope for now
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_031,Verify template download under slow network conditions,"1. Simulate slow network
+2. Download template",File download should complete successfully without corruption,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_032,Verify multiple consecutive downloads of template,1. Click export button multiple times,System should download template successfully each time,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_033,Verify no duplicate/corrupted downloads when button clicked rapidly,1. Rapidly click export button multiple times,System should handle repeated clicks gracefully,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_034,Verify unauthorized user cannot access template download API directly,"1. Capture API request
+2. Attempt API access using unauthorized user/session",System should deny unauthorized access with proper error,Critical,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_035,Verify session timeout behavior during template export,"1. Allow session to expire
+2. Attempt template download",User should be redirected to login or shown authorization error,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_036,Verify audit logging for template export action,"1. Download template
+2. Verify audit logs in DB/system logs",Export activity should be logged with user details and timestamp,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_037,Verify exported template supports data entry for AWB field,"1. Download template
+2. Enter valid AWB value
+3. Save file",Excel should allow data entry without formatting issues,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_038,Verify exported template supports numeric values for Customs Duty,"1. Enter numeric value in Customs Duty column
+2. Save file",Numeric values should be accepted correctly,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_039,Verify exported template retains column formatting after save,"1. Download template
+2. Enter sample data
+3. Save and reopen file",File structure and formatting should remain intact,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_040,Verify no hidden sheets/macros exist in exported template,"1. Download template
+2. Inspect workbook sheets/macros",Workbook should not contain hidden sheets or malicious macros,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_041,Verify export functionality after page refresh,"1. Refresh Upload Charges screen
+2. Click export button",Template should download successfully,Low,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_042,Verify export functionality after browser back/forward navigation,"1. Navigate away and back to Upload Charges screen
+2. Download template",Export functionality should work correctly,Low,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_043,Verify accessibility of export button using keyboard navigation,"1. Use TAB key navigation
+2. Reach export button
+3. Press Enter/Space",Button should be accessible via keyboard controls,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_044,Verify screen reader accessibility for export button,"1. Use screen reader
+2. Navigate to export button",Screen reader should announce meaningful label for button,Low,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_045,Verify system behavior when download location permission is blocked,"1. Block browser download permission
+2. Attempt template export",System/browser should show appropriate warning without application crash,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_046,Verify application does not freeze during template download,"1. Trigger template download
+2. Interact with application",Application should remain responsive during download,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_047,Verify export action response time,"1. Click export button
+2. Measure download initiation time",Download should initiate within acceptable SLA,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_048,Verify no console errors appear during export action,"1. Open browser developer console
+2. Perform export",No JS/console errors should appear,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_049,Verify API response code for successful export request,"1. Trigger export API
+2. Inspect network response",API should return HTTP 200 with downloadable file response,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-225,TC_ACT_DL_050,Verify content type in export API response header,"1. Trigger export API
+2. Verify response headers",Response should contain valid Excel MIME content type,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_001,Validate successful download of Estimates Excel Template from Upload Charges screen,"1. Login as System Admin
+2. Navigate to Upload Charges screen
+3. Click on ""EXPORT ESTIMATES TEMPLATE"" button
+4. Verify file download in local system",Excel template file should be downloaded successfully without any error,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_002,Validate downloaded file format is Excel (.xlsx),"1. Login to application
+2. Navigate to Upload Charges screen
+3. Click on ""EXPORT ESTIMATES TEMPLATE""
+4. Verify downloaded file extension","Downloaded file extension should be "".xlsx""",High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_003,Validate downloaded template contains mandatory columns,"1. Download Estimates template
+2. Open the Excel file
+3. Verify all available headers in template","Template should contain AWB, Customs Duty, Import VAT, Other Charges columns",High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_004,Validate mandatory columns are displayed in correct sequence,"1. Download the Estimates template
+2. Open Excel file
+3. Verify column order","Columns should appear in order: AWB, Customs Duty, Import VAT, Other Charges",High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_005,Validate all data rows are blank in downloaded template,"1. Download Estimates template
+2. Open Excel file
+3. Verify rows below headers",All rows below column headers should remain blank,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_006,Validate no additional columns are available in downloaded template,"1. Download template
+2. Open file
+3. Verify total number of columns",Template should contain only 4 columns without extra columns,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_007,"Validate ""EXPORT ESTIMATES TEMPLATE"" button visibility for authorized user roles","1. Login as System Admin
+2. Navigate to Upload Charges screen
+3. Verify button visibility","""EXPORT ESTIMATES TEMPLATE"" button should be visible and enabled",High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_008,"Validate ""EXPORT ESTIMATES TEMPLATE"" button visibility for Customs Manager role","1. Login as Customs Manager
+2. Open Upload Charges screen
+3. Verify button availability",Button should be visible and enabled,High,Yes,,,N/A,The functionality is out of MVP Scope for now
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_009,"Validate ""EXPORT ESTIMATES TEMPLATE"" button visibility for Finance Officer role","1. Login as Finance Officer
+2. Navigate to Upload Charges page
+3. Verify button status",Button should be visible and enabled,High,Yes,,,N/A,The functionality is out of MVP Scope for now
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_010,"Validate ""EXPORT ESTIMATES TEMPLATE"" button visibility for Operations Staff role","1. Login as Operations Staff
+2. Open Upload Charges screen
+3. Verify button visibility",Button should be visible and enabled,High,Yes,,,N/A,The functionality is out of MVP Scope for now
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_011,Validate button hidden/disabled for unauthorized users,"1. Login with user having no upload estimate permission
+2. Navigate to Upload Charges screen
+3. Verify button status","""EXPORT ESTIMATES TEMPLATE"" button should be hidden or disabled",High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_012,Validate downloaded template opens successfully in Microsoft Excel,"1. Download template file
+2. Open file in Microsoft Excel application",Template should open successfully without format error,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_013,Validate downloaded template supports manual data entry,"1. Download template
+2. Open Excel file
+3. Enter values in all columns
+4. Save file",User should be able to enter and save estimate data successfully,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_014,Validate special characters are not present in column headers,"1. Download template
+2. Open Excel file
+3. Verify header names",Headers should display readable business names without unwanted characters,Low,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_015,Validate downloaded template contains proper file naming convention,"1. Click on ""EXPORT ESTIMATES TEMPLATE""
+2. Verify downloaded file name",File name should match configured naming standard for estimate templates,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_016,Validate multiple downloads of template work successfully,"1. Click ""EXPORT ESTIMATES TEMPLATE"" multiple times
+2. Verify each download",Template should download successfully every time without failure,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_017,Validate exported template performance,"1. Navigate to Upload Charges screen
+2. Click Export button
+3. Measure download response time",Template should download within acceptable response time,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_018,Validate no application crash during template export,"1. Login to system
+2. Export template multiple times
+3. Monitor application behavior",Application should not crash or freeze during export,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_019,Validate user audit log generated for template export activity,"1. Login as authorized user
+2. Export template
+3. Verify audit logs in DB/Application logs",Export action should be captured with username and timestamp,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_020,Validate template export functionality for concurrent users,"1. Login with multiple authorized users
+2. Simultaneously click Export Template button
+3. Verify downloads",All users should successfully download template without issue,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_021,Validate exported template headers are not editable or removed accidentally,"1. Download template
+2. Attempt to modify/remove headers
+3. Save and verify structure",Mandatory columns should remain preserved as per format,Medium,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_022,Validate template compatibility with upload functionality,"1. Download Estimates template
+2. Enter valid shipment estimate data
+3. Save file
+4. Upload same file in Upload Charges screen",File should upload successfully without format validation error,High,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_023,Validate no hidden sheets/tabs exist in exported template,"1. Download template
+2. Open Excel file
+3. Verify workbook structure",Workbook should not contain hidden sheets/tabs,Low,Yes,,,Pass,
+Upload Charges Screen,CCIPH-224,TC_EST_FUNC_024,Validate template generation as per CCIPH-72 STD-EXCEL-EXPORT requirement,"1. Review export functionality implementation
+2. Download exported file
+3. Verify standard Excel export behavior",Export functionality should comply with STD-EXCEL-EXPORT standards,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_001,Verify Upload Estimates screen is accessible for authorized users,"1. Login as System Admin.
+2. Navigate to Upload Charges screen.
+3. Click Upload Estimates option.",Upload Estimates screen should open successfully.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_002,Verify only Microsoft Excel (.xlsx) files are accepted,"1. Navigate to Upload Estimates screen.
+2. Click Upload.
+3. Select a valid .xlsx file.
+4. Click Submit.",File should be accepted successfully.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_003,Verify successful upload of valid estimate Excel,"1. Prepare valid estimate Excel.
+2. Upload file.
+3. Click Submit.
+4. Wait for processing completion.",File should be processed successfully and estimates updated against corresponding shipments.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_004,Verify shipment estimates are updated correctly after successful upload,"1. Upload valid estimate file.
+2. Verify shipment record in UI/Database.",Estimate values should match uploaded values.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_005,Verify unsupported file formats are rejected,"1. Click Upload.
+2. Select .csv/.xls/.pdf/.txt file.
+3. Click Submit.","System should reject file and display ""Invalid file format"".",High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_006,Verify error message for invalid file format,"1. Upload unsupported file.
+2. Observe validation message.","Error message ""Invalid file format"" should be displayed.",High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_007,Verify Submit button without uploading file,"1. Open Upload Estimates screen.
+2. Do not select any file.
+3. Click Submit.",Validation message should be displayed.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_008,Verify upload of empty Excel file,"1. Prepare Excel with only headers.
+2. Upload file.
+3. Click Submit.",System should reject the file with proper validation message.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_009,Verify upload when mandatory columns are missing,"1. Remove one mandatory column.
+2. Upload file.
+3. Submit upload.",Upload should fail with validation message.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_010,Verify upload when additional columns exist,"1. Add extra columns in template.
+2. Upload file.
+3. Submit.",System should ignore additional columns and process valid data successfully.,Medium,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_011,Verify upload with duplicate AWBs,"1. Prepare Excel containing duplicate AWBs.
+2. Upload file.
+3. Submit.",System should validate duplicates as per business rule and display appropriate message.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_012,Verify upload with non-existing AWB,"1. Enter invalid AWB.
+2. Upload file.
+3. Submit.",Invalid shipment should be rejected.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_013,Verify upload with blank mandatory field values,"1. Leave Customs Duty or AWB blank.
+2. Upload file.3. Submit.",Validation error should be displayed.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_014,Verify upload performance for large estimate file,"1. Prepare large valid Excel.
+2. Upload file.
+3. Monitor processing time.",File should upload within acceptable response time.,Medium,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_015,Verify upload button is disabled while file is processing,"1. Upload valid file.
+2. Observe Submit button during processing.",Multiple submissions should not be allowed.,Medium,No,,Will be covered in valid Excel TC,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_016,Verify upload audit logs are generated,"1. Upload valid estimate file.
+2. Verify audit logs.",Upload activity should be recorded with username and timestamp.,Medium,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_017,Verify uploaded values are stored correctly in database,"1. Upload valid file.
+2. Verify backend tables.",Database values should exactly match uploaded estimates.,High,No,,database covered in functional testing,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_018,Verify system behavior when uploading corrupted Excel file,"1. Select corrupted .xlsx file.
+2. Click Submit.",System should reject file and display appropriate error.,High,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_019,Verify multiple users can upload estimate files simultaneously,"1. Login using multiple users.
+2. Upload valid files simultaneously.
+3. Verify processing.",All uploads should complete successfully without conflicts.,Medium,Yes,,,Pass,
+Upload Estimates Screen,CCIPH-221,TC_EST_UPLOAD_020,Verify Upload functionality complies with CCIPH-75 STD-EXCEL-IMPORT,"1. Upload valid Excel template.
+2. Verify import process.
+3. Validate imported data.",Upload functionality should work as per STD-EXCEL-IMPORT specification.,High,Yes,,,Pass,

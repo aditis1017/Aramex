@@ -643,4 +643,26 @@ Common Searchable Dropdown,CCIPH-22,TC_DROPDOWN_SEARCH_002,Verify search behavio
 3. Observe the search result.","System should display ""No Records Found"" (or equivalent message) and should not allow an invalid selection.",High,,Yes,Post MVP,,Pass,
 Common Searchable Dropdown,CCIPH-22,TC_DROPDOWN_SEARCH_003,Verify search functionality is case-insensitive across all searchable dropdowns,"1. Open a searchable dropdown.
 2. Search using lowercase, uppercase and mixed-case characters for the same value.
-3. Compare the results.","Search results should be identical irrespective of letter case, and the correct value should be displayed and selectable.",Medium,,Yes,Post MVP,,Pass,
+3. Compare the results.","Search results should be identical irrespective of letter case, and the correct value should be displayed and selectable.",Medium,,Yes,Post MVP,,Pass,Custom Screen - 360 View Screen,CCIPH-488,TC_CG_001,Verify Customs & Goods section is visible on 360 detail page,"1. Login as authorized user.
+2. Navigate to Customs Search.
+3. Perform a valid search.
+4. Open a shipment charge detail (360 view).
+5. Locate the Customs & Goods section.",Customs & Goods section should be visible on the 360 detail page for the charge.,High,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_002,Verify Shipping Charges field is displayed in Customs & Goods first row,"1. Open 360 detail page for a charge.
+2. Observe Customs & Goods section first row.
+3. Verify Shipping Charges field is present where Source previously appeared.",Shipping Charges field should be visible in the first row of Customs & Goods section.,Critical,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_003,Verify Customs & Goods first row field order,"1. Open 360 detail page.
+2. Observe first row fields under Customs & Goods.","First row should display fields in order: Customs Type | Shipping Charges | Goods Value | CIF Value.",Critical,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_004,Verify Customs & Goods second row field order,"1. Open 360 detail page.
+2. Observe second row fields under Customs & Goods.","Second row should display fields in order: Number of Pieces | Source | Product Group | Business Type.",Critical,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_005,Verify Source field moved to second row,"1. Open 360 detail page.
+2. Verify Source is not in first-row position after Customs Type.
+3. Verify Source is present in second row before Product Group.",Source field should appear in the second row (Product Group former position) and not replace Shipping Charges in the first row.,High,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_006,Verify Shipping Charges displayed in local currency format,"1. Open 360 detail page for a charge.
+2. Read Shipping Charges value.","Shipping Charges should be displayed with local currency format (amount with 2 decimals and currency code).",Critical,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_007,Verify Customs & Goods layout is common across charge codes,"1. Open 360 detail for ECD (or Cost charge).
+2. Verify Customs & Goods expected layout.
+3. Switch to another charge code (e.g. DTC) when available.
+4. Re-verify Customs & Goods layout.","Customs & Goods updated layout including Shipping Charges should be common across charge codes.",High,,Yes,Post MVP,,Pass,
+Custom Screen - 360 View Screen,CCIPH-488,TC_CG_008,Verify remaining Customs & Goods fields remain unchanged,"1. Open 360 detail page.
+2. Verify Customs Type, Goods Value, CIF Value, Number of Pieces, Product Group and Business Type are still present with values.","Remaining fields and their values should remain present and unchanged aside from the Shipping Charges / Source repositioning.",High,,Yes,Post MVP,,Pass,

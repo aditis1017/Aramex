@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify shipment payment type identified as 3rd Party (CCIPH-79 / TC_DTS_003)</description>
+   <name>TC_DTS_003</name>
+   <tag>GenAI,Critical,CCIPH-79,ChargeCreation,DTS,DT3</tag>
+   <comment>CSV: ChargeCreation-TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-79 | TC_DTS_003</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cc79-tc_dts_003-0003</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cc79-link-tc_dts_003</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
+      </iterationEntity>
+      <testDataId>Data Files/ChargeCreation_CCIPH79_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Number</value>
+      <variableId>cc79-var-tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>prepaid_Tracking_Number</value>
+      <variableId>cc79-var-prepaid_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>account_Tracking_Number</value>
+      <variableId>cc79-var-account_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>third_Party_Tracking_Number</value>
+      <variableId>cc79-var-third_party_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>ar_Rate_Tracking_Number</value>
+      <variableId>cc79-var-ar_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity_Rate_Tracking_Number</value>
+      <variableId>cc79-var-entity_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>prepaid_Rate_Tracking_Number</value>
+      <variableId>cc79-var-prepaid_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>thirdParty_Rate_Tracking_Number</value>
+      <variableId>cc79-var-thirdparty_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>no_Rate_Tracking_Number</value>
+      <variableId>cc79-var-no_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>fixed_Rate_Tracking_Number</value>
+      <variableId>cc79-var-fixed_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>percent_Rate_Tracking_Number</value>
+      <variableId>cc79-var-percent_rate_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>non_Invoiced_Tracking_Number</value>
+      <variableId>cc79-var-non_invoiced_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>shipper_Number</value>
+      <variableId>cc79-var-shipper_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>cc79-var-entity</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>origin_Entity</value>
+      <variableId>cc79-var-origin_entity</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Group</value>
+      <variableId>cc79-var-charge_group</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Code</value>
+      <variableId>cc79-var-charge_code</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>expected_Charge_Code</value>
+      <variableId>cc79-var-expected_charge_code</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>payment_Type</value>
+      <variableId>cc79-var-payment_type</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>cmt_Value</value>
+      <variableId>cc79-var-cmt_value</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>expected_Status</value>
+      <variableId>cc79-var-expected_status</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>expected_Rate_Source</value>
+      <variableId>cc79-var-expected_rate_source</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>flow_Type</value>
+      <variableId>cc79-var-flow_type</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>login_Required</value>
+      <variableId>cc79-var-login_required</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>estimate_File_Path</value>
+      <variableId>cc79-var-estimate_file_path</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>custom_Duty</value>
+      <variableId>cc79-var-custom_duty</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>import_Vat</value>
+      <variableId>cc79-var-import_vat</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>other_Charges</value>
+      <variableId>cc79-var-other_charges</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>custom_Duty_Updated</value>
+      <variableId>cc79-var-custom_duty_updated</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>import_Vat_Updated</value>
+      <variableId>cc79-var-import_vat_updated</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>other_Charges_Updated</value>
+      <variableId>cc79-var-other_charges_updated</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>custom_Duty_Actual</value>
+      <variableId>cc79-var-custom_duty_actual</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rerun_Count</value>
+      <variableId>cc79-var-rerun_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc79-link-tc_dts_003</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>skip_Reason</value>
+      <variableId>cc79-var-skip_reason</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-tracking_number</id>
+      <masked>false</masked>
+      <name>tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-prepaid_tracking_number</id>
+      <masked>false</masked>
+      <name>prepaid_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-account_tracking_number</id>
+      <masked>false</masked>
+      <name>account_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-third_party_tracking_number</id>
+      <masked>false</masked>
+      <name>third_Party_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-ar_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>ar_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-entity_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>entity_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-prepaid_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>prepaid_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-thirdparty_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>thirdParty_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-no_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>no_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-fixed_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>fixed_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-percent_rate_tracking_number</id>
+      <masked>false</masked>
+      <name>percent_Rate_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-non_invoiced_tracking_number</id>
+      <masked>false</masked>
+      <name>non_Invoiced_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-shipper_number</id>
+      <masked>false</masked>
+      <name>shipper_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-entity</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-origin_entity</id>
+      <masked>false</masked>
+      <name>origin_Entity</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-charge_group</id>
+      <masked>false</masked>
+      <name>charge_Group</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-charge_code</id>
+      <masked>false</masked>
+      <name>charge_Code</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-expected_charge_code</id>
+      <masked>false</masked>
+      <name>expected_Charge_Code</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-payment_type</id>
+      <masked>false</masked>
+      <name>payment_Type</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-cmt_value</id>
+      <masked>false</masked>
+      <name>cmt_Value</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-expected_status</id>
+      <masked>false</masked>
+      <name>expected_Status</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-expected_rate_source</id>
+      <masked>false</masked>
+      <name>expected_Rate_Source</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-flow_type</id>
+      <masked>false</masked>
+      <name>flow_Type</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-login_required</id>
+      <masked>false</masked>
+      <name>login_Required</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-estimate_file_path</id>
+      <masked>false</masked>
+      <name>estimate_File_Path</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-custom_duty</id>
+      <masked>false</masked>
+      <name>custom_Duty</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-import_vat</id>
+      <masked>false</masked>
+      <name>import_Vat</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-other_charges</id>
+      <masked>false</masked>
+      <name>other_Charges</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-custom_duty_updated</id>
+      <masked>false</masked>
+      <name>custom_Duty_Updated</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-import_vat_updated</id>
+      <masked>false</masked>
+      <name>import_Vat_Updated</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-other_charges_updated</id>
+      <masked>false</masked>
+      <name>other_Charges_Updated</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-custom_duty_actual</id>
+      <masked>false</masked>
+      <name>custom_Duty_Actual</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-rerun_count</id>
+      <masked>false</masked>
+      <name>rerun_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc79-var-skip_reason</id>
+      <masked>false</masked>
+      <name>skip_Reason</name>
+   </variable>
+</TestCaseEntity>

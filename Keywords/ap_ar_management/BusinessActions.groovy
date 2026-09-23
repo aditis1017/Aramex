@@ -26,6 +26,9 @@ import java.util.Date
 import java.util.Set
 
 import customsmanagement.ProfileGlobals
+import entitymanagement.BusinessActions as EntityBusinessActions
+
+
 
 /**
  * Shared business actions for AP Management (CCIPH-102 search, CCIPH-103 results grid, CCIPH-104 detail, CCIPH-200 create)
@@ -307,6 +310,27 @@ class BusinessActions {
 		return url
 	}
 
+	/**
+	 * Resolves AR Management Stage URL from profile {@code Stage_AR_Env},
+	 * with fallbacks to {@code STAGE_AR_MANAGEMENT_URL} / {@code AR_MANAGEMENT_STAGE_URL},
+	 * or deriving Stage host from {@code AR_MANAGEMENT_URL}.
+	 */
+	private static String resolveArStageUrl() {
+		String url = (ProfileGlobals.get('Stage_AR_Env', '')
+			?: ProfileGlobals.get('STAGE_AR_MANAGEMENT_URL', '')
+			?: ProfileGlobals.get('AR_MANAGEMENT_STAGE_URL', '')).trim()
+		if (!url) {
+			String ar = ProfileGlobals.get('AR_MANAGEMENT_URL', '').trim()
+			if (ar) {
+				url = ar.replace('dev-cc.aramex.com', 'stage-cc.aramex.com')
+			}
+		}
+		if (!url) {
+			url = 'https://stage-cc.aramex.com/customs-management/ar-management'
+		}
+		return url
+	}
+
 	@Keyword
 	def navigateToApManagement() {
 		try {
@@ -347,6 +371,26 @@ class BusinessActions {
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("navigateToArManagement failed: ${e.message}")
+		}
+	}
+
+	/**
+	 * Navigate to AR Management on Stage via profile URL.
+	 * Uses GlobalVariable / profile: {@code Stage_AR_Env}
+	 * (default: https://stage-cc.aramex.com/customs-management/ar-management)
+	 */
+	@Keyword
+	def navigateToStageArManagement() {
+		try {
+			if (DriverFactory.getWebDriver() == null) {
+				WebUI.openBrowser('')
+				WebUI.maximizeWindow()
+			}
+			WebUI.navigateToUrl(resolveArStageUrl())
+			waitVisible(toAr116('txt_anchor_ArManagementPage'))
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("navigateToStageArManagement failed: ${e.message}")
 		}
 	}
 
@@ -1554,6 +1598,207 @@ class BusinessActions {
 			WebUI.delay(2)
 		} catch (Exception e) {
 			failStop("clickFirstArAccountNumberLink failed: ${e.message}")
+		}
+	}
+	
+	@Keyword
+	def clickAccountResult(String fieldType, String value) {
+	
+		try {
+	
+			String type = (fieldType ?: '').trim().toLowerCase()
+			String expectedValue = (value ?: '').trim()
+	
+			if (!type) {
+				failStop("Field type cannot be blank")
+			}
+	
+			if (!expectedValue) {
+				failStop("Account Number/Account Name value cannot be blank")
+			}
+	
+			String valueLower = expectedValue.toLowerCase()
+	
+			String xpath
+	
+			switch (type) {
+	
+				case "account number":
+	
+					xpath =
+						"//tbody//tr//a[contains(" +
+						"translate(normalize-space(.)," +
+						"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+						"'abcdefghijklmnopqrstuvwxyz')," +
+						"'${valueLower}')]"
+	
+					break
+	
+				case "account name":
+	
+					xpath =
+						"//tbody//tr//td[contains(" +
+						"translate(normalize-space(.)," +
+						"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+						"'abcdefghijklmnopqrstuvwxyz')," +
+						"'${valueLower}')]"
+	
+					break
+	
+				default:
+	
+					failStop(
+						"Unsupported field type '${fieldType}'. " +
+						"Use 'Account Number' or 'Account Name'."
+					)
+			}
+	
+			TestObject resultObject =
+				new TestObject("dynamicAccountResult")
+	
+			resultObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				xpath
+			)
+	
+			WebUI.waitForElementVisible(
+				resultObject,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.scrollToElement(
+				resultObject,
+				5,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.waitForElementClickable(
+				resultObject,
+				10,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.click(
+				resultObject,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			KeywordUtil.logInfo(
+				"Successfully clicked '${fieldType}': '${value}'"
+			)
+	
+			WebUI.takeScreenshot()
+	
+		} catch (Exception e) {
+	
+			WebUI.takeScreenshot()
+	
+			failStop(
+				"Failed to click '${fieldType}' with value '${value}': ${e.message}"
+			)
+		}
+	}
+	private TestObject resolveArChargeTypeTab(String tabName) {
+		
+			String tab = (tabName ?: '').trim()
+		
+			if (!tab) {
+				failStop(
+					"resolveArChargeTypeTab: Tab name cannot be blank"
+				)
+			}
+		
+			String xpath =
+				"//div[@aria-label='AR charge type']" +
+				"//button[normalize-space(.)='${tab}']"
+		
+			TestObject tabObject =
+				new TestObject("dynamicArChargeTypeTab_${tab}")
+		
+			tabObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				xpath
+			)
+		
+			return tabObject
+		}
+	
+	
+	@Keyword
+	def selectArChargeTypeTab(String tabName) {
+	
+		try {
+	
+			String expectedTab = (tabName ?: '').trim()
+	
+			if (!expectedTab) {
+				failStop(
+					"selectArChargeTypeTab: Tab name cannot be blank"
+				)
+			}
+	
+			TestObject tab =
+				resolveArChargeTypeTab(expectedTab)
+	
+			WebUI.waitForElementVisible(
+				tab,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.waitForElementClickable(
+				tab,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.click(
+				tab,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			// Validate that the requested tab is active
+			String activeTabXpath =
+				"//div[@aria-label='AR charge type']" +
+				"//button[normalize-space(.)='${expectedTab}' " +
+				"and @aria-pressed='true']"
+	
+			TestObject activeTab =
+				new TestObject("activeArChargeTypeTab_${expectedTab}")
+	
+			activeTab.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				activeTabXpath
+			)
+	
+			WebUI.waitForElementVisible(
+				activeTab,
+				10,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.verifyElementVisible(
+				activeTab,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			KeywordUtil.logInfo(
+				"Successfully navigated to AR Charge Type tab: '${expectedTab}'"
+			)
+	
+			WebUI.takeScreenshot()
+	
+		} catch (Exception e) {
+	
+			WebUI.takeScreenshot()
+	
+			failStop(
+				"Failed to navigate to AR Charge Type tab '${tabName}': ${e.message}"
+			)
 		}
 	}
 
@@ -3691,7 +3936,131 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 			failStop("toggleArSpecialRateSheetSettings failed: ${e.message}")
 		}
 	}
+	
+	private TestObject resolveEmptyRatesheetCell() {
+		
+			String xpath =
+				"//table[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__ratesheetTable')]" +
+				"/tbody/tr/td[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__tdEmpty')]"
+		
+			TestObject emptyCell =
+				new TestObject("dynamicEmptyRatesheet")
+		
+			emptyCell.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				xpath
+			)
+		
+			return emptyCell
+		}
+		
+		def em = new EntityBusinessActions()
+		
+		@Keyword
+		def verifyRatesheetAndNavigateIfEmpty() {
+		
+			try {
+		
+				TestObject ratesheetTable =
+					new TestObject("dynamicRatesheetTable")
+		
+				ratesheetTable.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					"//table[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__ratesheetTable')]"
+				)
+		
+				WebUI.waitForElementVisible(
+					ratesheetTable,
+					15,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				TestObject emptyCell =
+					resolveEmptyRatesheetCell()
+		
+				boolean isEmpty =
+					WebUI.verifyElementPresent(
+						emptyCell,
+						5,
+						FailureHandling.OPTIONAL
+					)
+		
+				if (isEmpty) {
+		
+					String emptyMessage =
+						WebUI.getText(
+							emptyCell,
+							FailureHandling.OPTIONAL
+						)?.trim()
+		
+					KeywordUtil.logInfo(
+						"Ratesheet is empty. Message: '${emptyMessage}'"
+					)
+		
+					WebUI.scrollToElement(
+						emptyCell,
+						5,
+						FailureHandling.OPTIONAL
+					)
+		
+					WebUI.takeScreenshot()
+		
+					// Call your existing Entity Settings navigation method here
+//					navigateToEntitySettingsPage()
+					em.navigateToStageEntitySettings()
+		
+					KeywordUtil.logInfo(
+						"Navigated to Entity Settings page because Ratesheet is empty."
+					)
+		
+					return false
+				}
+		
+				// Ratesheet is not empty
+				TestObject ratesheetDataRow =
+					new TestObject("dynamicRatesheetDataRow")
+		
+				ratesheetDataRow.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					"//table[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__ratesheetTable')]" +
+					"/tbody/tr[not(.//td[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__tdEmpty')])]"
+		
+				)
+		
+				WebUI.waitForElementVisible(
+					ratesheetDataRow,
+					10,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				WebUI.verifyElementVisible(
+					ratesheetDataRow,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				KeywordUtil.logInfo(
+					"Ratesheet is not empty. Ratesheet data is available."
+				)
+		
+				WebUI.takeScreenshot()
+		
+				return true
+		
+			} catch (Exception e) {
+		
+				WebUI.takeScreenshot()
+		
+				failStop(
+					"Failed to validate Ratesheet: ${e.message}"
+				)
+			}
+		}
 
+	
+		
 	@Keyword
 	def openArAccountDetailAndRatesheetSettings(String searchCriteria, String searchBy, String searchValue, String entity = '') {
 		try {

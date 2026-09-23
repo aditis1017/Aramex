@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description>Verify Service Code table attributes for DTS — AC1</description>
    <name>TC_EN_REVENUE_030</name>
-   <tag>GenAI,EntityManagement-AR,CCIPH-63,Revenue-AR</tag>
+   <tag>GenAI,CCIPH-63,EntityManagement-AR,Revenue-AR</tag>
    <comment>CSV: Entity Management-AR-TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-63</comment>
    <origin>GenAI</origin>
    <recordOption>OTHER</recordOption>

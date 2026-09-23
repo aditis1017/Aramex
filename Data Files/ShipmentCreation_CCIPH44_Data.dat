@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Shipment Creation CCIPH-44 test data. Source: Data Files/ShipmentCreation_CCIPH44_Data.csv</description>
+   <name>ShipmentCreation_CCIPH44_Data</name>
+   <tag>CCIPH-44,ShipmentCreation,DomesticDDU</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>sc-cciph44-data-4a1b-9c0d-8e7f-000000000044</dataFileGUID>
+   <dataSourceUrl>ShipmentCreation_CCIPH44_Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

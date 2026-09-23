@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify user can continue searching after toggling filter visibility multiple times (CCIPH-23 / TC_FILTER_005)</description>
+   <name>TC_FILTER_005</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-23</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-23</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph23-tc_filter_005-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>4d069dca-be76-44f4-afba-db66523bd6ba</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>69</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>4d069dca-be76-44f4-afba-db66523bd6ba</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>cs23-var-charge_group</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cs23-var-charge_group</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

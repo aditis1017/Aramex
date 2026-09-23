@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify filter section collapses successfully using Hide Filters button (CCIPH-23 / TC_FILTER_002)</description>
+   <name>TC_FILTER_002</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-23</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-23</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph23-tc_filter_002-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs23-link-tc_filter_002</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>2</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH23_Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

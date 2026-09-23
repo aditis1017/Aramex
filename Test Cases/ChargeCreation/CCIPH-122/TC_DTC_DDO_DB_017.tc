@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validate DTC row inserted in charge table (CCIPH-122 / TC_DTC_DDO_DB_017)</description>
+   <name>TC_DTC_DDO_DB_017</name>
+   <tag>GenAI,Critical,CCIPH-122,ChargeCreation,DTC,DDO</tag>
+   <comment>CSV: ChargeCreation-TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-122 | TC_DTC_DDO_DB_017</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cc122-tc_dtc_ddo_db_017-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cc122-link-tc_dtc_ddo_db_017</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>17</value>
+      </iterationEntity>
+      <testDataId>Data Files/ChargeCreation_CCIPH122_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Number</value>
+      <variableId>cc122-var-tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>shipper_Number</value>
+      <variableId>cc122-var-shipper_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>ineligible_Tracking_Number</value>
+      <variableId>cc122-var-ineligible_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>invalid_Ecd_Tracking_Number</value>
+      <variableId>cc122-var-invalid_ecd_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>multi_Ecd_Tracking_Number</value>
+      <variableId>cc122-var-multi_ecd_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>cc122-var-entity</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Group</value>
+      <variableId>cc122-var-charge_group</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Code</value>
+      <variableId>cc122-var-charge_code</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>expected_Status</value>
+      <variableId>cc122-var-expected_status</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>flow_Type</value>
+      <variableId>cc122-var-flow_type</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>login_Required</value>
+      <variableId>cc122-var-login_required</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>estimate_File_Path</value>
+      <variableId>cc122-var-estimate_file_path</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>upload_Count</value>
+      <variableId>cc122-var-upload_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rerun_Count</value>
+      <variableId>cc122-var-rerun_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>multi_Ecd_Min_Count</value>
+      <variableId>cc122-var-multi_ecd_min_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>batch_Eligible_Count</value>
+      <variableId>cc122-var-batch_eligible_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc122-link-tc_dtc_ddo_db_017</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>skip_Reason</value>
+      <variableId>cc122-var-skip_reason</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-tracking_number</id>
+      <masked>false</masked>
+      <name>tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-shipper_number</id>
+      <masked>false</masked>
+      <name>shipper_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-ineligible_tracking_number</id>
+      <masked>false</masked>
+      <name>ineligible_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-invalid_ecd_tracking_number</id>
+      <masked>false</masked>
+      <name>invalid_Ecd_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-multi_ecd_tracking_number</id>
+      <masked>false</masked>
+      <name>multi_Ecd_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-entity</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-charge_group</id>
+      <masked>false</masked>
+      <name>charge_Group</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-charge_code</id>
+      <masked>false</masked>
+      <name>charge_Code</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-expected_status</id>
+      <masked>false</masked>
+      <name>expected_Status</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-flow_type</id>
+      <masked>false</masked>
+      <name>flow_Type</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-login_required</id>
+      <masked>false</masked>
+      <name>login_Required</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-estimate_file_path</id>
+      <masked>false</masked>
+      <name>estimate_File_Path</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-upload_count</id>
+      <masked>false</masked>
+      <name>upload_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-rerun_count</id>
+      <masked>false</masked>
+      <name>rerun_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-multi_ecd_min_count</id>
+      <masked>false</masked>
+      <name>multi_Ecd_Min_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-batch_eligible_count</id>
+      <masked>false</masked>
+      <name>batch_Eligible_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc122-var-skip_reason</id>
+      <masked>false</masked>
+      <name>skip_Reason</name>
+   </variable>
+</TestCaseEntity>

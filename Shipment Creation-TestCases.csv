@@ -1,0 +1,383 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Priority,Automation (Y/N),Automation Execution Status,Automation Remarks,Functional (Pass/Fail),Functional Remarks
+User Charge Creation Page-UI: ,CCIPH-42,TC_US_FUNC_001,"Verify Eligibility criteria for  Shipment  Record"" with product Group EXP","1. Connect with Postgresql DB                                            
+2. Check the table <>                                                          
+3. verify the Product Group and Shipment Status as per requirement","Shipment Status should be ""Fulled"" and Product Group equals=EXP",Critical,Yes,,,Pass,
+User Charge Creation Page-UI: ,CCIPH-42,TC_US_FUNC_002,"Verify Eligibility criteria for  Shipment  Record"" with product Group DOM",1. Connect with Postgresql DB                                            2. Check the table <>                                                          3. verify the Product Group and Shipment Status as per requirement,"Shipment Status should be ""Fulled"" and Product Group equals= DOM.                                                        Validate Shipper Account Number - 72104493",Critical,Yes,,,Pass,
+User Charge Creation Page-UI: ,CCIPH-42,TC_US_FUNC_003,Verify all the mandatory fields have data,"1. Login as Admin
+2. Click the custome charge page
+3. Apply the filter and click on Search button                     4                                                             ","Shipment Status should be ""Fulled"" only",Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_004,Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-1),"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (C , F)                                       
+4. Apply the rule                                                                 
+5.  Go to Custom page                                                            
+6 . Apply the filter and click on search button              
+7. validate the data on the page          ",On custom screen only those record should come which fullfilll the mentioned criteria,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_005,Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-2),"1. Login as Admin
+2. Go to Global Setting Page
+3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT = ""3"" and CMT not in (C,F) and DestinationEntity = ""SA""  and ThirdPartyEntity = ""SA""  4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ",On custom screen only those record should come which fullfilll the mentioned criteria,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_006,Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-3),"1. Login as Admin
+2. Go to Global Setting Page                                             
+3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (P,3,RDG,RDL,RMY,RTC,RTD,RTL,RTN,RTP)                  
+4. Apply the rule                                                                 
+5.  Go to Custom page                                                            
+6 . Apply the filter and click on search button              
+7. validate the data on the page          ",On custom screen only those record should come which fullfilll the mentioned criteria,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_007,Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-2 and Rule-1),"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT = ""3"" and CMT in (C,F) and DestinationEntity = ""SA""  and ThirdPartyEntity = ""SA"" 4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ",On custom screen only Rule-1  record should come ,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_008,Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-2 and Rule-3),"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (P,3,RDG,RDL,RMY,RTC,RTD,RTL,RTN,RTP)  and DestinationEntity = ""SA""  and ThirdPartyEntity = ""SA"" 4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ",On custom screen only Rule-2  record should come ,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_009,"Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-1 , Rule-2 and Rule-3)","1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (C, F, P,3,RDG,RDL,RMY,RTC,RTD,RTL,RTN,RTP)  and DestinationEntity = ""SA""  and ThirdPartyEntity = ""SA"" 4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ",On custom screen only Rule-1  record should come ,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_010,Validate created record in Customs Charging & Invoicing System for DDU with Expired rule,"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (C , F)      and End date < ""Today""                                                                                4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ",On custom screen all data should appear as the rule is expired,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_011,Validate created record in Customs Charging & Invoicing System for DDU with Modify rule,"1. Login as Admin
+2. Go to Global Setting Page                                             3. Click on Edit Rule and save the changes                                                                                4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ","On custom screen only ""todays"" record should get updated not existing records",Critical,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_012,Validate created record in Customs Charging & Invoicing System for DDP with Rule-1,"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (P,3,Business, Customs Type) and ProductType in (LHS,DIM) ""                                         
+4. Apply the rule                                                                 
+5.  Go to Custom page                                                            
+6 . Apply the filter and click on search button              
+7. validate the data on the page          ",On custom screen only Rule-1  record should come ,Critical,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_013,Validate created record in Customs Charging & Invoicing System for DDP with Modify rule,"1. Login as Admin
+2. Go to Global Setting Page                                             3. Click on Edit Rule and save the changes                                                                                4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ","On custom screen only ""todays"" record should get updated not existing records",Critical,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_014,Validate created record in Customs Charging & Invoicing System for DDP with Expired rule,"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (C , F)      and End date < ""Today""                                                                                4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the data on the page          ",On custom screen all data should appear as the rule is expired,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_015,Validate created record in Customs Charging & Invoicing System for DDU as per priority order (Rule-1) and Charge code,"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (C , F)                                       4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the Charge code on the page          ","Charge Code should be ""ECD"" and ""DTC"" ",Critical,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_016,Validate created record in Customs Charging & Invoicing System for DDP as per priority order (Rule-1) and Charge code,"1. Login as Admin
+2. Go to Global Setting Page                                             3. create the rule-1 with value  Destination = ""Saudi Arabia""  and Business Type = ""Business"" , Custom Type =""Custom"" and   CMT in (C , F)                                       4. Apply the rule                                                                 5.  Go to Custom page                                                            6 . Apply the filter and click on search button              7. validate the Charge code on the page          ","Charge Code should be ""ECD, DTA, ECM"" ",Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_017,Verify Account Number is present in created record  for DDU and Charge Code -ECD,"1. Connect to Postgresql DB
+2. Open the table <>                                                          3.  Enter Charge Code =""ECD""                                                         4. Verify the Account Number                                                                 ",Account Number should not be Blank,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_018,"Verify Total Outstanding Value in created record  for DDU and Charge Code -ECD, Account Number= <Available>","1. Connect to Postgresql DB
+2. Open the table <>                                                          3.  Enter Charge Code =""ECD""                                                         4. Verify the Total Outstanding                                            5. Login as Admin and go to custom page                       6. Apply filter and click on search button                        7. Verify the total outstanding value                                                           ",Total Outstanding should have  value,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_019,Verify Account Number is not present in created record  for DDU and Charge Code -ECD,"1. Connect to Postgresql DB
+2. Open the table <>                                                          3.  Enter Charge Code =""ECD""                                                         4. Verify the Account Number                                                                 ",Account Number is Blank,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_020,Verify Total Outstanding Value  present in created record  for DDU and Charge Code -ECD and Account Number = <!Not present>,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECD""                                                         
+4. Verify the Account Number                                        
+5. Login as Admin                                                                  
+6. Go to Custom Page and upload CSV file                        
+7. Verify the Total Outstanding value                                                      ",Total Outstanding should have  value,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_021,Verify Account Number is present in created record  for DDU and Charge Code -DTC and Account Status - Active,"1. Connect to Postgresql DB
+2. Open the table <>                                                          3.  Enter Charge Code =""ECD""                                                         4. Verify the Account Number                                                                 
+5. Open the AR table <> 
+6. check the Account Status
+7. Tirgger the action
+8. Verify the total Outstanding value",Account Status should be Active and value should be populate for Total Outstanding column as per AR contract,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_022,Verify Account Number is present in created record  for DDU and Charge Code -DTC and Account Status - Blocked,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECD""                                                         
+4. Verify the Account Number                                                                 
+5. Open the AR table <> 
+6. check the Account Status
+7. Tirgger the action
+8. Verify the total Outstanding value",Account Status should be Blocked and value should be populate for Total Outstanding column as per Entity Management,Critical,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_023,Verify Account Number is NOT present in created record  for DDU and Charge Code -DTC ,"1. Connect to Postgresql DB
+2. Open the table <>                                                          3.  Enter Charge Code =""ECD""                                                                                                                  
+4. Tirgger the action
+5. Verify the total Outstanding value",Total Outstanding value should populate from Entity Management,Critical,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_024,Verify Total Outstanding is present in created record  for DDP and Charge Code -ECD and Account Number = <present>,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECD""                                                         
+4. Verify the Total Outstanding                                            
+5. Login as Admin and go to custom page                       
+6. Apply filter and click on search button                        
+7. Verify the total outstanding value                                                           ",Total Outstanding should have  value,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_025,Verify Total Outstanding Value  present in created record  for DDP and Charge Code -ECD and Account Number = <Not present>,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECD""                                                         
+4. Verify the Account Number                                        
+5. Login as Admin                                                                  
+6. Go to Custom Page and upload CSV file                        
+7. Verify the Total Outstanding value                                                      ",Total Outstanding should have  value,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_026,Verify Account Number is present in created record  for DDP and Charge Code -DTA and Account Status - Active,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""DTA""                                                                    
+4. Open the AR table <> 
+5. check the Account Status
+6. Tirgger the action
+7. Verify the total Outstanding value",Account Status should be Active and value should be populate for Total Outstanding column as per AR contract,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_027,Verify Account Number is present in created record  for DDP and Charge Code -DTA and Account Status - Blocked,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECD""                                                         
+4. Verify the Account Number                                                                 
+5. Open the AR table <> 
+6. check the Account Status
+7. Tirgger the action
+8. Verify the total Outstanding value",Account Status should be Blocked and value should be populate for Total Outstanding column as per Entity Management,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_028,Verify Account Number is NOT present in created record  for DDP and Charge Code -DTA ,"1. Connect to Postgresql DB
+2. Open the table <>                                                          3.  Enter Charge Code =""ECD""                                                                                                                  
+4. Tirgger the action
+5. Verify the total Outstanding value",Account Status should be Blocked and value should be populate for Total Outstanding column as per Entity Management,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_029,Verify Total Outstanding is present in created record  for DDP and Charge Code -ECM and Account Number = <present>,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECM""                                                         
+4. Verify the Total Outstanding                                            
+5. Login as Admin and go to custom page                       
+6. Apply filter and click on search button                        
+7. Verify the total outstanding value                                                           ",Total Outstanding should have  value,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_030,Verify Total Outstanding Value  present in created record  for DDP and Charge Code -ECM and Account Number = <Not present>,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECM""                                                         
+4. Verify the Account Number                                        
+5. Login as Admin                                                                  
+6. Go to Custom Page and upload CSV file                        
+7. Verify the Total Outstanding value                                                      ",Total Outstanding should have  value,High,Yes,,,Pass,
+User Charge Creation Page-DDP: ,CCIPH-42,TC_US_FUNC_031,Verify Total Outstanding Value  present in created record  for DDP and Charge Code -DT3 ,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECM""                                                         
+4. Verify the Account Number                                        
+5. Login as Admin                                                                  
+6. Go to Custom Page and upload CSV file                        
+7. Verify the Total Outstanding value                                                      ",Total Outstanding should have  value,High,Yes,,,Pass,
+User Charge Creation Page-DDO: ,CCIPH-42,TC_US_FUNC_034,Verify created record in system as DDO,"1. Connect to Postgresql DB
+2. Open the table <>                                                          
+3.  Enter Charge Code =""ECM""                                                         
+4. Verify the Account Number                                        
+5. Login as Admin                                                                  
+6. Go to Custom Page and upload CSV file                        
+7. Verify the Total Outstanding value                                                      ",Total Outstanding should have  value,High,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_037,Verify the Payment Status on Custom Screen,"1. Login As Admin
+2. Click on Custom Page                                                         
+3.  Apply the filter and click on Search Button
+4. Verify the status column Values                                              ","Status value should be 
+1. Due
+2.Settled
+3.Pending calculation
+4.Teminated
+5. Cancelled",High,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_038,"Verify the Status on Custom Screen for DDU and Charge Code= ECD and Account Number is Present and Total Balance is ""0"" and Total Outstanding =0 AND STATUS != Terminated","1. Login As Admin
+2. Click on Custom Page                                                         
+3.  Apply the filter and click on Search Button
+4. Verify the status column Values                                              ","Status value should be  ""PENDING CALCULATION""",High,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_039,Verify the Status on Custom Screen for DDU and Charge Code= ECD and Account Number is Present and Total Outstanding and Total Balance is Not Equal,"1. Login As Admin
+2. Click on Custom Page                                                         
+3.  Apply the filter and click on Search Button
+4. Verify the status column Values                                              ","Status value should be  ""DUE""",High,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_040,Verify the Status on Custom Screen for DDU and Charge Code= ECD and Account Number is Present and Total Outstanding and Total Balance is Equal,"1. Login As Admin
+2. Click on Custom Page                                                         
+3.  Apply the filter and click on Search Button
+4. Verify the status column Values                                              ","Status value should be  ""SETTELD""",High,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_041,"Verify the Status on Custom Screen for DDU and Charge Code= ECD and Account Number is Present and Total Outstanding and Total Balance is Equal to ""0""","1. Login As Admin
+2. Click on Custom Page                                                         
+3.  Apply the filter and click on Search Button
+4. Verify the status column Values                                              ","Status value should be  ""TERMINATED""",High,Yes,,,Pass,
+User Charge Creation Page-DDU: ,CCIPH-42,TC_US_FUNC_042,"Validate exemption when Origin = SA, Destination = SA, Product Group = EXP",1. Connect with Postgresql DB                                            2. Check the table <>                                                          3. verify the Product Group and Shipment Status as per requirement,"Status value should be  ""TERMINATED""",High,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_001,"Validate category marked as Exempted for Rule GS-VC-01 when Origin = SA, Destination = SA and Product Group = EXP","1. Login as Admin
+2. Open Category Rules page
+3. Ensure Rule GS-VC-01 is active with highest priority
+4. Create/Search shipment with Origin = SA, Destination = SA, Product Group = EXP
+5. Run category calculation process
+6. Open shipment details",Shipment Category should be updated as Exempted,High,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_002,Validate Rule GS-VC-01 does not trigger when Destination is not SA,"1. Login as Admin
+2. Create/Search shipment with Origin = SA, Destination = UAE, Product Group = EXP
+3. Run category calculation process
+4. Open shipment details",Rule GS-VC-01 should not apply and next eligible rule should be evaluated,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_003,Validate category marked as Exempted for Rule GS-VC-02 when Customs Type = DDO,"1. Login as Admin
+2. Activate Rule GS-VC-02
+3. Create/Search shipment with Customs Type = DDO
+4. Run category calculation
+5. Verify shipment category",Shipment Category should be Exempted,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_004,Validate Rule GS-VC-02 priority overrides lower rules,"1. Login as Admin
+2. Create/Search shipment with Customs Type = DDO and Cost of Goods > 1000
+3. Run category calculation
+4. Verify shipment category",Category should remain Exempted due to higher priority rule,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_005,Validate category marked as Exempted for Rule GS-VC-03 when Product Type in allowed list and Cost of Goods = 0,"1. Login as Admin
+2. Create shipment with Product Type = CDX and Cost of Goods = 0
+3. Run category calculation
+4. Verify shipment category",Shipment Category should be Exempted,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_006,Validate Rule GS-VC-03 for all listed Product Types,"1. Prepare shipments for Product Types CDX, DDX, EDX, MDX, PDX, PLX, SDX with Cost of Goods = 0
+2. Run category calculation for all records
+3. Verify results",Each shipment should be marked Exempted,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_007,Validate Rule GS-VC-03 does not trigger when Cost of Goods > 0,"1. Create/Search shipment with Product Type = CDX and Cost of Goods = 1
+2. Run category calculation
+3. Verify category",Rule GS-VC-03 should not apply,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_008,Validate category marked as Exempted for Rule GS-VC-04 when Product Type in return goods list,"1. Create shipments for Product Type = RDG
+2. Run category calculation
+3. Verify result",Shipment Category should be Exempted,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_009,Validate Rule GS-VC-04 for all listed return product types,"1. Prepare shipments for RDG, RDL, RMY, RTC, RTD, RTI, RTN, RTP
+2. Run category calculation
+3. Verify all records",Each shipment should be marked Exempted,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_010,Validate category marked as B2B for Rule GS-VC-05 when E-Commerce Business Type selected,"1. Create shipment with Business Type = E-Commerce
+2. Run category calculation
+3. Verify category",Shipment Category should be B2B,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_011,Validate category marked as HV for Rule GS-VC-06 when CMT = C and Total Cost > 1000 SAR,"1. Create shipment with CMT = C
+2. Set Cost of Goods = 800 SAR
+3. Set Collected Amount = 300 SAR
+4. Run category calculation5. Verify category",Shipment Category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_012,Validate category marked as HV for Rule GS-VC-06 when CMT = F and Total Cost > 1000 SAR,"1. Create shipment with CMT = F
+2. Set total cost above 1000
+3. Run calculation",Shipment Category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_013,Validate category marked as LV for Rule GS-VC-07 when CMT = C and Total Cost < 1000 SAR,"1. Create shipment with CMT = C
+2. Set Cost of Goods = 700
+3. Set Collected Amount = 200
+4. Run calculation",Shipment Category should be LV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_014,Validate category marked as LV for Rule GS-VC-07 when CMT = F and Total Cost < 1000 SAR,"1. Create shipment with CMT = F
+2. Set Total Cost = 999
+3. Run calculation",Shipment Category should be LV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_015,Validate CC Public Cash Rate applied when Collected Amount = 0 for Rule GS-VC-06 / GS-VC-07,"1. Create shipment with CMT = C
+2. Set Cost of Goods = 950
+3. Set Collected Amount = 0
+4. Maintain public CC cash rate = 100
+5. Run calculation",Total Cost should become 1050 and category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_016,"Validate category marked as HV for Rule GS-VC-08 when CMT = 3, Entity = RUH and Total Amount > 1000","1. Create shipment with CMT = 3
+2. Set 3rd Party Entity = RUH
+3. Set Total Amount = 1500
+4. Run calculation",Shipment Category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_017,Validate category marked as HV for Rule GS-VC-08 for entities JED and DHA,"1. Create shipments for JED and DHA
+2. Set Total Amount > 1000
+3. Run calculation",Shipment Category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_018,"Validate category marked as LV for Rule GS-VC-09 when CMT = 3, Entity = RUH and Total Amount < 1000","1. Create shipment with CMT = 3
+2. Set Entity = RUH
+3. Set Total Amount = 900
+4. Run calculation",Shipment Category should be LV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_019,Validate Rule GS-VC-09 for entities JED and DHA,"1. Create shipments for JED and DHA
+2. Set Total Amount < 1000
+3. Run calculation",Shipment Category should be LV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_020,Validate category marked as HV for Rule GS-VC-10 when CMT = 3 and Cost of Goods > 1000 SAR,"1. Create shipment with CMT = 3
+2. Set Cost of Goods = 1200 SAR
+3. Run calculation",Shipment Category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_021,Validate category marked as HV for Rule GS-VC-10 when CMT = P and Cost of Goods > 1000 SAR,"1. Create shipment with CMT = P
+2. Set Cost of Goods = 1300 SAR
+3. Run calculation",Shipment Category should be HV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_022,Validate category marked as LV for Rule GS-VC-11 when CMT = 3 and Cost of Goods < 1000 SAR,"1. Create shipment with CMT = 3
+2. Set Cost of Goods = 900 SAR
+3. Run calculation",Shipment Category should be LV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_023,Validate category marked as LV for Rule GS-VC-11 when CMT = P and Cost of Goods < 1000 SAR,"1. Create shipment with CMT = P
+2. Set Cost of Goods = 950 SAR
+3. Run calculation",Shipment Category should be LV,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_024,Validate foreign currency conversion to SAR before Rule GS-VC-10 / GS-VC-11 evaluation,"1. Create shipment with CMT = P
+2. Set Cost of Goods = 300 USD
+3. Maintain exchange rate 1 USD = 3.75 SAR
+4. Run calculation",Shipment Category should be HV after SAR conversion,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_025,Validate boundary value when Total Cost = exactly 1000 SAR,"1. Create shipment with CMT = C
+2. Set Total Cost = 1000
+3. Run calculation",System should classify as per configured operator and no wrong category assigned,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_026,Validate priority sequence when shipment matches Exempted and HV rules together,"1. Create shipment with Customs Type = DDO
+2. Set Cost of Goods = 5000
+3. Run calculation",Category should be Exempted due to higher priority,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_027,Validate only one final category assigned after calculation,"1. Create any shipment matching multiple conditions
+2. Run category engine
+3. Verify final record",Only one final category should be stored,Critical,Yes,,,Pass,
+User Charge Category Page-Logic:,CCIPH-42,TC_CAT_FUNC_028,Validate recalculation updates category after shipment data change,"1. Create shipment with Cost = 900
+2. Run calculation and verify LV
+3. Update Cost = 1500
+4. Re-run calculation",Category should update from LV to HV,Critical,Yes,,,Pass,
+Shipment Manual Override,CCIPH-43,TC_MO_001,Verify eligibility override applied when Skeleton shipment reached destination with customs cleared and Actual file payment confirmed,"1.Upload Actual file with payment complete
+2.Run batch
+3. Request Raise for Manual Overriding",Billing eligibility updated to Eligibility Override request raised,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_002,Verify eligibility override applied when Dummy shipment reached destination with customs cleared and Estimates file payment confirmed,"1.Upload Actual file with payment complete
+2.Run batch
+3. Request Raise for Manual Overriding",Billing eligibility updated to Eligibility Override request raised,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_003,Validate the manually created shipment in the system,"1. Connect to the database
+2. Search for the manually override shipment",Shipment should be found ,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_004,Verify override not applied when shipment type is not Skeleton or Dummy,"1.Check Normal shipment
+2.Complete remaining conditions
+3.Run batch",Override should not applied,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_005,Verify override not applied when shipment has not reached destination,"1.Check Skeleton shipment
+2.Customs cleared
+3.Upload payment file
+4.Run batch",Override should not applied,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_006,Verify override not applied when customs clearance incomplete,"1.Check Dummy shipment
+2.Reached destination
+3.Upload payment file
+4.Run batch",Override should not applied,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_007,Verify override not applied when payment not confirmed in Actual file nor in estimation,"1.Check Skeleton shipment
+2.Reached destination
+3.Customs cleared
+4.Upload unpaid Actual file/Estimation File",Override should not applied,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_009,Verify shipment record created after override eligibility applied,"1.Meet override conditions
+2.Run creation job",Shipment record created in charging system,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_010,Verify no duplicate shipment created when primary eligibility triggers later,"1.Check shipment via override
+2.Trigger primary eligibility",No duplicate shipment created,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_012,Verify OPS notifications sent when override applied and shipment status not Full,"1.Apply override
+2.Set status Partial
+3.Check shipment",Notification sent to Global OPS and Origin OPS,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_013,Verify notification not sent when shipment status is Full,"1.Apply override
+2.Set status Full
+3.Check shipment",No notification sent,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_014,Verify notification contains shipment reference,"1.Trigger notification
+2.Open email/message",Shipment reference present,Medium,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_015,Verify notification contains shipment status,"1.Trigger notification
+2.Open email/message",Shipment status present,Medium,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_016,Verify notification contains timestamp,"1.Trigger notification
+2.Open email/message",Timestamp present,Medium,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_017,Verify duplicate notifications not sent for same override event,"1.Trigger override once
+2.Reprocess same shipment",Only one notification sent,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override,CCIPH-43,TC_MO_018,Verify notification sent again for new override event on different shipment,"1.Process shipment A
+2.Process shipment B",Separate notifications sent,Medium,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override API,CCIPH-43,TC_MO_API_001,Verify override API returns success response for valid request,1.Send valid override request,HTTP 200/201 with success response,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override API,CCIPH-43,TC_MO_API_003,Verify override API idempotency for repeated request,1.Send same payload twice,No duplicate shipment created,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override DB,CCIPH-43,TC_MO_DB_002,Validate shipment record inserted once only,"1.Process shipment twice
+2.Query count",Only one shipment row exists,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override DB,CCIPH-43,TC_MO_DB_003,Validate source flag stored as Manual Override,"1.Process override shipment
+2.Query DB",source_type = Manual Override,Medium,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override DB,CCIPH-43,TC_MO_DB_004,Validate notification log created once,"1.Trigger override notification
+2.Query log",One notification log row exists,High,Yes,,,N/A,The functionality is out of scope for now
+Shipment Manual Override DB,CCIPH-43,TC_MO_DB_005,Validate audit columns updated with timestamp/user,"1.Process override
+2.Query DB",created_at/updated_at populated,Medium,Yes,,,N/A,The functionality is out of scope for now
+Shipment Creation,CCIPH-46,TC_ALLOC_001,"Verify entity allocation for DDP shipment when Destination Entity is RUH, JED or DHA","1. Create a shipment satisfying DDP conditions.
+2. Set Destination Entity as RUH, JED or DHA.
+3. Allow shipment creation process to complete.
+4. Verify allocated entity and account in the system.",Shipment should be allocated to the Destination Entity and Account should be assigned as ASL001.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-46,TC_ALLOC_002,"Verify DDP shipment allocation when Destination Entity is outside RUH, JED and DHA","1. Create a shipment satisfying DDP conditions.
+2. Select a Destination Entity other than RUH, JED or DHA.
+3. Process the shipment.
+4. Verify allocated entity and account.",Shipment should be allocated to the Destination Entity and Default Cash Account should be assigned.,Critical,No,,Will be covered in above TC,Pass,
+Shipment Creation,CCIPH-46,TC_ALLOC_003,Verify DDU/DDO shipment allocation for CMT = 3 using 3rd Party Entity,"1. Create a shipment classified as DDU/DDO.
+2. Set CMT = 3.
+3. Configure 3rd Party Entity as RUH, JED or DHA.
+4. Complete shipment processing.
+5. Verify entity allocation and account mapping.",Shipment should be allocated to the configured 3rd Party Entity and linked AR Account should be assigned.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-46,TC_ALLOC_004,Verify DDU/DDO shipment allocation based on AR Account Management configuration,"1. Create a shipment classified as DDU/DDO.
+2. Configure Account in AR Account Management.
+3. Ensure mapped entity is RUH, JED or DHA.
+4. Process the shipment.
+5. Verify allocation details.",Shipment should be allocated to the AR-configured Entity and configured AR Account should be assigned.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-46,TC_ALLOC_005,Verify default allocation when shipment account is blank,"1. Create a DDU/DDO shipment.
+2. Keep Account field blank.
+3. Process the shipment.
+4. Verify allocated entity and account.",Shipment should be allocated to the Destination Entity and Default Cash Account should be assigned.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-46,TC_ALLOC_006,"Verify default allocation when AR Account Entity is outside RUH, JED and DHA","1. Create a DDU/DDO shipment.
+2. Configure AR Account with an Entity other than RUH, JED or DHA.
+3. Process the shipment.
+4. Verify allocation details.",Shipment should be allocated to the Destination Entity and Default Cash Account should be assigned.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-46,TC_ALLOC_007,Verify entity allocation details are correctly reflected in UI and database after shipment creation,"1. Create shipments covering DDP, DDU and DDO scenarios.
+2. Allow shipment creation process to complete.
+3. Verify allocated Entity and Account on the Shipment Details screen.
+4. Verify corresponding database records.",Entity allocation and Account assignment should match business rules in both UI and database.,High,Yes,,,Pass,
+Shipment Creation,CCIPH-45,TC_ST_001,Verify shipment is classified as DDU when CMT is C or F,"1. Create a shipment with CMT = C.
+2. Process the shipment.
+3. Verify the Shipment Type.
+4. Repeat the same steps with CMT = F.",Shipment should be marked as DDU and no AR Account validation should be performed.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-45,TC_ST_002,"Verify shipment is classified as DDU when CMT is 3 and 3rd Party Entity is RUH, JED or DHA","1. Create a shipment with CMT = 3.
+2. Configure 3rd Party Entity as RUH, JED or DHA.
+3. Process the shipment.
+4. Verify Shipment Type.",Shipment should be marked as DDU.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-45,TC_ST_003,Verify shipment is classified as DDU for Return Product Types,"1. Create shipments with CMT = P and CMT = 3.
+2. Configure Product Type as RDG, RDL, RMY, RTC, RTD, RTI, RTN and RTP.
+3. Process each shipment.
+4. Verify Shipment Type.",Shipment should be marked as DDU for all supported Return Product Types.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-45,TC_ST_004,Verify shipment is classified as DDP for LHS and DIM Product Types when previous rules are not satisfied,"1. Create a shipment that does not satisfy AC1, AC2 or AC3.
+2. Configure Product Type as LHS.
+3. Process the shipment and verify Shipment Type.
+4. Repeat the same steps with Product Type as DIM.",Shipment should be marked as DDP when Product Type is LHS or DIM and no previous rule is matched.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-45,TC_ST_005,Verify shipment is classified as DDO when AR Account Custom Type is configured as DDO,"1. Create a shipment with a valid Shipper Number.
+2. Configure the corresponding AR Account with Custom Type = DDO.
+3. Process the shipment.
+4. Verify Shipment Type in UI and Database.",System should identify the AR Account based on Shipper Number and classify the shipment as DDO.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-44,TC_DOM_DDU_001,Verify shipment is automatically marked as DDU when all Domestic shipment conditions are satisfied,"1. Create a shipment with Product Group = DOM.
+2. Set Shipper Account Number = 72104493.
+3. Set Destination Entity = RUH.
+4. Process the shipment.
+5. Verify Shipment Type in UI and Database.",System should automatically classify the shipment as DDU without any manual intervention.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-44,TC_DOM_DDU_002,Verify Domestic shipment is not automatically marked as DDU when Destination Entity is not RUH,"1. Create a shipment with Product Group = DOM.
+2. Set Shipper Account Number = 72104493.
+3. Set Destination Entity = JED (Repeat for DHA).
+4. Process the shipment.
+5. Verify Shipment Type.",System should not automatically classify the shipment as DDU under this rule when Destination Entity is other than RUH.,Critical,Yes,,,Pass,
+Shipment Creation,CCIPH-44,TC_DOM_DDU_003,Verify Domestic shipment is not automatically marked as DDU when Shipper Account Number is different from 72104493,"1. Create a shipment with Product Group = DOM.
+2. Set a Shipper Account Number other than 72104493.
+3. Set Destination Entity = RUH.
+4. Process the shipment.5. Verify Shipment Type.",System should not automatically classify the shipment as DDU under this rule when the Shipper Account Number is different from 72104493.,Critical,Yes,,,Pass,

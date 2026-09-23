@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>Charge Creation Object Repository</description>
+   <name>ChargeCreation</name>
+   <tag>ChargeCreation</tag>
+   <folderType>OR</folderType>
+</FolderEntity>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify the UI for Invoicing Table for ECD (CCIPH-120 / TC_Detailed_9)</description>
+   <name>TC_Detailed_09</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,ChargeDetail,CCIPH-120</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-120</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph120-tc_detailed_9-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs120-link-tc_detailed_9</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>9</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH120_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs120-link-tc_detailed_9</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>78193123-f4df-44dd-9794-3939208a902d</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Tracking number for Customs Search and Charge Detail navigation</description>
+      <id>78193123-f4df-44dd-9794-3939208a902d</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

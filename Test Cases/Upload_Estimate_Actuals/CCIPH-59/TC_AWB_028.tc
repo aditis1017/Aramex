@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify partially corrupted upload file handling</description>
+   <name>TC_AWB_028</name>
+   <tag>GenAI,High,CCIPH-59,Upload_Estimate_Actuals,AC1</tag>
+   <comment>CSV: Upload Estimate_Actuals.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-59</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>uea-cciph59-tc_awb_028</testCaseGuid>
+</TestCaseEntity>

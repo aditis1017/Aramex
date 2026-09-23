@@ -8,7 +8,7 @@ def cs = new CS()
 def login = new MSLogin()
 
 login.loginToStageCustomsManagementUsingAutomationProfile()
-cs.navigateToCustomSearchScreen()
+cs.navigateToStageCustomsSearchScreen()
 cs.verifyDetailPageInformation()
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

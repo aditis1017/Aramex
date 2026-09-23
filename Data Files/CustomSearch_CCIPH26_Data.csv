@@ -1,0 +1,13 @@
+ID,charge_Group,charge_Code,charge_Status,expected_Entity,expected_Account_Number,expected_Account_Name,expected_Origin,expected_Destination,expected_Third_Party,search_Criteria,search_Value,tracking_Numbers,account_Number
+TC_US_FUNC_018,,,,,,,,,,,,
+TC_US_FUNC_019,Cost,ECD,Actualized,,,,,,,,,
+TC_US_FUNC_020,Cost,ECD,Actualized,,,,,,,,,
+TC_US_FUNC_022,Cost,ECD,Actualized,,,,,,,,,
+TC_US_FUNC_023,Cost,ECD,Actualized,,,,,,,,,
+TC_US_FUNC_024,Cost,ECD,Actualized,RUH,,,,,,,,
+TC_US_FUNC_025,Cost,ECD,Actualized,RUH,,,,,,Tracking Number,,9871003073
+TC_US_FUNC_026,Cost,ECD,Actualized,,1100053259,KSA Customs Authorities,,,,,,
+TC_US_FUNC_027,Cost,ECD,Actualized,,1100053259,KSA Customs Authorities,DXB,RUH,-,,,
+TC_US_FUNC_028,Cost,ECD,Actualized,,,,,,,,,
+TC_US_FUNC_029,Cost,ECD,Actualized,,,,,,,,,
+TC_US_FUNC_030,Cost,ECD,Actualized,,,,,,,,,

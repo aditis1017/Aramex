@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify collapsed filter section can be expanded using Show Filters button (CCIPH-23 / TC_FILTER_003)</description>
+   <name>TC_FILTER_003</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-23</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-23</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph23-tc_filter_003-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs23-link-tc_filter_003</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>3</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH23_Data</testDataId>
+   </testDataLinks>
+</TestCaseEntity>

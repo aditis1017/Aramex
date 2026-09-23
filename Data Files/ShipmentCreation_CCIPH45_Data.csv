@@ -1,0 +1,6 @@
+"ID","cmt","third_Party_Entity","product_Type","shipper_Number","tracking_Number","expected_Shipment_Type","verify_No_Ar_Validation","flow_Type","charge_Group","charge_Code","entity"
+"TC_ST_001","C,F","","","","","DDU","Y","DB_UI","Cost","ECD","RUH"
+"TC_ST_002","3","RUH,JED,DHA","","","","DDU","N","DB_UI","Cost","ECD","RUH"
+"TC_ST_003","P,3","","RDG,RDL,RMY,RTC,RTD,RTI,RTN,RTP","","","DDU","N","DB_UI","Cost","ECD","RUH"
+"TC_ST_004","B","","LHS,DIM","","","DDP","N","DB_UI","Cost","ECD","RUH"
+"TC_ST_005","","","","","","DDO","N","DB_UI","Cost","ECD","RUH"

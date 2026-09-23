@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validate DTC Account Information against database (CCIPH-120 / TC_Detailed_16)</description>
+   <name>TC_Detailed_16</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,ChargeDetail,CCIPH-120</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-120</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph120-tc_detailed_16-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs120-link-tc_detailed_16</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>16</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH120_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs120-link-tc_detailed_16</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>c8f6267f-0034-47fb-8456-4168075c45ac</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>Tracking number for Customs Search and Charge Detail navigation</description>
+      <id>c8f6267f-0034-47fb-8456-4168075c45ac</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

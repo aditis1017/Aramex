@@ -9,11 +9,24 @@
    <testCaseGuid>cs-cciph21-tc-us-func-039-0001</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>cs21-link-tc-us-func-039</id>
+      <id>91b1ad99-29b5-445d-938b-95d78c185ee1</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>25</value>
+         <value>39</value>
       </iterationEntity>
       <testDataId>Data Files/CustomSearch_Data</testDataId>
    </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>91b1ad99-29b5-445d-938b-95d78c185ee1</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>98d15cf6-0f10-4309-9ffb-cf8e28f23a0a</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>98d15cf6-0f10-4309-9ffb-cf8e28f23a0a</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
 </TestCaseEntity>

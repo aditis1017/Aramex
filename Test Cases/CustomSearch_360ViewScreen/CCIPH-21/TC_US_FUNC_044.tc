@@ -12,21 +12,34 @@
       <id>cs21-link-tc-us-func-044</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>30</value>
+         <value>44</value>
       </iterationEntity>
       <testDataId>Data Files/CustomSearch_Data</testDataId>
    </testDataLinks>
    <variableLinks>
       <testDataLinkId>cs21-link-tc-us-func-044</testDataLinkId>
       <type>DATA_COLUMN</type>
-      <value>search_Value</value>
+      <value>search_Criteria</value>
       <variableId>cs21-var-search-Value</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs21-link-tc-us-func-044</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>8915b6d3-74e7-4d71-a8fa-00a836ee3d84</variableId>
    </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
       <id>cs21-var-search-Value</id>
       <masked>false</masked>
-      <name>search_Value</name>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>8915b6d3-74e7-4d71-a8fa-00a836ee3d84</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
    </variable>
 </TestCaseEntity>

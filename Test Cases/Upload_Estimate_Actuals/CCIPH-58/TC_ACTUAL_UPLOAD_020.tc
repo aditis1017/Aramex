@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Upload functionality complies with STD-EXCEL-IMPORT capability</description>
+   <name>TC_ACTUAL_UPLOAD_020</name>
+   <tag>GenAI,High,CCIPH-58,AC7,CCIPH-225,Upload_Estimate_Actuals</tag>
+   <comment>CSV: Upload Estimate_Actuals.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-58 | Linked: CCIPH-225</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>uea-cciph58-tc-actual-upload-020</testCaseGuid>
+</TestCaseEntity>

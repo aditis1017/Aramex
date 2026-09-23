@@ -7,13 +7,4 @@
    <origin>GenAI</origin>
    <recordOption>OTHER</recordOption>
    <testCaseGuid>cs-cciph21-tc-us-func-032-0001</testCaseGuid>
-   <testDataLinks>
-      <combinationType>ONE</combinationType>
-      <id>cs21-link-tc-us-func-032</id>
-      <iterationEntity>
-         <iterationType>SPECIFIC</iterationType>
-         <value>18</value>
-      </iterationEntity>
-      <testDataId>Data Files/CustomSearch_Data</testDataId>
-   </testDataLinks>
 </TestCaseEntity>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify user can perform consecutive searches without refreshing the page (CCIPH-22 / TC_SEARCH_014)</description>
+   <name>TC_SEARCH_014</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-22</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-22</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph22-tc_search_014-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>dfc1f71a-d7c1-43d7-bac8-2fdde80897b0</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>60</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>dfc1f71a-d7c1-43d7-bac8-2fdde80897b0</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria</value>
+      <variableId>d8e3b7b5-1c93-4503-ba91-4899399270a2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>dfc1f71a-d7c1-43d7-bac8-2fdde80897b0</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>ea066eec-7c87-4217-a0cb-a1ffe236e146</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>dfc1f71a-d7c1-43d7-bac8-2fdde80897b0</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>account_Number</value>
+      <variableId>adbd7f32-9529-4069-ad26-1d08472e4f4d</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>dfc1f71a-d7c1-43d7-bac8-2fdde80897b0</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>search_Criteria1</value>
+      <variableId>acfa0352-8462-4f75-8127-cc6e6235bcc5</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>d8e3b7b5-1c93-4503-ba91-4899399270a2</id>
+      <masked>false</masked>
+      <name>search_Criteria</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>ea066eec-7c87-4217-a0cb-a1ffe236e146</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>adbd7f32-9529-4069-ad26-1d08472e4f4d</id>
+      <masked>false</masked>
+      <name>account_Number</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>acfa0352-8462-4f75-8127-cc6e6235bcc5</id>
+      <masked>false</masked>
+      <name>search_Criteria1</name>
+   </variable>
+</TestCaseEntity>

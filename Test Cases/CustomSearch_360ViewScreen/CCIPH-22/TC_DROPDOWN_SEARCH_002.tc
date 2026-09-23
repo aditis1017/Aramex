@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify search behavior when no matching value exists in the dropdown (CCIPH-22 / TC_DROPDOWN_SEARCH_002)</description>
+   <name>TC_DROPDOWN_SEARCH_002</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-22</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-22</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph22-tc_dropdown_search_002-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs22-link-tc_dropdown_search_002</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>16</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH22_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_002</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Label</value>
+      <variableId>cs22-var-dropdown_label</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs22-link-tc_dropdown_search_002</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>dropdown_Invalid_Keyword</value>
+      <variableId>cs22-var-dropdown_invalid_keyword</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Label from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_label</id>
+      <masked>false</masked>
+      <name>dropdown_Label</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description>dropdown_Invalid_Keyword from CCIPH-22 test data</description>
+      <id>cs22-var-dropdown_invalid_keyword</id>
+      <masked>false</masked>
+      <name>dropdown_Invalid_Keyword</name>
+   </variable>
+</TestCaseEntity>
