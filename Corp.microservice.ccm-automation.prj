@@ -6,12 +6,12 @@
    <UUID>9e968b04-d9a7-495c-a9cd-1a0b2fe9026d</UUID>
    <createdEdition>ENTERPRISE</createdEdition>
    <createdVersion>11.1.1</createdVersion>
-   <freeLicense>true</freeLicense>
+   <freeLicense>false</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
    <modifiedEdition>ENTERPRISE</modifiedEdition>
    <modifiedVersion>11.1.1</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\Users\Aditi Singh\NEW-GIT\Corp.microservice.ccm-automation\Dummy-Test.prj</projectFileLocation>
+   <projectFileLocation>C:\Users\Aditi Singh\NEW-GIT\Corp.microservice.ccm-automation\Corp.microservice.ccm-automation.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

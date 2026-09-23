@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-122 DTC DDO downstream charge creation test cases</description>
+   <name>CCIPH-122</name>
+   <tag>CCIPH-122</tag>
+   <folderType>TESTCASE</folderType>
+</FolderEntity>

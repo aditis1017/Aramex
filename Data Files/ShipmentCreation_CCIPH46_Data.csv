@@ -1,0 +1,8 @@
+"ID","shipment_Type","destination_Entity","third_Party_Entity","cmt","account_Number","ar_Account_Entity","tracking_Number","expected_Account_Type","expected_Account","flow_Type","charge_Group","charge_Code","entity","product_Type","shipper_Number"
+"TC_ALLOC_001","DDP","RUH,JED,DHA","","","","","","ASL001","ASL001","DB_UI","Cost","ECD","RUH","LHS,DIM",""
+"TC_ALLOC_002","DDP","DXB","","","","","","DEFAULT_CASH","","DB_UI","Cost","ECD","DXB","LHS,DIM",""
+"TC_ALLOC_003","DDU,DDO","","RUH,JED,DHA","3","","","","AR_ACCOUNT","","DB_UI","Cost","ECD","RUH","",""
+"TC_ALLOC_004","DDU,DDO","RUH","","","","","","AR_ACCOUNT","","DB_UI","Cost","ECD","RUH","",""
+"TC_ALLOC_005","DDU,DDO","RUH","","","BLANK","","","DEFAULT_CASH","","DB_UI","Cost","ECD","RUH","",""
+"TC_ALLOC_006","DDU,DDO","RUH","","","OUT_OF_SCOPE","","","DEFAULT_CASH","","DB_UI","Cost","ECD","RUH","",""
+"TC_ALLOC_007","DDP,DDU,DDO","RUH","","3","","","","MIXED","","DB_UI","Cost","ECD","RUH","LHS,DIM",""

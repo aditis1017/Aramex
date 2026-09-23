@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FolderEntity>
+
+   <description>CCIPH-77 DTA intercompany charge calculation locators</description>
+
+   <name>CCIPH-77</name>
+
+   <tag>CCIPH-77,ChargeCreation,DTA</tag>
+
+   <folderType>TESTELEMENT</folderType>
+
+</FolderEntity>
+

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify system accepts third actual upload for same shipment</description>
+   <name>TC_ACT_EST_003</name>
+   <tag>GenAI,High,CCIPH-60,Upload_Estimate_Actuals,CCIPH-72</tag>
+   <comment>CSV: Upload Estimate_Actuals.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-60 | Linked: https://aramex.atlassian.net/browse/CCIPH-72</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>uea-cciph60-tc-act-est-003</testCaseGuid>
+</TestCaseEntity>

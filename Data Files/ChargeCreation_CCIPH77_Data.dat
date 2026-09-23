@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataFileEntity>
+
+   <description>Charge Creation CCIPH-77 DTA intercompany calculation test data. Source: Data Files/ChargeCreation_CCIPH77_Data.csv</description>
+
+   <name>ChargeCreation_CCIPH77_Data</name>
+
+   <tag>CCIPH-77,ChargeCreation,DTA</tag>
+
+   <connectionProperties/>
+
+   <containsHeaders>true</containsHeaders>
+
+   <csvSeperator>COMMA</csvSeperator>
+
+   <dataFileGUID>cc-cciph77-data-4a1b-9c0d-8e7f-000000000077</dataFileGUID>
+
+   <dataSourceUrl>ChargeCreation_CCIPH77_Data.csv</dataSourceUrl>
+
+   <driver>CSV</driver>
+
+   <isInternalPath>true</isInternalPath>
+
+   <query></query>
+
+   <secureUserAccount>false</secureUserAccount>
+
+   <sheetName></sheetName>
+
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+
+</DataFileEntity>
+

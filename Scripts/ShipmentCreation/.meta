@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>Shipment Creation scripts</description>
+   <name>ShipmentCreation</name>
+   <tag>ShipmentCreation</tag>
+   <folderType>SCRIPT</folderType>
+</FolderEntity>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify filter values are retained after collapsing and expanding the filter section (CCIPH-23 / TC_FILTER_004)</description>
+   <name>TC_FILTER_004</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-23</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-23</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph23-tc_filter_004-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>96bb9938-21fc-4063-9e4a-bed111259eb6</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>68</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>96bb9938-21fc-4063-9e4a-bed111259eb6</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>54bde6e5-26c3-4514-a926-0f872101d50c</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>54bde6e5-26c3-4514-a926-0f872101d50c</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

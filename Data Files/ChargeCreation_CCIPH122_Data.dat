@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>Charge Creation CCIPH-122 DTC DDO test data. Source: Data Files/ChargeCreation_CCIPH122_Data.csv</description>
+   <name>ChargeCreation_CCIPH122_Data</name>
+   <tag>CCIPH-122,ChargeCreation,DTC,DDO</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>cc-cciph122-data-4a1b-9c0d-8e7f-000000000122</dataFileGUID>
+   <dataSourceUrl>ChargeCreation_CCIPH122_Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

@@ -1,0 +1,21 @@
+ID,valid_AWB,entity_Name,estimate_Amount,actual_Amount_1,actual_Amount_2,actual_Amount_3,invoiced_Value,eligible_Cost,valid_Upload_Path
+TC_ACT_EST_001,B2BSHIPDATA200,RUH,1000,100,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_002,B2BSHIPDATA200,RUH,1000,100,200,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_003,B2BSHIPDATA200,RUH,1000,100,200,300,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_004,B2BSHIPDATA200,RUH,1000,100,200,300,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_005,B2BSHIPDATA200,RUH,1000,100,200,300,600,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_006,B2BSHIPDATA200,RUH,1000,100,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_007,B2BSHIPDATA200,RUH,1000,100,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_008,B2BSHIPDATA200,RUH,1000,1000,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_009,B2BSHIPDATA200,RUH,1000,1200,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_010,B2BSHIPDATA200,RUH,1000,1500,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_011,B2BSHIPDATA200,RUH,1500,1000,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_012,B2BSHIPDATA200,RUH,0,100,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_013,B2BSHIPDATA200,RUH,1000,100,,,,100,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_014,B2BSHIPDATA200,RUH,1000,0,,,,1000,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_015,B2BSHIPDATA200,RUH,5000,0,,,3000,5000,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_016,B2BSHIPDATA200,RUH,3000,0,,,5000,3000,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_017,B2BSHIPDATA200,RUH,1000,100,,,,100,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_018,B2BSHIPDATA200,RUH,1000,1005,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_019,B2BSHIPDATA200,RUH,1000,1015,,,,,Upload Files/Actuals-Upload-RUH.xlsx
+TC_ACT_EST_020,B2BSHIPDATA200,RUH,1000,100,200,,,,Upload Files/Actuals-Upload-RUH.xlsx

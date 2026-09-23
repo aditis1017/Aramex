@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Hide Filters button availability and default state on Search screen (CCIPH-23 / TC_FILTER_001)</description>
+   <name>TC_FILTER_001</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-23</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-23</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph23-tc_filter_001-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>e1dcb31b-7400-41e8-8f3e-6c85ad1d1870</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>80</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>e1dcb31b-7400-41e8-8f3e-6c85ad1d1870</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>3f09bc36-ffad-4616-a9cd-68e0bb60be30</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>3f09bc36-ffad-4616-a9cd-68e0bb60be30</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
+</TestCaseEntity>

@@ -1,0 +1,21 @@
+ID,valid_AWB,invalid_AWB,customs_Duty,entity_Name,valid_Upload_Path,invalid_Upload_Path
+TC_ACTUAL_UPLOAD_001,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_002,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_003,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_004,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_005,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_006,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_007,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_008,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_009,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_010,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_011,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_012,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_013,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_014,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_015,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_016,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_017,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_018,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_019,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv
+TC_ACTUAL_UPLOAD_020,DP13000,INVALID_AWB_XYZ_999999,100,RUH,Upload Files/Actuals-Upload-RUH.xlsx,Data Files/fixtures/CCIPH-58/invalid_format.csv

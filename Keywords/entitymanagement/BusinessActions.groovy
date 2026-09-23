@@ -427,6 +427,7 @@ class BusinessActions {
 			failStop("verifyEntitySettingsPageLoaded failed: ${e.message}")
 		}
 	}
+	
 
 //	@Keyword
 //	def selectEntity(String entityLabel) {
@@ -490,6 +491,111 @@ class BusinessActions {
 			failStop("clickEntitySelectionContinue failed: ${e.message}")
 		}
 	}
+	
+	private TestObject resolveEntitySettingsTab(String tabName) {
+		
+			String expectedTab = (tabName ?: '').trim()
+		
+			if (!expectedTab) {
+				failStop(
+					"resolveEntitySettingsTab: Tab name cannot be blank"
+				)
+			}
+		
+			String xpath =
+				"//div[@role='group' and " +
+				"@aria-label='Cost, revenue, and history sections']" +
+				"//button[normalize-space(.)='${expectedTab}']"
+		
+			TestObject tabObject =
+				new TestObject("dynamicEntitySettingsTab_${expectedTab}")
+		
+			tabObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				xpath
+			)
+		
+			return tabObject
+		}
+		
+		@Keyword
+		def selectEntitySettingsTab(String tabName) {
+		
+			try {
+		
+				String expectedTab = (tabName ?: '').trim()
+		
+				if (!expectedTab) {
+					failStop(
+						"selectEntitySettingsTab: Tab name cannot be blank"
+					)
+				}
+		
+				TestObject tab =
+					resolveEntitySettingsTab(expectedTab)
+		
+				WebUI.waitForElementVisible(
+					tab,
+					15,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				WebUI.waitForElementClickable(
+					tab,
+					15,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				WebUI.click(
+					tab,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				// Validate that the selected tab is active
+				String activeTabXpath =
+					"//div[@role='group' and " +
+					"@aria-label='Cost, revenue, and history sections']" +
+					"//button[normalize-space(.)='${expectedTab}' " +
+					"and @aria-pressed='true']"
+		
+				TestObject activeTab =
+					new TestObject(
+						"activeEntitySettingsTab_${expectedTab}"
+					)
+		
+				activeTab.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					activeTabXpath
+				)
+		
+				WebUI.waitForElementVisible(
+					activeTab,
+					10,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				WebUI.verifyElementVisible(
+					activeTab,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				KeywordUtil.logInfo(
+					"Successfully navigated to Entity Settings tab: '${expectedTab}'"
+				)
+		
+				WebUI.takeScreenshot()
+		
+			} catch (Exception e) {
+		
+				WebUI.takeScreenshot()
+		
+				failStop(
+					"Failed to navigate to Entity Settings tab '${tabName}': ${e.message}"
+				)
+			}
+		}
 
 	@Keyword
 	def verifyEntitySelectedAndChargeTypesEnabled() {

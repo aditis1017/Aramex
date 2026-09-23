@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-76 DTC charge calculation locators</description>
+   <name>CCIPH-76</name>
+   <tag>CCIPH-76,ChargeCreation,DTC</tag>
+   <folderType>TESTELEMENT</folderType>
+</FolderEntity>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify estimate values not updated from uploaded estimate file (CCIPH-121 / TC_ECDD_009)</description>
+   <name>TC_ECDD_009</name>
+   <tag>GenAI,Critical,CCIPH-121,ChargeCreation,ECD,DDO</tag>
+   <comment>CSV: ChargeCreation-TestCases.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-121 | TC_ECDD_009</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cc121-tc_ecdd_009-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cc121-link-tc_ecdd_009</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>9</value>
+      </iterationEntity>
+      <testDataId>Data Files/ChargeCreation_CCIPH121_Data</testDataId>
+   </testDataLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Number</value>
+      <variableId>cc121-var-tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>shipper_Number</value>
+      <variableId>cc121-var-shipper_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>ineligible_Tracking_Number</value>
+      <variableId>cc121-var-ineligible_tracking_number</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>entity</value>
+      <variableId>cc121-var-entity</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Group</value>
+      <variableId>cc121-var-charge_group</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Code</value>
+      <variableId>cc121-var-charge_code</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>expected_Status</value>
+      <variableId>cc121-var-expected_status</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>flow_Type</value>
+      <variableId>cc121-var-flow_type</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>login_Required</value>
+      <variableId>cc121-var-login_required</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>estimate_File_Path</value>
+      <variableId>cc121-var-estimate_file_path</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>upload_Count</value>
+      <variableId>cc121-var-upload_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>rerun_Count</value>
+      <variableId>cc121-var-rerun_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>batch_Eligible_Count</value>
+      <variableId>cc121-var-batch_eligible_count</variableId>
+   </variableLinks>   <variableLinks>
+      <testDataLinkId>cc121-link-tc_ecdd_009</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>skip_Reason</value>
+      <variableId>cc121-var-skip_reason</variableId>
+   </variableLinks>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-tracking_number</id>
+      <masked>false</masked>
+      <name>tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-shipper_number</id>
+      <masked>false</masked>
+      <name>shipper_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-ineligible_tracking_number</id>
+      <masked>false</masked>
+      <name>ineligible_Tracking_Number</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-entity</id>
+      <masked>false</masked>
+      <name>entity</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-charge_group</id>
+      <masked>false</masked>
+      <name>charge_Group</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-charge_code</id>
+      <masked>false</masked>
+      <name>charge_Code</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-expected_status</id>
+      <masked>false</masked>
+      <name>expected_Status</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-flow_type</id>
+      <masked>false</masked>
+      <name>flow_Type</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-login_required</id>
+      <masked>false</masked>
+      <name>login_Required</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-estimate_file_path</id>
+      <masked>false</masked>
+      <name>estimate_File_Path</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-upload_count</id>
+      <masked>false</masked>
+      <name>upload_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-rerun_count</id>
+      <masked>false</masked>
+      <name>rerun_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-batch_eligible_count</id>
+      <masked>false</masked>
+      <name>batch_Eligible_Count</name>
+   </variable>   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cc121-var-skip_reason</id>
+      <masked>false</masked>
+      <name>skip_Reason</name>
+   </variable>
+</TestCaseEntity>

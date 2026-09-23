@@ -1,0 +1,6 @@
+ID,charge_Group,charge_Code,charge_Status
+TC_FILTER_001,,,
+TC_FILTER_002,,,
+TC_FILTER_003,,,
+TC_FILTER_004,Cost,ECD,Due
+TC_FILTER_005,Cost,ECD,Actualized

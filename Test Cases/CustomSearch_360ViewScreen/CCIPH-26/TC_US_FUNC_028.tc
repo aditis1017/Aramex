@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Charge Group and Charge Code columns (CCIPH-26 / TC_US_FUNC_028)</description>
+   <name>TC_US_FUNC_028</name>
+   <tag>GenAI,CustomSearch,CustomSearch_360ViewScreen,CCIPH-26</tag>
+   <comment>CSV: CustomSearch_360ViewScreen.csv | Jira: https://aramex.atlassian.net/browse/CCIPH-26</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>cs-cciph26-tc_us_func_028-0001</testCaseGuid>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>cs26-link-tc_us_func_028</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>10</value>
+      </iterationEntity>
+      <testDataId>Data Files/CustomSearch_CCIPH26_Data</testDataId>
+   </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs26-link-tc_us_func_028</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Group</value>
+      <variableId>cs26-var-charge_group</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs26-link-tc_us_func_028</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Code</value>
+      <variableId>cs26-var-charge_code</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cs26-link-tc_us_func_028</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>charge_Status</value>
+      <variableId>cs26-var-charge_status</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cs26-var-charge_group</id>
+      <masked>false</masked>
+      <name>charge_Group</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cs26-var-charge_code</id>
+      <masked>false</masked>
+      <name>charge_Code</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cs26-var-charge_status</id>
+      <masked>false</masked>
+      <name>charge_Status</name>
+   </variable>
+</TestCaseEntity>

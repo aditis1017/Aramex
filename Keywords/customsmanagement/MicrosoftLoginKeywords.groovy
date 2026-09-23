@@ -3,6 +3,7 @@ package customsmanagement
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.kms.katalon.core.annotation.Keyword
+import com.kms.katalon.core.configuration.RunConfiguration
 import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.util.KeywordUtil
@@ -12,6 +13,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.chrome.ChromeDriverService
 
 /**
  * Microsoft Entra ID (Azure AD) interactive login for dev-cc Customs Management.
@@ -250,11 +254,76 @@ class MicrosoftLoginKeywords {
 			WebUI.closeBrowser()
 		} catch (Exception ignored) {
 		}
-		// First argument is a URL, not a browser name — use '' then navigate via CUSTOMS_APP_URL.
-		// Select Chrome (or other browser) in Katalon: Run > Web UI > Default / Chrome.
-		WebUI.openBrowser('')
+		try {
+			openChromeWithCompatibleDriver()
+		} catch (Exception e) {
+			KeywordUtil.logInfo("Compatible ChromeDriver open failed (${e.message}); retrying Katalon openBrowser.")
+			try {
+				WebUI.openBrowser(resolveBrowserBootstrapUrl())
+			} catch (Exception fallback) {
+				failStop("Unable to open Chrome browser. Install matching ChromeDriver under Drivers/chromedriver.exe or update WebDrivers in Katalon. Root cause: ${fallback.message}")
+			}
+		}
 		WebUI.maximizeWindow()
 		WebUI.delay(1)
+	}
+
+	/** Prefer stage login URL when running stage flows; falls back to dev / about:blank. */
+	private static String resolveBrowserBootstrapUrl() {
+		String url = (ProfileGlobals.get('STAGE_LOGIN_URL', '') ?: ProfileGlobals.get('CUSTOMS_APP_URL_STAGE', '') ?: ProfileGlobals.get('CUSTOMS_APP_URL') ?: ProfileGlobals.get('URL') ?: 'about:blank').trim()
+		return url ?: 'about:blank'
+	}
+
+	private static String projectDir() {
+		return RunConfiguration.getProjectDir() ?: System.getProperty('user.dir') ?: ''
+	}
+
+	private static File resolveChromeDriverExecutable() {
+		String fromProfile = (ProfileGlobals.get('CHROME_DRIVER_PATH', '') ?: '').trim()
+		if (fromProfile) {
+			File profileDriver = new File(fromProfile)
+			if (!profileDriver.isAbsolute()) {
+				profileDriver = new File(projectDir(), fromProfile)
+			}
+			if (profileDriver.isFile()) {
+				return profileDriver
+			}
+			KeywordUtil.markWarning("Profile CHROME_DRIVER_PATH not found: ${profileDriver.absolutePath}")
+		}
+		File bundledDriver = new File(projectDir(), 'Drivers/chromedriver.exe')
+		if (bundledDriver.isFile()) {
+			return bundledDriver
+		}
+		File nestedDriver = new File(projectDir(), 'Drivers/chromedriver-win64/chromedriver.exe')
+		if (nestedDriver.isFile()) {
+			return nestedDriver
+		}
+		return null
+	}
+
+	/**
+	 * Opens Chrome using project-bundled ChromeDriver (Drivers/chromedriver.exe) to avoid
+	 * Katalon's outdated bundled driver when local Chrome is newer (e.g. Chrome 152 vs driver 150).
+	 */
+	private static void openChromeWithCompatibleDriver() {
+		File driverExe = resolveChromeDriverExecutable()
+		if (driverExe == null) {
+			throw new IllegalStateException('No compatible chromedriver.exe found under project Drivers/ folder.')
+		}
+		ChromeOptions options = new ChromeOptions()
+		options.addArguments('--start-maximized')
+		options.addArguments('--remote-allow-origins=*')
+		options.addArguments('--disable-dev-shm-usage')
+		options.addArguments('--no-sandbox')
+		ChromeDriverService service = new ChromeDriverService.Builder()
+			.usingDriverExecutable(driverExe)
+			.build()
+		WebDriver driver = new ChromeDriver(service, options)
+		DriverFactory.changeWebDriver(driver)
+		String bootstrapUrl = resolveBrowserBootstrapUrl()
+		driver.get(bootstrapUrl)
+		WebUI.delay(1)
+		KeywordUtil.logInfo("Chrome opened with driver: ${driverExe.absolutePath} -> ${bootstrapUrl}")
 	}
 
 	/**

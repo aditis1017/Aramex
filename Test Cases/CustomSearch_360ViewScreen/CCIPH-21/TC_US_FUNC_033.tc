@@ -12,8 +12,21 @@
       <id>cs21-link-tc-us-func-033</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>19</value>
+         <value>33</value>
       </iterationEntity>
       <testDataId>Data Files/CustomSearch_Data</testDataId>
    </testDataLinks>
+   <variableLinks>
+      <testDataLinkId>cs21-link-tc-us-func-033</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>tracking_Numbers</value>
+      <variableId>e82de737-600b-4f60-ad7d-a9c8bd5d4be9</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>e82de737-600b-4f60-ad7d-a9c8bd5d4be9</id>
+      <masked>false</masked>
+      <name>tracking_Numbers</name>
+   </variable>
 </TestCaseEntity>

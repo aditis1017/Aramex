@@ -8,7 +8,13 @@ def cs = new CS()
 def login = new MSLogin()
 
 login.loginToStageCustomsManagementUsingAutomationProfile()
-cs.navigateToCustomSearchScreen()
-cs.verifyMultipleSearchFieldsValidation()
+//cs.navigateToCustomSearchScreen()
+cs.navigateToStageCustomsSearchScreen()
+cs.clickMultipleButton()
+cs.verifyMultipleShipmentsTextPresent()
+cs.enterMultipleSearchValues(tracking_Numbers)
+cs.clickCloseButton()
 WebUI.takeScreenshot()
 WebUI.closeBrowser()
+
+

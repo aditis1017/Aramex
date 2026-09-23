@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FolderEntity>
+   <description>CCIPH-78 ECS/EC3 charge creation at Origin (DTA-linked) locators</description>
+   <name>CCIPH-78</name>
+   <tag>CCIPH-78</tag>
+   <folderType>TESTOBJECT</folderType>
+</FolderEntity>
