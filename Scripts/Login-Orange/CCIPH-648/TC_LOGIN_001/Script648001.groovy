@@ -10,7 +10,7 @@ import Login_Orange.BusinessActions as OrangeLogin
 
 def login = new OrangeLogin()
 
-try {
+
 	login.openBrowserAndNavigateToLogin()
 	login.verifyUsernameFieldDisplayed()
 	login.enterUsername()
@@ -19,6 +19,6 @@ try {
 	login.verifyDashboardPageDisplayed()
 	login.verifyDashboardNavigationVisible()
 	WebUI.takeScreenshot()
-} finally {
-	login.closeBrowserSafely()
-}
+
+	WebUI.closeBrowser()
+
