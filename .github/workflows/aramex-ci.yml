@@ -85,6 +85,7 @@ jobs:
           test -f "$PRJ"
           # Katalon uses the .prj absolute path as the Eclipse project name, with / encoded as %.
           NAME=$(printf '%s' "$PRJ" | sed 's/%/%%/g; s#/#%#g')
+          KEYWORDS="$(pwd)/Keywords"
           printf '%s\n' \
             '<?xml version="1.0" encoding="UTF-8"?>' \
             '<projectDescription>' \
@@ -101,6 +102,13 @@ jobs:
             '    <nature>org.eclipse.jdt.groovy.core.groovyNature</nature>' \
             '    <nature>org.eclipse.jdt.core.javanature</nature>' \
             '  </natures>' \
+            '  <linkedResources>' \
+            '    <link>' \
+            '      <name>Keywords</name>' \
+            '      <type>2</type>' \
+            "      <location>${KEYWORDS}</location>" \
+            '    </link>' \
+            '  </linkedResources>' \
             '</projectDescription>' > .project
           echo "Eclipse project name: $NAME"
 
