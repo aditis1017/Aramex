@@ -44,6 +44,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: false
 
       - name: Validate Katalon project
         env:
@@ -76,11 +78,36 @@ jobs:
           sudo ln -sfn "$(readlink -f "$(which java)")" /usr/bin/java
           /usr/bin/java -version
 
+      - name: Prepare Katalon project
+        run: |
+          test -d Keywords
+          test -f Corp.microservice.ccm-automation.prj
+          cat > .project << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>CCI</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+</projectDescription>
+EOF
+
       - name: Run Katalon Runtime Engine
         uses: katalon-studio/katalon-studio-github-action@v4.0
         with:
           version: "11.6.0"
-          projectPath: ${{ github.workspace }}
+          projectPath: ${{ github.workspace }}/Corp.microservice.ccm-automation.prj
           args: >-
             -noSplash
             -retry=0
