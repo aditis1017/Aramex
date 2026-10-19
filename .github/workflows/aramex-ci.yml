@@ -81,11 +81,14 @@ jobs:
       - name: Prepare Katalon project
         run: |
           test -d Keywords
-          test -f Corp.microservice.ccm-automation.prj
+          PRJ="$(pwd)/Corp.microservice.ccm-automation.prj"
+          test -f "$PRJ"
+          # Katalon uses the .prj absolute path as the Eclipse project name, with / encoded as %.
+          NAME=$(printf '%s' "$PRJ" | sed 's/%/%%/g; s#/#%#g')
           printf '%s\n' \
             '<?xml version="1.0" encoding="UTF-8"?>' \
             '<projectDescription>' \
-            '  <name>CCI</name>' \
+            "  <name>${NAME}</name>" \
             '  <comment></comment>' \
             '  <projects></projects>' \
             '  <buildSpec>' \
@@ -99,6 +102,7 @@ jobs:
             '    <nature>org.eclipse.jdt.core.javanature</nature>' \
             '  </natures>' \
             '</projectDescription>' > .project
+          echo "Eclipse project name: $NAME"
 
       - name: Run Katalon Runtime Engine
         uses: katalon-studio/katalon-studio-github-action@v4.0
