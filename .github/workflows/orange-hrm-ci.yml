@@ -1,0 +1,92 @@
+name: Orange HRM CI
+
+# Independent of Aramex (dev-cc / stage-cc). Runs Login-Orange suite against the public OrangeHRM demo URL
+# configured in Profiles/default.glbl (ORANGE_HRM_* variables).
+
+on:
+  push:
+    paths:
+      - "Test Cases/Login-Orange/**"
+      - "Scripts/Login-Orange/**"
+      - "Object Repository/Login-Orange/**"
+      - "Keywords/Login_Orange/**"
+      - "Test Suites/Login-Orange-TEST_SUITE.ts"
+      - "Test Suites/Login-Orange-TEST_SUITE.groovy"
+      - "Profiles/default.glbl"
+      - ".github/workflows/orange-hrm-ci.yml"
+  workflow_dispatch:
+    inputs:
+      execution_profile:
+        description: Katalon execution profile (OrangeHRM vars live in default)
+        required: true
+        type: choice
+        default: default
+        options:
+          - default
+
+jobs:
+  orange-hrm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Validate Katalon project (Login-Orange)
+        env:
+          TEST_SUITE: Test Suites/Login-Orange-TEST_SUITE
+          EXECUTION_PROFILE: ${{ github.event.inputs.execution_profile || 'default' }}
+        run: |
+          set -euo pipefail
+          for file in "Corp.microservice.ccm-automation.prj" "${TEST_SUITE}.ts" "Profiles/${EXECUTION_PROFILE}.glbl"; do
+            if [ ! -f "$file" ]; then
+              echo "Required Katalon file is missing: $file"
+              exit 1
+            fi
+          done
+          echo "Suite: ${TEST_SUITE}"
+          echo "Profile: ${EXECUTION_PROFILE}"
+          echo "Target app: OrangeHRM demo (ORANGE_HRM_LOGIN_URL in profile — not Aramex)"
+
+      - name: Require Katalon API key
+        env:
+          KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
+        run: |
+          if [ -z "${KATALON_API_KEY}" ]; then
+            echo "KATALON_API_KEY is not configured. Add it as a repository secret."
+            exit 1
+          fi
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Prepare Katalon project
+        run: |
+          set -euo pipefail
+          test -d Keywords || { echo "Keywords folder is missing."; exit 1; }
+          test -f Corp.microservice.ccm-automation.prj || { echo "Katalon project file is missing."; exit 1; }
+          rm -f .project
+          unused="${RUNNER_TEMP}/unused-katalon-projects"
+          mkdir -p "$unused"
+          if [ -f Dummy-Test.prj ]; then
+            mv Dummy-Test.prj "$unused/"
+          fi
+
+      - name: Run Katalon Runtime Engine (Login-Orange)
+        uses: katalon-studio/katalon-studio-github-action@v4.0
+        with:
+          version: "11.5.0"
+          projectPath: ${{ github.workspace }}/Corp.microservice.ccm-automation.prj
+          args: >-
+            -noSplash
+            -retry=0
+            -testSuitePath="Test Suites/Login-Orange-TEST_SUITE"
+            -executionProfile="${{ github.event.inputs.execution_profile || 'default' }}"
+            -browserType="Chrome (headless)"
+            -apiKey=${{ secrets.KATALON_API_KEY }}
+            --config
+            -webui.autoUpdateDrivers=true

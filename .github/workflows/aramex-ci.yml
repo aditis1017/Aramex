@@ -2,6 +2,14 @@ name: Aramex CI
 
 on:
   push:
+    paths-ignore:
+      - "Test Cases/Login-Orange/**"
+      - "Scripts/Login-Orange/**"
+      - "Object Repository/Login-Orange/**"
+      - "Keywords/Login_Orange/**"
+      - "Test Suites/Login-Orange-TEST_SUITE.ts"
+      - "Test Suites/Login-Orange-TEST_SUITE.groovy"
+      - ".github/workflows/orange-hrm-ci.yml"
   workflow_dispatch:
     inputs:
       test_suite:
