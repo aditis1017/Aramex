@@ -32,7 +32,7 @@ on:
         description: Execution environment
         required: true
         type: choice
-        default: dev
+        default: default
         options:
           - default
           - dev
