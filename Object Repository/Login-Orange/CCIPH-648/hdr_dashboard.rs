@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//h6[normalize-space()='Dashboard'] | //p[normalize-space()='Dashboard'] | //span[normalize-space()='Dashboard' and ancestor::*[contains(@class,'oxd-topbar') or contains(@class,'orangehrm-dashboard')]]</value>
+         <value>//h6[normalize-space()='Dashboard'] | //p[normalize-space()='Dashboard'] | //span[normalize-space()='Dashboard' and ancestor::*[contains(@class,'oxd-topbar') or contains(@class,'orangehrm-dashboardsss')]]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -17,6 +17,6 @@
          <value>internal:role=heading[name=&quot;Dashboard&quot;i]</value>
       </entry>
    </smartLocatorCollection>
-   <smartLocatorEnabled>true</smartLocatorEnabled>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
