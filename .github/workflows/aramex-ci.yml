@@ -113,12 +113,15 @@ jobs:
           echo "Eclipse project name: $NAME"
 
       - name: Run Katalon Runtime Engine
+        id: katalon
+        continue-on-error: true
         uses: katalon-studio/katalon-studio-github-action@v4.0
         with:
           version: "11.6.0"
-          projectPath: ${{ github.workspace }}/Corp.microservice.ccm-automation.prj
+          projectPath: ${{ github.workspace }}
           args: >-
             -noSplash
+            -consoleLog
             -retry=0
             -testSuitePath="${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}"
             -executionProfile="${{ github.event.inputs.environment || 'dev' }}"
@@ -126,3 +129,11 @@ jobs:
             -apiKey=${{ secrets.KATALON_API_KEY }}
             --config
             -webui.autoUpdateDrivers=true
+
+      - name: Show Katalon workspace log
+        if: always()
+        run: |
+          find /tmp -path '*/.metadata/.log' -print -exec tail -n 160 {} \;
+          if [ "${{ steps.katalon.outcome }}" != "success" ]; then
+            exit 1
+          fi
