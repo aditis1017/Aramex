@@ -14,7 +14,7 @@
          <value>p[class=&quot;CenterSuccessToast-module__xsWRZq__message&quot;]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>

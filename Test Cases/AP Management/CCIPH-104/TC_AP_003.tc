@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Jira: CCIPH-612 | Story: CCIPH-104 | Identity fields remain read-only</description>
+   <name>TC_AP_003</name>
+   <tag>CCIPH-104,CCIPH-612,APManagement</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-612</comment>
+   <testCaseGuid>ap-cciph104-tc-ap-003-612</testCaseGuid>
+</TestCaseEntity>

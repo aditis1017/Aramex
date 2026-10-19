@@ -56,7 +56,12 @@ ar_management.clickAccountResult(
 )
 ar_management.selectArChargeTypeTab("DTC")
 ar_management.toggleArSpecialRateSheetSettings()
-ar_management.verifyRatesheetAndNavigateIfEmpty()
+//ar_management.verifyRatesheetAndNavigateIfEmpty()
+ar_management.verifyRatesheetCombinationAndNavigateIfNotFound(
+        "DDU",
+        "B2C",
+        "HV"
+    )
 em.verifyEntitySettingsPageLoaded()
 em.selectEntity('RUH')
 em.clickEntitySelectionContinue()
@@ -90,6 +95,10 @@ charge.selectChargeTypeAndVerifyContractedRateAndOutstanding(
     "Other Charges",
     "877023"
 )
+//String cifValue =
+//charge.getChargeDetailFieldCIFValue("CIF Value")
+
+//9229011980_B2C792
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

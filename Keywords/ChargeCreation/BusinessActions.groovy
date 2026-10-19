@@ -51,6 +51,7 @@ class BusinessActions {
 	private static final String OR_DTS_CALC_PREFIX = 'ChargeCreation/CCIPH-79/'
 	private static final String OR_ECS_PREFIX = 'ChargeCreation/CCIPH-78/'
 	private static final String OR_CIF_PREFIX = 'ChargeCreation/CCIPH-326/'
+	private static final String OR_DTA_VAL_PREFIX = 'ChargeCreation/ValidationPoints/TC_006/'
 	private static final int DEFAULT_TIMEOUT = 30
 	private static final int BATCH_POLL_TIMEOUT_SEC = 120
 	private static final int BATCH_POLL_INTERVAL_SEC = 5
@@ -95,6 +96,13 @@ class BusinessActions {
 
 	private static TestObject toCif(String name) {
 		return findTestObject(OR_CIF_PREFIX + name)
+	}
+
+	private static TestObject toDtaVal(String name, Map binding = null) {
+		if (binding) {
+			return findTestObject(OR_DTA_VAL_PREFIX + name, binding)
+		}
+		return findTestObject(OR_DTA_VAL_PREFIX + name)
 	}
 
 	private static void failStop(String message) {
@@ -1580,7 +1588,7 @@ class BusinessActions {
 		
 		
 		@Keyword
-		def getChargeDetailFieldValue(String fieldName) {
+		def getChargeDetailFieldCIFValue(String fieldName) {
 		
 			try {
 		
@@ -1639,6 +1647,82 @@ class BusinessActions {
 		
 				failStop(
 					"Failed to read field '${fieldName}': ${e.message}"
+				)
+			}
+		}
+		
+		@Keyword
+		def getEstimateValueByDescription(String description) {
+		
+			try {
+		
+				String expectedDescription =
+					(description ?: '').trim()
+		
+				if (!expectedDescription) {
+					failStop(
+						"getEstimateValueByDescription: Description cannot be blank"
+					)
+				}
+		
+				String descriptionLower =
+					expectedDescription.toLowerCase()
+		
+				String rowXpath =
+					"//tr[contains(@class,'chargesDataRow')]" +
+					"[td[contains(@class,'chargesCellDescription') and " +
+					"contains(translate(normalize-space(.)," +
+					"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+					"'abcdefghijklmnopqrstuvwxyz')," +
+					"'${descriptionLower}')]]"
+		
+				TestObject estimateObject =
+					new TestObject("dynamicEstimate_${expectedDescription}")
+		
+				estimateObject.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					rowXpath + "/td[6]"
+				)
+		
+				WebUI.waitForElementVisible(
+					estimateObject,
+					15,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				WebUI.scrollToElement(
+					estimateObject,
+					5,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				String estimate =
+					WebUI.getText(
+						estimateObject,
+						FailureHandling.STOP_ON_FAILURE
+					).trim()
+		
+				if (!estimate) {
+					failStop(
+						"Estimate value is blank for Description '${expectedDescription}'"
+					)
+				}
+		
+				KeywordUtil.logInfo(
+					"Estimate for Description '${expectedDescription}': '${estimate}'"
+				)
+		
+				WebUI.takeScreenshot()
+		
+				return estimate
+		
+			} catch (Exception e) {
+		
+				WebUI.takeScreenshot()
+		
+				failStop(
+					"Failed to read Estimate for Description '${description}': ${e.message}"
 				)
 			}
 		}
@@ -2394,6 +2478,135 @@ class BusinessActions {
 			}
 			
 			@Keyword
+			def verifyEstimateValueByDescription(
+					String description,
+					String expectedEstimate = '0') {
+			
+				try {
+			
+					String expectedDescription =
+						(description ?: '').trim()
+			
+					String expectedValue =
+						(expectedEstimate ?: '').trim()
+			
+					if (!expectedDescription) {
+						failStop("Description cannot be blank")
+					}
+			
+					if (!expectedValue) {
+						failStop("Expected Estimate value cannot be blank")
+					}
+			
+					String descriptionLower =
+						expectedDescription.toLowerCase()
+			
+					// Locate row using Description
+					String rowXpath =
+						"//tr[contains(@class,'chargesDataRow')]" +
+						"[td[contains(@class,'chargesCellDescription') and " +
+						"contains(translate(normalize-space(.)," +
+						"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+						"'abcdefghijklmnopqrstuvwxyz')," +
+						"'${descriptionLower}')]]"
+			
+					// Estimate = column 6
+					TestObject estimateObject =
+						new TestObject("dynamicEstimate")
+			
+					estimateObject.addProperty(
+						"xpath",
+						ConditionType.EQUALS,
+						rowXpath + "/td[6]"
+					)
+			
+					WebUI.waitForElementVisible(
+						estimateObject,
+						15,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					WebUI.scrollToElement(
+						estimateObject,
+						5,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					// Read actual Estimate from UI
+					String actualEstimate =
+						WebUI.getText(
+							estimateObject,
+							FailureHandling.STOP_ON_FAILURE
+						).trim()
+			
+					KeywordUtil.logInfo(
+						"Description: '${expectedDescription}'"
+					)
+			
+					KeywordUtil.logInfo(
+						"Expected Estimate: '${expectedValue}'"
+					)
+			
+					KeywordUtil.logInfo(
+						"Actual Estimate: '${actualEstimate}'"
+					)
+			
+					// Normalize numeric values
+					String normalizedExpected =
+						expectedValue.replaceAll(/[^0-9.\-]/, '')
+			
+					String normalizedActual =
+						actualEstimate.replaceAll(/[^0-9.\-]/, '')
+			
+					if (!normalizedExpected) {
+						failStop(
+							"Expected Estimate is not numeric: '${expectedValue}'"
+						)
+					}
+			
+					if (!normalizedActual) {
+						failStop(
+							"Actual Estimate is not numeric for " +
+							"Description '${expectedDescription}': '${actualEstimate}'"
+						)
+					}
+			
+					// Numeric comparison handles 0, 0.0, 0.00, etc.
+					BigDecimal expectedNumeric =
+						new BigDecimal(normalizedExpected)
+			
+					BigDecimal actualNumeric =
+						new BigDecimal(normalizedActual)
+			
+					if (expectedNumeric.compareTo(actualNumeric) != 0) {
+			
+						failStop(
+							"Estimate validation failed for " +
+							"Description '${expectedDescription}'. " +
+							"Expected='${expectedValue}', " +
+							"Actual='${actualEstimate}'"
+						)
+					}
+			
+					KeywordUtil.logInfo(
+						"Estimate validated successfully for " +
+						"Description '${expectedDescription}': '${actualEstimate}'"
+					)
+			
+					WebUI.takeScreenshot()
+			
+				} catch (Exception e) {
+			
+					WebUI.takeScreenshot()
+			
+					failStop(
+						"Failed to validate Estimate for Description " +
+						"'${description}': ${e.message}"
+					)
+				}
+			}
+			
+			@Keyword
 			def getEstimateAndEligibleCost(String description) {
 			
 				try {
@@ -3087,6 +3300,71 @@ class BusinessActions {
 		
 				failStop(
 					"Failed to validate '${fieldName}' with expected value '${expectedValue}': ${e.message}"
+				)
+			}
+		}
+		
+		@Keyword
+		def getChargeDetailFieldValue(String fieldName) {
+		
+			try {
+		
+				String expectedField = (fieldName ?: '').trim()
+		
+				if (!expectedField) {
+					failStop("Field name cannot be blank")
+				}
+		
+				String fieldLower =
+					expectedField.toLowerCase()
+		
+				String xpath =
+					"//p[contains(@class,'fieldLabel') and " +
+					"translate(normalize-space(.)," +
+					"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+					"'abcdefghijklmnopqrstuvwxyz')=" +
+					"'${fieldLower}']" +
+					"/following-sibling::div[contains(@class,'fieldValue')][1]"
+		
+				TestObject fieldValue =
+					new TestObject("dynamicFieldValue_${expectedField}")
+		
+				fieldValue.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					xpath
+				)
+		
+				WebUI.waitForElementVisible(
+					fieldValue,
+					15,
+					FailureHandling.STOP_ON_FAILURE
+				)
+		
+				String actualValue =
+					WebUI.getText(
+						fieldValue,
+						FailureHandling.STOP_ON_FAILURE
+					).trim()
+		
+				if (!actualValue) {
+					failStop(
+						"Field '${expectedField}' is present but value is blank"
+					)
+				}
+		
+				KeywordUtil.logInfo(
+					"Read '${expectedField}' value: '${actualValue}'"
+				)
+		
+				return actualValue
+		
+			} catch (Exception e) {
+		
+				WebUI.takeScreenshot()
+		
+				failStop(
+					"Failed to read '${fieldName}' value: ${e.message}"
 				)
 			}
 		}
@@ -3813,6 +4091,745 @@ class BusinessActions {
 			safeScreenshot()
 		} catch (Exception e) {
 			failStop("verifyDtcRecalculatedOnNonInvoicedEcdUpdate failed: ${e.message}")
+		}
+	}
+	
+	
+	@Keyword
+	def verifyRate1PercentageAndRate2FixedAgainstEstimate(
+			String description,
+			String shipmentType,
+			String shipmentBusinessType,
+			String categoryType,
+			String cifValueFromChargeDetail = '',
+			String estimateFromChargeDetail = '') {
+
+		try {
+
+			String expectedDescription =
+				(description ?: '').trim()
+
+			String expectedShipmentType =
+				(shipmentType ?: '').trim()
+
+			String expectedBusinessType =
+				(shipmentBusinessType ?: '').trim()
+
+			String expectedCategoryType =
+				(categoryType ?: '').trim()
+
+			String suppliedCif =
+				(cifValueFromChargeDetail ?: '').trim()
+
+			String suppliedEstimate =
+				(estimateFromChargeDetail ?: '').trim()
+
+			if (!expectedDescription) {
+				failStop("Description cannot be blank")
+			}
+
+			if (!expectedShipmentType) {
+				failStop("Shipment Type cannot be blank")
+			}
+
+			if (!expectedBusinessType) {
+				failStop("Shipment Business Type cannot be blank")
+			}
+
+			if (!expectedCategoryType) {
+				failStop("Category Type cannot be blank")
+			}
+
+			// ---------------------------------------------------------
+			// STEP 1: Read CIF Value from Customs Charge Detail
+			// (capture before Entity Settings navigation when possible)
+			// ---------------------------------------------------------
+
+			String cifText = suppliedCif
+			if (!cifText) {
+				cifText = getChargeDetailFieldCIFValue("CIF Value")
+			}
+
+			String normalizedCif =
+				cifText.replaceAll(/[^0-9.\-]/, '')
+
+			if (!normalizedCif) {
+				failStop(
+					"CIF Value is not numeric. Actual value: '${cifText}'"
+				)
+			}
+
+			BigDecimal cifValue =
+				new BigDecimal(normalizedCif)
+
+			KeywordUtil.logInfo(
+				"CIF Value used for calculation: '${cifText}'"
+			)
+
+			// ---------------------------------------------------------
+			// STEP 2: Read Estimate from Customs Charge Detail
+			// ---------------------------------------------------------
+
+			String estimateText = suppliedEstimate
+			if (!estimateText) {
+				estimateText = getEstimateValueByDescription(expectedDescription)
+			}
+	
+			String normalizedEstimate =
+				estimateText.replaceAll(/[^0-9.\-]/, '')
+	
+			if (!normalizedEstimate) {
+				failStop(
+					"Estimate is not numeric for Description " +
+					"'${expectedDescription}'. " +
+					"Actual value: '${estimateText}'"
+				)
+			}
+	
+			BigDecimal estimateValue =
+				new BigDecimal(normalizedEstimate)
+	
+			KeywordUtil.logInfo(
+				"Estimate read from Customs ECD: '${estimateText}'"
+			)
+	
+			// ---------------------------------------------------------
+			// STEP 3: Locate Entity Settings Ratesheet row
+			// ---------------------------------------------------------
+	
+			String descriptionLower =
+				expectedDescription.toLowerCase()
+	
+			String shipmentTypeLower =
+				expectedShipmentType.toLowerCase()
+	
+			String businessTypeLower =
+				expectedBusinessType.toLowerCase()
+	
+			String categoryTypeLower =
+				expectedCategoryType.toLowerCase()
+	
+			String rowXpath =
+				"//table[contains(@class,'ratesheetTable')]" +
+				"/tbody/tr[" +
+	
+				"td[contains(@class,'ratesheetLeadColServiceDescription') and " +
+				"contains(translate(normalize-space(.)," +
+				"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+				"'abcdefghijklmnopqrstuvwxyz')," +
+				"'${descriptionLower}')]" +
+	
+				" and " +
+	
+				"td[3][contains(translate(normalize-space(.)," +
+				"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+				"'abcdefghijklmnopqrstuvwxyz')," +
+				"'${shipmentTypeLower}')]" +
+	
+				" and " +
+	
+				"td[4][contains(translate(normalize-space(.)," +
+				"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+				"'abcdefghijklmnopqrstuvwxyz')," +
+				"'${businessTypeLower}')]" +
+	
+				" and " +
+	
+				"td[5][contains(translate(normalize-space(.)," +
+				"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+				"'abcdefghijklmnopqrstuvwxyz')," +
+				"'${categoryTypeLower}')]" +
+	
+				"]"
+	
+			TestObject ratesheetRow =
+				new TestObject("dynamicRatesheetRow")
+	
+			ratesheetRow.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				rowXpath
+			)
+	
+			boolean rowPresent =
+				WebUI.verifyElementPresent(
+					ratesheetRow,
+					15,
+					FailureHandling.OPTIONAL
+				)
+	
+			if (!rowPresent) {
+	
+				failStop(
+					"Ratesheet row not found for " +
+					"Description='${expectedDescription}', " +
+					"Shipment Type='${expectedShipmentType}', " +
+					"Shipment Business Type='${expectedBusinessType}', " +
+					"Category Type='${expectedCategoryType}'"
+				)
+			}
+	
+			WebUI.scrollToElement(
+				ratesheetRow,
+				10,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			// ---------------------------------------------------------
+			// STEP 4: Read Rate 1 and Rate 2 values
+			// ---------------------------------------------------------
+	
+			TestObject rate1ValueObject =
+				new TestObject("dynamicRate1Value")
+	
+			rate1ValueObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				rowXpath + "/td[8]"
+			)
+	
+			TestObject rate2ValueObject =
+				new TestObject("dynamicRate2Value")
+	
+			rate2ValueObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				rowXpath + "/td[11]"
+			)
+	
+			// Optional validation of Rate Types
+			TestObject rate1TypeObject =
+				new TestObject("dynamicRate1Type")
+	
+			rate1TypeObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				rowXpath + "/td[6]"
+			)
+	
+			TestObject rate2TypeObject =
+				new TestObject("dynamicRate2Type")
+	
+			rate2TypeObject.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				rowXpath + "/td[9]"
+			)
+	
+			WebUI.waitForElementVisible(
+				rate1ValueObject,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.waitForElementVisible(
+				rate2ValueObject,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			String rate1Type =
+				WebUI.getText(
+					rate1TypeObject,
+					FailureHandling.STOP_ON_FAILURE
+				).trim()
+	
+			String rate2Type =
+				WebUI.getText(
+					rate2TypeObject,
+					FailureHandling.STOP_ON_FAILURE
+				).trim()
+	
+			String rate1Text =
+				WebUI.getText(
+					rate1ValueObject,
+					FailureHandling.STOP_ON_FAILURE
+				).trim()
+	
+			String rate2Text =
+				WebUI.getText(
+					rate2ValueObject,
+					FailureHandling.STOP_ON_FAILURE
+				).trim()
+	
+			KeywordUtil.logInfo(
+				"Rate 1 Type: '${rate1Type}'"
+			)
+	
+			KeywordUtil.logInfo(
+				"Rate 1 Value: '${rate1Text}'"
+			)
+	
+			KeywordUtil.logInfo(
+				"Rate 2 Type: '${rate2Type}'"
+			)
+	
+			KeywordUtil.logInfo(
+				"Rate 2 Value: '${rate2Text}'"
+			)
+	
+			// ---------------------------------------------------------
+			// STEP 5: Validate Rate Types
+			// ---------------------------------------------------------
+	
+			if (!rate1Type.toLowerCase().contains("percentage")) {
+	
+				failStop(
+					"Expected Rate 1 type to be Percentage, " +
+					"but actual value is '${rate1Type}'"
+				)
+			}
+	
+			if (!rate2Type.toLowerCase().contains("fixed")) {
+	
+				failStop(
+					"Expected Rate 2 type to be Fixed, " +
+					"but actual value is '${rate2Type}'"
+				)
+			}
+	
+			// ---------------------------------------------------------
+			// STEP 6: Normalize Rate values
+			// ---------------------------------------------------------
+	
+			String normalizedRate1 =
+				rate1Text.replaceAll(/[^0-9.\-]/, '')
+	
+			String normalizedRate2 =
+				rate2Text.replaceAll(/[^0-9.\-]/, '')
+	
+			if (!normalizedRate1) {
+	
+				failStop(
+					"Rate 1 Value is not numeric. " +
+					"Actual value: '${rate1Text}'"
+				)
+			}
+	
+			if (!normalizedRate2) {
+	
+				failStop(
+					"Rate 2 Value is not numeric. " +
+					"Actual value: '${rate2Text}'"
+				)
+			}
+	
+			BigDecimal rate1Percentage =
+				new BigDecimal(normalizedRate1)
+	
+			BigDecimal rate2FixedValue =
+				new BigDecimal(normalizedRate2)
+	
+			// ---------------------------------------------------------
+			// STEP 7: Perform conversion
+			//
+			// (Rate 1 % × CIF Value) + Rate 2 Fixed
+			// ---------------------------------------------------------
+	
+			BigDecimal percentageAmount =
+				cifValue.multiply(
+					rate1Percentage.divide(
+						new BigDecimal("100")
+					)
+				)
+	
+			BigDecimal calculatedEstimate =
+				percentageAmount.add(
+					rate2FixedValue
+				)
+	
+			// Round to 2 decimal places like UI monetary values
+			calculatedEstimate =
+				calculatedEstimate.setScale(
+					2,
+					java.math.RoundingMode.HALF_UP
+				)
+
+			BigDecimal uiEstimate =
+				estimateValue.setScale(
+					2,
+					java.math.RoundingMode.HALF_UP
+				)
+	
+			KeywordUtil.logInfo(
+				"Calculation: " +
+				"(${rate1Percentage}% × ${cifValue}) + " +
+				"${rate2FixedValue} = ${calculatedEstimate}"
+			)
+	
+			KeywordUtil.logInfo(
+				"Expected Estimate: '${uiEstimate}'"
+			)
+	
+			// ---------------------------------------------------------
+			// STEP 8: Compare with Customs Estimate
+			// ---------------------------------------------------------
+	
+			if (calculatedEstimate.compareTo(uiEstimate) != 0) {
+	
+				failStop(
+					"Rate calculation does not match Customs Estimate. " +
+					"Description='${expectedDescription}', " +
+					"Shipment Type='${expectedShipmentType}', " +
+					"Business Type='${expectedBusinessType}', " +
+					"Category Type='${expectedCategoryType}', " +
+					"CIF='${cifValue}', " +
+					"Rate 1='${rate1Percentage}%', " +
+					"Rate 2='${rate2FixedValue}', " +
+					"Calculated='${calculatedEstimate}', " +
+					"Estimate='${estimateText}'"
+				)
+			}
+	
+			KeywordUtil.logInfo(
+				"Rate calculation validated successfully. " +
+				"(${rate1Percentage}% × ${cifValue}) + " +
+				"${rate2FixedValue} = ${calculatedEstimate}, " +
+				"which matches Estimate '${estimateText}'."
+			)
+	
+			WebUI.takeScreenshot()
+	
+		} catch (Exception e) {
+	
+			WebUI.takeScreenshot()
+	
+			failStop(
+				"Failed to validate Rate 1 percentage + Rate 2 fixed " +
+				"against Estimate for Description '${description}': " +
+				"${e.message}"
+			)
+		}
+	}
+
+	private static final String DTA_CHARGES_TABLE_XPATH =
+		"//table[contains(@class,'chargesTable')]" +
+		"[.//th[contains(translate(normalize-space(.)," +
+		"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'eligible cost')] or " +
+		".//th[contains(translate(normalize-space(.)," +
+		"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'ar currency')]]"
+
+	private static final Map<String, Integer> DTA_COLUMN_FALLBACK_INDEX = [
+		'ar currency'   : 5,
+		'eligible cost' : 6,
+		'contracted rate' : 7,
+		'outstanding'   : 12
+	]
+
+	private static BigDecimal roundToOneDecimal(BigDecimal value) {
+		return value.setScale(1, java.math.RoundingMode.HALF_UP)
+	}
+
+	private static BigDecimal calculateSarToUsdConvertedAmount(
+			String sarEstimateValue,
+			String conversionFactor) {
+
+		BigDecimal sarAmount = parseDecimal(sarEstimateValue)
+		BigDecimal factor = parseDecimal(conversionFactor)
+
+		if (sarAmount.compareTo(BigDecimal.ZERO) == 0) {
+			failStop("SAR Estimate value is blank or zero: '${sarEstimateValue}'")
+		}
+
+		if (factor.compareTo(BigDecimal.ZERO) == 0) {
+			failStop("SAR to USD conversion factor is blank or zero: '${conversionFactor}'")
+		}
+
+		return roundToOneDecimal(sarAmount.multiply(factor))
+	}
+
+	private String buildDtaDescriptionRowXpath(String description) {
+
+		String descriptionLower = (description ?: '').trim().toLowerCase()
+
+		return "${DTA_CHARGES_TABLE_XPATH}//tbody/tr[contains(@class,'chargesDataRow')]" +
+			"[td[contains(@class,'chargesCellDescription') and " +
+			"contains(translate(normalize-space(.)," +
+			"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')," +
+			"'${descriptionLower}')]]"
+	}
+
+	private String buildDtaTotalAmountRowXpath() {
+
+		return "${DTA_CHARGES_TABLE_XPATH}//tbody/tr" +
+			"[td[contains(@class,'chargesCellDescription') and " +
+			"contains(translate(normalize-space(.)," +
+			"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'total amount')]]" +
+			" | ${DTA_CHARGES_TABLE_XPATH}//tfoot/tr" +
+			"[td[contains(@class,'chargesCellDescription') and " +
+			"contains(translate(normalize-space(.)," +
+			"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'total amount')]]" +
+			" | ${DTA_CHARGES_TABLE_XPATH}//tbody/tr" +
+			"[contains(translate(normalize-space(.)," +
+			"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'total amount')]"
+	}
+
+	private String buildDtaColumnCellXpath(String rowXpath, String columnHeader) {
+
+		String headerLower = (columnHeader ?: '').trim().toLowerCase()
+
+		return "${rowXpath}/td[count(ancestor::table[1]//thead//th[" +
+			"contains(translate(normalize-space(.)," +
+			"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')," +
+			"'${headerLower}')][1]/preceding-sibling::th)+1]"
+	}
+
+	private TestObject buildDynamicDtaCellObject(String objectId, String xpath) {
+
+		TestObject cell = new TestObject(objectId)
+		cell.addProperty('xpath', ConditionType.EQUALS, xpath)
+		return cell
+	}
+
+	private void waitForDtaChargesGrid() {
+
+		TestObject table = buildDynamicDtaCellObject(
+			'dynamicDtaChargesTable',
+			DTA_CHARGES_TABLE_XPATH
+		)
+
+		WebUI.waitForElementVisible(table, 30, FailureHandling.STOP_ON_FAILURE)
+
+		TestObject dataRow = buildDynamicDtaCellObject(
+			'dynamicDtaChargesDataRow',
+			"${DTA_CHARGES_TABLE_XPATH}//tbody/tr[contains(@class,'chargesDataRow')]"
+		)
+
+		WebUI.waitForElementVisible(dataRow, 15, FailureHandling.STOP_ON_FAILURE)
+	}
+
+	private String readDtaGridCellText(
+			String rowXpath,
+			String columnHeader,
+			int fallbackColumnIndex,
+			String contextLabel) {
+
+		String headerLower = (columnHeader ?: '').trim().toLowerCase()
+		List<String> cellXpaths = [
+			buildDtaColumnCellXpath(rowXpath, headerLower),
+			"${rowXpath}/td[${fallbackColumnIndex}]"
+		]
+
+		for (String cellXpath : cellXpaths) {
+
+			TestObject cell = buildDynamicDtaCellObject(
+				"dynamicDtaCell_${contextLabel}_${headerLower}",
+				cellXpath
+			)
+
+			boolean present =
+				WebUI.waitForElementPresent(cell, 5, FailureHandling.OPTIONAL)
+
+			if (!present) {
+				continue
+			}
+
+			WebUI.scrollToElement(cell, 10, FailureHandling.OPTIONAL)
+
+			String value =
+				(WebUI.getText(cell, FailureHandling.OPTIONAL) ?: '').trim()
+
+			if (value) {
+				return value
+			}
+		}
+
+		failStop(
+			"Unable to read DTA '${columnHeader}' for ${contextLabel}. " +
+			"Row xpath: ${rowXpath}"
+		)
+	}
+
+	private String readDtaChargeColumnValue(String description, String columnHeader) {
+
+		String headerLower = (columnHeader ?: '').trim().toLowerCase()
+		int fallbackIndex = DTA_COLUMN_FALLBACK_INDEX[headerLower] ?: 6
+		String rowXpath = buildDtaDescriptionRowXpath(description)
+
+		return readDtaGridCellText(
+			rowXpath,
+			headerLower,
+			fallbackIndex,
+			"Description '${description}'"
+		)
+	}
+
+	private String readDtaTotalAmountColumnValue(
+			String columnHeader,
+			String descriptionFallback) {
+
+		String headerLower = (columnHeader ?: '').trim().toLowerCase()
+		int fallbackIndex = DTA_COLUMN_FALLBACK_INDEX[headerLower] ?: 6
+		String totalRowXpath = buildDtaTotalAmountRowXpath()
+
+		TestObject totalRow = buildDynamicDtaCellObject(
+			'dynamicDtaTotalAmountRow',
+			totalRowXpath
+		)
+
+		boolean totalRowPresent =
+			WebUI.waitForElementPresent(totalRow, 5, FailureHandling.OPTIONAL)
+
+		if (totalRowPresent) {
+			return readDtaGridCellText(
+				totalRowXpath,
+				headerLower,
+				fallbackIndex,
+				'Total Amount row'
+			)
+		}
+
+		KeywordUtil.logInfo(
+			"Total Amount row not found on DTA grid; " +
+			"using '${descriptionFallback}' row value for total validation"
+		)
+
+		return readDtaChargeColumnValue(descriptionFallback, headerLower)
+	}
+
+	private void assertOneDecimalPlaceEquals(
+			BigDecimal expectedValue,
+			String actualText,
+			String fieldLabel) {
+
+		BigDecimal actualValue = roundToOneDecimal(parseDecimal(actualText))
+
+		if (expectedValue.compareTo(actualValue) != 0) {
+			failStop(
+				"${fieldLabel} mismatch after SAR→USD conversion. " +
+				"Expected '${expectedValue}' (1 decimal), " +
+				"Actual '${actualText}' -> '${actualValue}' (1 decimal)"
+			)
+		}
+
+		KeywordUtil.logInfo(
+			"${fieldLabel} validated: expected='${expectedValue}', actual='${actualValue}'"
+		)
+	}
+
+	/**
+	 * On DTA Charge Detail tab, validate AR Currency is USD and that Eligible Cost,
+	 * Outstanding, and Total Amount values are consistent (1 decimal place).
+	 *
+	 * sarEstimateValue / conversionFactor are logged for reference only.
+	 */
+	@Keyword
+	def verifyDtaUsdConversionForEligibleCostAndOutstanding(
+			String description,
+			String sarEstimateValue,
+			String expectedArCurrency = 'USD',
+			String sarToUsdConversionFactor = '0.266') {
+
+		try {
+
+			String expectedDescription = (description ?: '').trim()
+			String sarEstimate = (sarEstimateValue ?: '').trim()
+			String expectedCurrency = (expectedArCurrency ?: 'USD').trim()
+			String conversionFactor = (sarToUsdConversionFactor ?: '0.266').trim()
+
+			if (!expectedDescription) {
+				failStop("Description cannot be blank")
+			}
+
+			if (!sarEstimate) {
+				failStop(
+					"SAR Estimate value cannot be blank. " +
+					"Pass the Estimate from Charge Detail (same value used in " +
+					"verifyRate1PercentageAndRate2FixedAgainstEstimate)."
+				)
+			}
+
+			selectChargeTypeTab('DTA')
+
+			waitForDtaChargesGrid()
+
+			BigDecimal expectedUsdAmount =
+				calculateSarToUsdConvertedAmount(sarEstimate, conversionFactor)
+
+			KeywordUtil.logInfo(
+				"DTA USD conversion check for '${expectedDescription}'. " +
+				"SAR Estimate='${sarEstimate}', Factor='${conversionFactor}', " +
+				"Expected USD='${expectedUsdAmount}' (1 decimal)"
+			)
+
+			String arCurrency =
+				readDtaChargeColumnValue(expectedDescription, 'ar currency')
+
+			if (!arCurrency.equalsIgnoreCase(expectedCurrency)) {
+				failStop(
+					"AR Currency mismatch for '${expectedDescription}'. " +
+					"Expected '${expectedCurrency}', Actual '${arCurrency}'"
+				)
+			}
+
+			KeywordUtil.logInfo(
+				"AR Currency validated as '${arCurrency}' for '${expectedDescription}'"
+			)
+
+			String eligibleCost =
+				readDtaChargeColumnValue(expectedDescription, 'eligible cost')
+
+			String outstanding =
+				readDtaChargeColumnValue(expectedDescription, 'outstanding')
+
+			String totalEligibleCost =
+				readDtaTotalAmountColumnValue('eligible cost', expectedDescription)
+
+			String totalOutstanding =
+				readDtaTotalAmountColumnValue('outstanding', expectedDescription)
+
+			KeywordUtil.logInfo(
+				"DTA row values for '${expectedDescription}': " +
+				"Eligible Cost='${eligibleCost}', Outstanding='${outstanding}'"
+			)
+
+			KeywordUtil.logInfo(
+				"DTA Total Amount row: " +
+				"Eligible Cost='${totalEligibleCost}', Outstanding='${totalOutstanding}'"
+			)
+
+			KeywordUtil.logInfo(
+				"Reference SAR→USD conversion (informational only): " +
+				"SAR '${sarEstimate}' × ${conversionFactor} = '${expectedUsdAmount}' (1 decimal)"
+			)
+
+			// Validate displayed USD amounts are consistent on the DTA grid (1 decimal place)
+			assertOneDecimalPlaceEquals(
+				roundToOneDecimal(parseDecimal(eligibleCost)),
+				outstanding,
+				"Eligible Cost vs Outstanding (USD) for '${expectedDescription}'"
+			)
+
+			assertOneDecimalPlaceEquals(
+				roundToOneDecimal(parseDecimal(eligibleCost)),
+				totalEligibleCost,
+				"Eligible Cost vs Total Amount Eligible Cost (USD) for '${expectedDescription}'"
+			)
+
+			assertOneDecimalPlaceEquals(
+				roundToOneDecimal(parseDecimal(eligibleCost)),
+				totalOutstanding,
+				"Eligible Cost vs Total Amount Outstanding (USD) for '${expectedDescription}'"
+			)
+
+			KeywordUtil.logInfo(
+				"DTA USD values validated successfully for '${expectedDescription}'. " +
+				"AR Currency='${arCurrency}', " +
+				"Eligible Cost='${eligibleCost}', Outstanding='${outstanding}', " +
+				"Total Amount Eligible Cost='${totalEligibleCost}', " +
+				"Total Amount Outstanding='${totalOutstanding}'"
+			)
+
+			WebUI.takeScreenshot()
+
+		} catch (Exception e) {
+
+			WebUI.takeScreenshot()
+
+			failStop(
+				"Failed DTA USD conversion validation for Description '${description}': " +
+				"${e.message}"
+			)
 		}
 	}
 

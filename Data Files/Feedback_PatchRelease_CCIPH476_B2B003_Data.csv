@@ -1,0 +1,2 @@
+ID,awb_Exact,awb_Contains,awb_StartWith,awb_EndWith,filter_Category,filter_CustomsType,filter_ShipmentBusinessType,filter_ChargeStatus
+B2B-003,,,,,Low Value (LV),DDU,B2B,Pending Calculation

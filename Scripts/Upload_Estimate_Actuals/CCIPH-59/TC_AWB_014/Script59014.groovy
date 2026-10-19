@@ -15,10 +15,8 @@ String entity = (binding.hasVariable('entity_Name') && entity_Name) ? entity_Nam
 
 login.loginToStageCustomsManagementUsingAutomationProfile()
 cs.navigateToStageCustomsSearchScreen()
-//uea.openActualsUploadForAwbValidation()
 uea.clickUploadCharge()
 uea.selectTypeOfData('Actuals')
-uea.selectUploadChargesDropdownValue('entity', 'RUH')
 String path = uea.createInvalidAwbActualsExcel(invalidAwb)
 uea.selectEntityAndUploadActuals(path, entity)
 uea.verifyAwbValidationFailedOrOverride()

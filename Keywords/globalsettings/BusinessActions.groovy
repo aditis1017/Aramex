@@ -330,7 +330,67 @@ class BusinessActions {
 			failStop("Duplicate rule message not displayed: ${e.message}")
 		}
 	}
+	
+	/**
+	 * CCIPH-561 Rules_001: confirms a Filter Conditions field (e.g. Shipment Business Type) is listed
+	 * in the Field dropdown and that the Values control renders as a visible, selectable dropdown.
+	 */
+	@Keyword
+	def verifyFieldsDropdownSelectedValue(String fieldLabel) {
+		try {
+			String field = (fieldLabel ?: '').trim()
+			if (!field) {
+				failStop('verifyFieldsDropdownSelectedValue: fieldLabel is blank')
+			}
+			int conditionRowIndex = 0
+			TestObject fieldSel = conditionRowNativeSelect(conditionRowIndex, 1)
+			waitVisibleClickable(fieldSel)
+			WebUI.verifyOptionPresentByLabel(fieldSel, field, false, DEFAULT_TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+			WebUI.selectOptionByLabel(fieldSel, field, false)
+			WebUI.delay(1)
+
+			TestObject operatorSel = conditionRowNativeSelect(conditionRowIndex, 2)
+			if (WebUI.waitForElementVisible(operatorSel, 10, FailureHandling.OPTIONAL)) {
+				waitVisibleClickable(operatorSel)
+			}
+			WebUI.delay(1)
+
+			TestObject valuesByAriaEquals = conditionRowValuesSelectByFieldOperatorAria(conditionRowIndex, field, 'Equals')
+			TestObject valuesSel = conditionRowNativeSelect(conditionRowIndex, 3)
+			if (WebUI.waitForElementVisible(valuesByAriaEquals, 10, FailureHandling.OPTIONAL)) {
+				waitVisibleClickable(valuesByAriaEquals)
+				WebUI.verifyElementVisible(valuesByAriaEquals, FailureHandling.STOP_ON_FAILURE)
+			} else if (WebUI.waitForElementVisible(valuesSel, 10, FailureHandling.OPTIONAL)) {
+				waitVisibleClickable(valuesSel)
+				WebUI.verifyElementVisible(valuesSel, FailureHandling.STOP_ON_FAILURE)
+			} else {
+				failStop("Values dropdown for field '${field}' is not visible after selection")
+			}
+			WebUI.takeScreenshot()
+			KeywordUtil.logInfo("PASS: Field '${field}' is available and its value dropdown is visible.")
+		} catch (Exception e) {
+			failStop("verifyFieldsDropdownSelectedValue('${fieldLabel}') failed: ${e.message}")
+		}
+	}
 //	
+	/** CCIPH-561 Rules_001: Field dropdown lists the given label (e.g. Shipment Business Type). */
+	@Keyword
+	def verifyFieldDropdownValuePresent(String expectedLabel) {
+		try {
+			String label = (expectedLabel ?: '').trim()
+			if (!label) {
+				failStop('verifyFieldDropdownValuePresent: expectedLabel is blank')
+			}
+			TestObject fieldSel = conditionRowNativeSelect(0, 1)
+			waitVisibleClickable(fieldSel)
+			WebUI.verifyOptionPresentByLabel(fieldSel, label, false, DEFAULT_TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+			WebUI.takeScreenshot()
+			KeywordUtil.logInfo("PASS: '${label}' is present in Fields dropdown.")
+		} catch (Exception e) {
+			failStop("verifyFieldDropdownValuePresent('${expectedLabel}') failed: ${e.message}")
+		}
+	}
+	
 //	@Keyword
 //	def verifyDuplicateSameRuleErrorVisible() {
 //		try {
@@ -3263,8 +3323,8 @@ return {
 				KeywordUtil.markWarning('Could not open page 2 before refresh — verifying default footer only on first page.')
 			}
 			WebUI.delay(1)
-			WebUI.refresh()
-			WebUI.delay(4)
+			customsmanagement.BrowserKeywords.hardRefresh(30)
+			WebUI.delay(2)
 			try {
 				waitVisible(to37('txt_historyPageTitle'))
 			} catch (Exception ignoredAnchor) {

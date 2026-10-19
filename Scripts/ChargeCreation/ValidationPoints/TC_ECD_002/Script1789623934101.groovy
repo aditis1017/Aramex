@@ -16,7 +16,9 @@ login.loginToStageCustomsManagementUsingAutomationProfile()
 cs.navigateToStageCustomsSearchScreen()
 cs.selectFiltersById(
 //	'ccfe-customs-charge-code': 'ECD',
-	'ccfe-customs-charge-status': 'Due'
+	'ccfe-customs-charge-status': 'Due',
+	'ccfe-customs-business-type': 'B2B',
+	'ccfe-customs-category': 'Low Value Shipment',
 )
 cs.enterTrackingNumber('LO23_38289857362')
 cs.clickSearch()

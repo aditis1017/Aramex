@@ -5,7 +5,9 @@
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
+   <maxConcurrentInstances>1</maxConcurrentInstances>
    <numberOfRerun>3</numberOfRerun>
+   <orchestration>CLASSIC</orchestration>
    <pageLoadTimeout>10</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
@@ -645,7 +647,7 @@
       <guid>631f9513-d832-4fad-a7ad-132e1b85db3a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AP Management/CCIPH-104/TC_AP_FUNC_026</testCaseId>
+      <testCaseId>Test Cases/AP Management/CCIPH-1044/TC_AP_FUNC_026</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -676,7 +678,7 @@
       <guid>f35604c1-7fff-4494-88bf-d7a464e34337</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AP Management/CCIPH-104/TC_AP_FUNC_031</testCaseId>
+      <testCaseId>Test Cases/AP Management/CCIPH-1044/TC_AP_FUNC_031</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -707,7 +709,7 @@
       <guid>e8060694-3d95-453d-b37d-18f41b15de63</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AP Management/CCIPH-104/TC_AP_FUNC_032</testCaseId>
+      <testCaseId>Test Cases/AP Management/CCIPH-1044/TC_AP_FUNC_032</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -738,7 +740,7 @@
       <guid>ad894ed3-2d56-41a1-8668-8c0a656008f3</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AP Management/CCIPH-104/TC_AP_FUNC_033</testCaseId>
+      <testCaseId>Test Cases/AP Management/CCIPH-1044/TC_AP_FUNC_033</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -769,7 +771,7 @@
       <guid>4e333a93-6ffb-4642-a54f-3d3f2e4c1077</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AP Management/CCIPH-104/TC_AP_FUNC_034</testCaseId>
+      <testCaseId>Test Cases/AP Management/CCIPH-1044/TC_AP_FUNC_034</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -800,7 +802,7 @@
       <guid>65681e8b-ecf9-45e6-a567-f0fd12354943</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/AP Management/CCIPH-104/TC_AP_FUNC_036</testCaseId>
+      <testCaseId>Test Cases/AP Management/CCIPH-1044/TC_AP_FUNC_036</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

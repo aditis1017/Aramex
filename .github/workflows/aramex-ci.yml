@@ -1,0 +1,43 @@
+name: Aramex CI
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: Katalon test suite path
+        required: false
+        default: Test Suites/ChargeCreation-TEST_SUITE
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Katalon project
+        run: |
+          test -f Corp.microservice.ccm-automation.prj
+          test -d "Test Cases"
+          test -d "Test Suites"
+          test -d Keywords
+          echo "Katalon project layout is valid."
+
+      - name: Run Katalon Runtime Engine
+        env:
+          KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
+          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
+        run: |
+          if [ -z "$KATALON_API_KEY" ]; then
+            echo "CI triggered. KATALON_API_KEY is not set, so Runtime Engine was skipped."
+            echo "Add repository secret KATALON_API_KEY to execute Katalon on the next push."
+            exit 0
+          fi
+          wget -q https://download.katalon.com/cloud/studio/command-line/katalon.zip
+          unzip -q katalon.zip
+          ./katalon -noSplash -runMode=console \
+            -projectPath="$(pwd)/Corp.microservice.ccm-automation.prj" \
+            -testSuitePath="$TEST_SUITE" \
+            -browserType="Chrome" \
+            -apiKey="$KATALON_API_KEY"

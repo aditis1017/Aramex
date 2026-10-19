@@ -14,7 +14,7 @@
          <value>button[class=&quot;UploadChargesPage-module__mQc5xa__submitButtonBase UploadChargesPage-module__mQc5xa__submitButtonReady&quot;]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>

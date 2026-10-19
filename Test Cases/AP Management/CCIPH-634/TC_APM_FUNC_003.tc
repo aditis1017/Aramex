@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Account Type Vendor read-only (CCIPH-634 / TC_APM_FUNC_003 / AC1)</description>
+   <name>TC_APM_FUNC_003</name>
+   <tag>CCIPH-634,CCIPH-638,APManagement,e2e-pipeline</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-638</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph634-func-003-4a1b-9c0d-8e7f-000000000003</testCaseGuid>
+</TestCaseEntity>

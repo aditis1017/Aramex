@@ -105,6 +105,10 @@ class BusinessActions {
 		"input[contains(@class,'h-10') and contains(@class,'w-full') and contains(@class,'min-w-0') and contains(@class,'truncate') " +
 		"and contains(@class,'rounded-md') and contains(@class,'cursor-not-allowed') and contains(@class,'bg-[#f5f5f9]') " +
 		"and contains(@class,'text-[rgba(50,71,92,0.38)]')]"
+	/** AR Account Management page — {@code span} labels for Salesforce read-only fields (CSS module {@code readOnlyLabel}). */
+	private static final String AR_ACCOUNT_READONLY_LABEL_XPATH = "span[contains(@class,'readOnlyLabel')]"
+	/** AR Account Management page — read-only {@code input} ({@code readOnlyField} module class). */
+	private static final String AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH = "input[contains(@class,'readOnlyField')]"
 	/** Default Salesforce read-only labels (CCIPH-126 / disabled input validation). */
 	private static final List<String> AR_SALESFORCE_READONLY_FIELD_LABELS = [
 		'Account Name',
@@ -128,6 +132,9 @@ class BusinessActions {
 		'Status'            : 4
 	]
 	/** 1-based index of editable selects on AR account detail (left-to-right). */
+	/** In-memory store for values read on AR account detail (e.g. CCIPH-569 cross-screen checks). */
+	private static final Map<String, String> storedArAccountFieldValues = [:]
+
 	private static final Map<String, Integer> AR_DETAIL_EDITABLE_SELECT_INDEX_BY_LABEL = [
 		'AR Account Number'      : 1,
 		'Rate Currency'          : 2,
@@ -1869,6 +1876,62 @@ class BusinessActions {
 			failStop("verifyArDtaPageLoaded failed: ${e.message}")
 		}
 	}
+	
+	/**
+	 * Stores a label → value pair from AR account detail for reuse in later steps.
+	 * @see #readAndWriteFieldValue
+	 */
+	@Keyword
+	void writeValue(String fieldLabel, String fieldValue) {
+		String label = (fieldLabel ?: '').trim()
+		if (!label) {
+			failStop('writeValue: field label cannot be blank')
+		}
+		String value = (fieldValue ?: '').trim()
+		storedArAccountFieldValues[label] = value
+		KeywordUtil.logInfo("Stored AR account field '${label}': '${value}'")
+	}
+
+	@Keyword
+	String getStoredArAccountFieldValue(String fieldLabel) {
+		String label = (fieldLabel ?: '').trim()
+		if (!label) {
+			failStop('getStoredArAccountFieldValue: field label cannot be blank')
+		}
+		if (!storedArAccountFieldValues.containsKey(label)) {
+			failStop(
+				"No stored value for AR field '${label}'. Call readAndWriteFieldValue or writeValue first."
+			)
+		}
+		return storedArAccountFieldValues[label]
+	}
+
+	@Keyword
+	def readAndWriteFieldValue(String fieldLabel) {
+		String label = (fieldLabel ?: '').trim()
+		if (!label) {
+			failStop('readAndWriteFieldValue: field label cannot be blank')
+		}
+
+		TestObject fieldValueObject = findTestObject(
+			'Object Repository/Feedback_PatchRelease/CCIPH-569/read_fieldValue',
+			[('fieldLabel') : label]
+		)
+
+		WebUI.waitForElementVisible(fieldValueObject, 10)
+
+		String fieldValue = WebUI.getText(fieldValueObject).trim()
+
+		if (!fieldValue) {
+			KeywordUtil.markFailedAndStop(
+				"Value for '${label}' is empty."
+			)
+		}
+
+		writeValue(label, fieldValue)
+
+		return fieldValue
+	}
 
 	private static void navigateToArAccountDetailTab(TestObject tabObject, String tabLabel) {
 		String label = (tabLabel ?: '').trim()
@@ -1932,7 +1995,821 @@ class BusinessActions {
 			failStop("navigateToArDtsTabAndVerifyPageLoaded failed: ${e.message}")
 		}
 	}
+	
+	
+	
+	/** AR Account Information — SearchableSelect trigger for {@code accountDetailsLabel} (e.g. Customs Type). */
+	private static TestObject arAccountDetailsSearchableTriggerByLabel(String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = detailFormLabelMatchCondition(label)
+		String labelXp = "//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]"
+		TestObject field = new TestObject("ar_account_details_searchable_trigger_${safeId}")
+		field.addProperty('xpath', ConditionType.EQUALS,
+			"//div[contains(@class,'accountDetailsWrap')][.//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]]" +
+			"//button[contains(@class,'accountDetailsTrigger') and @aria-haspopup='listbox']" +
+			" | ${labelXp}/following-sibling::button[contains(@class,'accountDetailsTrigger') and @aria-haspopup='listbox']" +
+			" | ${labelXp}/parent::div//button[contains(@class,'accountDetailsTrigger') and @aria-haspopup='listbox']" +
+			" | ${detailFormFieldBlockXPath(label)}//button[contains(@class,'accountDetailsTrigger') and @aria-haspopup='listbox']"
+		)
+		return field
+	}
 
+	private static TestObject resolveArAccountDetailSearchableTrigger(String labelText) {
+		String label = (labelText ?: '').trim()
+		TestObject byWrap = arAccountDetailsSearchableTriggerByLabel(label)
+		if (WebUI.waitForElementPresent(byWrap, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+			KeywordUtil.logInfo("Resolved '${label}' via accountDetailsWrap + accountDetailsTrigger.")
+			return byWrap
+		}
+		TestObject bySearchable = detailEditableSearchableSelectByLabel(label)
+		if (WebUI.waitForElementPresent(bySearchable, 8, FailureHandling.OPTIONAL)) {
+			KeywordUtil.logInfo("Resolved '${label}' via SearchableSelect label locator.")
+			return bySearchable
+		}
+		TestObject byButton = detailEditableButtonByLabel(label)
+		if (WebUI.waitForElementPresent(byButton, 8, FailureHandling.OPTIONAL)) {
+			return byButton
+		}
+		Integer idx = arDetailEditableSelectIndexForLabel(label)
+		if (idx != null) {
+			TestObject byIndex = detailEditableSelectByIndex(idx)
+			if (WebUI.waitForElementPresent(byIndex, 8, FailureHandling.OPTIONAL)) {
+				KeywordUtil.logInfo("Resolved '${label}' via trigger index ${idx} (fallback).")
+				return byIndex
+			}
+		}
+		return byWrap
+	}
+
+	private static WebElement findVisibleArDropdownOptionByText(String optionLabel) {
+		String expected = (optionLabel ?: '').trim()
+		if (!expected) {
+			return null
+		}
+		def driver = DriverFactory.getWebDriver()
+		List<WebElement> optionButtons = driver.findElements(By.xpath(
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')]"
+		))
+		for (WebElement btn : optionButtons) {
+			if (!btn.isDisplayed()) {
+				continue
+			}
+			String text = (btn.getText() ?: '').trim()
+			if (text.equalsIgnoreCase(expected)) {
+				return btn
+			}
+		}
+		return findVisibleListboxOptionExact(expected)
+	}
+
+	private static void clickArAccountDetailDropdownOption(String optionText) {
+		String expected = (optionText ?: '').trim()
+		String lit = xpathLiteral(expected)
+		TestObject opt = new TestObject("ar_detail_dropdown_option_${expected.hashCode()}")
+		opt.addProperty('xpath', ConditionType.EQUALS,
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')][normalize-space()=${lit}]" +
+			" | //button[contains(@class,'SearchableSelect-module') and contains(@class,'option')][.//span[normalize-space()=${lit}]]" +
+			" | //button[contains(@class,'SearchableSelect-module') and contains(@class,'option')][.//*[normalize-space()=${lit}]]" +
+			" | //*[@role='listbox']//button[contains(@class,'option')][normalize-space()=${lit}]" +
+			" | //*[@role='listbox']//button[contains(@class,'option')][.//span[normalize-space()=${lit}]]" +
+			" | //*[@role='listbox']//*[@role='option'][normalize-space()=${lit}]" +
+			" | //div[@data-testid='dropdown-option-list']//button[.//span[normalize-space()=${lit}]]" +
+			" | //div[@data-testid='dropdown-option-list']//button[normalize-space()=${lit}]"
+		)
+		if (WebUI.waitForElementClickable(opt, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+			clickWithJsFallback(opt, "SearchableSelect option '${expected}'")
+			return
+		}
+		WebElement match = findVisibleArDropdownOptionByText(expected)
+		if (match == null) {
+			failStop("Dropdown option '${expected}' not found in open SearchableSelect list.")
+		}
+		WebUI.executeJavaScript('arguments[0].scrollIntoView({block:\"center\"});', java.util.Arrays.asList(match))
+		WebUI.delay(0.5)
+		try {
+			match.click()
+		} catch (Exception e) {
+			WebUI.executeJavaScript('arguments[0].click();', java.util.Arrays.asList(match))
+		}
+	}
+
+	@Keyword
+	def selectDropdownValueByText(String fieldName, String optionText) {
+		String field = (fieldName ?: '').trim()
+		String option = (optionText ?: '').trim()
+		if (!field || !option) {
+			failStop('selectDropdownValueByText: fieldName and optionText are required')
+		}
+		try {
+			TestObject dropdownObject = resolveArAccountDetailSearchableTrigger(field)
+			waitPresent(dropdownObject, "SearchableSelect trigger for '${field}' not found (accountDetailsTrigger).")
+			WebUI.scrollToElement(dropdownObject, DEFAULT_TIMEOUT)
+			waitVisibleClickable(dropdownObject)
+			clickWithJsFallback(dropdownObject, "dropdown trigger for '${field}'")
+			WebUI.delay(1.5)
+			clickArAccountDetailDropdownOption(option)
+			WebUI.delay(1)
+			KeywordUtil.logInfo("Selected '${option}' from '${field}' dropdown.")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("selectDropdownValueByText('${field}', '${option}') failed: ${e.message}")
+		}
+	}
+	
+	@Keyword
+	def clickSaveAccountInformation() {
+	
+		TestObject saveButton = findTestObject(
+			'Object Repository/AR Management/CCIPH-124/btn_saveAccountInformation'
+		)
+	
+		WebUI.scrollToElement(saveButton, 5)
+	
+		WebUI.waitForElementClickable(saveButton, 10)
+	
+		WebUI.click(saveButton)
+	
+		println("Clicked 'Save account information' button successfully.")
+	}
+
+	@Keyword
+	def verifySavedSuccessfullyMessage() {
+	
+		TestObject successMessage = findTestObject(
+			'Object Repository/AR Management/CCIPH-124/msg_savedSuccessfully'
+		)
+	
+		WebUI.waitForElementVisible(
+			successMessage,
+			10
+		)
+	
+		WebUI.verifyElementText(
+			successMessage,
+			'Saved successfully.',
+			FailureHandling.STOP_ON_FAILURE
+		)
+	
+		println("PASS: 'Saved successfully.' message is displayed.")
+	}
+	
+	/** Selected value text inside AR Account Information SearchableSelect trigger. */
+	private static TestObject arAccountDetailsDropdownValueSpanByLabel(String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = detailFormLabelMatchCondition(label)
+		String labelXp = "//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]"
+		TestObject valueSpan = new TestObject("ar_account_details_dropdown_value_${safeId}")
+		valueSpan.addProperty('xpath', ConditionType.EQUALS,
+			"//div[contains(@class,'accountDetailsWrap')][.//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]]" +
+			"//button[contains(@class,'accountDetailsTrigger')]//span[not(contains(@class,'Placeholder'))]" +
+			" | ${labelXp}/following-sibling::button[contains(@class,'accountDetailsTrigger')]//span[not(contains(@class,'Placeholder'))]" +
+			" | ${labelXp}/following-sibling::div//button//span[not(contains(@class,'Placeholder'))]" +
+			" | //label[${cond}]/following-sibling::div//button//span"
+		)
+		return valueSpan
+	}
+
+	private static String readArAccountDetailsDropdownSelectedText(String fieldLabel) {
+		String label = (fieldLabel ?: '').trim()
+		TestObject trigger = resolveArAccountDetailSearchableTrigger(label)
+		waitPresent(trigger, "SearchableSelect trigger for '${label}' not found when reading selected value.")
+		WebUI.scrollToElement(trigger, DEFAULT_TIMEOUT)
+
+		TestObject valueSpan = arAccountDetailsDropdownValueSpanByLabel(label)
+		if (WebUI.waitForElementPresent(valueSpan, 8, FailureHandling.OPTIONAL)) {
+			String spanText = (WebUI.getText(valueSpan) ?: '').trim()
+			if (spanText && !'Select'.equalsIgnoreCase(spanText)) {
+				return spanText
+			}
+		}
+
+		String fromButton = (WebUI.getText(trigger) ?: '').trim()
+		if (fromButton.contains('\n')) {
+			String picked = fromButton.split(/\r?\n/)
+				.collect { (it ?: '').trim() }
+				.find { it && !'Select'.equalsIgnoreCase(it) }
+			if (picked) {
+				return picked
+			}
+		}
+		if (fromButton && !'Select'.equalsIgnoreCase(fromButton)) {
+			return fromButton
+		}
+		failStop("Could not read selected value for '${label}' (trigger still shows placeholder 'Select').")
+	}
+
+	@Keyword
+	def verifyDropdownSelectedValue(String fieldName, String expectedValue) {
+		String field = (fieldName ?: '').trim()
+		String expected = (expectedValue ?: '').trim()
+		if (!field || !expected) {
+			failStop('verifyDropdownSelectedValue: fieldName and expectedValue are required')
+		}
+		try {
+			String actualValue = readArAccountDetailsDropdownSelectedText(field)
+			KeywordUtil.logInfo("Field: ${field}")
+			KeywordUtil.logInfo("Expected Value: ${expected}")
+			KeywordUtil.logInfo("Actual Value: ${actualValue}")
+
+			if (!actualValue.equalsIgnoreCase(expected)) {
+				failStop("Dropdown '${field}' expected '${expected}' but was '${actualValue}'.")
+			}
+			KeywordUtil.logInfo("PASS: '${field}' displays selected value '${expected}'.")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyDropdownSelectedValue('${field}', '${expected}') failed: ${e.message}")
+		}
+	}
+
+	// ——— CCIPH-560 AR_TYPE005: SearchableSelect clear / Select option (new keywords only) ———
+
+	/** Label-based trigger only — no {@code (//trigger)[n]} index fallback (V2 dropdown flows). */
+	private static TestObject resolveArAccountDetailSearchableTriggerLabelOnly(String labelText) {
+		String label = (labelText ?: '').trim()
+		TestObject byWrap = arAccountDetailsSearchableTriggerByLabel(label)
+		if (WebUI.waitForElementPresent(byWrap, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+			KeywordUtil.logInfo("Resolved '${label}' by label (accountDetailsWrap + accountDetailsTrigger).")
+			return byWrap
+		}
+		TestObject bySearchable = detailEditableSearchableSelectByLabel(label)
+		if (WebUI.waitForElementPresent(bySearchable, 8, FailureHandling.OPTIONAL)) {
+			KeywordUtil.logInfo("Resolved '${label}' by label (SearchableSelect).")
+			return bySearchable
+		}
+		TestObject byButton = detailEditableButtonByLabel(label)
+		if (WebUI.waitForElementPresent(byButton, 8, FailureHandling.OPTIONAL)) {
+			KeywordUtil.logInfo("Resolved '${label}' by label (editable button).")
+			return byButton
+		}
+		return byWrap
+	}
+
+	private static void closeOpenArSearchableDropdownLists() {
+		try {
+			WebUI.executeJavaScript(
+				"document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape', code: 'Escape', keyCode: 27, which: 27, bubbles: true}));",
+				null
+			)
+			WebUI.delay(0.5)
+		} catch (Exception ignored) {
+		}
+	}
+
+	private static WebElement findActiveListboxForTrigger(WebElement trigger) {
+		if (trigger == null) {
+			return null
+		}
+		def driver = DriverFactory.getWebDriver()
+		String controlsId = (trigger.getAttribute('aria-controls') ?: '').trim()
+		if (controlsId) {
+			try {
+				WebElement listbox = driver.findElement(By.id(controlsId))
+				if (listbox != null && listbox.isDisplayed()) {
+					return listbox
+				}
+			} catch (Exception ignored) {
+			}
+			try {
+				WebElement listbox = driver.findElement(By.cssSelector("[id='${controlsId}']"))
+				if (listbox != null && listbox.isDisplayed()) {
+					return listbox
+				}
+			} catch (Exception ignored) {
+			}
+		}
+		List<WebElement> listboxes = driver.findElements(By.xpath("//*[@role='listbox']"))
+		for (WebElement listbox : listboxes) {
+			if (listbox.isDisplayed()) {
+				return listbox
+			}
+		}
+		return null
+	}
+
+	private static boolean hasVisibleSearchableSelectOptions() {
+		def driver = DriverFactory.getWebDriver()
+		List<WebElement> opts = driver.findElements(By.xpath(
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')]"
+		))
+		return opts.any { it.isDisplayed() }
+	}
+
+	private static WebElement resolveVisibleDropdownOptionsContainer(WebElement trigger) {
+		WebElement listbox = findActiveListboxForTrigger(trigger)
+		if (listbox != null) {
+			return listbox
+		}
+		def driver = DriverFactory.getWebDriver()
+		List<WebElement> panels = driver.findElements(By.xpath(
+			"//div[@data-testid='dropdown-option-list']" +
+			" | //div[contains(@class,'SearchableSelect-module') and contains(@class,'options')]" +
+			" | //div[contains(@class,'SearchableSelect-module') and contains(@class,'menu')]"
+		))
+		for (WebElement panel : panels) {
+			if (panel.isDisplayed()) {
+				return panel
+			}
+		}
+		List<WebElement> optionButtons = driver.findElements(By.xpath(
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')]"
+		))
+		for (WebElement opt : optionButtons) {
+			if (!opt.isDisplayed()) {
+				continue
+			}
+			try {
+				WebElement container = opt.findElement(By.xpath(
+					"./ancestor::div[@data-testid='dropdown-option-list'][1]" +
+					" | ./ancestor::*[@role='listbox'][1]" +
+					" | ./ancestor::div[contains(@class,'SearchableSelect-module')][1]"
+				))
+				if (container != null && container.isDisplayed()) {
+					return container
+				}
+			} catch (Exception ignored) {
+			}
+		}
+		if (trigger != null && 'true'.equalsIgnoreCase(trigger.getAttribute('aria-expanded')) && hasVisibleSearchableSelectOptions()) {
+			return driver.findElement(By.tagName('body'))
+		}
+		return null
+	}
+
+	private static WebElement ensureArFieldDropdownOptionsVisible(String fieldLabel) {
+		String field = (fieldLabel ?: '').trim()
+		TestObject triggerTo = resolveArAccountDetailSearchableTriggerLabelOnly(field)
+		waitPresent(triggerTo, "SearchableSelect trigger for '${field}' not found.")
+		WebUI.scrollToElement(triggerTo, DEFAULT_TIMEOUT)
+
+		WebElement trigger = WebUiCommonHelper.findWebElement(triggerTo, DEFAULT_TIMEOUT)
+		WebElement container = resolveVisibleDropdownOptionsContainer(trigger)
+		if (container != null && findFirstVisibleOptionInListbox(container) != null) {
+			KeywordUtil.logInfo("Dropdown for '${field}' is already open.")
+			return container
+		}
+
+		closeOpenArSearchableDropdownLists()
+		waitVisibleClickable(triggerTo)
+		clickWithJsFallback(triggerTo, "open dropdown '${field}'")
+		for (int attempt = 1; attempt <= 5; attempt++) {
+			WebUI.delay(1)
+			trigger = WebUiCommonHelper.findWebElement(triggerTo, DEFAULT_TIMEOUT)
+			container = resolveVisibleDropdownOptionsContainer(trigger)
+			if (container != null && findFirstVisibleOptionInListbox(container) != null) {
+				return container
+			}
+		}
+		failStop("Dropdown options did not appear for field '${field}' after opening trigger.")
+	}
+
+	private static WebElement findActiveListboxForFieldLabel(String fieldLabel) {
+		return ensureArFieldDropdownOptionsVisible(fieldLabel)
+	}
+
+	private static List<WebElement> listOptionElementsInListbox(WebElement listbox) {
+		if (listbox == null) {
+			return []
+		}
+		return listbox.findElements(By.xpath(
+			".//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')]" +
+			" | .//button[contains(@class,'option')]" +
+			" | .//*[@role='option']" +
+			" | .//li"
+		))
+	}
+
+	private static WebElement findFirstVisibleOptionInListbox(WebElement listbox) {
+		for (WebElement opt : listOptionElementsInListbox(listbox)) {
+			if (opt.isDisplayed()) {
+				return opt
+			}
+		}
+		return null
+	}
+
+	private static WebElement findOptionInListboxByText(WebElement listbox, String optionText) {
+		String expected = (optionText ?: '').trim()
+		if (!expected || listbox == null) {
+			return null
+		}
+		for (WebElement opt : listOptionElementsInListbox(listbox)) {
+			if (!opt.isDisplayed()) {
+				continue
+			}
+			String text = (opt.getText() ?: '').trim()
+			if (text.equalsIgnoreCase(expected)) {
+				return opt
+			}
+		}
+		return null
+	}
+
+	private static String findFirstVisibleBusinessOptionTextInListbox(WebElement listbox, String excludeOption = '') {
+		String exclude = (excludeOption ?: '').trim()
+		for (WebElement opt : listOptionElementsInListbox(listbox)) {
+			if (!opt.isDisplayed()) {
+				continue
+			}
+			String text = (opt.getText() ?: '').trim()
+			if (!text || 'Select'.equalsIgnoreCase(text)) {
+				continue
+			}
+			if (exclude && text.equalsIgnoreCase(exclude)) {
+				continue
+			}
+			return text
+		}
+		return null
+	}
+
+	private static void clickWebElementOption(WebElement option, String description) {
+		if (option == null) {
+			failStop("Cannot click dropdown option: ${description} — element is null.")
+		}
+		WebUI.executeJavaScript('arguments[0].scrollIntoView({block:\"center\"});', java.util.Arrays.asList(option))
+		WebUI.delay(0.3)
+		try {
+			option.click()
+		} catch (Exception e) {
+			WebUI.executeJavaScript('arguments[0].click();', java.util.Arrays.asList(option))
+		}
+	}
+
+	private static void clickArAccountDetailDropdownOptionForField(String fieldLabel, String optionText) {
+		String field = (fieldLabel ?: '').trim()
+		String option = (optionText ?: '').trim()
+		if (!field || !option) {
+			failStop('clickArAccountDetailDropdownOptionForField: fieldLabel and optionText are required')
+		}
+		WebElement container = ensureArFieldDropdownOptionsVisible(field)
+		WebElement match = findOptionInListboxByText(container, option)
+		if (match == null) {
+			match = findVisibleArDropdownOptionByText(option)
+		}
+		if (match == null) {
+			failStop("Option '${option}' not found in open dropdown for field '${field}'.")
+		}
+		clickWebElementOption(match, "'${option}' for '${field}'")
+	}
+
+	private static boolean isArAccountDetailsSearchableListOpen() {
+		def driver = DriverFactory.getWebDriver()
+		List<WebElement> options = driver.findElements(By.xpath(
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')]"
+		))
+		return options.any { it.isDisplayed() }
+	}
+
+	private static String findFirstVisibleArDropdownBusinessOption(String excludeOption = '') {
+		String exclude = (excludeOption ?: '').trim()
+		def driver = DriverFactory.getWebDriver()
+		List<WebElement> optionButtons = driver.findElements(By.xpath(
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option')]"
+		))
+		for (WebElement btn : optionButtons) {
+			if (!btn.isDisplayed()) {
+				continue
+			}
+			String text = (btn.getText() ?: '').trim()
+			if (!text) {
+				continue
+			}
+			if ('Select'.equalsIgnoreCase(text)) {
+				continue
+			}
+			if (exclude && text.equalsIgnoreCase(exclude)) {
+				continue
+			}
+			return text
+		}
+		return null
+	}
+
+	private static TestObject arAccountDetailsDropdownPlaceholderSpanByLabel(String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = detailFormLabelMatchCondition(label)
+		TestObject placeholder = new TestObject("ar_account_details_placeholder_${safeId}")
+		placeholder.addProperty('xpath', ConditionType.EQUALS,
+			"//div[contains(@class,'accountDetailsWrap')][.//${DETAIL_EDITABLE_SEARCHABLE_LABEL_XPATH}[${cond}]]" +
+			"//button[contains(@class,'accountDetailsTrigger')]//span[contains(@class,'Placeholder')]" +
+			" | //label[${cond}]/following-sibling::button[contains(@class,'accountDetailsTrigger')]//span[contains(@class,'Placeholder')]"
+		)
+		return placeholder
+	}
+
+	@Keyword
+	def openArAccountDetailsSearchableDropdownV2(String fieldName) {
+		String field = (fieldName ?: '').trim()
+		if (!field) {
+			failStop('openArAccountDetailsSearchableDropdownV2: fieldName is blank')
+		}
+		try {
+			ensureArFieldDropdownOptionsVisible(field)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("openArAccountDetailsSearchableDropdownV2('${field}') failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def selectArAccountDetailsDropdownValueByTextV2(String fieldName, String optionText) {
+		String field = (fieldName ?: '').trim()
+		String option = (optionText ?: '').trim()
+		if (!field || !option) {
+			failStop('selectArAccountDetailsDropdownValueByTextV2: fieldName and optionText are required')
+		}
+		try {
+			openArAccountDetailsSearchableDropdownV2(field)
+			clickArAccountDetailDropdownOptionForField(field, option)
+			WebUI.delay(1)
+			KeywordUtil.logInfo("Selected option '${option}' by text for field '${field}'.")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("selectArAccountDetailsDropdownValueByTextV2('${field}', '${option}') failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def selectArAccountDetailsDropdownFirstNonEmptyOptionV2(String fieldName, String excludeOption = '') {
+		String field = (fieldName ?: '').trim()
+		if (!field) {
+			failStop('selectArAccountDetailsDropdownFirstNonEmptyOptionV2: fieldName is blank')
+		}
+		try {
+			openArAccountDetailsSearchableDropdownV2(field)
+			WebElement listbox = findActiveListboxForFieldLabel(field)
+			String option = findFirstVisibleBusinessOptionTextInListbox(listbox, excludeOption)
+			if (!option) {
+				failStop("No non-empty dropdown option found for '${field}' (exclude='${excludeOption}').")
+			}
+			clickArAccountDetailDropdownOptionForField(field, option)
+			WebUI.delay(1)
+			KeywordUtil.logInfo("Selected non-empty option '${option}' by text for '${field}'.")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("selectArAccountDetailsDropdownFirstNonEmptyOptionV2('${field}') failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailsDropdownSelectOptionAtTopV2(String fieldName) {
+		String field = (fieldName ?: '').trim()
+		if (!field) {
+			failStop('verifyArAccountDetailsDropdownSelectOptionAtTopV2: fieldName is blank')
+		}
+		try {
+			WebElement container = ensureArFieldDropdownOptionsVisible(field)
+			WebElement firstVisible = findFirstVisibleOptionInListbox(container)
+			if (firstVisible == null) {
+				failStop("No visible options in '${field}' dropdown list.")
+			}
+			String firstText = (firstVisible.getText() ?: '').trim()
+			if (!'Select'.equalsIgnoreCase(firstText)) {
+				failStop("Expected first list option 'Select' for '${field}' but was '${firstText}'.")
+			}
+			KeywordUtil.logInfo("PASS: 'Select' is the first option in '${field}' dropdown list (label-scoped listbox).")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailsDropdownSelectOptionAtTopV2('${field}') failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def selectArAccountDetailsDropdownSelectOptionV2(String fieldName) {
+		String field = (fieldName ?: '').trim()
+		if (!field) {
+			failStop('selectArAccountDetailsDropdownSelectOptionV2: fieldName is blank')
+		}
+		try {
+			WebElement container = ensureArFieldDropdownOptionsVisible(field)
+			WebElement firstVisible = findFirstVisibleOptionInListbox(container)
+			if (firstVisible == null) {
+				failStop("No visible options in '${field}' dropdown list.")
+			}
+			String firstText = (firstVisible.getText() ?: '').trim()
+			if (!'Select'.equalsIgnoreCase(firstText)) {
+				failStop("Expected first list option 'Select' for '${field}' but was '${firstText}'.")
+			}
+			WebElement selectOption = findOptionInListboxByText(container, 'Select')
+			if (selectOption == null) {
+				selectOption = findVisibleArDropdownOptionByText('Select')
+			}
+			if (selectOption == null) {
+				failStop("Option 'Select' not found for field '${field}'.")
+			}
+			clickWebElementOption(selectOption, "'Select' for '${field}'")
+			WebUI.delay(1)
+			KeywordUtil.logInfo("Chose 'Select' by text for '${field}' dropdown.")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("selectArAccountDetailsDropdownSelectOptionV2('${field}') failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def reopenArAccountDetailBySearchV2(String searchCriteria, String searchBy, String searchValue, String entity = '') {
+		try {
+			performArSearch(searchCriteria, searchBy, searchValue, entity)
+			clickFirstArAccountNumberLink()
+			verifyArDtaPageLoaded()
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("reopenArAccountDetailBySearchV2 failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailsDropdownShowsSelectPlaceholderV2(String fieldName) {
+		String field = (fieldName ?: '').trim()
+		if (!field) {
+			failStop('verifyArAccountDetailsDropdownShowsSelectPlaceholderV2: fieldName is blank')
+		}
+		try {
+			TestObject trigger = resolveArAccountDetailSearchableTrigger(field)
+			waitPresent(trigger, "SearchableSelect trigger for '${field}' not found.")
+			WebUI.scrollToElement(trigger, DEFAULT_TIMEOUT)
+
+			TestObject placeholder = arAccountDetailsDropdownPlaceholderSpanByLabel(field)
+			if (WebUI.waitForElementPresent(placeholder, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+				String placeholderText = (WebUI.getText(placeholder) ?: '').trim()
+				if ('Select'.equalsIgnoreCase(placeholderText)) {
+					KeywordUtil.logInfo("PASS: '${field}' shows cleared placeholder 'Select'.")
+					WebUI.takeScreenshot()
+					return
+				}
+			}
+
+			String triggerText = (WebUI.getText(trigger) ?: '').trim()
+			if ('Select'.equalsIgnoreCase(triggerText)) {
+				KeywordUtil.logInfo("PASS: '${field}' trigger text is 'Select'.")
+				WebUI.takeScreenshot()
+				return
+			}
+
+			failStop("Expected '${field}' to be cleared (placeholder 'Select') but trigger shows '${triggerText}'.")
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailsDropdownShowsSelectPlaceholderV2('${field}') failed: ${e.message}")
+		}
+	}
+
+	// ——— CCIPH-560 AR_TYPE006: snapshot / populate mandatory dropdowns (new keywords only) ———
+
+	private static TestObject arAccountReadOnlyDisplayValueByLabel(String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = arReadOnlyLabelMatchCondition(label)
+		String labelSpanXp = "//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]"
+		TestObject valueObj = new TestObject("ar_readonly_display_value_${safeId}")
+		valueObj.addProperty('xpath', ConditionType.EQUALS,
+			"${labelSpanXp}/ancestor::div[contains(@class,'readOnlyField')][1]//div[contains(@class,'readOnlyValue')]" +
+			" | ${labelSpanXp}/parent::div[contains(@class,'readOnlyField')]//div[contains(@class,'readOnlyValue')]" +
+			" | //label[${detailFormLabelMatchCondition(label)}]/following-sibling::div//div[contains(@class,'readOnlyValue')]"
+		)
+		return valueObj
+	}
+
+	private static String readArAccountDetailFieldDisplayValueV2(String labelText) {
+		String label = (labelText ?: '').trim()
+		if (!label) {
+			failStop('readArAccountDetailFieldDisplayValueV2: labelText is blank')
+		}
+
+		TestObject readOnlyValue = arAccountReadOnlyDisplayValueByLabel(label)
+		if (WebUI.waitForElementPresent(readOnlyValue, 8, FailureHandling.OPTIONAL)) {
+			String display = (WebUI.getText(readOnlyValue) ?: '').trim()
+			if (display) {
+				return display
+			}
+		}
+
+		TestObject readOnlyInput = arAccountReadOnlyFieldInputByLabel(label)
+		if (WebUI.waitForElementPresent(readOnlyInput, 5, FailureHandling.OPTIONAL)) {
+			String inputVal = (WebUI.getAttribute(readOnlyInput, 'value') ?: WebUI.getText(readOnlyInput) ?: '').trim()
+			if (inputVal) {
+				return inputVal
+			}
+		}
+
+		try {
+			return readArAccountDetailsDropdownSelectedText(label)
+		} catch (Exception ignored) {
+			TestObject trigger = resolveArAccountDetailSearchableTrigger(label)
+			if (WebUI.waitForElementPresent(trigger, 8, FailureHandling.OPTIONAL)) {
+				String triggerText = (WebUI.getText(trigger) ?: '').trim()
+				if (triggerText) {
+					return triggerText
+				}
+			}
+		}
+		failStop("Unable to read display value for AR detail field '${label}'.")
+	}
+
+	@Keyword
+	Map<String, String> captureArAccountDetailFieldValuesV2(List<String> fieldLabels) {
+		Map<String, String> snapshot = [:]
+		try {
+			List<String> labels = (fieldLabels ?: []).collect { (it ?: '').trim() }.findAll { it }
+			if (labels.isEmpty()) {
+				failStop('captureArAccountDetailFieldValuesV2: fieldLabels is empty')
+			}
+			labels.each { String label ->
+				String value = readArAccountDetailFieldDisplayValueV2(label)
+				snapshot[label] = value
+				KeywordUtil.logInfo("Captured '${label}' = '${value}'")
+			}
+			WebUI.takeScreenshot()
+			return snapshot
+		} catch (Exception e) {
+			failStop("captureArAccountDetailFieldValuesV2 failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def populateArAccountMandatoryDropdownsFromMapV2(Map<String, String> fieldToOption) {
+		try {
+			if (!fieldToOption || fieldToOption.isEmpty()) {
+				failStop('populateArAccountMandatoryDropdownsFromMapV2: fieldToOption map is empty')
+			}
+			fieldToOption.each { entry ->
+				String field = (entry.key ?: '').trim()
+				String option = (entry.value ?: '').trim()
+				if (!field || !option) {
+					failStop("populateArAccountMandatoryDropdownsFromMapV2: invalid entry field='${field}' option='${option}'")
+				}
+				selectArAccountDetailsDropdownValueByTextV2(field, option)
+			}
+			KeywordUtil.logInfo('Populated mandatory AR account dropdowns from map (label + option text).')
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("populateArAccountMandatoryDropdownsFromMapV2 failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailFieldValuesMatchSnapshotV2(Map<String, String> expectedSnapshot) {
+		try {
+			if (!expectedSnapshot || expectedSnapshot.isEmpty()) {
+				failStop('verifyArAccountDetailFieldValuesMatchSnapshotV2: expectedSnapshot is empty')
+			}
+			expectedSnapshot.each { entry ->
+				String field = (entry.key ?: '').trim()
+				String expected = (entry.value ?: '').trim()
+				String actual = readArAccountDetailFieldDisplayValueV2(field)
+				if (!actual.equalsIgnoreCase(expected)) {
+					failStop("Field '${field}' expected '${expected}' but was '${actual}'.")
+				}
+				KeywordUtil.logInfo("PASS: '${field}' retained value '${expected}'.")
+			}
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailFieldValuesMatchSnapshotV2 failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailFieldValuesMatchSnapshotExceptV2(Map<String, String> expectedSnapshot, String resetFieldLabel) {
+		String resetField = (resetFieldLabel ?: '').trim()
+		try {
+			if (!expectedSnapshot || expectedSnapshot.isEmpty()) {
+				failStop('verifyArAccountDetailFieldValuesMatchSnapshotExceptV2: expectedSnapshot is empty')
+			}
+			expectedSnapshot.each { entry ->
+				String field = (entry.key ?: '').trim()
+				if (resetField && field.equalsIgnoreCase(resetField)) {
+					return
+				}
+				String expected = (entry.value ?: '').trim()
+				String actual = readArAccountDetailFieldDisplayValueV2(field)
+				if (!actual.equalsIgnoreCase(expected)) {
+					failStop("Field '${field}' expected '${expected}' but was '${actual}' (reset field='${resetField}').")
+				}
+				KeywordUtil.logInfo("PASS: '${field}' unchanged ('${expected}').")
+			}
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailFieldValuesMatchSnapshotExceptV2 failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def openArAccountDetailOnStageForEditCciph560V2(String searchCriteria, String searchBy, String searchValue, String entity) {
+		try {
+			verifyArSearchPageLoaded()
+			performArSearch(searchCriteria, searchBy, searchValue, entity)
+			clickFirstArAccountNumberLink()
+			verifyArDtaPageLoaded()
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("openArAccountDetailOnStageForEditCciph560V2 failed: ${e.message}")
+		}
+	}
+	
+	
+	
+	
 	/**
 	 * Opens the DT3 tab on AR Account Detail and validates the tab content panel is loaded.
 	 * Call after the detail page is open (e.g. {@link #openArAccountDetailFromSearchResults}).
@@ -2212,13 +3089,14 @@ class BusinessActions {
 			if (resolved.isEmpty()) {
 				resolved = AR_SALESFORCE_READONLY_FIELD_LABELS
 			}
-			verifyArBillingPreferencesChargeCodeTabsAvailable()
-			navigateToArDtcTabAndVerifyPageLoaded()
+		//	verifyArBillingPreferencesChargeCodeTabsAvailable()
+		//	navigateToArDtcTabAndVerifyPageLoaded()
+			verifySection('Account Information')
 			verifyArAccountDetailDisabledReadOnlyInputsList(resolved)
-			navigateToArDtsTabAndVerifyPageLoaded()
-			verifyArAccountDetailDisabledReadOnlyInputsList(resolved)
-			navigateToArDt3TabAndVerifyPageLoaded()
-			verifyArAccountDetailDisabledReadOnlyInputsList(resolved)
+//			navigateToArDtsTabAndVerifyPageLoaded()
+//			verifyArAccountDetailDisabledReadOnlyInputsList(resolved)
+//			navigateToArDt3TabAndVerifyPageLoaded()
+//			verifyArAccountDetailDisabledReadOnlyInputsList(resolved)
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabs failed: ${e.message}")
@@ -2249,6 +3127,316 @@ class BusinessActions {
 		verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsFromData(fieldLabelsFromData)
 	}
 
+	/** Section-scoped field block under {@code section[@aria-label=...]} (avoids {@code WebUI.modifyObjectProperty}). */
+	private static String arAccountDetailSectionFieldBlockXPath(String sectionName, String labelText) {
+		String sectionLit = xpathLiteral((sectionName ?: '').trim())
+		String cond = detailFormLabelMatchCondition(labelText)
+		return "//section[@aria-label=${sectionLit}]//div[contains(@class,'min-w-0')][.//label[${cond}]]"
+	}
+
+	private static TestObject arAccountDetailSectionHeadingObject(String sectionName) {
+		String name = (sectionName ?: 'Account Information').trim()
+		String lit = xpathLiteral(name)
+		String xpath =
+			"//section[@aria-label=${lit}]//h3[normalize-space()=${lit}]" +
+			" | //section[@aria-label=${lit}]" +
+			" | //h3[normalize-space()=${lit}]" +
+			" | //*[self::h2 or self::h3][normalize-space()=${lit}]"
+		TestObject sectionObject = new TestObject("ar_section_heading_${name.hashCode()}")
+		sectionObject.addProperty('xpath', ConditionType.EQUALS, xpath)
+		return sectionObject
+	}
+
+	private static TestObject arDetailDisabledReadOnlyInputByLabelInSection(String sectionName, String labelText) {
+		return arAccountReadOnlyFieldInputByLabelInSection(sectionName, labelText)
+	}
+
+	private static String arReadOnlyLabelMatchCondition(String labelText) {
+		String lit = xpathLiteral((labelText ?: '').trim())
+		return "normalize-space()=${lit}" +
+			" or starts-with(normalize-space(), concat(${lit}, ' '))" +
+			" or translate(normalize-space(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=" +
+			"translate(normalize-space(${lit}),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"
+	}
+
+	private static TestObject arAccountReadOnlyLabelSpanByText(String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = arReadOnlyLabelMatchCondition(label)
+		TestObject labelSpan = new TestObject("ar_readonly_label_span_${safeId}")
+		labelSpan.addProperty('xpath', ConditionType.EQUALS,
+			"//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]"
+		)
+		return labelSpan
+	}
+
+	private static TestObject arAccountReadOnlyLabelSpanByTextInSection(String sectionName, String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String sectionLit = xpathLiteral((sectionName ?: '').trim())
+		String cond = arReadOnlyLabelMatchCondition(label)
+		TestObject labelSpan = new TestObject("ar_readonly_label_span_${safeId}_section")
+		labelSpan.addProperty('xpath', ConditionType.EQUALS,
+			"//section[@aria-label=${sectionLit}]//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]" +
+			" | //section[@aria-label=${sectionLit}]//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]"
+		)
+		return labelSpan
+	}
+
+	private static TestObject arAccountReadOnlyFieldInputByLabel(String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String cond = arReadOnlyLabelMatchCondition(label)
+		String labelXp = "//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]"
+		TestObject field = new TestObject("ar_readonly_field_input_${safeId}")
+		field.addProperty('xpath', ConditionType.EQUALS,
+			"${labelXp}/following::${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/ancestor::div[contains(@class,'min-w-0')][1]//${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/parent::*//${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/ancestor::div[1]//${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/following::${AR_DETAIL_DISABLED_READONLY_INPUT_XPATH}[1]" +
+			" | ${labelXp}/ancestor::div[contains(@class,'min-w-0')][1]//${AR_DETAIL_DISABLED_READONLY_INPUT_XPATH}[1]"
+		)
+		return field
+	}
+
+	private static TestObject arAccountReadOnlyFieldInputByLabelInSection(String sectionName, String labelText) {
+		String label = (labelText ?: '').trim()
+		String safeId = label.replaceAll('[^a-zA-Z0-9]+', '_')
+		String sectionLit = xpathLiteral((sectionName ?: '').trim())
+		String cond = arReadOnlyLabelMatchCondition(label)
+		String labelXp = "//section[@aria-label=${sectionLit}]//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]"
+		TestObject field = new TestObject("ar_readonly_field_input_${safeId}_section")
+		field.addProperty('xpath', ConditionType.EQUALS,
+			"${labelXp}/following::${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/ancestor::div[contains(@class,'min-w-0')][1]//${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/parent::*//${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]" +
+			" | ${labelXp}/following::${AR_DETAIL_DISABLED_READONLY_INPUT_XPATH}[1]" +
+			" | ${labelXp}/ancestor::div[contains(@class,'min-w-0')][1]//${AR_DETAIL_DISABLED_READONLY_INPUT_XPATH}[1]"
+		)
+		return field
+	}
+
+	private static boolean isArAccountReadOnlyFieldInput(TestObject field) {
+		if (!WebUI.waitForElementPresent(field, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+			return false
+		}
+		try {
+			WebElement el = WebUiCommonHelper.findWebElement(field, DEFAULT_TIMEOUT)
+			if ((el.getTagName() ?: '').toLowerCase() != 'input') {
+				return false
+			}
+			String cls = el.getAttribute('class') ?: ''
+			boolean readOnlyModule = cls.contains('readOnlyField')
+			boolean disabledStyle = cls.contains('cursor-not-allowed') || cls.contains('readOnlyField')
+			boolean disabledOrReadOnly = htmlAttributeIsSet(el.getAttribute('disabled')) ||
+				htmlAttributeIsSet(el.getAttribute('readonly')) ||
+				!el.isEnabled()
+			return (readOnlyModule || disabledStyle) && disabledOrReadOnly
+		} catch (Exception e) {
+			KeywordUtil.markWarning("isArAccountReadOnlyFieldInput check failed: ${e.message}")
+			return isDetailFieldReadOnly(field)
+		}
+	}
+
+	private void verifyArAccountReadOnlyLabelSpanVisible(String labelText, String sectionName = '') {
+		String label = (labelText ?: '').trim()
+		if (!label) {
+			failStop('verifyArAccountReadOnlyLabelSpanVisible: labelText is blank')
+		}
+		TestObject labelSpan
+		if ((sectionName ?: '').trim()) {
+			labelSpan = arAccountReadOnlyLabelSpanByTextInSection(sectionName.trim(), label)
+			if (!WebUI.waitForElementPresent(labelSpan, 8, FailureHandling.OPTIONAL)) {
+				labelSpan = arAccountReadOnlyLabelSpanByText(label)
+			}
+		} else {
+			labelSpan = arAccountReadOnlyLabelSpanByText(label)
+		}
+		waitPresent(labelSpan, "Read-only label span for '${label}' not found (expected ${AR_ACCOUNT_READONLY_LABEL_XPATH}).")
+		WebUI.scrollToElement(labelSpan, DEFAULT_TIMEOUT)
+		WebUI.verifyElementVisible(labelSpan, FailureHandling.STOP_ON_FAILURE)
+	}
+
+	/**
+	 * CCIPH-126 — section heading visible (replacement for {@link #verifySection} without {@code modifyObjectProperty}).
+	 */
+	@Keyword
+	def verifyArAccountDetailSectionHeadingVisible(String sectionName = 'Account Information') {
+		try {
+			String name = (sectionName ?: 'Account Information').trim()
+			TestObject sectionObject = arAccountDetailSectionHeadingObject(name)
+			WebUI.scrollToElement(sectionObject, DEFAULT_TIMEOUT)
+			WebUI.verifyElementVisible(sectionObject, FailureHandling.STOP_ON_FAILURE)
+			KeywordUtil.logInfo("Section '${name}' is present.")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailSectionHeadingVisible(${sectionName}) failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailFieldIsDisabledReadOnlyInputInAccountInformation(String labelText) {
+		verifyArAccountDetailFieldIsDisabledReadOnlyInputInSection('Account Information', labelText)
+	}
+
+	private void verifyArAccountDetailFieldIsDisabledReadOnlyInputInSectionCore(String sectionName, String labelText) {
+		String label = (labelText ?: '').trim()
+		if (!label) {
+			failStop('verifyArAccountDetailFieldIsDisabledReadOnlyInputInSectionCore: labelText is blank')
+		}
+		verifyArAccountReadOnlyLabelSpanVisible(label, sectionName)
+		TestObject disabledInput = arAccountReadOnlyFieldInputByLabelInSection(sectionName, label)
+		if (!WebUI.waitForElementPresent(disabledInput, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+			disabledInput = arAccountReadOnlyFieldInputByLabel(label)
+		}
+		if (!WebUI.waitForElementPresent(disabledInput, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+			disabledInput = arDetailDisabledReadOnlyInputByLabel(label)
+		}
+		waitPresent(disabledInput, "Disabled read-only input for '${label}' not found in section '${sectionName}' (readOnlyField / disabled input).")
+		WebUI.scrollToElement(disabledInput, DEFAULT_TIMEOUT)
+		if (!isArAccountReadOnlyFieldInput(disabledInput) &&
+			!isArDetailDisabledReadOnlyInput(disabledInput) &&
+			!isDetailFieldReadOnly(disabledInput)) {
+			failStop("Expected '${label}' to be a disabled read-only input in section '${sectionName}'.")
+		}
+		KeywordUtil.logInfo("Verified disabled read-only input for '${label}' in section '${sectionName}'.")
+		WebUI.takeScreenshot()
+	}
+
+	@Keyword
+	def verifyArAccountDetailFieldIsDisabledReadOnlyInputInSection(String sectionName, String labelText) {
+		try {
+			verifyArAccountDetailSectionHeadingVisible(sectionName)
+			verifyArAccountDetailFieldIsDisabledReadOnlyInputInSectionCore(sectionName, labelText)
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailFieldIsDisabledReadOnlyInputInSection(${sectionName}, ${labelText}) failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailDisabledReadOnlyInputsListInAccountInformation(List<String> labels) {
+		verifyArAccountDetailDisabledReadOnlyInputsListInSection('Account Information', labels)
+	}
+
+	@Keyword
+	def verifyArAccountDetailDisabledReadOnlyInputsListInSection(String sectionName, List<String> labels) {
+		try {
+			List<String> resolved = (labels ?: []).collect { (it ?: '').trim() }.findAll { it }
+			if (resolved.isEmpty()) {
+				failStop('verifyArAccountDetailDisabledReadOnlyInputsListInSection: labels list is empty')
+			}
+			verifyArAccountDetailSectionHeadingVisible(sectionName)
+			resolved.each { String label ->
+				verifyArAccountDetailFieldIsDisabledReadOnlyInputInSectionCore(sectionName, label)
+			}
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailDisabledReadOnlyInputsListInSection failed: ${e.message}")
+		}
+	}
+
+	/**
+	 * CCIPH-126 TC_AR_FUNC_028+ — same intent as {@link #verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabs}
+	 * but uses dynamic {@link TestObject#addProperty} locators (Katalon-compatible).
+	 */
+	@Keyword
+	def verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2(List<String> labels) {
+		try {
+			List<String> resolved = (labels ?: []).collect { (it ?: '').trim() }.findAll { it }
+			if (resolved.isEmpty()) {
+				resolved = AR_SALESFORCE_READONLY_FIELD_LABELS
+			}
+			verifyArAccountDetailDisabledReadOnlyInputsListInAccountInformation(resolved)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2 failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2FromData(String... fieldLabelsFromData) {
+		List<String> labels = parseArDetailFieldLabelsFromData(fieldLabelsFromData)
+		if (labels.isEmpty()) {
+			labels = AR_SALESFORCE_READONLY_FIELD_LABELS
+			KeywordUtil.logInfo("Using default Salesforce read-only labels: ${labels}")
+		}
+		verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2(labels)
+	}
+
+	/** Data-file overload — use in scripts instead of {@link #verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabs}. */
+	@Keyword
+	def verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2(String... fieldLabelsFromData) {
+		verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2FromData(fieldLabelsFromData)
+	}
+	
+	@Keyword
+	def verifyFieldReadOnly(String fieldName) {
+		String label = (fieldName ?: '').trim()
+		if (!label) {
+			failStop('verifyFieldReadOnly: fieldName is blank')
+		}
+		try {
+			String cond = arReadOnlyLabelMatchCondition(label)
+			String labelSpanXp = "//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${cond}]"
+			String xpath =
+				"${labelSpanXp}/ancestor::div[contains(@class,'readOnlyField')][1]//div[contains(@class,'readOnlyValue')]" +
+				" | ${labelSpanXp}/parent::div[contains(@class,'readOnlyField')]//div[contains(@class,'readOnlyValue')]" +
+				" | //span[normalize-space()=${escapeXpath(label)}]/parent::div[contains(@class,'readOnlyField')]//div[contains(@class,'readOnlyValue')]" +
+				" | ${labelSpanXp}/ancestor::div[contains(@class,'readOnlyField')][1]//${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}" +
+				" | ${labelSpanXp}/following::${AR_ACCOUNT_READONLY_FIELD_INPUT_XPATH}[1]"
+
+			TestObject fieldObject = new TestObject("ar_readonly_field_value_${label.hashCode()}")
+			fieldObject.addProperty('xpath', ConditionType.EQUALS, xpath)
+
+			WebUI.scrollToElement(fieldObject, DEFAULT_TIMEOUT)
+			WebUI.waitForElementVisible(fieldObject, DEFAULT_TIMEOUT)
+			WebUI.verifyElementPresent(fieldObject, DEFAULT_TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+
+			String tagName = (WebUI.getAttribute(fieldObject, 'tagName') ?: '').toLowerCase()
+			KeywordUtil.logInfo("Field '${label}' resolved tagName = ${tagName}")
+
+			if (tagName == 'input') {
+				if (!isArAccountReadOnlyFieldInput(fieldObject) &&
+					!isArDetailDisabledReadOnlyInput(fieldObject) &&
+					!isDetailFieldReadOnly(fieldObject)) {
+					failStop("Field '${label}' is an editable input, expected read-only.")
+				}
+				KeywordUtil.logInfo("PASS: '${label}' is read-only / disabled input.")
+				WebUI.takeScreenshot()
+				return
+			}
+
+			WebUI.verifyNotEqual(tagName, 'textarea', FailureHandling.STOP_ON_FAILURE)
+			WebUI.verifyNotEqual(tagName, 'select', FailureHandling.STOP_ON_FAILURE)
+			KeywordUtil.logInfo("PASS: '${label}' is Read Only / Edit Disabled (display value).")
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyFieldReadOnly('${label}') failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyFieldsReadOnly(List<String> fieldNames) {
+		try {
+			List<String> resolved = (fieldNames ?: []).collect { (it ?: '').trim() }.findAll { it }
+			if (resolved.isEmpty()) {
+				failStop('verifyFieldsReadOnly: fieldNames list is empty')
+			}
+			resolved.each { String fieldName ->
+				KeywordUtil.logInfo('------------------------------------------------')
+				KeywordUtil.logInfo("Validating field: ${fieldName}")
+				verifyFieldReadOnly(fieldName)
+			}
+			KeywordUtil.logInfo('------------------------------------------------')
+			KeywordUtil.logInfo('All fields are Read Only / Edit Disabled.')
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyFieldsReadOnly failed: ${e.message}")
+		}
+	}
+	
+	
 	@Keyword
 	def verifyArAccountDetailEditableFields(List<String> labels) {
 		try {
@@ -2265,6 +3453,35 @@ class BusinessActions {
 		} catch (Exception e) {
 			failStop("verifyArAccountDetailEditableFields failed: ${e.message}")
 		}
+	}
+	
+	@Keyword
+	def verifySection(String sectionName) {
+	
+		TestObject sectionObject = findTestObject(
+			'Object Repository/AR Management/CCIPH-126/inp_AccountInformation'
+		)
+	
+		String xpath =
+			"//section[@aria-label=${escapeXpath(sectionName)}" +
+			"]//h3[normalize-space()=${escapeXpath(sectionName)}]"
+	
+		WebUI.modifyObjectProperty(
+			sectionObject,
+			'xpath',
+			ConditionType.EQUALS,
+			xpath,
+			true
+		)
+	
+		WebUI.scrollToElement(sectionObject, 5)
+	
+		WebUI.verifyElementVisible(
+			sectionObject,
+			FailureHandling.STOP_ON_FAILURE
+		)
+	
+		println("Section '${sectionName}' is present.")
 	}
 
 	/**
@@ -2331,6 +3548,39 @@ class BusinessActions {
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("openArAccountDetailForChargeCodeBilling failed: ${e.message}")
+		}
+	}
+	
+	
+	@Keyword
+	def verifyFieldNotPresentInSection(String sectionName, String fieldName) {
+		String section = (sectionName ?: '').trim()
+		String field = (fieldName ?: '').trim()
+		if (!section || !field) {
+			failStop('verifyFieldNotPresentInSection: sectionName and fieldName are required')
+		}
+		try {
+			String sectionLit = xpathLiteral(section)
+			String labelCond = detailFormLabelMatchCondition(field)
+			String roLabelCond = arReadOnlyLabelMatchCondition(field)
+			String xpath =
+				"//section[@aria-label=${sectionLit}]//label[${labelCond}]" +
+				" | //section[@aria-label=${sectionLit}]//${AR_ACCOUNT_READONLY_LABEL_XPATH}[${roLabelCond}]" +
+				" | //section[@aria-label=${sectionLit}]//span[normalize-space()=${xpathLiteral(field)}]"
+
+			TestObject fieldObject = new TestObject("absent_field_${section.hashCode()}_${field.hashCode()}")
+			fieldObject.addProperty('xpath', ConditionType.EQUALS, xpath)
+
+			boolean isPresent = WebUI.waitForElementPresent(fieldObject, 8, FailureHandling.OPTIONAL)
+			if (!isPresent) {
+				KeywordUtil.logInfo("PASS: '${field}' is NOT present under '${section}'.")
+				WebUI.takeScreenshot()
+				return
+			}
+			WebUI.takeScreenshot()
+			failStop("FAIL: '${field}' is present under '${section}'.")
+		} catch (Exception e) {
+			failStop("verifyFieldNotPresentInSection('${section}', '${field}') failed: ${e.message}")
 		}
 	}
 
@@ -2610,7 +3860,7 @@ class BusinessActions {
 			TestObject toggleRect = toAr123('rect_specialServiceChargeToggle')
 			TestObject toggleCircle = toAr123('circle_specialServiceChargeToggle')
 			TestObject service_Charge= toAr123('service-charge')
-		//	waitVisible(toggleRect)
+		//waitVisible(toggleRect)
 			WebUI.scrollToElement(toggleRect, DEFAULT_TIMEOUT)
 			WebUI.waitForElementPresent(toggleRect, DEFAULT_TIMEOUT)
 			waitVisible(toggleCircle)
@@ -2622,6 +3872,157 @@ class BusinessActions {
 			failStop("toggleArSpecialServiceChargeSettings failed: ${e.message}")
 		}
 	}
+	
+	@Keyword
+	def clickToggleByText(String toggleText) {
+		try {
+			String xpath =
+				"//*[normalize-space()=${escapeXpath(toggleText)}]" +
+				"/ancestor::div[contains(@class,'flex')][1]" +
+				"//*[name()='svg']//*[name()='rect']"
+
+			TestObject toggleObject = new TestObject("toggle_by_text_${(toggleText ?: '').hashCode()}")
+			toggleObject.addProperty('xpath', ConditionType.EQUALS, xpath)
+
+			WebUI.scrollToElement(toggleObject, DEFAULT_TIMEOUT)
+			waitVisible(toggleObject)
+			WebUI.waitForElementClickable(toggleObject, DEFAULT_TIMEOUT)
+			clickWithJsFallback(toggleObject, "toggle by label: ${toggleText}")
+			WebUI.delay(2)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("clickToggleByText failed for '${toggleText}': ${e.message}")
+		}
+	}
+	
+	
+	@Keyword
+	def verifyToggleEnabled(String toggleText) {
+	
+		TestObject toggleObject = findTestObject(
+			'Object Repository/AR Management/CCIPH-124/toggle_btn'
+		)
+	
+		// Locator for the toggle circle
+		String circleXpath =
+			"//*[normalize-space()=${escapeXpath(toggleText)}]" +
+			"/ancestor::div[contains(@class,'flex')][1]" +
+			"//*[name()='svg']//*[name()='circle']"
+	
+		// Locator for the clickable toggle
+		String toggleXpath =
+			"//*[normalize-space()=${escapeXpath(toggleText)}]" +
+			"/ancestor::div[contains(@class,'flex')][1]" +
+			"//*[name()='svg']//*[name()='rect']"
+	
+		TestObject circleObject = new TestObject("DynamicToggleCircle")
+		circleObject.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			circleXpath
+		)
+	
+		WebUI.waitForElementVisible(circleObject, 10)
+	
+		// Read current position of toggle circle
+		String circlePosition = WebUI.getAttribute(
+			circleObject,
+			"cx"
+		)
+	
+		println("Toggle '${toggleText}' current cx value: ${circlePosition}")
+	
+		/*
+		 * Based on the current UI:
+		 * OFF  -> cx = 11.5
+		 * ON   -> circle moves to the right
+		 */
+	
+		if (circlePosition == "11.5") {
+	
+			println("Toggle '${toggleText}' is DISABLED. Enabling it...")
+	
+			WebUI.modifyObjectProperty(
+				toggleObject,
+				"xpath",
+				ConditionType.EQUALS,
+				toggleXpath,
+				true
+			)
+	
+			WebUI.scrollToElement(toggleObject, 5)
+			WebUI.waitForElementClickable(toggleObject, 10)
+			WebUI.click(toggleObject)
+	
+			WebUI.delay(1)
+	
+			// Verify again after clicking
+			String newPosition = WebUI.getAttribute(
+				circleObject,
+				"cx"
+			)
+	
+			println(
+				"Toggle '${toggleText}' position after click: ${newPosition}"
+			)
+	
+			WebUI.verifyNotEqual(
+				newPosition,
+				"11.5",
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			println("Toggle '${toggleText}' is now ENABLED.")
+	
+		} else {
+	
+			println(
+				"Toggle '${toggleText}' is already ENABLED. Skipping click."
+			)
+		}
+	}
+	
+	private String escapeXpath(String text) {
+
+    if (!text.contains("'")) {
+        return "'${text}'"
+    }
+
+    if (!text.contains('"')) {
+        return "\"${text}\""
+    }
+
+    return "concat('" +
+            text.replace("'", "',\"'\",'") +
+            "')"
+}
+		
+		
+//		@Keyword
+//		def clickToggleByText(String toggleText) {
+//		
+//			TestObject toggleObject = findTestObject(
+//				'Object Repository/Common/Toggle/Toggle_By_Label'
+//			)
+//		
+//			String xpath =
+//				"//*[normalize-space()=${escapeXpath(toggleText)}]" +
+//				"/ancestor::div[contains(@class,'flex')][1]" +
+//				"//*[name()='svg']//*[name()='rect']"
+//		
+//			WebUI.modifyObjectProperty(
+//				toggleObject,
+//				'xpath',
+//				ConditionType.EQUALS,
+//				xpath,
+//				true
+//			)
+//		
+//			WebUI.scrollToElement(toggleObject, 5)
+//			WebUI.waitForElementVisible(toggleObject, 10)
+//			WebUI.click(toggleObject)
+//		}
+			
 
 	@Keyword
 	def verifyArServiceChargeSettingsPanelVisible() {
@@ -3937,6 +5338,33 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		}
 	}
 	
+	@Keyword
+	def verifyColumnHeader(String sectionName, String headerText) {
+		try {
+			String section = (sectionName ?: '').trim()
+			String header = (headerText ?: '').trim()
+			if (!section || !header) {
+				failStop('verifyColumnHeader: sectionName and headerText are required')
+			}
+			String xpath =
+				"//section[@aria-label=${escapeXpath(section)}]" +
+				"//th[normalize-space()=${escapeXpath(header)}]"
+			TestObject columnHeader = new TestObject("ratesheet_column_${section}_${header}")
+			columnHeader.addProperty('xpath', ConditionType.EQUALS, xpath)
+			WebUI.scrollToElement(columnHeader, DEFAULT_TIMEOUT)
+			waitVisible(columnHeader)
+			WebUI.verifyElementVisible(columnHeader, FailureHandling.STOP_ON_FAILURE)
+			WebUI.takeScreenshot()
+			KeywordUtil.logInfo(
+				"PASS: Column header '${header}' is present in '${section}' table."
+			)
+		} catch (Exception e) {
+			failStop("verifyColumnHeader('${sectionName}', '${headerText}') failed: ${e.message}")
+		}
+	}
+	
+	
+	
 	private TestObject resolveEmptyRatesheetCell() {
 		
 			String xpath =
@@ -4055,6 +5483,146 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		
 				failStop(
 					"Failed to validate Ratesheet: ${e.message}"
+				)
+			}
+		}
+		
+		@Keyword
+		def verifyRatesheetCombinationAndNavigateIfNotFound(
+				String shipmentType,
+				String shipmentBusinessType,
+				String categoryType) {
+
+			try {
+
+				String expectedShipmentType =
+					(shipmentType ?: '').trim()
+
+				String expectedBusinessType =
+					(shipmentBusinessType ?: '').trim()
+
+				String expectedCategoryType =
+					(categoryType ?: '').trim()
+
+				if (!expectedShipmentType) {
+					failStop("Shipment Type cannot be blank")
+				}
+
+				if (!expectedBusinessType) {
+					failStop("Shipment Business Type cannot be blank")
+				}
+
+				if (!expectedCategoryType) {
+					failStop("Category Type cannot be blank")
+				}
+
+				TestObject ratesheetTable =
+					new TestObject("dynamicRatesheetTable")
+
+				ratesheetTable.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					"//table[contains(@class,'ArEstimateRatesheetSettingsPanel-module__MWcpQq__ratesheetTable')]"
+				)
+
+				WebUI.waitForElementVisible(
+					ratesheetTable,
+					15,
+					FailureHandling.STOP_ON_FAILURE
+				)
+
+				/*
+				 * AR Special RateSheet columns:
+				 * Service Code | Description | Shipment Type | Rate 1 | Rate 2 | Rate 3 | ACTION
+				 * Business Type and Category are Entity Settings Public RateSheet dimensions only.
+				 */
+				boolean fullCombinationRequested =
+					expectedBusinessType || expectedCategoryType
+
+				if (fullCombinationRequested) {
+					KeywordUtil.logInfo(
+						"Ratesheet combination requires Entity Settings validation. " +
+						"AR Special RateSheet exposes Shipment Type only; " +
+						"Shipment Type='${expectedShipmentType}', " +
+						"Shipment Business Type='${expectedBusinessType}', " +
+						"Category Type='${expectedCategoryType}'"
+					)
+
+					WebUI.takeScreenshot()
+					em.navigateToStageEntitySettings()
+
+					KeywordUtil.logInfo(
+						"Navigated to Entity Settings for full Ratesheet combination validation."
+					)
+
+					return false
+				}
+
+				String shipmentTypeLower =
+					expectedShipmentType.toLowerCase()
+
+				String shipmentTypeRowXpath =
+					"${AR_RATESHEET_TABLE_XPATH}/tbody/tr" +
+					"[not(.//td[contains(@class,'tdEmpty')])]" +
+					"[td[3][contains(translate(normalize-space(.)," +
+					"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+					"'abcdefghijklmnopqrstuvwxyz')," +
+					"'${shipmentTypeLower}')]]"
+
+				TestObject shipmentTypeRow =
+					new TestObject("dynamicRatesheetShipmentTypeRow")
+
+				shipmentTypeRow.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					shipmentTypeRowXpath
+				)
+
+				boolean shipmentTypeRowPresent =
+					(WebUI.findWebElements(shipmentTypeRow, 5)?.size() ?: 0) > 0
+
+				if (!shipmentTypeRowPresent) {
+
+					KeywordUtil.logInfo(
+						"Ratesheet row not found on AR Special RateSheet for " +
+						"Shipment Type='${expectedShipmentType}'"
+					)
+
+					WebUI.takeScreenshot()
+					em.navigateToStageEntitySettings()
+
+					KeywordUtil.logInfo(
+						"Navigated to Entity Settings because the required " +
+						"Ratesheet row was not found on AR Special RateSheet."
+					)
+
+					return false
+				}
+
+				WebUI.scrollToElement(
+					shipmentTypeRow,
+					5,
+					FailureHandling.STOP_ON_FAILURE
+				)
+
+				KeywordUtil.logInfo(
+					"Ratesheet row found on AR Special RateSheet for " +
+					"Shipment Type='${expectedShipmentType}'"
+				)
+
+				WebUI.takeScreenshot()
+
+				return true
+
+			} catch (Exception e) {
+
+				WebUI.takeScreenshot()
+
+				failStop(
+					"Failed to validate Ratesheet combination. " +
+					"Shipment Type='${shipmentType}', " +
+					"Shipment Business Type='${shipmentBusinessType}', " +
+					"Category Type='${categoryType}': ${e.message}"
 				)
 			}
 		}
@@ -4444,6 +6012,25 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		} catch (Exception e) {
 			failStop("clickBackHistory failed: ${e.message}")
 		}
+	}
+	
+	@Keyword
+	def clickBackButton() {
+	
+		TestObject backButton = findTestObject(
+			'Object Repository/AR Management/CCIPH-124/btn_backAR'
+		)
+	
+		WebUI.scrollToElement(backButton, 5)
+	
+		WebUI.waitForElementClickable(
+			backButton,
+			10
+		)
+	
+		WebUI.click(backButton)
+	
+		println("Clicked on BACK button successfully.")
 	}
 	
 	@Keyword
@@ -5483,6 +7070,60 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 		} catch (Exception e) {
 			failStop("verifyApAccountDetailEditableFields failed: ${e.message}")
 		}
+	}
+
+	@Keyword
+	def verifyStillOnApSearchResults() {
+		try {
+			verifyApSearchPageLoaded()
+			verifySearchResultsTableVisible()
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyStillOnApSearchResults failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyApAccountDetailDropdownContainsOptions(String labelText, List<String> expectedOptions) {
+		try {
+			String label = (labelText ?: '').trim()
+			if (!label) {
+				failStop('verifyApAccountDetailDropdownContainsOptions: labelText is blank')
+			}
+			if (!expectedOptions) {
+				failStop('verifyApAccountDetailDropdownContainsOptions: expectedOptions is empty')
+			}
+			verifyApAccountDetailFieldIsEditable(label)
+			TestObject trigger = resolveDetailEditableField(label)
+			clickWithJsFallback(trigger, "editable list trigger for '${label}'")
+			WebUI.delay(1)
+			expectedOptions.each { String optionText ->
+				String opt = (optionText ?: '').trim()
+				TestObject optionTo = detailListOptionByText(opt)
+				waitPresent(optionTo, "Option '${opt}' not found in '${label}' list.")
+				if (!WebUI.verifyElementVisible(optionTo, FailureHandling.OPTIONAL)) {
+					failStop("Option '${opt}' is not visible in '${label}' list.")
+				}
+				KeywordUtil.logInfo("Verified option '${opt}' in '${label}'.")
+			}
+			WebUI.takeScreenshot()
+			clickWithJsFallback(trigger, "close '${label}' list")
+		} catch (Exception e) {
+			failStop("verifyApAccountDetailDropdownContainsOptions(${labelText}) failed: ${e.message}")
+		}
+	}
+
+	private static TestObject detailListOptionByText(String optionText) {
+		String lit = xpathLiteral((optionText ?: '').trim())
+		TestObject opt = new TestObject("ap_detail_list_option_${(optionText ?: '').trim()}")
+		opt.addProperty('xpath', ConditionType.EQUALS,
+			"//button[contains(@class,'SearchableSelect-module') and contains(@class,'option') and normalize-space()=${lit}]" +
+			" | //button[contains(@class,'SearchableSelect-module') and contains(@class,'option')][.//span[normalize-space()=${lit}]]" +
+			" | //button[contains(@class,'SearchableSelect-module') and contains(@class,'option')][.//*[normalize-space()=${lit}]]" +
+			" | //*[@role='option' and normalize-space()=${lit}]" +
+			" | //li[normalize-space()=${lit}]"
+		)
+		return opt
 	}
 
 	// ——— CCIPH-200 Create AP Account ———

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify unique Declaration Numbers are accepted and mapped correctly across different shipments</description>
+   <name>BOE_005</name>
+   <tag>GenAI,Feedback_PatchRelease,UploadActuals,360View,CCIPH-549,High</tag>
+   <comment>CSV: NewFeedback_PatchChanges.csv | ID: BOE_005 | Jira: https://aramex.atlassian.net/browse/CCIPH-549</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f7a8b9c0-d1e2-4f56-9549-b0e005cciph549</testCaseGuid>
+</TestCaseEntity>

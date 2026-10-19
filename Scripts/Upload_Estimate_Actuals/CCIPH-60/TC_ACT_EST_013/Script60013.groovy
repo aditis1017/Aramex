@@ -16,6 +16,7 @@ String eligibleCost = (binding.hasVariable('eligible_Cost') && eligible_Cost) ? 
 login.loginToStageCustomsManagementUsingAutomationProfile()
 cs.navigateToStageCustomsSearchScreen()
 uea.uploadSingleActualForShipment(awb, actualAmount1, entity)
+uea.clickBackButton()
 cs.verifyEcdInvoicingTableUI(awb)
 uea.verifyEligibleCostDisplayed(eligibleCost ?: actualAmount1)
 WebUI.takeScreenshot()

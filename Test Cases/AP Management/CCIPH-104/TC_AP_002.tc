@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Jira: CCIPH-617 | Story: CCIPH-104 | AP Account Detail displays all AC2 field labels</description>
+   <name>TC_AP_002</name>
+   <tag>CCIPH-104,CCIPH-617,APManagement</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-617</comment>
+   <testCaseGuid>ap-cciph104-tc-ap-002-617</testCaseGuid>
+</TestCaseEntity>

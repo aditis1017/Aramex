@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>CCIPH-476 B2B-003 — stage AWBs after keyword upload and shipment ingestion (NewFeedback_PatchChanges.csv)</description>
+   <name>Feedback_PatchRelease_CCIPH476_B2B003_Data</name>
+   <tag>CCIPH-476,Feedback_PatchRelease,B2B-003</tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>fpr-cciph476-b2b003-data-0001</dataFileGUID>
+   <dataSourceUrl>Feedback_PatchRelease_CCIPH476_B2B003_Data.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>true</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

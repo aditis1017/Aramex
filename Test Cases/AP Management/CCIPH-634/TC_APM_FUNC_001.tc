@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Open Create AP Account page (CCIPH-634 / TC_APM_FUNC_001 / AC1). Environment: staging — set AP_MANAGEMENT_URL to stage-cc in profile.</description>
+   <name>TC_APM_FUNC_001</name>
+   <tag>CCIPH-634,CCIPH-637,APManagement,e2e-pipeline</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-637 | Reuses CCIPH-200 BusinessActions / OR</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph634-func-001-4a1b-9c0d-8e7f-000000000001</testCaseGuid>
+</TestCaseEntity>

@@ -13,13 +13,26 @@ login.loginToCustomsManagementUsingAutomationProfile()
 'This is used for Navigating to Management'
 ar_management.navigateToArManagement()
 ar_management.verifyArSearchPageLoaded()
-ar_management.openArAccountDetailForChargeCodeBilling(search_Criteria, search_By, search_Value, entity)
-ar_management.verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabs(
+ar_management.openArAccountDetailForChargeCodeBilling('Account Number', 'Contains', '8004', entity)
+ar_management.verifyArAccountDetailDisabledReadOnlyInputsOnChargeCodeTabsV2(
 	readonly_Label1,
 	readonly_Label2,
 	readonly_Label3,
 	readonly_Label4
 )
+
+ar_management.verifyFieldsReadOnly(
+    [
+        'Account Name',
+        'Account Number',
+        'Country',
+        'Entity',
+        'Account Type',
+        'Account Business Type',
+        'Business Segment'
+    ]
+)
+
 
 WebUI.takeScreenshot()
 WebUI.closeBrowser()

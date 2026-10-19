@@ -13,11 +13,17 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Katalon Tests
+        env:
+          KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
         run: |
+          if [ -z "$KATALON_API_KEY" ]; then
+            echo "KATALON_API_KEY is not configured. Add it as a repository secret."
+            exit 1
+          fi
           wget https://download.katalon.com/cloud/studio/command-line/katalon.zip
           unzip katalon.zip
           ./katalon -noSplash -runMode=console \
           -projectPath="$(pwd)/Dummy-Test.prj" \
           -testSuitePath="Test Suites/Automation-Test Suite" \
           -browserType="Chrome" \
-          -apiKey="20ede496-f885-406f-8b46-a0c4c3fa2f0c"
+          -apiKey="$KATALON_API_KEY"

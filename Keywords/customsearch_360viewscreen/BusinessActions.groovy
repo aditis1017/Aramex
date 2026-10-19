@@ -21,6 +21,9 @@ import java.io.File
 import java.io.FileFilter
 import java.io.InputStream
 
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chromium.ChromiumDriver
+
 import customsmanagement.ProfileGlobals
 
 /**
@@ -59,6 +62,10 @@ class BusinessActions {
 	private String lastCustomSearchExportFilePath = ''
 	private String lastCustomSearchExportFileName = ''
 	private String currentChargeDetailSection = ''
+	private Map<String, String> storedSectionFieldValues = [:]
+	/** Runtime key/value store (e.g. ConsigneeName for CCIPH-569 B2B keyword checks). */
+	private Map<String, String> storedFieldValues = [:]
+	private static final String OR_PREFIX_TC007 = 'ChargeCreation/ValidationPoints/TC_007/'
 
 	private static TestObject to(String name) {
 		return findTestObject(OR_PREFIX + name)
@@ -104,6 +111,167 @@ class BusinessActions {
 		}
 		sb.append(')')
 		return sb.toString()
+	}
+
+	private static TestObject toTc007(String name, Map binding = null) {
+		if (binding) {
+			return findTestObject(OR_PREFIX_TC007 + name, binding)
+		}
+		return findTestObject(OR_PREFIX_TC007 + name)
+	}
+
+	private static String sectionFieldStorageKey(String sectionName, String fieldName) {
+		String section = normalizeLabel(sectionName)
+		String field = normalizeLabel(fieldName)
+		return "${section}|${field}"
+	}
+
+	private static String normalizeSectionClassSuffix(String sectionName) {
+		return (sectionName ?: '').trim().toLowerCase().replaceAll(/[^a-z0-9]/, '')
+	}
+
+	private static String chargeDetailFieldValueSiblingStep() {
+		return "/following-sibling::div[" +
+			"(starts-with(@class,'CustomsChargeDetail-module__GjzTcG__fieldValue') or contains(@class,'fieldValue'))" +
+			"][1]"
+	}
+
+	/**
+	 * Resolves the value cell for a labeled field under a charge-detail section (Origin, Customs &amp; Goods, etc.).
+	 * Uses the same heading / panel strategies as {@link #resolveSectionFieldLabelObject}.
+	 */
+	private TestObject resolveSectionFieldValueObject(String sectionName, String fieldName) {
+		String section = (sectionName ?: '').trim()
+		String field = (fieldName ?: '').trim()
+		if (!section) {
+			failStop('resolveSectionFieldValueObject: Section name cannot be blank')
+		}
+		if (!field) {
+			failStop('resolveSectionFieldValueObject: Field name cannot be blank')
+		}
+		String sectionSuffix = normalizeSectionClassSuffix(section)
+		if (!sectionSuffix) {
+			failStop("resolveSectionFieldValueObject: Invalid section name '${sectionName}'")
+		}
+
+		String headingXp = chargeDetailSectionHeadingXPath(section)
+		String labelPred = chargeDetailFieldLabelPredicate(field)
+		String legacyLabelPred =
+			"starts-with(@class,'CustomsChargeDetail-module__GjzTcG__fieldLabel') and " +
+			chargeDetailFieldLabelPredicate(field)
+		String valueStep = chargeDetailFieldValueSiblingStep()
+
+		String customsGoodsPanelRoot =
+			"//span[starts-with(@class,'CustomsChargeDetail-module__GjzTcG__') " +
+			"and contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'customs') " +
+			"and contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'goods')]" +
+			"/ancestor::div[contains(@class,'CustomsChargeDetail-module__GjzTcG__')][1]"
+
+		List<String> candidateXpaths = [
+			"//div[contains(@class,'CustomsChargeDetail-module__GjzTcG__additionalSection') " +
+				"and contains(translate(@class,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'additionalsection${sectionSuffix}')]" +
+				"//p[${labelPred}]${valueStep}",
+			"${customsGoodsPanelRoot}//p[${labelPred}]${valueStep}",
+			"(${headingXp})[1]/following::p[${labelPred}][1]${valueStep}",
+			"(${headingXp})[1]/ancestor::div[contains(@class,'CustomsChargeDetail-module__GjzTcG__section')][1]//p[${labelPred}]${valueStep}",
+			"(${headingXp})[1]/parent::*/following-sibling::*[1]//p[${labelPred}]${valueStep}",
+			"//p[${legacyLabelPred}]${valueStep}",
+			"//p[${labelPred}]${valueStep}"
+		]
+
+		for (int i = 0; i < candidateXpaths.size(); i++) {
+			TestObject candidate = dynamicXpathObject(
+				"cs_section_field_value_${normalizeLabel(section)}_${normalizeLabel(field)}_${i}",
+				candidateXpaths.get(i)
+			)
+			if (WebUI.waitForElementPresent(candidate, 5, FailureHandling.OPTIONAL)) {
+				return candidate
+			}
+		}
+
+		TestObject orValue = toTc007('val_sectionFieldValue', [
+			sectionName: sectionSuffix,
+			fieldName  : field
+		])
+		if (WebUI.waitForElementPresent(orValue, 5, FailureHandling.OPTIONAL)) {
+			return orValue
+		}
+
+		return dynamicXpathObject(
+			"cs_section_field_value_${normalizeLabel(section)}_${normalizeLabel(field)}",
+			candidateXpaths.join(' | ')
+		)
+	}
+
+	private static String chargeDetailSectionHeadingXPath(String sectionName) {
+		String sectionLower = (sectionName ?: '').trim().toLowerCase()
+		String sectionLit = xpathLiteral(sectionLower)
+		return "//span[starts-with(@class,'CustomsChargeDetail-module__GjzTcG__') " +
+			"and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=${sectionLit}]"
+	}
+
+	private static String chargeDetailFieldLabelPredicate(String fieldName) {
+		String field = (fieldName ?: '').trim()
+		String fieldLower = field.toLowerCase()
+		return "contains(@class,'fieldLabel') and (" +
+			"normalize-space(.)=${xpathLiteral(field)} or " +
+			"translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=" +
+			"${xpathLiteral(fieldLower)})"
+	}
+
+	/** Field label {@code <p>} only (no value) — additional-details sections and main panels such as Customs &amp; Goods. */
+	private TestObject resolveSectionFieldLabelObject(String sectionName, String fieldName) {
+		String section = (sectionName ?: '').trim()
+		String field = (fieldName ?: '').trim()
+		if (!section) {
+			failStop('resolveSectionFieldLabelObject: Section name cannot be blank')
+		}
+		if (!field) {
+			failStop('resolveSectionFieldLabelObject: Field name cannot be blank')
+		}
+		String sectionSuffix = normalizeSectionClassSuffix(section)
+		String headingXp = chargeDetailSectionHeadingXPath(section)
+		String labelPred = chargeDetailFieldLabelPredicate(field)
+		String legacyLabelPred =
+			"starts-with(@class,'CustomsChargeDetail-module__GjzTcG__fieldLabel') and " +
+			chargeDetailFieldLabelPredicate(field)
+
+		List<String> candidateXpaths = [
+			"//div[contains(@class,'CustomsChargeDetail-module__GjzTcG__additionalSection') " +
+				"and contains(translate(@class,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'additionalsection${sectionSuffix}')]" +
+				"//p[${labelPred}]",
+			"(${headingXp})[1]/following::p[${labelPred}][1]",
+			"(${headingXp})[1]/ancestor::div[contains(@class,'CustomsChargeDetail-module__GjzTcG__section')][1]//p[${labelPred}]",
+			"(${headingXp})[1]/parent::*/following-sibling::*[1]//p[${labelPred}]",
+			"//p[${legacyLabelPred}]",
+			"//p[${labelPred}]"
+		]
+
+		for (int i = 0; i < candidateXpaths.size(); i++) {
+			TestObject candidate = dynamicXpathObject(
+				"cs_section_field_label_${normalizeLabel(section)}_${normalizeLabel(field)}_${i}",
+				candidateXpaths.get(i)
+			)
+			if (WebUI.waitForElementPresent(candidate, 5, FailureHandling.OPTIONAL)) {
+				return candidate
+			}
+		}
+
+		if (sectionSuffix) {
+			TestObject orLabel = toTc007('lbl_sectionFieldLabel', [
+				sectionName: sectionSuffix,
+				fieldName  : field
+			])
+			if (WebUI.waitForElementPresent(orLabel, 5, FailureHandling.OPTIONAL)) {
+				return orLabel
+			}
+		}
+
+		TestObject fallback = dynamicXpathObject(
+			"cs_section_field_label_${normalizeLabel(section)}_${normalizeLabel(field)}",
+			candidateXpaths.join(' | ')
+		)
+		return fallback
 	}
 
 	private static TestObject dynamicXpathObject(String id, String xpath) {
@@ -559,6 +727,83 @@ class BusinessActions {
 	
 			failStop(
 				"Failed to click Tracking Number '${trackingNumber}': ${e.message}"
+			)
+		}
+	}
+	
+	
+	@Keyword
+	def hardReloadAndClearCache() {
+	
+		try {
+	
+			WebDriver driver =
+				DriverFactory.getWebDriver()
+	
+			if (!(driver instanceof ChromiumDriver)) {
+	
+				failStop(
+					"hardReloadAndClearCache is supported for " +
+					"Chrome/Edge Chromium browsers only."
+				)
+			}
+	
+			ChromiumDriver chromiumDriver =
+				(ChromiumDriver) driver
+	
+			// ---------------------------------------------------------
+			// 1. Clear browser HTTP cache
+			// ---------------------------------------------------------
+	
+			chromiumDriver.executeCdpCommand(
+				"Network.clearBrowserCache",
+				[:]
+			)
+	
+			KeywordUtil.logInfo(
+				"Browser HTTP cache cleared successfully."
+			)
+	
+			// ---------------------------------------------------------
+			// 2. Clear browser cookies
+			// ---------------------------------------------------------
+	
+			WebUI.deleteAllCookies(
+				FailureHandling.OPTIONAL
+			)
+	
+			KeywordUtil.logInfo(
+				"Browser cookies cleared successfully."
+			)
+	
+			// ---------------------------------------------------------
+			// 3. Hard reload page and ignore cache
+			// ---------------------------------------------------------
+	
+			chromiumDriver.executeCdpCommand(
+				"Page.reload",
+				[
+					ignoreCache: true,
+					scriptToEvaluateOnLoad: null,
+					loaderId: null
+				]
+			)
+	
+			WebUI.delay(2)
+	
+			KeywordUtil.logInfo(
+				"Hard reload completed successfully."
+			)
+	
+			WebUI.takeScreenshot()
+	
+		} catch (Exception e) {
+	
+			WebUI.takeScreenshot()
+	
+			failStop(
+				"Failed to clear cache and perform hard reload: " +
+				e.message
 			)
 		}
 	}
@@ -1024,6 +1269,141 @@ class BusinessActions {
 		} catch (Exception e) {
 			failStop("clickFirstSearchResultRow failed: ${e.message}")
 		}
+	}
+	
+	
+	
+	@Keyword
+	void writeValue(String key, String fieldValue) {
+		String name = (key ?: '').trim()
+		if (!name) {
+			failStop('writeValue: key cannot be blank')
+		}
+		String value = (fieldValue ?: '').trim()
+		storedFieldValues[name] = value
+		KeywordUtil.logInfo("Stored custom search field '${name}': '${value}'")
+	}
+
+	private String readValue(String key) {
+		String name = (key ?: '').trim()
+		if (!name) {
+			failStop('readValue: key cannot be blank')
+		}
+		if (!storedFieldValues.containsKey(name)) {
+			failStop(
+				"No stored value for key '${name}'. Call writeValue or readAndWriteConsigneeName first."
+			)
+		}
+		return storedFieldValues[name]
+	}
+
+	@Keyword
+	def readAndWriteConsigneeName() {
+		TestObject consigneeNameObject = findTestObject(
+			'Object Repository/Feedback_PatchRelease/CCIPH-569/inp_Fieldvalue',
+			[('fieldLabel') : 'Consignee Name']
+		)
+
+		WebUI.waitForElementVisible(consigneeNameObject, 10)
+
+		String consigneeName = WebUI.getText(consigneeNameObject).trim()
+
+		if (!consigneeName) {
+			KeywordUtil.markFailedAndStop(
+				'Consignee Name is empty.'
+			)
+		}
+
+		writeValue('ConsigneeName', consigneeName)
+
+		return consigneeName
+	}
+	
+	@Keyword
+	def getConsigneeNameWords() {
+	
+		String consigneeName = readValue('ConsigneeName')
+	
+		List<String> nameWords = consigneeName
+			.trim()
+			.split(/\s+/)
+			.toList()
+	
+		println("Consignee Name Words: ${nameWords}")
+	
+		return nameWords
+	}
+	
+	@Keyword
+	def searchStoredWordsInB2BKeywords(List<String> searchWords) {
+	
+		TestObject keywordCells = findTestObject(
+			'Object Repository/Feedback_PatchRelease/CCIPH-569/val_keywordColumn'
+		)
+	
+		WebUI.waitForElementVisible(keywordCells, 10)
+	
+		List<WebElement> cells = WebUI.findWebElements(
+			keywordCells,
+			10
+		)
+	
+		if (cells.isEmpty()) {
+			KeywordUtil.markFailedAndStop(
+				'No keyword cells were found in the B2B Keywords table.'
+			)
+		}
+	
+		List<String> actualKeywords = []
+	
+		for (WebElement cell : cells) {
+			String keyword = cell.getText().trim()
+	
+			if (!keyword.isEmpty()) {
+				actualKeywords.add(keyword)
+			}
+		}
+	
+		List<String> matchedWords = []
+		List<String> unmatchedWords = []
+	
+		for (String word : searchWords) {
+	
+			boolean matched = false
+	
+			for (String keyword : actualKeywords) {
+	
+				if (keyword.toLowerCase().contains(word.trim().toLowerCase())) {
+					matched = true
+	
+					println(
+						"MATCH: Search word '${word}' found in keyword '${keyword}'."
+					)
+	
+					break
+				}
+			}
+	
+			if (matched) {
+				matchedWords.add(word)
+			} else {
+				unmatchedWords.add(word)
+				println("NO MATCH: '${word}' was not found in the keyword cells.")
+			}
+		}
+	
+		// Assertion: at least one word must match.
+		WebUI.verifyEqual(
+			matchedWords.isEmpty(),
+			false,
+			FailureHandling.STOP_ON_FAILURE
+		)
+	
+		println("Matched words: ${matchedWords}")
+		println("Unmatched words: ${unmatchedWords}")
+		println("B2B Keywords search validation completed.")
+	
+		return matchedWords
 	}
 	
 	@Keyword
@@ -3631,8 +4011,7 @@ class BusinessActions {
 	def verifyPaginationAfterHardRefreshDefaultSettings() {
 		openHistoryTabForDefaultShipment()
 		clickPaginationNext()
-		WebUI.refresh()
-		WebUI.waitForPageLoad(DEFAULT_TIMEOUT)
+		customsmanagement.BrowserKeywords.hardRefresh(DEFAULT_TIMEOUT)
 		verifyHistoryPaginationDefaultPageSize(50)
 	}
 
@@ -5774,77 +6153,299 @@ class BusinessActions {
 		}
 	}
 	
+	/**
+	 * Normalizes field name → expected value for {@link #verifySectionAndFields}.
+	 * <p>
+	 * {@code fieldSpecArgs} may be:
+	 * <ul>
+	 *   <li>one map: {@code ['Insurance Value': '0.00']}</li>
+	 *   <li>one field: {@code 'Insurance Value', '0.00'}</li>
+	 *   <li>several fields: {@code 'Field A', '1', 'Field B', '2'}</li>
+	 * </ul>
+	 */
+	private static Map<String, String> normalizeSectionFieldValueArgs(Object... fieldSpecArgs) {
+		if (fieldSpecArgs == null || fieldSpecArgs.length == 0) {
+			return [:]
+		}
+		if (fieldSpecArgs.length == 1) {
+			Object sole = fieldSpecArgs[0]
+			if (sole == null) {
+				return [:]
+			}
+			if (sole instanceof Map) {
+				return normalizeSectionFieldValueMap(sole as Map)
+			}
+			if (sole instanceof List && sole.size() == 1 && sole[0] instanceof Map) {
+				return normalizeSectionFieldValueMap(sole[0] as Map)
+			}
+		}
+		List<Object> flat = []
+		fieldSpecArgs.each { Object item ->
+			if (item instanceof Map) {
+				flat.addAll((item as Map).entrySet())
+				return
+			}
+			flat.add(item)
+		}
+		if (flat.isEmpty()) {
+			return [:]
+		}
+		if (flat.every { it instanceof Map.Entry }) {
+			Map<String, String> out = [:]
+			flat.each { Object entry ->
+				Map.Entry e = (Map.Entry) entry
+				String key = (e.key ?: '').toString().trim()
+				if (key) {
+					out[key] = (e.value ?: '').toString()
+				}
+			}
+			return out
+		}
+		if (flat.size() % 2 != 0) {
+			return [:]
+		}
+		Map<String, String> pairs = [:]
+		for (int i = 0; i < flat.size(); i += 2) {
+			String key = (flat[i] ?: '').toString().trim()
+			if (key) {
+				pairs[key] = (flat[i + 1] ?: '').toString()
+			}
+		}
+		return pairs
+	}
+
+	private static Map<String, String> normalizeSectionFieldValueMap(Map raw) {
+		Map<String, String> out = [:]
+		(raw ?: [:]).each { key, value ->
+			String fieldName = (key ?: '').toString().trim()
+			if (fieldName) {
+				out[fieldName] = (value ?: '').toString()
+			}
+		}
+		return out
+	}
+
+	/**
+	 * Verifies a section heading and one or more field values.
+	 * <p>
+	 * Supported call styles:
+	 * <ul>
+	 *   <li>{@code verifySectionAndFields('GOODS SUMMARY', ['Insurance Value': '0.00'])}</li>
+	 *   <li>{@code verifySectionAndFields(['Insurance Value': '0.00'], 'GOODS SUMMARY')}</li>
+	 *   <li>{@code verifySectionAndFields('GOODS SUMMARY', 'Insurance Value', '0.00')}</li>
+	 *   <li>{@code verifySectionAndFields('GOODS SUMMARY', 'A', '1', 'B', '2')}</li>
+	 * </ul>
+	 */
 	@Keyword
-	def verifySectionAndFields(
-		String sectionName,
-		Map<String, String> expectedFields
-	) {
-	
+	def verifySectionAndFields(Object sectionOrFields, Object fieldsOrSectionOrFirstField = null, Object... moreFieldSpecs) {
+		String section = ''
+		Map<String, String> expectedFields = [:]
+
+		if (sectionOrFields instanceof Map && fieldsOrSectionOrFirstField instanceof CharSequence) {
+			expectedFields = normalizeSectionFieldValueMap(sectionOrFields as Map)
+			section = fieldsOrSectionOrFirstField.toString().trim()
+		} else if (sectionOrFields instanceof CharSequence && fieldsOrSectionOrFirstField instanceof Map) {
+			section = sectionOrFields.toString().trim()
+			expectedFields = normalizeSectionFieldValueMap(fieldsOrSectionOrFirstField as Map)
+		} else if (sectionOrFields instanceof CharSequence) {
+			section = sectionOrFields.toString().trim()
+			List<Object> specs = []
+			if (fieldsOrSectionOrFirstField != null) {
+				specs.add(fieldsOrSectionOrFirstField)
+			}
+			if (moreFieldSpecs != null && moreFieldSpecs.length > 0) {
+				specs.addAll(moreFieldSpecs as List)
+			}
+			expectedFields = normalizeSectionFieldValueArgs(specs.toArray())
+		} else {
+			failStop(
+				"verifySectionAndFields: use (sectionName, Map), (Map, sectionName), or (sectionName, fieldName, fieldValue, ...)"
+			)
+		}
+
+		verifySectionAndFieldsCore(section, expectedFields)
+	}
+
+	private void verifySectionAndFieldsCore(String sectionName, Map<String, String> expectedFields) {
 		try {
-	
 			String section = (sectionName ?: '').trim()
-	
+
 			if (!section) {
 				failStop(
 					"verifySectionAndFields: Section Name cannot be blank"
 				)
 			}
-	
+
 			if (!expectedFields || expectedFields.isEmpty()) {
 				failStop(
 					"verifySectionAndFields: No fields provided for section '${section}'"
 				)
 			}
-	
-			// Resolve section dynamically
+
 			TestObject sectionObject = resolveCustomsSection(section)
-	
-			// Scroll to section
+
 			WebUI.scrollToElement(
 				sectionObject,
 				10,
 				FailureHandling.STOP_ON_FAILURE
 			)
-	
-			// Verify section is visible
+
 			WebUI.waitForElementVisible(
 				sectionObject,
 				15,
 				FailureHandling.STOP_ON_FAILURE
 			)
-	
+
 			WebUI.verifyElementVisible(
 				sectionObject,
 				FailureHandling.STOP_ON_FAILURE
 			)
-	
+
 			KeywordUtil.logInfo(
 				"Successfully verified section '${section}' is visible"
 			)
-	
-			// Validate all fields
+
+			currentChargeDetailSection = section
+
 			expectedFields.each { fieldName, expectedValue ->
-	
 				verifyFieldValue(
 					fieldName,
-					expectedValue
+					expectedValue,
+					section
 				)
 			}
-	
+
 			KeywordUtil.logInfo(
 				"Successfully validated section '${section}' and all its fields"
 			)
-	
+
 			WebUI.takeScreenshot()
-	
+
 		} catch (Exception e) {
-	
 			WebUI.takeScreenshot()
-	
 			failStop(
 				"Failed to validate section '${sectionName}' and its fields: ${e.message}"
 			)
 		}
+	}
+
+	/**
+	 * Verifies a field label is visible by text (does not validate the field value).
+	 * Use after {@link #verifySection} / {@link #verifySectionAndFields} or pass {@code sectionName} explicitly.
+	 */
+	@Keyword
+	def verifySectionFieldLabelPresent(String fieldLabel, String sectionName = null) {
+		try {
+			String field = (fieldLabel ?: '').trim()
+			if (!field) {
+				failStop('verifySectionFieldLabelPresent: fieldLabel is blank')
+			}
+			String section = (sectionName ?: currentChargeDetailSection ?: '').trim()
+			if (!section) {
+				failStop(
+					'verifySectionFieldLabelPresent: sectionName is required (e.g. "Customs & Goods")'
+				)
+			}
+			TestObject labelObject = resolveSectionFieldLabelObject(section, field)
+			if (!WebUI.waitForElementPresent(labelObject, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+				failStop(
+					"Field label '${field}' not found under section '${section}'. " +
+					'Check exact label text on Charge Detail (case/spacing).'
+				)
+			}
+			WebUI.scrollToElement(labelObject, 10, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(labelObject, 15, FailureHandling.STOP_ON_FAILURE)
+			WebUI.verifyElementVisible(labelObject, FailureHandling.STOP_ON_FAILURE)
+			String actualLabel = (WebUI.getText(labelObject, FailureHandling.STOP_ON_FAILURE) ?: '').trim()
+			KeywordUtil.logInfo(
+				"PASS: Field label '${actualLabel}' is present in section '${section}'."
+			)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			WebUI.takeScreenshot()
+			failStop(
+				"verifySectionFieldLabelPresent('${fieldLabel}', '${sectionName}') failed: ${e.message}"
+			)
+		}
+	}
+
+	private static List<String> normalizeSectionFieldLabelArgs(Object... fieldLabelArgs) {
+		if (fieldLabelArgs == null || fieldLabelArgs.length == 0) {
+			return []
+		}
+		if (fieldLabelArgs.length == 1) {
+			Object sole = fieldLabelArgs[0]
+			if (sole == null) {
+				return []
+			}
+			if (sole instanceof List) {
+				return ((List) sole).collect { String label -> (label ?: '').toString().trim() }.findAll { it }
+			}
+			if (sole instanceof String[]) {
+				return (sole as String[]).collect { String label -> (label ?: '').trim() }.findAll { it }
+			}
+			if (sole instanceof Collection) {
+				return sole.collect { String label -> (label ?: '').toString().trim() }.findAll { it }
+			}
+		}
+		return fieldLabelArgs.collect { Object item -> (item ?: '').toString().trim() }.findAll { it }
+	}
+
+	/**
+	 * Like {@link #verifySectionAndFields} but validates section heading and field <strong>labels</strong> only (no values).
+	 * <p>
+	 * {@code fieldLabelArgs} may be:
+	 * <ul>
+	 *   <li>one label: {@code 'Insurance Value'}</li>
+	 *   <li>several labels: {@code 'Insurance Value', 'Shipment Business Type'}</li>
+	 *   <li>a list: {@code ['Insurance Value', 'Shipment Business Type']}</li>
+	 * </ul>
+	 */
+	@Keyword
+	def verifySectionAndFieldLabelsPresent(String sectionName, Object... fieldLabelArgs) {
+		try {
+			String section = (sectionName ?: '').trim()
+			if (!section) {
+				failStop('verifySectionAndFieldLabelsPresent: sectionName is blank')
+			}
+			List<String> fieldLabels = normalizeSectionFieldLabelArgs(fieldLabelArgs)
+			if (fieldLabels.isEmpty()) {
+				failStop("verifySectionAndFieldLabelsPresent: no field labels for section '${section}'")
+			}
+			TestObject sectionObject = resolveCustomsSection(section)
+			WebUI.scrollToElement(sectionObject, 10, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(sectionObject, 15, FailureHandling.STOP_ON_FAILURE)
+			WebUI.verifyElementVisible(sectionObject, FailureHandling.STOP_ON_FAILURE)
+			currentChargeDetailSection = section
+			KeywordUtil.logInfo("Section '${section}' is visible — verifying field labels.")
+			fieldLabels.each { String label ->
+				verifySectionFieldLabelPresent(label, section)
+			}
+			KeywordUtil.logInfo(
+				"PASS: Section '${section}' and field labels ${fieldLabels} are present."
+			)
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			WebUI.takeScreenshot()
+			failStop(
+				"verifySectionAndFieldLabelsPresent('${sectionName}', ${fieldLabelArgs}) failed: ${e.message}"
+			)
+		}
+	}
+
+	/** CCIPH-488: Customs &amp; Goods section + common field labels (labels only). */
+	@Keyword
+	def verifyCustomsAndGoodsFieldLabelsPresent(List<String> fieldLabels = null) {
+		List<String> defaults = [
+			'Customs Type',
+			'Shipping Charges',
+			'Goods Value',
+			'Insurance Value',
+			'Shipment Business Type',
+			'Account Business Type'
+		]
+		List<String> labels = (fieldLabels == null || fieldLabels.isEmpty()) ? defaults : fieldLabels
+		verifySectionAndFieldLabelsPresent('Customs & Goods', labels)
 	}
 	
 	
@@ -5939,14 +6540,11 @@ class BusinessActions {
 		String labelXpath = "starts-with(@class,'CustomsChargeDetail-module__GjzTcG__fieldLabel') and normalize-space(.)=${fieldLit}"
 		String valueXpath = "starts-with(@class,'CustomsChargeDetail-module__GjzTcG__fieldValue')"
 
-		String xpath
 		if (section) {
-			String sectionLit = xpathLiteral(normalizeLabel(section))
-			xpath = "//span[starts-with(@class,'CustomsChargeDetail-module__GjzTcG__') and contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),${sectionLit})]" +
-				"/following::p[${labelXpath}][1]/following-sibling::div[${valueXpath}][1]"
-		} else {
-			xpath = "//p[${labelXpath}]/following-sibling::div[${valueXpath}][1]"
+			return resolveSectionFieldValueObject(section, field)
 		}
+
+		String xpath = "//p[${labelXpath}]/following-sibling::div[${valueXpath}][1]"
 
 		TestObject fieldValue = dynamicXpathObject(
 			"cs_detail_field_${normalizeLabel(section)}_${normalizeLabel(field)}",
@@ -5995,6 +6593,81 @@ class BusinessActions {
 				"Failed to validate Field Name '${fieldName}' with expected value '${expectedValue}': ${e.message}"
 			)
 		}
+	}
+
+	@Keyword
+	String getSectionFieldValue(String sectionName, String fieldName) {
+		try {
+			String section = (sectionName ?: '').trim()
+			String field = (fieldName ?: '').trim()
+			if (!section) {
+				failStop('getSectionFieldValue: Section name cannot be blank')
+			}
+			if (!field) {
+				failStop('getSectionFieldValue: Field name cannot be blank')
+			}
+
+			TestObject fieldValueObject = resolveSectionFieldValueObject(section, field)
+			WebUI.waitForElementVisible(
+				fieldValueObject,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+			String actualValue = (WebUI.getText(fieldValueObject, FailureHandling.STOP_ON_FAILURE) ?: '').trim()
+			KeywordUtil.logInfo(
+				"Read section field '${field}' in '${section}': '${actualValue}'"
+			)
+			return actualValue
+		} catch (Exception e) {
+			WebUI.takeScreenshot()
+			failStop(
+				"Failed to read field '${fieldName}' in section '${sectionName}': ${e.message}"
+			)
+		}
+	}
+
+	@Keyword
+	void storeSectionFieldValue(String sectionName, String fieldName, String value) {
+		String section = (sectionName ?: '').trim()
+		String field = (fieldName ?: '').trim()
+		if (!section) {
+			failStop('storeSectionFieldValue: Section name cannot be blank')
+		}
+		if (!field) {
+			failStop('storeSectionFieldValue: Field name cannot be blank')
+		}
+		String storedValue = (value ?: '').trim()
+		String key = sectionFieldStorageKey(section, field)
+		storedSectionFieldValues[key] = storedValue
+		KeywordUtil.logInfo(
+			"Stored section field '${field}' in '${section}' with value '${storedValue}'"
+		)
+	}
+
+	@Keyword
+	String getStoredSectionFieldValue(String sectionName, String fieldName) {
+		String section = (sectionName ?: '').trim()
+		String field = (fieldName ?: '').trim()
+		if (!section) {
+			failStop('getStoredSectionFieldValue: Section name cannot be blank')
+		}
+		if (!field) {
+			failStop('getStoredSectionFieldValue: Field name cannot be blank')
+		}
+		String key = sectionFieldStorageKey(section, field)
+		if (!storedSectionFieldValues.containsKey(key)) {
+			failStop(
+				"No stored value for field '${field}' in section '${section}'. Call readAndStoreSectionFieldValue first."
+			)
+		}
+		return storedSectionFieldValues[key]
+	}
+
+	@Keyword
+	String readAndStoreSectionFieldValue(String sectionName, String fieldName) {
+		String actualValue = getSectionFieldValue(sectionName, fieldName)
+		storeSectionFieldValue(sectionName, fieldName, actualValue)
+		return actualValue
 	}
 
 	@Keyword
@@ -6049,6 +6722,144 @@ class BusinessActions {
 			verifyTableHeadersVisible(ECD_INVOICING_COLUMNS, 'ECD Invoicing')
 		} catch (Exception e) {
 			failStop("verifyEcdInvoicingTableUI failed: ${e.message}")
+		}
+	}
+	
+	@Keyword
+	def verifyInvoicingTableUI(String trackingNumber = '9229011982_B23') {
+		try {
+			navigateToChargeDetailPage(trackingNumber)
+			clickDetailHeaderTab('ECD')
+			waitVisible(to120('tbl_invoicingHeaders'))
+			verifyTableHeadersVisible(ECD_INVOICING_COLUMNS, 'ECD Invoicing')
+		} catch (Exception e) {
+			failStop("verifyEcdInvoicingTableUI failed: ${e.message}")
+		}
+	}
+	
+	
+	@Keyword
+	def verifyInvoiceLabelValue(
+			String labelName,
+			String expectedValue) {
+	
+		try {
+	
+			String expectedLabel =
+				(labelName ?: '').trim()
+	
+			String expected =
+				(expectedValue ?: '').trim()
+	
+			if (!expectedLabel) {
+				failStop(
+					"verifyInvoiceLabelValue: Label name cannot be blank"
+				)
+			}
+	
+			if (!expected) {
+				failStop(
+					"verifyInvoiceLabelValue: Expected value cannot be blank"
+				)
+			}
+	
+			String labelLower =
+				expectedLabel.toLowerCase()
+	
+			String xpath =
+				"//tr[contains(@class,'chargesInvoiceRow')]" +
+				"[td[contains(@class,'chargesInvoiceLabel') and " +
+				"contains(translate(normalize-space(.)," +
+				"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+				"'abcdefghijklmnopqrstuvwxyz')," +
+				"'${labelLower}')]]" +
+				"/td[contains(@class,'chargesInvoiceValue')]"
+	
+			TestObject valueObjects =
+				new TestObject(
+					"dynamicInvoiceValue_${expectedLabel}"
+				)
+	
+			valueObjects.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				xpath
+			)
+	
+			WebUI.waitForElementVisible(
+				valueObjects,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			List<WebElement> valueElements =
+				WebUiCommonHelper.findWebElements(
+					valueObjects,
+					15
+				)
+	
+			if (!valueElements || valueElements.isEmpty()) {
+	
+				failStop(
+					"No values found for label '${expectedLabel}'"
+				)
+			}
+	
+			// Read all values from UI
+			List<String> actualValues = []
+	
+			valueElements.each { WebElement element ->
+	
+				String actual =
+					element.getText()?.trim()
+	
+				if (actual) {
+					actualValues.add(actual)
+				}
+			}
+	
+			KeywordUtil.logInfo(
+				"Label '${expectedLabel}' has values: ${actualValues}"
+			)
+	
+			// Validate expected value using contains,
+			// case-insensitive
+			String expectedLower =
+				expected.toLowerCase()
+	
+			boolean valueFound =
+				actualValues.any { String actualValue ->
+	
+					actualValue
+						.toLowerCase()
+						.contains(expectedLower)
+				}
+	
+			if (!valueFound) {
+	
+				failStop(
+					"Validation failed for label '${expectedLabel}'. " +
+					"Expected value to contain '${expectedValue}', " +
+					"but actual values are: ${actualValues}"
+				)
+			}
+	
+			KeywordUtil.logInfo(
+				"Successfully validated '${expectedLabel}' " +
+				"contains value '${expectedValue}'. " +
+				"Actual values: ${actualValues}"
+			)
+	
+			WebUI.takeScreenshot()
+	
+		} catch (Exception e) {
+	
+			WebUI.takeScreenshot()
+	
+			failStop(
+				"Failed to validate label '${labelName}' " +
+				"with expected value '${expectedValue}': ${e.message}"
+			)
 		}
 	}
 

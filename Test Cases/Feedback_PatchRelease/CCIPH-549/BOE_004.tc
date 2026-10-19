@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify duplicate Declaration Number is not allowed across different shipments</description>
+   <name>BOE_004</name>
+   <tag>GenAI,CCIPH-549,Feedback_PatchRelease,UploadActuals,Critical</tag>
+   <comment>CSV: NewFeedback_PatchChanges.csv | ID: BOE_004 | Jira: https://aramex.atlassian.net/browse/CCIPH-549</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f7a8b9c0-d1e2-4f56-9549-b0e004cciph549</testCaseGuid>
+</TestCaseEntity>

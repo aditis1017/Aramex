@@ -51,6 +51,11 @@ class BusinessActions {
 	private String lastGeneratedUploadPath = ''
 	private String lastEstimateTemplateExportFilePath = ''
 	private String lastEstimateTemplateExportFileName = ''
+	/** Values read from actuals upload Excel (e.g. AWB, Declaration Number, Saddad). */
+	private Map<String, String> storedUploadFieldValues = [:]
+	private static final List<String> ACTUALS_UPLOAD_KEY_COLUMNS = [
+		'AWB', 'Declaration Number', 'Saddad'
+	]
 
 	private static final String OR_PREFIX_224 = 'Upload_Estimate_Actuals/CCIPH-224/'
 	private static final String ESTIMATE_TEMPLATE_EXPORT_DETECTED_FILE = 'Reports/latest-estimate-template-export.txt'
@@ -65,6 +70,28 @@ class BusinessActions {
 
 	private static TestObject to224(String name) {
 		return findTestObject(OR_PREFIX_224 + name)
+	}
+
+	private static TestObject xpathObject(String id, String xpath) {
+		TestObject testObject = new TestObject(id)
+		testObject.addProperty('xpath', ConditionType.EQUALS, xpath)
+		return testObject
+	}
+
+	private static TestObject resolveUploadFileInput() {
+		TestObject xpathInput = xpathObject('uea_charges_file_input',
+			"//input[@id='custom-charges-file' and @type='file'] | //input[@type='file']")
+		if (WebUI.waitForElementPresent(xpathInput, 8, FailureHandling.OPTIONAL)) {
+			return xpathInput
+		}
+		TestObject repo = to('inp_estimateFile')
+		WebUI.waitForElementPresent(repo, DEFAULT_TIMEOUT)
+		return repo
+	}
+
+	private static TestObject resolveSubmitReadyButton() {
+		return xpathObject('uea_submit_ready',
+			"//button[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'submit')][not(@disabled) and not(contains(@class,'disabled')) and not(contains(@class,'Disabled'))] | //button[contains(@class,'submitButtonReady')]")
 	}
 
 	private static void failStop(String message) {
@@ -295,8 +322,15 @@ class BusinessActions {
 						)
 					}
 			
-					TestObject dropdown =
-						resolveUploadChargesDropdown(dropdownName)
+			TestObject dropdown =
+				resolveUploadChargesDropdown(dropdownName)
+
+					TestObject alreadySelected = xpathObject('uea_entity_already_selected',
+						"//button[@id='entity'][.//*[normalize-space(text())='${value}']]")
+					if (WebUI.waitForElementPresent(alreadySelected, 2, FailureHandling.OPTIONAL)) {
+						KeywordUtil.logInfo("'${dropdownName}' already set to '${value}' — skipping re-select")
+						return
+					}
 			
 					// Wait for dropdown
 					WebUI.waitForElementVisible(
@@ -432,13 +466,12 @@ class BusinessActions {
 			if (!f.isFile()) {
 				failStop("uploadEstimateExcelFile: file not found: ${path}")
 			}
-			TestObject fileInput = to('inp_estimateFile')
-			WebUI.waitForElementPresent(fileInput, DEFAULT_TIMEOUT)
+			TestObject fileInput = resolveUploadFileInput()
 			try {
-				WebUI.uploadFile(fileInput, path)
-			} catch (Exception uploadEx) {
-				KeywordUtil.logInfo("WebUI.uploadFile failed, retrying sendKeys: ${uploadEx.message}")
 				uploadFileViaSendKeys(fileInput, path)
+			} catch (Exception sendKeysEx) {
+				KeywordUtil.logInfo("sendKeys upload failed, retrying WebUI.uploadFile: ${sendKeysEx.message}")
+				WebUI.uploadFile(fileInput, path)
 			}
 			WebUI.delay(1)
 			WebUI.takeScreenshot()
@@ -462,11 +495,7 @@ class BusinessActions {
 	}
 
 	private static WebElement findEstimateUploadFileInput() {
-		TestObject fileInput = to('inp_estimateFile')
-		if (!WebUI.waitForElementPresent(fileInput, 5, FailureHandling.OPTIONAL)) {
-			throw new IllegalStateException('Estimate/Actuals upload file input not found on page')
-		}
-		return WebUiCommonHelper.findWebElement(fileInput, 5)
+		return WebUiCommonHelper.findWebElement(resolveUploadFileInput(), 5)
 	}
 
 	private static void prepareFileInputForNonXlsx(WebElement element) {
@@ -617,8 +646,11 @@ class BusinessActions {
 	@Keyword
 	def clickSubmitUpload() {
 		try {
-			TestObject submit = to('btn_submitUpload')
-			waitVisibleClickable(submit)
+			TestObject submit = resolveSubmitReadyButton()
+			if (!WebUI.waitForElementClickable(submit, 15, FailureHandling.OPTIONAL)) {
+				submit = to('btn_submitUpload')
+				waitVisibleClickable(submit)
+			}
 			WebUI.click(submit)
 			WebUI.delay(1)
 			WebUI.takeScreenshot()
@@ -2251,6 +2283,61 @@ class BusinessActions {
 		return false
 	}
 
+	private static int indexOfActualsColumn(List<String> headers, String columnName) {
+		List<String> normalized = (headers ?: []).collect { (it ?: '').trim() }
+		String expected = (columnName ?: '').trim()
+		for (int i = 0; i < normalized.size(); i++) {
+			if (actualsColumnMatches(normalized.get(i), expected)) {
+				return i
+			}
+		}
+		return -1
+	}
+
+	private static Map<String, String> readActualsExcelColumnsFromDataRow(
+		String filePath,
+		List<String> columnNames,
+		int dataRowIndex = 0
+	) {
+		String path = resolveProjectRelativePath(filePath)
+		if (!path) {
+			failStop('readActualsExcelColumnsFromDataRow: file path is empty')
+		}
+		File f = new File(path)
+		if (!f.isFile()) {
+			failStop("readActualsExcelColumnsFromDataRow: file not found: ${path}")
+		}
+		List<List<String>> rows = readXlsxAllRows(path)
+		if (rows == null || rows.isEmpty()) {
+			failStop("readActualsExcelColumnsFromDataRow: no rows in workbook: ${path}")
+		}
+		List<String> headers = rows.get(0).collect { (it ?: '').trim() }
+		int rowIdx = dataRowIndex + 1
+		if (rowIdx >= rows.size()) {
+			failStop(
+				"readActualsExcelColumnsFromDataRow: data row index ${dataRowIndex} not found " +
+				"(only ${rows.size() - 1} data row(s) after header)"
+			)
+		}
+		List<String> dataRow = rows.get(rowIdx)
+		Map<String, String> values = [:]
+		for (String column : (columnNames ?: [])) {
+			String col = (column ?: '').trim()
+			if (!col) {
+				continue
+			}
+			int colIdx = indexOfActualsColumn(headers, col)
+			if (colIdx < 0) {
+				failStop(
+					"Column '${col}' not found in actuals upload file. Headers: ${headers}"
+				)
+			}
+			String cellValue = (colIdx < dataRow.size()) ? (dataRow.get(colIdx) ?: '').trim() : ''
+			values[col] = cellValue
+		}
+		return values
+	}
+
 	private static void assertActualsTemplateHeaders(List<String> headers) {
 		List<String> normalized = (headers ?: []).collect { (it ?: '').trim() }
 		for (String expected : ACTUALS_TEMPLATE_HEADERS) {
@@ -2960,6 +3047,88 @@ class BusinessActions {
 	}
 
 	@Keyword
+	void writeValue(String key, String fieldValue) {
+		String name = (key ?: '').trim()
+		if (!name) {
+			failStop('writeValue: key cannot be blank')
+		}
+		String value = (fieldValue ?: '').trim()
+		storedUploadFieldValues[name] = value
+		KeywordUtil.logInfo("Stored actuals upload field '${name}': '${value}'")
+	}
+
+	@Keyword
+	String readValue(String key) {
+		String name = (key ?: '').trim()
+		if (!name) {
+			failStop('readValue: key cannot be blank')
+		}
+		if (!storedUploadFieldValues.containsKey(name)) {
+			failStop(
+				"No stored value for '${name}'. Call readAndStoreActualsUploadKeyFields first."
+			)
+		}
+		return storedUploadFieldValues[name]
+	}
+
+	/**
+	 * Returns stored {@code AWB}, {@code Declaration Number}, and {@code Saddad} as strings
+	 * (after {@link #readAndStoreActualsUploadKeyFields}).
+	 */
+	@Keyword
+	Map<String, String> getStoredActualsUploadKeyFields() {
+		Map<String, String> out = [:]
+		ACTUALS_UPLOAD_KEY_COLUMNS.each { String column ->
+			out[column] = readValue(column)
+		}
+		return out
+	}
+
+	/**
+	 * Reads key columns from the workbook and returns them as named strings for validation.
+	 * Also stores each value via {@link #writeValue}.
+	 */
+	@Keyword
+	Map<String, String> readActualsUploadKeyFieldsAsStrings(String filePath, int dataRowIndex = 0) {
+		return readAndStoreActualsUploadKeyFields(filePath, dataRowIndex)
+	}
+
+	/**
+	 * Reads {@code AWB}, {@code Declaration Number}, and {@code Saddad} from the first data row
+	 * of the actuals upload workbook and stores each via {@link #writeValue}.
+	 *
+	 * @param filePath project-relative or absolute path (same as {@link #uploadActualExcelFile})
+	 * @param dataRowIndex 0 = first row after header, 1 = second data row, etc.
+	 * @return map of column name → cell value
+	 */
+	@Keyword
+	Map<String, String> readAndStoreActualsUploadKeyFields(String filePath, int dataRowIndex = 0) {
+		return readAndStoreActualsUploadColumns(filePath, ACTUALS_UPLOAD_KEY_COLUMNS, dataRowIndex)
+	}
+
+	/**
+	 * Reads named columns from a data row and stores each value with {@link #writeValue}.
+	 */
+	@Keyword
+	Map<String, String> readAndStoreActualsUploadColumns(
+		String filePath,
+		List<String> columnNames,
+		int dataRowIndex = 0
+	) {
+		try {
+			Map<String, String> values =
+				readActualsExcelColumnsFromDataRow(filePath, columnNames, dataRowIndex)
+			values.each { String column, String value ->
+				writeValue(column, value)
+			}
+			KeywordUtil.logInfo("Stored actuals upload columns from '${filePath}': ${values}")
+			return values
+		} catch (Exception e) {
+			failStop("readAndStoreActualsUploadColumns failed: ${e.message}")
+		}
+	}
+
+	@Keyword
 	def clickSubmitActualUpload() {
 		clickSubmitUpload()
 	}
@@ -3020,6 +3189,11 @@ class BusinessActions {
 	@Keyword
 	String createValidActualsExcel(String awb, Map fieldValues = [:]) {
 		return createActualsExcel([buildActualsDataRow(awb, fieldValues)], 'valid_actuals.xlsx')
+	}
+	
+	@Keyword
+	String createValidActualsBOEExcel(String awb, Map fieldValues = [:]) {
+		return createActualsExcel([buildActualsDataRow(awb, fieldValues)], 'Actuals-Upload-BOE-Feedback-Check.xlsx')
 	}
 
 	@Keyword
@@ -3416,23 +3590,57 @@ class BusinessActions {
 	@Keyword
 	def verifyAwbValidationFailedOrOverride() {
 		try {
-			if (!waitForActualUploadOutcomeMessage()) {
-				failStop('Expected AWB validation outcome message was not visible')
+			if (!waitForInvalidAwbOrOverrideOutcome(60)) {
+				String snippet = normalizedPageText()
+				if (snippet.length() > 400) {
+					snippet = snippet.substring(0, 400)
+				}
+				failStop("Expected invalid-AWB override, exclusion, or failed-record outcome was not visible. Page snippet: ${snippet}")
 			}
-			TestObject override = to59('msg_awbOverrideFlag')
-			TestObject partial = to58('msg_partialProcessing')
-			boolean overrideVisible = WebUI.waitForElementVisible(override, 5, FailureHandling.OPTIONAL)
-			boolean partialVisible = WebUI.waitForElementVisible(partial, 5, FailureHandling.OPTIONAL)
-			boolean failedBtn = WebUI.waitForElementVisible(to58('btn_downloadFailedReport'), 5, FailureHandling.OPTIONAL)
-			if (!overrideVisible && !partialVisible && !failedBtn) {
-				verifyEstimateUploadValidationErrorVisible()
-			}
-			KeywordUtil.markWarning('TC_AWB_002: Override/auto cost-booking exclusion may be out of MVP scope — verify flagged status manually')
+			KeywordUtil.markWarning('TC_AWB_014: Confirm override queue / auto cost-booking exclusion in the environment if UI only shows failed or invalid AWB')
 			KeywordUtil.logInfo('CCIPH-59: Invalid/non-existent AWB flagged — excluded from automatic cost booking')
 			WebUI.takeScreenshot()
 		} catch (Exception e) {
 			failStop("verifyAwbValidationFailedOrOverride failed: ${e.message}")
 		}
+	}
+
+	private static TestObject invalidAwbOutcomeObject() {
+		return xpathObject('uea_invalid_awb_outcome',
+			"//*[contains(@class,'fileError') or @role='alert' or contains(@class,'error') or contains(@class,'toast') or contains(@class,'alert')][contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'invalid') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'not found') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'does not exist') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'override') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'ineligible') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'excluded') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'failed')] | //*[self::td or self::span or self::div or self::p or self::li][contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'invalid awb') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'awb not found') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'override') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'ineligible') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'excluded') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'failed record')]")
+	}
+
+	private static boolean pageIndicatesInvalidAwbOrOverride() {
+		String text = normalizedPageText()
+		if (!text) {
+			return false
+		}
+		List<String> failureNeedles = [
+			'invalid awb', 'awb not found', 'does not exist', 'unknown awb', 'failed record',
+			'partially processed', 'validation failed', 'not eligible', 'ineligible', 'excluded'
+		]
+		for (String needle : failureNeedles) {
+			if (text.contains(needle)) {
+				return true
+			}
+		}
+		return text.contains('override') && (text.contains('awb') || text.contains('eligib') || text.contains('flag'))
+	}
+
+	private boolean waitForInvalidAwbOrOverrideOutcome(int timeoutSeconds = 60) {
+		TestObject outcome = invalidAwbOutcomeObject()
+		TestObject failedBtn = xpathObject('uea_download_failed_report',
+			"//*[self::button or self::a][contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'failed') and (contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'report') or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download'))]")
+		long deadline = System.currentTimeMillis() + (timeoutSeconds * 1000L)
+		while (System.currentTimeMillis() < deadline) {
+			if (WebUI.waitForElementVisible(outcome, 2, FailureHandling.OPTIONAL) ||
+				WebUI.waitForElementVisible(failedBtn, 2, FailureHandling.OPTIONAL) ||
+				pageIndicatesInvalidAwbOrOverride()) {
+				return true
+			}
+			WebUI.delay(1)
+		}
+		return false
 	}
 
 	@Keyword

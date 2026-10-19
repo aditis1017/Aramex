@@ -12,7 +12,10 @@ if (binding.hasVariable('large_Row_Count') && large_Row_Count) {
 }
 
 login.loginToStageCustomsManagementUsingAutomationProfile()
-uea.navigateToUploadCharges()
+//login.loginToCustomsManagementUsingProfile()
+
+//uea.navigateToUploadCharges()
+uea.clickUploadCharge()
 uea.openUploadEstimatesScreen()
 String path = uea.createLargeEstimateExcel(rows)
 uea.uploadEstimateExcelFile(path)

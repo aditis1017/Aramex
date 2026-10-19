@@ -6,12 +6,11 @@
    <elementGuidId>041da019-8951-4436-a92e-6be97b48e869</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//label[normalize-space()='Entity']/following::button[@aria-haspopup='listbox'][1]</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//label[normalize-space()='Entity']/following::button[@aria-haspopup='listbox'][1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify B2B classification based on configured keyword matching type (Exact/Contains/End With/Start With)</description>
+   <name>B2B_003</name>
+   <tag>GenAI,Feedback_PatchRelease,B2B-Shipment,CCIPH-476,Critical</tag>
+   <comment>CSV: NewFeedback_PatchChanges.csv | ID: B2B-003 | Jira: https://aramex.atlassian.net/browse/CCIPH-476</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f7a8b9c0-d1e2-4f56-9476-b2b003cciph476</testCaseGuid>
+</TestCaseEntity>

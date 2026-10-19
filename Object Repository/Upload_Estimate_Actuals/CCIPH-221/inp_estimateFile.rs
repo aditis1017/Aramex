@@ -14,7 +14,7 @@
          <value>//input[@id='custom-charges-file' and @type='file'] | //input[@type='file' and (contains(translate(@accept,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'xlsx') or contains(@id,'charges') or contains(@id,'file'))]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorEnabled>true</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Create AP Account fields visible (CCIPH-634 / TC_APM_FUNC_002 / AC1)</description>
+   <name>TC_APM_FUNC_002</name>
+   <tag>CCIPH-634,CCIPH-639,APManagement,e2e-pipeline</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-639</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph634-func-002-4a1b-9c0d-8e7f-000000000002</testCaseGuid>
+</TestCaseEntity>

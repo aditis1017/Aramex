@@ -19,3 +19,23 @@ build
 # Katalon project Downloads — keep folder, ignore exported artifacts
 Downloads/*
 !Downloads/.gitkeep
+
+# Vendored application source (nested clones — do not commit upstream .git)
+FE-ApplicationCode/.git/
+BE-ApplicationCode/.git/
+
+# Frontend build & dependencies
+FE-ApplicationCode/node_modules/
+FE-ApplicationCode/.next/
+FE-ApplicationCode/coverage/
+FE-ApplicationCode/.swc/
+FE-ApplicationCode/tsconfig.tsbuildinfo
+FE-ApplicationCode/test_output.log
+FE-ApplicationCode/.env
+FE-ApplicationCode/.env.local
+FE-ApplicationCode/.idea/
+
+# Backend build artifacts
+BE-ApplicationCode/**/build/
+BE-ApplicationCode/**/.gradle/
+BE-ApplicationCode/**/bin/

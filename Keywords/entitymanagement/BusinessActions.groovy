@@ -40,6 +40,8 @@ class BusinessActions {
 		"//h3[normalize-space()='Service Charge Settings']/following::table[1]"
 	private static final String EM_RATESHEET_TABLE_XPATH =
 		"//h3[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'rate') and contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'sheet')]/following::table[1]"
+	private static final String EM_ESTIMATE_RATESHEET_TABLE_XPATH =
+		"//section[@aria-labelledby='estimate-ratesheet-heading']//table[1]"
 	private static final List<String> EM_RATESHEET_COLUMNS_DEFAULT = [
 		'Description',
 		'Service Description',
@@ -350,7 +352,8 @@ class BusinessActions {
 	private static boolean isEntitySettingsShellVisible(int timeoutSeconds = 3) {
 		List<String> anchors = ['txt_anchor_EntitySettingsPage', 'ddl_Entity', 'section_chargeTypes']
 		for (String anchor : anchors) {
-			if (WebUI.waitForElementVisible(to(anchor), timeoutSeconds, FailureHandling.OPTIONAL)) {
+			int anchorCount = WebUI.findWebElements(to(anchor), timeoutSeconds)?.size() ?: 0
+			if (anchorCount > 0) {
 				return true
 			}
 		}
@@ -481,6 +484,41 @@ class BusinessActions {
 			failStop("[selectEntity ${entityName}] ${e.class.simpleName} - ${e.message}")
 		}
 	}
+	
+	
+	@Keyword
+	def selectCountry(String countryName) {
+		try {
+			String country = (countryName ?: '').trim()
+			if (!country) {
+				failStop('selectCountry: country name is required')
+			}
+
+			TestObject countryTrigger = to('ddl_Country')
+			WebUI.waitForElementClickable(countryTrigger, DEFAULT_TIMEOUT)
+			WebUI.click(countryTrigger)
+
+			TestObject searchInput = to('txt_Search_Country')
+			WebUI.waitForElementVisible(searchInput, DEFAULT_TIMEOUT)
+			WebUI.clearText(searchInput)
+			WebUI.setText(searchInput, country)
+
+			TestObject option = new TestObject('ddl_countryOption')
+			option.addProperty(
+				'xpath',
+				ConditionType.EQUALS,
+				"//span[normalize-space()='${country}']/ancestor::button[1] | " +
+				"//*[@role='listbox']//button[.//span[normalize-space()='${country}']] | " +
+				"//*[@role='listbox']//*[@role='option'][normalize-space()='${country}']"
+			)
+			WebUI.waitForElementClickable(option, DEFAULT_TIMEOUT)
+			WebUI.click(option)
+
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("[selectCountry ${countryName}] ${e.class.simpleName} - ${e.message}")
+		}
+	}
 
 	@Keyword
 	def clickEntitySelectionContinue() {
@@ -518,6 +556,631 @@ class BusinessActions {
 		
 			return tabObject
 		}
+		
+		
+		private TestObject resolveEntityChargeTypeTab(String tabName) {
+			
+				String expectedTab = (tabName ?: '').trim()
+			
+				if (!expectedTab) {
+					failStop(
+						"resolveEntityChargeTypeTab: Tab name cannot be blank"
+					)
+				}
+			
+				String xpath =
+					"//button[" +
+					"contains(@class,'EntitySettingsScreen-module__ozx-sa__pillSegmentBtn')" +
+					" and normalize-space(.)='${expectedTab}'" +
+					"]"
+			
+				TestObject tabObject =
+					new TestObject("dynamicEntityChargeTypeTab_${expectedTab}")
+			
+				tabObject.addProperty(
+					"xpath",
+					ConditionType.EQUALS,
+					xpath
+				)
+			
+				return tabObject
+			}
+			
+			@Keyword
+			def verifyColumnHeader(String sectionId, String headerText) {
+				try {
+					String section = (sectionId ?: '').trim()
+					String header = (headerText ?: '').trim()
+					if (!section || !header) {
+						failStop('verifyColumnHeader: sectionId and headerText are required')
+					}
+					String xpath =
+						"//section[@aria-labelledby='${section}']" +
+						"//th[normalize-space()='${header}']"
+					TestObject columnHeader = new TestObject("estimate_ratesheet_column_${section}_${header}")
+					columnHeader.addProperty('xpath', ConditionType.EQUALS, xpath)
+					WebUI.scrollToElement(columnHeader, DEFAULT_TIMEOUT)
+					waitVisible(columnHeader)
+					WebUI.verifyElementVisible(columnHeader, FailureHandling.STOP_ON_FAILURE)
+					WebUI.takeScreenshot()
+					KeywordUtil.logInfo(
+						"PASS: Column header '${header}' is present in section '${section}'."
+					)
+				} catch (Exception e) {
+					failStop("verifyColumnHeader('${sectionId}', '${headerText}') failed: ${e.message}")
+				}
+			}
+			
+			
+			@Keyword
+			def selectEntityChargeTypeTab(String tabName) {
+			
+				try {
+			
+					String expectedTab = (tabName ?: '').trim()
+			
+					if (!expectedTab) {
+						failStop(
+							"selectEntityChargeTypeTab: Tab name cannot be blank"
+						)
+					}
+			
+					TestObject tab =
+						resolveEntityChargeTypeTab(expectedTab)
+			
+					WebUI.waitForElementVisible(
+						tab,
+						15,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					WebUI.waitForElementClickable(
+						tab,
+						15,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					WebUI.click(
+						tab,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					// Validate that the selected tab is active
+					String activeTabXpath =
+						"//button[" +
+						"contains(@class,'EntitySettingsScreen-module__ozx-sa__pillSegmentBtn')" +
+						" and normalize-space(.)='${expectedTab}'" +
+						" and @aria-pressed='true'" +
+						"]"
+			
+					TestObject activeTab =
+						new TestObject("activeEntityChargeTypeTab_${expectedTab}")
+			
+					activeTab.addProperty(
+						"xpath",
+						ConditionType.EQUALS,
+						activeTabXpath
+					)
+			
+					WebUI.waitForElementVisible(
+						activeTab,
+						10,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					WebUI.verifyElementVisible(
+						activeTab,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					KeywordUtil.logInfo(
+						"Successfully navigated to Entity Charge Type tab: '${expectedTab}'"
+					)
+			
+					WebUI.takeScreenshot()
+			
+				} catch (Exception e) {
+			
+					WebUI.takeScreenshot()
+			
+					failStop(
+						"Failed to navigate to Entity Charge Type tab " +
+						"'${tabName}': ${e.message}"
+					)
+				}
+			}
+			
+			
+		
+			@Keyword
+			def selectEntityByText(String entityValue) {
+			
+				try {
+			
+					String expectedEntity = (entityValue ?: '').trim()
+			
+					if (!expectedEntity) {
+						failStop("Entity value cannot be blank")
+					}
+			
+					TestObject entityDropdown = to67('ddn_selectEntity')
+			
+					WebUI.waitForElementVisible(
+						entityDropdown,
+						DEFAULT_TIMEOUT,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					WebElement el = WebUiCommonHelper.findWebElement(entityDropdown, DEFAULT_TIMEOUT)
+					Select sel = new Select(el)
+					boolean selected = selectNativeOption(sel, expectedEntity)
+			
+					if (!selected) {
+						failStop(
+							"No matching option for entity '${expectedEntity}' in Destination entity dropdown"
+						)
+					}
+			
+					WebElement chosen = sel.getFirstSelectedOption()
+					String actualValue = (chosen?.getAttribute('value') ?: '').trim()
+					String actualText = (chosen?.getText() ?: '').trim()
+					if (!entityOptionMatches(expectedEntity, actualValue, actualText)) {
+						failStop(
+							"Entity selection failed. Expected='${expectedEntity}', " +
+							"Actual value='${actualValue}', text='${actualText}'"
+						)
+					}
+			
+					KeywordUtil.logInfo(
+						"Successfully selected Destination entity: '${expectedEntity}' (display='${actualText}')"
+					)
+			
+					WebUI.takeScreenshot()
+			
+				} catch (Exception e) {
+			
+					WebUI.takeScreenshot()
+			
+					failStop(
+						"Failed to select Entity '${entityValue}': ${e.message}"
+					)
+				}
+			}
+			
+			
+			
+			@Keyword
+			def verifyEntityMapMappings(
+					String entityMapValue,
+					List<String> expectedServiceDescriptions) {
+			
+				try {
+			
+					String expectedEntityMap =
+						(entityMapValue ?: '').trim()
+			
+					if (!expectedEntityMap) {
+						failStop(
+							"Entity Map value cannot be blank"
+						)
+					}
+			
+					if (!expectedServiceDescriptions ||
+						expectedServiceDescriptions.isEmpty()) {
+			
+						failStop(
+							"Expected Service Descriptions cannot be blank"
+						)
+					}
+			
+					String entityMapLower =
+						expectedEntityMap.toLowerCase()
+			
+					// ---------------------------------------------------------
+					// Locate all rows having the required Entity Map
+					// ---------------------------------------------------------
+			
+					String rowXpath =
+						"//section[@aria-labelledby='service-charges-mapping-card-heading']" +
+						"//table[contains(@class,'dataTableCompact')]" +
+						"//tbody/tr[" +
+						"contains(" +
+						"translate(normalize-space(td[6])," +
+						"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+						"'abcdefghijklmnopqrstuvwxyz')," +
+						"'${entityMapLower}')]" +
+						"]"
+			
+					TestObject entityMapRows =
+						new TestObject(
+							"dynamicEntityMapRows_${expectedEntityMap}"
+						)
+			
+					entityMapRows.addProperty(
+						"xpath",
+						ConditionType.EQUALS,
+						rowXpath
+					)
+			
+					// ---------------------------------------------------------
+					// Find matching rows
+					// ---------------------------------------------------------
+			
+					List<WebElement> rows =
+						WebUiCommonHelper.findWebElements(
+							entityMapRows,
+							15
+						)
+			
+					if (!rows || rows.isEmpty()) {
+			
+						failStop(
+							"Entity Map '${expectedEntityMap}' was not found " +
+							"in Service Codes Mapping."
+						)
+					}
+			
+					// ---------------------------------------------------------
+					// Read Service Description values
+					// ---------------------------------------------------------
+			
+					List<String> actualDescriptions = []
+			
+					rows.eachWithIndex { WebElement row, int index ->
+			
+						String serviceDescription =
+							row.findElement(
+								By.xpath("./td[2]")
+							).getText().trim()
+			
+						String actualEntityMap =
+							row.findElement(
+								By.xpath("./td[6]")
+							).getText().trim()
+			
+						actualDescriptions.add(
+							serviceDescription
+						)
+			
+						KeywordUtil.logInfo(
+							"Mapping ${index + 1}: " +
+							"Entity Map='${actualEntityMap}' -> " +
+							"Service Description='${serviceDescription}'"
+						)
+					}
+			
+					// ---------------------------------------------------------
+					// Write/read result into a Map
+					// ---------------------------------------------------------
+			
+					Map<String, Integer> mappingCount = [:]
+			
+					actualDescriptions.each { String description ->
+			
+						String key = description.toLowerCase()
+			
+						mappingCount[key] =
+							(mappingCount[key] ?: 0) + 1
+					}
+			
+					int actualCount =
+						actualDescriptions.size()
+			
+					int expectedCount =
+						expectedServiceDescriptions.size()
+			
+					KeywordUtil.logInfo(
+						"Entity Map '${expectedEntityMap}' " +
+						"found ${actualCount} time(s)."
+					)
+			
+					KeywordUtil.logInfo(
+						"Mappings found: ${mappingCount}"
+					)
+			
+					// ---------------------------------------------------------
+					// Validate count
+					// ---------------------------------------------------------
+			
+					if (actualCount != expectedCount) {
+			
+						failStop(
+							"Entity Map count validation failed for " +
+							"'${expectedEntityMap}'. " +
+							"Expected=${expectedCount}, " +
+							"Actual=${actualCount}. " +
+							"Actual mappings=${actualDescriptions}"
+						)
+					}
+			
+					// ---------------------------------------------------------
+					// Validate each expected Service Description
+					// ---------------------------------------------------------
+			
+					expectedServiceDescriptions.each { String expectedDescription ->
+			
+						String expectedDesc =
+							(expectedDescription ?: '').trim()
+			
+						if (!expectedDesc) {
+							failStop(
+								"Expected Service Description cannot be blank."
+							)
+						}
+			
+						String expectedDescLower =
+							expectedDesc.toLowerCase()
+			
+						boolean found =
+							actualDescriptions.any { String actualDescription ->
+			
+								actualDescription
+									.toLowerCase()
+									.contains(expectedDescLower)
+							}
+			
+						if (!found) {
+			
+							failStop(
+								"Service Description '${expectedDesc}' " +
+								"is not mapped to Entity Map " +
+								"'${expectedEntityMap}'. " +
+								"Actual mappings=${actualDescriptions}"
+							)
+						}
+			
+						KeywordUtil.logInfo(
+							"Validated mapping: " +
+							"Entity Map='${expectedEntityMap}' -> " +
+							"Service Description contains '${expectedDesc}'"
+						)
+					}
+			
+					KeywordUtil.logInfo(
+						"Entity Map validation successful. " +
+						"'${expectedEntityMap}' occurs ${actualCount} time(s) " +
+						"and is mapped to: ${actualDescriptions}"
+					)
+			
+					WebUI.scrollToElement(
+						entityMapRows,
+						5,
+						FailureHandling.OPTIONAL
+					)
+			
+					WebUI.takeScreenshot()
+			
+					return mappingCount
+			
+				} catch (Exception e) {
+			
+					WebUI.takeScreenshot()
+			
+					failStop(
+						"Failed to validate Entity Map '${entityMapValue}': " +
+						"${e.message}"
+					)
+				}
+			}
+
+			
+			
+			@Keyword
+			def readEntityMapMappings() {
+			
+				try {
+			
+					String tableXpath =
+						"//section[@aria-labelledby='service-charges-mapping-card-heading']" +
+						"//table[contains(@class,'dataTableCompact')]"
+			
+					TestObject mappingTable =
+						new TestObject("dynamicServiceCodesMappingTable")
+			
+					mappingTable.addProperty(
+						"xpath",
+						ConditionType.EQUALS,
+						tableXpath
+					)
+			
+					WebUI.waitForElementVisible(
+						mappingTable,
+						15,
+						FailureHandling.STOP_ON_FAILURE
+					)
+			
+					String rowXpath =
+						tableXpath +
+						"/tbody/tr"
+			
+					TestObject rowsObject =
+						new TestObject("dynamicServiceMappingRows")
+			
+					rowsObject.addProperty(
+						"xpath",
+						ConditionType.EQUALS,
+						rowXpath
+					)
+			
+					List<WebElement> rows =
+						WebUiCommonHelper.findWebElements(
+							rowsObject,
+							15
+						)
+			
+					if (!rows || rows.isEmpty()) {
+			
+						failStop(
+							"No Service Codes Mapping rows were found."
+						)
+					}
+			
+					// Entity Map -> List of Service Descriptions
+					Map<String, List<String>> mappingData = [:]
+			
+					rows.each { WebElement row ->
+			
+						List<WebElement> cells =
+							row.findElements(By.tagName("td"))
+			
+						// Need at least Service Description + Entity Map
+						if (cells.size() >= 7) {
+			
+							String serviceDescription =
+								cells[1].getText().trim()
+			
+							String entityMap =
+								cells[5].getText().trim()
+			
+							if (entityMap && serviceDescription) {
+			
+								String key =
+									entityMap.toLowerCase()
+			
+								if (!mappingData.containsKey(key)) {
+			
+									mappingData[key] = []
+								}
+			
+								mappingData[key].add(
+									serviceDescription
+								)
+			
+								KeywordUtil.logInfo(
+									"Read mapping: " +
+									"Entity Map='${entityMap}' -> " +
+									"Service Description='${serviceDescription}'"
+								)
+							}
+						}
+					}
+			
+					if (mappingData.isEmpty()) {
+			
+						failStop(
+							"No valid Entity Map mappings were read from the table."
+						)
+					}
+			
+					KeywordUtil.logInfo(
+						"Stored Entity Map mappings: ${mappingData}"
+					)
+			
+					WebUI.takeScreenshot()
+			
+					return mappingData
+			
+				} catch (Exception e) {
+			
+					WebUI.takeScreenshot()
+			
+					failStop(
+						"Failed to read and store Entity Map mappings: " +
+						"${e.message}"
+					)
+				}
+			}
+			
+			@Keyword
+			def verifyStoredEntityMapMapping(
+					Map<String, List<String>> storedMappings,
+					String entityMapValue) {
+			
+				try {
+			
+					String expectedEntityMap =
+						(entityMapValue ?: '').trim()
+			
+					if (!expectedEntityMap) {
+						failStop("Entity Map value cannot be blank")
+					}
+			
+					String key =
+						expectedEntityMap.toLowerCase()
+			
+					if (!storedMappings.containsKey(key)) {
+			
+						failStop(
+							"Entity Map '${expectedEntityMap}' " +
+							"was not found in stored mappings."
+						)
+					}
+			
+					List<String> mappedDescriptions =
+						storedMappings[key]
+			
+					if (!mappedDescriptions ||
+						mappedDescriptions.isEmpty()) {
+			
+						failStop(
+							"Entity Map '${expectedEntityMap}' " +
+							"has no stored Service Description mappings."
+						)
+					}
+			
+					KeywordUtil.logInfo(
+						"Entity Map '${expectedEntityMap}' " +
+						"is mapped ${mappedDescriptions.size()} time(s): " +
+						"${mappedDescriptions}"
+					)
+			
+					return mappedDescriptions
+			
+				} catch (Exception e) {
+			
+					WebUI.takeScreenshot()
+			
+					failStop(
+						"Failed to validate stored Entity Map " +
+						"'${entityMapValue}': ${e.message}"
+					)
+				}
+			}
+			
+			
+			
+			
+			
+			private static boolean entityOptionMatches(String expected, String value, String text) {
+				String exp = (expected ?: '').trim()
+				if (!exp) {
+					return false
+				}
+				if (exp.equalsIgnoreCase(value) || exp.equalsIgnoreCase(text)) {
+					return true
+				}
+				return text.toUpperCase().contains(exp.toUpperCase())
+			}
+
+			private static boolean selectNativeOption(Select sel, String expectedEntity) {
+				try {
+					sel.selectByVisibleText(expectedEntity)
+					return true
+				} catch (Exception ignored) {
+					// fall through
+				}
+				try {
+					sel.selectByValue(expectedEntity)
+					return true
+				} catch (Exception ignored) {
+					// fall through
+				}
+				for (WebElement opt : sel.getOptions()) {
+					String text = (opt.getText() ?: '').trim()
+					String val = (opt.getAttribute('value') ?: '').trim()
+					if (entityOptionMatches(expectedEntity, val, text)) {
+						if (val) {
+							sel.selectByValue(val)
+						} else {
+							sel.selectByVisibleText(text)
+						}
+						return true
+					}
+				}
+				return false
+			}
+				
+				
 		
 		@Keyword
 		def selectEntitySettingsTab(String tabName) {
@@ -1965,6 +2628,85 @@ class BusinessActions {
 	}
 	
 	@Keyword
+	def verifyEntitySettingsSection(String sectionText) {
+	
+		try {
+	
+			String expectedText = (sectionText ?: '').trim()
+	
+			if (!expectedText) {
+				failStop(
+					"verifyEntitySettingsSection: Section text cannot be blank"
+				)
+			}
+	
+			String expectedLower =
+				expectedText.toLowerCase()
+	
+			String xpath =
+				"//h3[contains(" +
+				"translate(normalize-space(.)," +
+				"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+				"'abcdefghijklmnopqrstuvwxyz')," +
+				"'${expectedLower}')]"
+	
+			TestObject sectionHeading =
+				new TestObject(
+					"dynamicEntitySettingsSection_${expectedText}"
+				)
+	
+			sectionHeading.addProperty(
+				"xpath",
+				ConditionType.EQUALS,
+				xpath
+			)
+	
+			WebUI.waitForElementVisible(
+				sectionHeading,
+				15,
+				FailureHandling.STOP_ON_FAILURE
+			)
+	
+			WebUI.scrollToElement(
+				sectionHeading,
+				5,
+				FailureHandling.OPTIONAL
+			)
+	
+			String actualText =
+				WebUI.getText(
+					sectionHeading,
+					FailureHandling.STOP_ON_FAILURE
+				).trim()
+	
+			if (!actualText.toLowerCase().contains(expectedLower)) {
+	
+				failStop(
+					"Section validation failed. " +
+					"Expected to contain='${expectedText}', " +
+					"Actual='${actualText}'"
+				)
+			}
+	
+			KeywordUtil.logInfo(
+				"Successfully validated Entity Settings section: " +
+				"'${actualText}'"
+			)
+	
+			WebUI.takeScreenshot()
+	
+		} catch (Exception e) {
+	
+			WebUI.takeScreenshot()
+	
+			failStop(
+				"Failed to validate Entity Settings section " +
+				"'${sectionText}': ${e.message}"
+			)
+		}
+	}
+	
+	@Keyword
 	def verifyEcsEc3ServiceCodeMappingSectionPresent() {
 		try {
 	 
@@ -2537,6 +3279,642 @@ class BusinessActions {
 
 	private static TestObject to65(String name) {
 		return findTestObject(OR_PREFIX_65 + name)
+	}
+
+	/**
+	 * Estimate RateSheet column header filter {@code select} (V2). Prefers stable {@code aria-label}; falls back to header text in {@code th}.
+	 */
+	private static TestObject resolveEstimateRatesheetColumnHeaderFilterSelectV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText) {
+		String section = (sectionAriaLabelledBy ?: 'estimate-ratesheet-heading').trim()
+		String header = (columnHeaderText ?: '').trim()
+		if (!header) {
+			failStop('resolveEstimateRatesheetColumnHeaderFilterSelectV2: columnHeaderText is blank')
+		}
+		if (header.equalsIgnoreCase('Shipment Business Type')) {
+			TestObject primary = to65('sel_estimateRatesheetShipmentBusinessTypeHeader')
+			if (WebUI.waitForElementPresent(primary, 5, FailureHandling.OPTIONAL)) {
+				return primary
+			}
+		}
+		String headerLower = header.toLowerCase()
+		String ariaLabel = null
+		if (header.equalsIgnoreCase('Shipment Type')) {
+			ariaLabel = 'entity-settings-col-service-shipment-type'
+		} else if (header.equalsIgnoreCase('Shipment Business Type')) {
+			ariaLabel = 'entity-settings-col-service-shipment-business-type'
+		}
+		String xpath
+		if (ariaLabel) {
+			xpath =
+				"//section[@aria-labelledby='${section}']//select[@aria-label='${ariaLabel}']" +
+				" | //section[@aria-labelledby='${section}']//select[contains(@aria-label,'shipment-business')]" +
+				" | //section[@aria-labelledby='${section}']//select[contains(@class,'ratesheetHeaderShipmentBusinessType')]" +
+				" | //section[@aria-labelledby='${section}']//th[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'shipment business type')]//select" +
+				" | //select[@aria-label='${ariaLabel}']"
+		} else {
+			xpath =
+				"//section[@aria-labelledby='${section}']" +
+				"//th[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'${headerLower}')]" +
+				"//select[1]"
+		}
+		TestObject fallback = new TestObject("estimate_ratesheet_header_filter_${section}_${header}")
+		fallback.addProperty('xpath', ConditionType.EQUALS, xpath)
+		return fallback
+	}
+
+	private static String normalizeEmEstimateRatesheetHeaderCellText(String raw) {
+		String t = (raw ?: '').replaceAll('\\s+', ' ').trim().toLowerCase()
+		return t.replaceAll('(?i)\\b(all|b2b|b2c|r2r|ddp|ddu|ddo)\\b', '').replaceAll('\\s+', ' ').trim()
+	}
+
+	private static int getEmEstimateRatesheetColumnIndexByHeader(String headerText) {
+		String want = normalizeEmEstimateRatesheetHeaderCellText(headerText)
+		if (!want) {
+			return -1
+		}
+		if (want.contains('shipment business') || want == 'business type') {
+			return 4
+		}
+		def driver = DriverFactory.getWebDriver()
+		String thXp = "${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//thead//th"
+		List<WebElement> ths = driver.findElements(By.xpath(thXp))
+		for (int i = 0; i < ths.size(); i++) {
+			String cell = normalizeEmEstimateRatesheetHeaderCellText(ths.get(i).getText())
+			if (!cell) {
+				continue
+			}
+			if (cell.contains(want) || want.contains(cell)) {
+				return i + 1
+			}
+		}
+		return -1
+	}
+
+	private static String readRatesheetGridCellDisplayedValue(WebElement cell) {
+		if (cell == null) {
+			return ''
+		}
+		List<WebElement> selects = cell.findElements(By.tagName('select'))
+		if (!selects.isEmpty()) {
+			try {
+				String selected = (new Select(selects.get(0)).getFirstSelectedOption()?.getText() ?: '').trim()
+				if (selected) {
+					return selected
+				}
+			} catch (Exception ignored) {
+				// fall through to text
+			}
+		}
+		List<WebElement> inputs = cell.findElements(By.xpath(
+			".//input[(not(@type) or @type='' or @type='text' or @type='search') and not(@type='hidden')]"
+		))
+		if (!inputs.isEmpty()) {
+			String v = (inputs.get(0).getAttribute('value') ?: inputs.get(0).getText() ?: '').trim()
+			if (v) {
+				return v
+			}
+		}
+		List<WebElement> triggers = cell.findElements(By.xpath(
+			".//button[@aria-haspopup='listbox' or contains(@class,'Trigger') or @role='combobox']"
+		))
+		if (!triggers.isEmpty()) {
+			String btnText = (triggers.get(0).getText() ?: '').replaceAll('\\s+', ' ').trim()
+			if (btnText) {
+				return btnText
+			}
+		}
+		return (cell.getText() ?: '').replaceAll('\\s+', ' ').trim()
+	}
+
+	private static String emEstimateRatesheetEditingRowXPath() {
+		return "${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//tbody/tr[" +
+			".//select or .//input[(not(@type) or @type='text' or @type='search')]" +
+			" or .//button[contains(translate(@aria-label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'save')]" +
+			" or .//button[normalize-space()='Save' or normalize-space()='Cancel']" +
+			"][1]"
+	}
+
+	/** Reads Shipment Business Type (or other column) from grid cell — native {@code select}, input, or plain text. */
+	private static String readEmEstimateRatesheetColumnDisplayedValueV2(String columnHeaderText) {
+		int col = getEmEstimateRatesheetColumnIndexByHeader(columnHeaderText)
+		if (col < 1) {
+			col = 4
+		}
+		def driver = DriverFactory.getWebDriver()
+		List<String> rowXpaths = [
+			emEstimateRatesheetEditingRowXPath(),
+			"${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//tbody/tr[.//select][1]",
+			"${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//tbody/tr[not(.//td[contains(@class,'tdEmpty')])][1]",
+			"${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//tbody/tr[1]"
+		]
+		for (String rowXp : rowXpaths) {
+			List<WebElement> rows = driver.findElements(By.xpath(rowXp))
+			if (rows.isEmpty()) {
+				continue
+			}
+			List<WebElement> cells = rows.get(0).findElements(By.xpath("./td[${col}]"))
+			if (cells.isEmpty()) {
+				continue
+			}
+			String value = readRatesheetGridCellDisplayedValue(cells.get(0))
+			if (value) {
+				return value
+			}
+		}
+		return ''
+	}
+
+	private static boolean displayValueMatches(String actual, String expected) {
+		if (selectedOptionTextMatches(actual, expected)) {
+			return true
+		}
+		String a = (actual ?: '').trim().toLowerCase()
+		String e = (expected ?: '').trim().toLowerCase()
+		return a && e && a.contains(e)
+	}
+
+	private static TestObject findVisibleEstimateRatesheetColumnSelectV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText) {
+		List<TestObject> candidates = []
+		candidates.add(resolveEstimateRatesheetColumnHeaderFilterSelectV2(sectionAriaLabelledBy, columnHeaderText))
+		candidates.add(resolveEstimateRatesheetEditingRowColumnSelectV2(sectionAriaLabelledBy, columnHeaderText))
+		String section = (sectionAriaLabelledBy ?: 'estimate-ratesheet-heading').trim()
+		if ((columnHeaderText ?: '').trim().equalsIgnoreCase('Shipment Business Type')) {
+			TestObject tbodySelect = new TestObject('estimate_ratesheet_tbody_sbt_select')
+			tbodySelect.addProperty('xpath', ConditionType.EQUALS,
+				"//section[@aria-labelledby='${section}']//tbody//select[" +
+				"contains(@aria-label,'shipment-business') or contains(@aria-label,'shipment-business-type') or " +
+				"contains(@class,'ShipmentBusinessType')][1]")
+			candidates.add(tbodySelect)
+			TestObject editCardSelect = new TestObject('estimate_ratesheet_edit_card_sbt_select')
+			editCardSelect.addProperty('xpath', ConditionType.EQUALS,
+				"//section[@aria-labelledby='${section}']//*[contains(@class,'newRecordCard') or contains(@class,'entitySettingsDialogCard')]" +
+				"//select[contains(@aria-label,'shipment-business') or contains(@aria-label,'business-type')][1]")
+			candidates.add(editCardSelect)
+		}
+		for (TestObject candidate : candidates) {
+			if (WebUI.waitForElementPresent(candidate, 3, FailureHandling.OPTIONAL)) {
+				return candidate
+			}
+		}
+		return null
+	}
+
+	/** Editing row {@code select} for a grid column (header filter is not shown while a row is in edit mode). */
+	private static TestObject resolveEstimateRatesheetEditingRowColumnSelectV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText) {
+		String section = (sectionAriaLabelledBy ?: 'estimate-ratesheet-heading').trim()
+		String header = (columnHeaderText ?: '').trim()
+		if (header.equalsIgnoreCase('Shipment Business Type')) {
+			TestObject orEdit = to65('sel_estimateRatesheetShipmentBusinessTypeEditRow')
+			if (WebUI.waitForElementPresent(orEdit, 3, FailureHandling.OPTIONAL)) {
+				return orEdit
+			}
+		}
+		int colIdx = getEmEstimateRatesheetColumnIndexByHeader(header)
+		String rowBase = emEstimateRatesheetEditingRowXPath()
+		String xpath
+		if (header.equalsIgnoreCase('Shipment Business Type')) {
+			xpath =
+				"${rowBase}//select[contains(@aria-label,'shipment-business')]" +
+				" | ${rowBase}//select[@aria-label='entity-settings-col-service-shipment-business-type-edit']" +
+				" | ${rowBase}//select[@aria-label='entity-settings-col-service-shipment-business-type']" +
+				" | ${rowBase}/td[${colIdx > 0 ? colIdx : 4}]//select[1]" +
+				" | ${rowBase}/td[${colIdx > 0 ? colIdx : 4}]"
+		} else if (header.equalsIgnoreCase('Shipment Type')) {
+			xpath =
+				"${rowBase}//select[contains(@aria-label,'shipment-type') and not(contains(@aria-label,'business'))]" +
+				" | ${rowBase}/td[${colIdx > 0 ? colIdx : 3}]//select[1]"
+		} else {
+			xpath = colIdx > 0 ? "${rowBase}/td[${colIdx}]//select[1]" : "${rowBase}//select[1]"
+		}
+		TestObject editSelect = new TestObject("estimate_ratesheet_edit_row_select_${section}_${header}")
+		editSelect.addProperty('xpath', ConditionType.EQUALS, xpath)
+		return editSelect
+	}
+
+	/** Header filter {@code select} when grid is read-only; editing-row {@code select} when a row is in edit mode. */
+	private static TestObject resolveEstimateRatesheetColumnDropdownSelectV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText) {
+		TestObject headerSelect =
+			resolveEstimateRatesheetColumnHeaderFilterSelectV2(sectionAriaLabelledBy, columnHeaderText)
+		if (WebUI.waitForElementPresent(headerSelect, 3, FailureHandling.OPTIONAL)) {
+			return headerSelect
+		}
+		return resolveEstimateRatesheetEditingRowColumnSelectV2(sectionAriaLabelledBy, columnHeaderText)
+	}
+
+	private static String readNativeSelectSelectedOptionText(TestObject selectTo, int timeout = DEFAULT_TIMEOUT) {
+		WebElement el = WebUiCommonHelper.findWebElement(selectTo, timeout)
+		return (new Select(el).getFirstSelectedOption()?.getText() ?: '').trim()
+	}
+
+	private static boolean selectedOptionTextMatches(String actual, String expected) {
+		String a = (actual ?: '').trim()
+		String e = (expected ?: '').trim()
+		return a && e && a.equalsIgnoreCase(e)
+	}
+
+	private void assertEstimateRatesheetColumnDisplayedValueV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText,
+			String expectedSelectedOptionText) {
+		String expected = (expectedSelectedOptionText ?: '').trim()
+		String header = (columnHeaderText ?: '').trim()
+		String actual = ''
+		TestObject selectTo =
+			findVisibleEstimateRatesheetColumnSelectV2(sectionAriaLabelledBy, header)
+		if (selectTo != null) {
+			WebUI.scrollToElement(selectTo, DEFAULT_TIMEOUT)
+			waitVisible(selectTo)
+			WebUI.verifyOptionPresentByLabel(selectTo, expected, false, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)
+			actual = readNativeSelectSelectedOptionText(selectTo)
+		}
+		String cellValue = readEmEstimateRatesheetColumnDisplayedValueV2(header)
+		if (!displayValueMatches(actual, expected) && displayValueMatches(cellValue, expected)) {
+			actual = cellValue
+		}
+		if (!displayValueMatches(actual, expected)) {
+			failStop(
+				"Column '${header}' value mismatch. Expected '${expected}', " +
+				"dropdown='${actual}', cell='${cellValue}'."
+			)
+		}
+		WebUI.takeScreenshot()
+		KeywordUtil.logInfo(
+			"PASS: Estimate RateSheet '${header}' shows expected value '${expected}' (read '${actual}')."
+		)
+	}
+
+	/** Header-column filter {@code select} for Shipment Business Type (not tbody row cells). */
+	private static TestObject resolveEstimateRatesheetShipmentBusinessTypeHeaderSelectV2(
+			String sectionAriaLabelledBy = 'estimate-ratesheet-heading') {
+		String section = (sectionAriaLabelledBy ?: 'estimate-ratesheet-heading').trim()
+		TestObject orHeader = to65('sel_estimateRatesheetShipmentBusinessTypeHeader')
+		if (WebUI.waitForElementPresent(orHeader, 5, FailureHandling.OPTIONAL)) {
+			return orHeader
+		}
+		List<String> xpaths = [
+			"//section[@aria-labelledby='${section}']//select[contains(@class,'ratesheetHeaderShipmentBusinessType')]",
+			"//section[@aria-labelledby='${section}']//thead//select[contains(@aria-label,'shipment-business')]",
+			"//section[@aria-labelledby='${section}']//th[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'shipment business type')]//select",
+			"//section[@aria-labelledby='${section}']//select[@aria-label='entity-settings-col-service-shipment-business-type']"
+		]
+		for (String xp : xpaths) {
+			TestObject candidate = new TestObject('estimate_ratesheet_sbt_header_select_candidate')
+			candidate.addProperty('xpath', ConditionType.EQUALS, xp)
+			if (WebUI.waitForElementPresent(candidate, 3, FailureHandling.OPTIONAL)) {
+				return candidate
+			}
+		}
+		List<String> moreXpaths = [
+			"//*[@id='${section}']/ancestor::section[1]//select[contains(@class,'ShipmentBusiness')]",
+			"//*[@id='${section}']/following::table[1]//thead//select[contains(@class,'ShipmentBusiness')]",
+			"//section[contains(@aria-labelledby,'estimate-ratesheet')]//thead//select[contains(@class,'ShipmentBusiness')]"
+		]
+		for (String xp : moreXpaths) {
+			TestObject candidate = new TestObject('estimate_ratesheet_sbt_header_select_candidate_alt')
+			candidate.addProperty('xpath', ConditionType.EQUALS, xp)
+			if (WebUI.waitForElementPresent(candidate, 3, FailureHandling.OPTIONAL)) {
+				return candidate
+			}
+		}
+		return null
+	}
+
+	private static List<String> readSelectOptionLabelsFromWebElement(WebElement selectElement) {
+		if (selectElement == null) {
+			return Collections.emptyList()
+		}
+		try {
+			return new Select(selectElement).getOptions().collect { String label ->
+				(label ?: '').trim()
+			}.findAll { String label -> label }
+		} catch (Exception ignored) {
+			return Collections.emptyList()
+		}
+	}
+
+	/**
+	 * Finds a visible {@code select} under Estimate RateSheet whose options include all {@code requiredOptionLabels}
+	 * (header filter in view mode, or row {@code select} while editing).
+	 */
+	private static TestObject discoverEstimateRatesheetSelectContainingOptionsV2(
+			String sectionAriaLabelledBy,
+			List<String> requiredOptionLabels) {
+		List<String> required = (requiredOptionLabels ?: []).collect { (it ?: '').trim() }.findAll { it }
+		if (required.isEmpty()) {
+			return null
+		}
+		String section = (sectionAriaLabelledBy ?: 'estimate-ratesheet-heading').trim()
+		def driver = DriverFactory.getWebDriver()
+		List<String> selectListXpaths = [
+			"//section[@aria-labelledby='${section}']//select",
+			"//*[@id='${section}']/ancestor::section[1]//select",
+			"${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//select",
+			"//section[contains(@aria-labelledby,'estimate-ratesheet')]//select",
+			"//div[contains(@class,'EntitySettingsScreen') and contains(@class,'ratesheet')]//select"
+		]
+		for (String listXp : selectListXpaths) {
+			List<WebElement> selects = driver.findElements(By.xpath(listXp))
+			for (int i = 0; i < selects.size(); i++) {
+				WebElement sel = selects.get(i)
+				if (!sel.isDisplayed()) {
+					continue
+				}
+				List<String> labels = readSelectOptionLabelsFromWebElement(sel)
+				if (labels.isEmpty()) {
+					continue
+				}
+				boolean allPresent = required.every { String want ->
+					optionLabelPresentInList(labels, want)
+				}
+				if (!allPresent) {
+					continue
+				}
+				TestObject match = new TestObject("estimate_ratesheet_select_options_match_${i}")
+				match.addProperty('xpath', ConditionType.EQUALS, "(${listXp})[${i + 1}]")
+				return match
+			}
+		}
+		return null
+	}
+
+	private static TestObject resolveEstimateRatesheetShipmentBusinessTypeSelectForOptionsV2(
+			String sectionAriaLabelledBy,
+			List<String> requiredOptionLabels) {
+		String section = (sectionAriaLabelledBy ?: 'estimate-ratesheet-heading').trim()
+		TestObject sectionShell = new TestObject('estimate_ratesheet_section_scroll')
+		sectionShell.addProperty('xpath', ConditionType.EQUALS,
+			"//section[@aria-labelledby='${section}'] | //*[@id='${section}']")
+		if (WebUI.waitForElementPresent(sectionShell, 5, FailureHandling.OPTIONAL)) {
+			WebUI.scrollToElement(sectionShell, DEFAULT_TIMEOUT)
+		}
+		TestObject headerSelect = resolveEstimateRatesheetShipmentBusinessTypeHeaderSelectV2(section)
+		if (headerSelect != null && WebUI.waitForElementPresent(headerSelect, 3, FailureHandling.OPTIONAL)) {
+			return headerSelect
+		}
+		TestObject discovered =
+			discoverEstimateRatesheetSelectContainingOptionsV2(section, requiredOptionLabels)
+		if (discovered != null) {
+			return discovered
+		}
+		return resolveEstimateRatesheetColumnHeaderFilterSelectV2(section, 'Shipment Business Type')
+	}
+
+	private static List<String> readNativeSelectOptionLabels(TestObject selectTo, int timeout = DEFAULT_TIMEOUT) {
+		WebElement el = WebUiCommonHelper.findWebElement(selectTo, timeout)
+		return new Select(el).getOptions().collect { String label ->
+			(label ?: '').trim()
+		}.findAll { String label -> label }
+	}
+
+	private static boolean optionLabelPresentInList(List<String> availableLabels, String expectedLabel) {
+		String expected = (expectedLabel ?: '').trim()
+		if (!expected || !availableLabels) {
+			return false
+		}
+		return availableLabels.any { String option ->
+			selectedOptionTextMatches(option, expected)
+		}
+	}
+
+	/**
+	 * CCIPH-564: Verifies option labels exist in the Estimate RateSheet {@code Shipment Business Type} header filter dropdown.
+	 * Default expected labels: {@code All}, {@code B2B}, {@code B2C}, {@code D2C} (case-insensitive match).
+	 */
+	@Keyword
+	def verifyEstimateRatesheetShipmentBusinessTypeDropdownOptionsPresentV2(List<String> expectedOptionLabels = null) {
+		List<String> defaults = ['All', 'B2B', 'B2C']
+		List<String> expected = (expectedOptionLabels == null || expectedOptionLabels.isEmpty()) ?
+			defaults : expectedOptionLabels
+		verifyEstimateRatesheetColumnHeaderDropdownOptionsPresentV2(
+			'estimate-ratesheet-heading',
+			'Shipment Business Type',
+			expected
+		)
+	}
+	
+	/**
+	 * CCIPH-564: Verifies Shipment Business Type {@code select} options on Estimate RateSheet (edit row or header filter).
+	 * Label match is case-insensitive ({@code All} vs {@code ALL}).
+	 */
+	@Keyword
+def verifyShipmentBusinessTypeDropdownValues(List<String> expectedValues) {
+
+    TestObject dropdown = findTestObject(
+        'Object Repository/Entity Management-AR/CCIPH-65/dropdown_shipmentBusinessType'
+    )
+
+    WebUI.waitForElementVisible(dropdown, 10)
+    WebUI.waitForElementClickable(dropdown, 10)
+
+    WebUI.click(dropdown)
+
+    List<String> actualValues = _readNativeSelectOptionLabels(dropdown)
+
+    println("Actual dropdown values: ${actualValues}")
+
+    List<String> missingValues = expectedValues.findAll {
+        String expected -> !actualValues.contains(expected)
+    }
+
+    expectedValues.each { String expected ->
+        if (actualValues.contains(expected)) {
+            println("PASS: '${expected}' is present.")
+        } else {
+            println("FAIL: '${expected}' is missing.")
+        }
+    }
+
+    if (!missingValues.isEmpty()) {
+        KeywordUtil.markFailed(
+            "Missing dropdown values: ${missingValues}"
+        )
+    }
+
+    println("Shipment Business Type dropdown validation completed.")
+}
+	
+	private List<String> _readNativeSelectOptionLabels(TestObject dropdown) {
+		
+			WebElement selectElement = WebUI.findWebElement(dropdown, 10)
+		
+			List<WebElement> optionElements =
+				selectElement.findElements(By.tagName('option'))
+		
+			List<String> optionLabels = optionElements.collect {
+				WebElement option -> option.getText().trim()
+			}
+		
+			return optionLabels
+		}
+
+	/**
+	 * Verifies each expected label is present in a RateSheet column header filter {@code select}.
+	 */
+	@Keyword
+	def verifyEstimateRatesheetColumnHeaderDropdownOptionsPresentV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText,
+			List<String> expectedOptionLabels) {
+		try {
+			String header = (columnHeaderText ?: '').trim()
+			if (!header) {
+				failStop('verifyEstimateRatesheetColumnHeaderDropdownOptionsPresentV2: columnHeaderText is blank')
+			}
+			if (expectedOptionLabels == null || expectedOptionLabels.isEmpty()) {
+				failStop('verifyEstimateRatesheetColumnHeaderDropdownOptionsPresentV2: expectedOptionLabels is empty')
+			}
+			TestObject selectTo
+			if (header.equalsIgnoreCase('Shipment Business Type')) {
+				selectTo = resolveEstimateRatesheetShipmentBusinessTypeSelectForOptionsV2(
+					sectionAriaLabelledBy, expectedOptionLabels)
+			} else {
+				selectTo = resolveEstimateRatesheetColumnHeaderFilterSelectV2(sectionAriaLabelledBy, header)
+			}
+			if (selectTo == null ||
+				!WebUI.waitForElementPresent(selectTo, DEFAULT_TIMEOUT, FailureHandling.OPTIONAL)) {
+				failStop(
+					"Could not find '${header}' dropdown on Estimate RateSheet " +
+					"(header filter may be hidden in edit mode; options scan also failed)."
+				)
+			}
+			WebUI.scrollToElement(selectTo, DEFAULT_TIMEOUT)
+			waitVisible(selectTo)
+			List<String> available = readNativeSelectOptionLabels(selectTo)
+			if (available.isEmpty()) {
+				failStop("No options read from '${header}' header dropdown.")
+			}
+			List<String> missing = []
+			expectedOptionLabels.each { String label ->
+				String want = (label ?: '').trim()
+				if (!want) {
+					return
+				}
+				if (!optionLabelPresentInList(available, want)) {
+					missing.add(want)
+				}
+				WebUI.verifyOptionPresentByLabel(selectTo, want, false, DEFAULT_TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+			}
+			if (!missing.isEmpty()) {
+				failStop(
+					"Missing option(s) in '${header}' dropdown: ${missing}. Available: ${available}"
+				)
+			}
+			WebUI.takeScreenshot()
+			KeywordUtil.logInfo(
+				"PASS: '${header}' header dropdown contains options ${expectedOptionLabels}. All read: ${available}"
+			)
+		} catch (Exception e) {
+			failStop(
+				"verifyEstimateRatesheetColumnHeaderDropdownOptionsPresentV2('${sectionAriaLabelledBy}', " +
+				"'${columnHeaderText}', ${expectedOptionLabels}) failed: ${e.message}"
+			)
+		}
+	}
+
+	/**
+	 * CCIPH-564: Validates the selected option text on the Shipment Business Type header filter dropdown
+	 * (Estimate RateSheet Settings). Comparison is case-insensitive ({@code All} vs {@code ALL}).
+	 */
+	@Keyword
+	def verifyEstimateRatesheetShipmentBusinessTypeHeaderDropdownTextV2(String expectedSelectedOptionText) {
+		verifyEstimateRatesheetColumnHeaderDropdownSelectedTextV2(
+			'estimate-ratesheet-heading',
+			'Shipment Business Type',
+			expectedSelectedOptionText
+		)
+	}
+
+	/**
+	 * CCIPH-564: Shipment Business Type dropdown on the Estimate RateSheet row in edit mode.
+	 */
+	@Keyword
+	def verifyEstimateRatesheetEditingRowShipmentBusinessTypeDropdownTextV2(String expectedSelectedOptionText) {
+		verifyEstimateRatesheetEditingRowColumnDropdownSelectedTextV2(
+			'estimate-ratesheet-heading',
+			'Shipment Business Type',
+			expectedSelectedOptionText
+		)
+	}
+
+	/**
+	 * Validates a column dropdown on the Estimate RateSheet editing row (after Edit / Save row is open).
+	 */
+	@Keyword
+	def verifyEstimateRatesheetEditingRowColumnDropdownSelectedTextV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText,
+			String expectedSelectedOptionText) {
+		try {
+			String expected = (expectedSelectedOptionText ?: '').trim()
+			String header = (columnHeaderText ?: '').trim()
+			if (!expected || !header) {
+				failStop('verifyEstimateRatesheetEditingRowColumnDropdownSelectedTextV2: arguments are required')
+			}
+			assertEstimateRatesheetColumnDisplayedValueV2(sectionAriaLabelledBy, header, expected)
+		} catch (Exception e) {
+			failStop(
+				"verifyEstimateRatesheetEditingRowColumnDropdownSelectedTextV2 failed: ${e.message}"
+			)
+		}
+	}
+
+	/**
+	 * Validates a RateSheet column dropdown by visible option text (header filter, or editing-row select when a row is open for edit).
+	 */
+	@Keyword
+	def verifyEstimateRatesheetColumnHeaderDropdownSelectedTextV2(
+			String sectionAriaLabelledBy,
+			String columnHeaderText,
+			String expectedSelectedOptionText) {
+		try {
+			String expected = (expectedSelectedOptionText ?: '').trim()
+			String header = (columnHeaderText ?: '').trim()
+			if (!expected) {
+				failStop('verifyEstimateRatesheetColumnHeaderDropdownSelectedTextV2: expectedSelectedOptionText is blank')
+			}
+			if (!header) {
+				failStop('verifyEstimateRatesheetColumnHeaderDropdownSelectedTextV2: columnHeaderText is blank')
+			}
+			assertEstimateRatesheetColumnDisplayedValueV2(sectionAriaLabelledBy, header, expected)
+		} catch (Exception e) {
+			failStop(
+				"verifyEstimateRatesheetColumnHeaderDropdownSelectedTextV2('${sectionAriaLabelledBy}', " +
+				"'${columnHeaderText}', '${expectedSelectedOptionText}') failed: ${e.message}"
+			)
+		}
+	}
+
+	private static TestObject em65EstimateRatesheetEditingRowObject() {
+		TestObject row = new TestObject('em65_estimate_ratesheet_editing_row')
+		row.addProperty('xpath', ConditionType.EQUALS, emEstimateRatesheetEditingRowXPath())
+		return row
+	}
+
+	@Keyword
+	def clickEmEstimateRatesheetEditFirstRow() {
+		try {
+			TestObject editBtn = to65('btn_estimateRatesheetEditFirst')
+			if (!WebUI.waitForElementPresent(editBtn, 8, FailureHandling.OPTIONAL)) {
+				editBtn = new TestObject('em65_estimate_ratesheet_edit_first_fallback')
+				editBtn.addProperty('xpath', ConditionType.EQUALS,
+					"${EM_ESTIMATE_RATESHEET_TABLE_XPATH}//tbody/tr[1]//*[self::button or self::a]" +
+					"[contains(normalize-space(.),'Edit') or contains(@aria-label,'Edit') or contains(@title,'Edit')][1]")
+			}
+			click(editBtn)
+			WebUI.delay(2)
+			waitVisible(em65EstimateRatesheetEditingRowObject())
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("clickEmEstimateRatesheetEditFirstRow failed: ${e.message}")
+		}
 	}
 
 	private static int getEmServiceChargeBillableColumnIndex() {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Jira: CCIPH-611 | Story: CCIPH-104 | Click Account Number navigates to AP Account Detail</description>
+   <name>TC_AP_001</name>
+   <tag>CCIPH-104,CCIPH-611,APManagement</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-611</comment>
+   <testCaseGuid>ap-cciph104-tc-ap-001-611</testCaseGuid>
+</TestCaseEntity>

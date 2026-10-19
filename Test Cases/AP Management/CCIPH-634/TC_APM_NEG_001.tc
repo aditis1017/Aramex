@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Mandatory validation when Save without required fields (CCIPH-634 / TC_APM_NEG_001 / AC1)</description>
+   <name>TC_APM_NEG_001</name>
+   <tag>CCIPH-634,CCIPH-641,APManagement,e2e-pipeline</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-641</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph634-neg-001-4a1b-9c0d-8e7f-000000000005</testCaseGuid>
+</TestCaseEntity>
