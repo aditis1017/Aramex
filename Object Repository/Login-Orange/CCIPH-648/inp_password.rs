@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//input[@name='password' and @type='password']</value>
+         <value>//input[@name='password' and @type='pas']</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -18,7 +18,7 @@
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:attr=[placeholder=&quot;Password&quot;i]</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>true</smartLocatorEnabled>
