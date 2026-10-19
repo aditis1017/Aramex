@@ -2,8 +2,10 @@
 name: qa-jira-defect-logger
 description: >-
   Logs Jira defects (Bug issues) from failed Katalon automated test cases. Parses
-  execution reports, checks for duplicates, creates bugs via Atlassian MCP, and
-  links them to related stories. Use when a test case fails, the user asks to log
+  execution reports, checks for duplicates, creates bugs via Atlassian MCP, links
+  them to related stories, posts log-error comments on the User Story, and
+  creates/updates a Katalon Test Suite containing
+  only failed cases for retry. Use when a test case fails, the user asks to log
   a defect, file a bug from automation, or triage Katalon report failures.
 ---
 
@@ -29,7 +31,9 @@ Execute all phases in order. Do not skip duplicate checking.
 | Related Jira story key | No | Resolved from `TestCases/` or doc-index |
 | Jira project key | No | From [doc-index.md](../qa-knowledge-retriever/doc-index.md) |
 | Create vs comment-only | No | `create` (create new bug after duplicate check) |
-| Log comment only on existing bug | No | e.g. `add log to CCIPH-643` + report path — skip create; run **Phase 4C** only |
+| Log comment only (no new bug) | No | Story key (e.g. `CCIPH-385`) + report path — skip create; run **Phase 4C** on the **story** only |
+| Also post log comment on bug | No | `no` — log error comment goes to the **story** only (not the bug) |
+| Create failed retry suite | No | `yes` — run **Phase 4D** after Jira steps |
 | Extra context from user | No | — |
 
 ---
@@ -137,7 +141,7 @@ project = <PROJECT_KEY> AND type = Bug AND text ~ "<failed keyword or feature>" 
 
 | Match confidence | Action |
 |------------------|--------|
-| ≥ 90% (same TC + same root cause, open bug) | Do **not** create duplicate; run **Phase 4C** (log error comment) on existing bug |
+| ≥ 90% (same TC + same root cause, open bug) | Do **not** create duplicate; run **Phase 4C** on the **story** (reference existing bug key in the comment) |
 | 70–89% | Present options: comment on existing or create new with link |
 | < 70% | Proceed to create new bug |
 
@@ -155,7 +159,7 @@ project = <PROJECT_KEY> AND type = Bug AND text ~ "<failed keyword or feature>" 
 
 ### Option A — Existing bug (duplicate or re-run)
 
-Do **not** create a new issue. Run **Phase 4C** on the matched bug key.
+Do **not** create a new issue. Run **Phase 4C** on the related **story** (`STORY_KEY`), citing the matched bug key in the comment.
 
 ### Option B — Create new bug
 
@@ -190,17 +194,48 @@ createIssueLink(
 
 If the failure is clearly a regression of a fixed story, use link type `Blocks` or add a comment referencing the original fix.
 
-### Phase 4C — Log error comment (mandatory)
+### Phase 4C — Log error comment on User Story (mandatory)
 
-After **every** successful bug create (Option B) **or** when updating an existing bug (Option A), post the Katalon log error as a **Jira comment** on that bug.
+After **every** successful bug create (Option B) **or** when handling an existing bug (Option A), post the Katalon log error as a **Jira comment on the related User Story** (`STORY_KEY` from Phase 2). Do **not** post this log comment on the Bug by default — the bug keeps the structured description from [defect-template.md](defect-template.md).
 
-1. Build the comment from [log-error-comment-template.md](log-error-comment-template.md) using the Phase 1 failure bundle.
-2. Call `addOrEditJiraIssueComment` with `commentBody` (markdown). Parameter name is **`commentBody`**, not `comment`.
-3. If the user only asked to add logs to an existing key (e.g. `CCIPH-643` + report path), skip Phases 3–4 create/link and run **Phase 4C** only.
+**Prerequisite:** `STORY_KEY` must be resolved before Phase 4C. If only a Bug key was given, load the bug’s issue links / parent and resolve the story, or ask the user for `STORY_KEY`.
 
-**Order when creating a new bug:** `createJiraIssue` → link to story (`createJiraIssueLink` / `executeWrite`) → **Phase 4C comment** → Phase 5 delivery.
+1. Build the comment from [log-error-comment-template.md](log-error-comment-template.md) using the Phase 1 failure bundle. Include **`BUG_KEY`** in the comment table when a bug was created or matched (duplicate).
+2. Call `addOrEditJiraIssueComment` with `issueIdOrKey: STORY_KEY` and `commentBody` (markdown). Parameter name is **`commentBody`**, not `comment`.
+3. If the user only asked to add logs (story key + report path), skip Phases 3–4 create/link and run **Phase 4C** on that story only.
+4. If the user sets `also comment on bug: yes`, post the **same** comment body on the Bug after the story comment.
 
-Do not skip Phase 4C because the description already contains a short failure summary — the comment holds the **truncated stack trace and log pointers** for developers.
+**Order when creating a new bug:** `createJiraIssue` → link to story (`createJiraIssueLink` / `executeWrite`) → **Phase 4C comment on story** → **Phase 4D** (failed retry suite) → Phase 5 delivery.
+
+Do not skip Phase 4C because the bug description already contains a short failure summary — the **story** comment holds the **truncated stack trace and log pointers** for the team tracking the feature.
+
+### Phase 4D — Create failed retry Test Suite (mandatory unless skipped)
+
+After Phase 4C (or after story log-only when the user skips bug create), build a **dedicated Katalon Test Suite** that contains **every failed test case** from the same report execution — not only the TC the user named, unless they set `create failed suite: no` or `failed suite: single-tc-only`.
+
+Follow [failed-test-suite-template.md](failed-test-suite-template.md).
+
+#### Step 4D.1 — Collect failures
+
+From the Phase 1 report (`JUnit_Report.xml`):
+
+- Source suite name: `testsuite/@name` or parent `testsuites/@name`
+- Failed IDs: all `<testcase>` with `status="FAILED"` or `<failure>`; use `@name` or `@classname` as Katalon `testCaseId`
+
+#### Step 4D.2 — Resolve links
+
+1. If `Test Suites/<SOURCE_SUITE>.ts` exists, copy per-TC `isReuseDriver` and binding flags for matched links.
+2. Confirm each `testCaseId` exists under `Test Cases/`.
+3. If zero valid failed cases remain, skip file write and note in Phase 5.
+
+#### Step 4D.3 — Write suite assets
+
+1. Name: `<SOURCE_SUITE>_FAILED_<yyyyMMdd>` (see template for collision rules).
+2. Write or update `Test Suites/<name>.ts` using the template; set `description` with report path, execution time, and bug key(s) from this run.
+3. Create `Test Suites/<name>.groovy` only if missing (standard suite listener stub — same as `Test Suites/CCI_APM_CCIPH-634_SUITE.groovy`).
+4. Append one line to the **story** Phase 4C comment (before posting, or edit comment if already sent): `Retry suite: Test Suites/<name>.ts`.
+
+**Order when duplicate → comment only:** Phase 4C → **Phase 4D** → Phase 5.
 
 ---
 
@@ -211,10 +246,10 @@ Reply to the user with:
 ```markdown
 ## Defect Logged
 
-**Action:** [Created new bug + log comment | Log comment on existing bug]
-**Log comment:** [Posted on BUG-123 | Skipped — reason]
-**Jira:** BUG-123 — https://<site>.atlassian.net/browse/BUG-123
-**Related story:** PROJ-456
+**Action:** [Created new bug + story log comment | Story log comment only (duplicate bug) | Story log comment only (no create)]
+**Log comment (story):** [Posted on PROJ-456 | Skipped — reason]
+**Bug:** BUG-123 — https://<site>.atlassian.net/browse/BUG-123 [Created | Existing duplicate | N/A]
+**Related story:** PROJ-456 — https://<site>.atlassian.net/browse/PROJ-456
 **Test case:** TC_REG_001
 **Root cause:** Login validation failed. Login fields still present.
 
@@ -225,6 +260,11 @@ Reply to the user with:
 ### Duplicate check
 - Searched: [queries used]
 - Result: [No duplicate | Linked to BUG-100]
+
+### Failed retry suite
+- **Suite:** `Test Suites/<name>.ts` [Created | Updated | Skipped — reason]
+- **Cases:** N failed TC(s) — [TC_ID list]
+- **Source run:** `Reports/.../JUnit_Report.xml`
 ```
 
 ---
@@ -236,10 +276,13 @@ Reply to the user with:
 | Atlassian MCP not authenticated | Stop; instruct user to connect MCP in Cursor Settings |
 | No failed testcase in report | Stop; tell user the report shows no failures for that TC |
 | Report path not found | List latest 3 reports under `Reports/` and ask user to pick |
-| No related story found | Ask user for Jira story key before creating bug |
+| No related story found | Ask user for Jira story key before creating bug or posting Phase 4C |
+| Story key unknown for log-only request | Resolve from bug links or ask user |
 | `Bug` issue type unavailable | Use next appropriate type from `getJiraProjectIssueTypesMetadata` |
 | Required custom fields missing | Fetch field metadata; ask user for values |
 | Sensitive data in logs | Redact before writing Jira description |
+| Failed TC path not in repo | Omit from suite; list in delivery |
+| User set `create failed suite: no` | Skip Phase 4D |
 
 ## Do not
 
@@ -247,7 +290,11 @@ Reply to the user with:
 - Paste full stack traces into the summary (use description only)
 - Include credentials, tokens, or PII from test data in Jira
 - Skip linking the bug to the related story when a story key is known
+- Post the Phase 4C log error comment on the Bug by default — target the **User Story** (`STORY_KEY`) instead
+- Skip Phase 4C on the story when `STORY_KEY` is known
 - Fabricate root cause — use only evidence from the report and logs
+- Skip Phase 4D when failures exist and the user did not opt out
+- Put passing test cases in the failed retry suite
 
 ## Quick reference — MCP tools
 
@@ -257,6 +304,6 @@ Reply to the user with:
 | Search duplicates | `searchJiraIssuesUsingJql` |
 | Get story details | `getJiraIssue` |
 | Create bug | `createJiraIssue` |
-| Log error comment (Phase 4C) | `addOrEditJiraIssueComment` |
+| Log error comment on story (Phase 4C) | `addOrEditJiraIssueComment` → `STORY_KEY` |
 | Link bug ↔ story | `createJiraIssueLink` / `executeWrite` |
 | Required fields | `getJiraIssueTypeMetaWithFields` |

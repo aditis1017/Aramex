@@ -134,9 +134,13 @@ After `createJiraIssue`, if assignee was not set:
 
 - `editJiraIssue` with `assignee: { id: ASSIGNEE_ACCOUNT_ID }`
 
-### Phase 4C — Log error comment (mandatory)
+### Phase 4C — Log error comment on User Story (mandatory)
 
-Same as parent [qa-jira-defect-logger Phase 4C](../qa-jira-defect-logger/SKILL.md#phase-4c--log-error-comment-mandatory): after create or on duplicate bug, post [log-error-comment-template.md](../qa-jira-defect-logger/log-error-comment-template.md) via `addOrEditJiraIssueComment`.
+Same as parent [qa-jira-defect-logger Phase 4C](../qa-jira-defect-logger/SKILL.md#phase-4c--log-error-comment-on-user-story-mandatory): after create or on duplicate bug, post [log-error-comment-template.md](../qa-jira-defect-logger/log-error-comment-template.md) on **`STORY_KEY`** via `addOrEditJiraIssueComment` (not on the Bug unless user sets `also comment on bug: yes`).
+
+### Phase 4D — Failed retry Test Suite
+
+Same as parent [qa-jira-defect-logger Phase 4D](../qa-jira-defect-logger/SKILL.md#phase-4d--create-failed-retry-test-suite-mandatory-unless-skipped): create or update `Test Suites/<SOURCE_SUITE>_FAILED_<yyyyMMdd>.ts` per [failed-test-suite-template.md](../qa-jira-defect-logger/failed-test-suite-template.md).
 
 ### Link to related story
 
@@ -159,6 +163,10 @@ Same as parent skill, **plus** this block:
 | Sub-task | CCIPH-#### |
 | Assignee from | Sub-task Reporter (or Assignee fallback) |
 | Assignee | <name> |
+
+### Failed retry suite
+
+Same block as parent Phase 5 (**Failed retry suite**).
 ```
 
 Footer in comments: `Logged via qa-jira-defect-logger-subtask-assignee`.

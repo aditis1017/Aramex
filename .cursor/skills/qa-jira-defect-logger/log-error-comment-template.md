@@ -1,16 +1,17 @@
-# Jira comment — automation log error
+# Jira comment — automation log error (User Story)
 
-Post this as a **separate comment** on the Bug after create (Option B) or on the existing Bug (Option A duplicate). Use `addOrEditJiraIssueComment` with `commentBody` (markdown).
+Post this as a **separate comment** on the **related User Story** (`STORY_KEY`) after create/link (Option B) or when reusing an existing bug (Option A). Use `addOrEditJiraIssueComment` with `commentBody` (markdown).
 
-Keep the issue **description** concise; put verbose log excerpts here so developers can scan failures without re-opening Katalon.
+The **Bug** issue keeps the structured description from [defect-template.md](defect-template.md). Verbose Katalon log excerpts belong on the **story** so feature owners see automation failures in context.
 
 ## When to post
 
-| Scenario | Bug key | Action |
-|----------|---------|--------|
-| New bug created | `<BUG_KEY>` from `createJiraIssue` | **Always** post log comment after story link |
-| Duplicate (≥90%) | Existing open bug | Post log comment (new run evidence); do not create duplicate |
-| User: `comment only` / `add log to CCIPH-###` | Given key | Parse report → post log comment only |
+| Scenario | Story key | Bug key in comment | Action |
+|----------|-----------|-------------------|--------|
+| New bug created | `STORY_KEY` from Phase 2 | `<BUG_KEY>` from `createJiraIssue` | **Always** post on story after bug ↔ story link |
+| Duplicate (≥90%) | `STORY_KEY` | Existing `<BUG_KEY>` | Post on story (new run evidence); do not create duplicate bug |
+| User: log only / story + report | Given `STORY_KEY` | Optional if user names a bug | Parse report → post on story only |
+| User: `also comment on bug: yes` | `STORY_KEY` first | Same body on bug second | Optional duplicate post on bug |
 
 ## Comment body template
 
@@ -19,6 +20,8 @@ Keep the issue **description** concise; put verbose log excerpts here so develop
 
 | Field | Value |
 |-------|-------|
+| **User story** | <STORY_KEY> |
+| **Bug** | <BUG_KEY or "— (log-only run)"> |
 | **Test case** | TC_### |
 | **Suite** | <suite name> |
 | **Executed** | <ISO timestamp from JUnit> |
@@ -47,7 +50,7 @@ Keep the issue **description** concise; put verbose log excerpts here so develop
 - Screenshots: <count or paths from attachments, if any>
 
 ---
-*Logged via qa-jira-defect-logger — log error comment*
+*Logged via qa-jira-defect-logger — log error comment on User Story*
 ```
 
 ## Extraction rules
@@ -63,7 +66,17 @@ Keep the issue **description** concise; put verbose log excerpts here so develop
 ```text
 addOrEditJiraIssueComment(
   cloudId: "<site>",
-  issueIdOrKey: "<BUG_KEY>",
+  issueIdOrKey: "<STORY_KEY>",
   commentBody: "<filled template>"
+)
+```
+
+Optional second call when user requested `also comment on bug: yes`:
+
+```text
+addOrEditJiraIssueComment(
+  cloudId: "<site>",
+  issueIdOrKey: "<BUG_KEY>",
+  commentBody: "<same filled template>"
 )
 ```

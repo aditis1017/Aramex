@@ -138,4 +138,4 @@ Adjust priority:
 - [ ] Related story key included (or user confirmed none)
 - [ ] Duplicate check completed
 - [ ] Report path included for reproducibility
-- [ ] **Phase 4C:** log error comment posted on bug (`log-error-comment-template.md`)
+- [ ] **Phase 4C:** log error comment posted on User Story (`log-error-comment-template.md`)
