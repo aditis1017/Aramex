@@ -45,7 +45,7 @@ jobs:
 
       - name: Validate Katalon project (Login-Orange)
         env:
-          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/Login-Orange-TEST_SUITE' }}
+          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_20261019' }}
           EXECUTION_PROFILE: ${{ github.event.inputs.execution_profile || 'default' }}
         run: |
           set -euo pipefail
@@ -94,7 +94,7 @@ jobs:
           args: >-
             -noSplash
             -retry=1
-            -testSuitePath="${{ github.event.inputs.test_suite || 'Test Suites/Login-Orange-TEST_SUITE' }}"
+            -testSuitePath="${{ github.event.inputs.test_suite || 'Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_20261019' }}"
             -executionProfile="${{ github.event.inputs.execution_profile || 'default' }}"
             -browserType="Chrome (headless)"
             -apiKey=${{ secrets.KATALON_API_KEY }}
