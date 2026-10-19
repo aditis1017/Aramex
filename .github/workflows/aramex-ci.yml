@@ -27,7 +27,7 @@ jobs:
       - name: Run Katalon Runtime Engine
         env:
           KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
-          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
+          EXTRA_SUITE: ${{ github.event.inputs.test_suite }}
         run: |
           if [ -z "$KATALON_API_KEY" ]; then
             echo "CI triggered. KATALON_API_KEY is not set, so Runtime Engine was skipped."
@@ -36,8 +36,18 @@ jobs:
           fi
           wget -q https://download.katalon.com/cloud/studio/command-line/katalon.zip
           unzip -q katalon.zip
-          ./katalon -noSplash -runMode=console \
-            -projectPath="$(pwd)/Corp.microservice.ccm-automation.prj" \
-            -testSuitePath="$TEST_SUITE" \
-            -browserType="Chrome" \
-            -apiKey="$KATALON_API_KEY"
+          suites="Test Suites/ChargeCreation-TEST_SUITE|Test Suites/B2B-Shipment-TEST_SUITE"
+          if [ -n "$EXTRA_SUITE" ] && [ "$EXTRA_SUITE" != "Test Suites/ChargeCreation-TEST_SUITE" ] && [ "$EXTRA_SUITE" != "Test Suites/B2B-Shipment-TEST_SUITE" ]; then
+            suites="$suites|$EXTRA_SUITE"
+          fi
+          failed=0
+          IFS='|' read -ra SUITE_LIST <<< "$suites"
+          for suite in "${SUITE_LIST[@]}"; do
+            echo "Running $suite"
+            ./katalon -noSplash -runMode=console \
+              -projectPath="$(pwd)/Corp.microservice.ccm-automation.prj" \
+              -testSuitePath="$suite" \
+              -browserType="Chrome" \
+              -apiKey="$KATALON_API_KEY" || failed=1
+          done
+          exit $failed
