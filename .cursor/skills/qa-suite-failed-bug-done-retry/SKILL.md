@@ -1,10 +1,10 @@
 ---
 name: qa-suite-failed-bug-done-retry
 description: >-
-  From a Katalon Test Suite report, build and optionally run a retry suite containing
-  only failed test cases that are linked to Jira Bugs whose status is Done (not New).
-  Use when the user asks to re-run failed TCs for fixed bugs, bug-done verification,
-  or invokes /qa-suite-failed-bug-done-retry with a suite path, report path, or Bug key.
+  From a Katalon Test Suite report, build and optionally trigger a retry suite on
+  GitHub Actions (orange-hrm-ci.yml) containing only failed test cases linked to Jira
+  Bugs whose status is Done (not New). Use for bug-done verification or
+  /qa-suite-failed-bug-done-retry with a suite path, report path, or Bug key.
 ---
 
 # QA Suite Failed — Bug Done Retry
@@ -33,7 +33,19 @@ If the user passes an explicit `BUG-KEY` / `CCIPH-###` Bug key, still validate e
 - `/qa-suite-failed-bug-done-retry Test Suites/CCI_APM_CCIPH-634_SUITE` + latest report
 - `Reports/20260728_152604/CCI_APM_CCIPH-385_SUITE/20260728_152604` + `CCIPH-385`
 - `Re-run failed TCs linked to CCIPH-643 where bug is Done`
-- `Create bug-done retry suite and run in CI` (after suite is written and pushed if needed)
+- `Create bug-done retry suite and run in CI` → commit, push, dispatch [orange-hrm-ci.yml](../../.github/workflows/orange-hrm-ci.yml)
+- `/qa-suite-failed-bug-done-retry Test Suites/Login-Orange-TEST_SUITE` + `run: yes`
+
+## CI workflow (execution)
+
+All **run** / **trigger** requests use **GitHub Actions** only — do **not** instruct Katalon Studio or local `katalonc` unless the user explicitly asks to run locally.
+
+| Item | Value |
+|------|--------|
+| Workflow file | [`.github/workflows/orange-hrm-ci.yml`](../../.github/workflows/orange-hrm-ci.yml) |
+| Dispatch inputs | `test_suite`, `execution_profile` (not `environment`) |
+| Default profile | `default` (OrangeHRM vars in `Profiles/default.glbl`) |
+| Typical suites | Login-Orange and `*_BUG_DONE_RETRY_*` suites listed in workflow `options` |
 
 ## Inputs
 
@@ -43,9 +55,9 @@ If the user passes an explicit `BUG-KEY` / `CCIPH-###` Bug key, still validate e
 | **Katalon report** (`Reports/...` or `JUnit_Report.xml`) | Yes* | Latest under `Reports/` matching source suite folder name |
 | Jira User Story (e.g. `CCIPH-385`) | No | From suite name / tags / script headers |
 | Explicit Bug key(s) | No | Discover via links from Jira TC |
-| `run` | No | `no` — create suite only |
-| `environment` / execution profile | No | `dev` (match [aramex-ci.yml](../../.github/workflows/aramex-ci.yml) inputs) |
-| `push` + CI | No | Only if user asks — follow [../github-aramex-push/SKILL.md](../github-aramex-push/SKILL.md) |
+| `run` | No | `no` — create suite only; `yes` / `trigger CI` → GitHub dispatch after push |
+| `execution_profile` | No | `default` (match [orange-hrm-ci.yml](../../.github/workflows/orange-hrm-ci.yml) `workflow_dispatch.inputs.execution_profile`) |
+| `push` | When `run` is yes | Commit retry suite (and workflow option update if needed), then push — follow [../github-aramex-push/SKILL.md](../github-aramex-push/SKILL.md) when the user asks to push |
 
 \*Provide **report**, **source suite**, or **both**. If only one is given, resolve the other using fallbacks in Phase 1.
 
@@ -136,27 +148,50 @@ Follow [retry-suite-template.md](retry-suite-template.md).
 
 Create `Test Suites/<name>.groovy` only if missing (stub from `Test Suites/CCI_APM_CCIPH-634_SUITE.groovy`).
 
-## Phase 5 — Trigger execution (when `run` is requested)
+## Phase 5 — Trigger execution on GitHub (when `run` is requested)
 
-Default: **create suite only** and give run instructions.
+Default: **create suite only** and document how to dispatch CI (`run: yes`).
 
-When the user sets `run: yes`, `run locally`, or `trigger CI`:
+When the user sets `run: yes`, `trigger CI`, `run in CI`, or `run on Git`:
 
-### Local (preferred on developer machine)
+### 1. Register suite in workflow (if missing)
 
-1. Open Katalon Studio → run `Test Suites/<name>`.
-2. Or CLI when `KATALON_API_KEY` and `katalonc` are available (do not paste secrets into chat):
-   - Project: `Corp.microservice.ccm-automation.prj`
-   - `-testSuitePath="Test Suites/<name>"`
-   - `-executionProfile="<profile>"`
+If `Test Suites/<name>` is not in `workflow_dispatch.inputs.test_suite.options` inside [orange-hrm-ci.yml](../../.github/workflows/orange-hrm-ci.yml):
 
-### GitHub Actions
+1. Add `Test Suites/<name>` to the `options` list (keep naming consistent with existing retry entries).
+2. If the suite should auto-run on push, add path filters under `on.push.paths` (Login-Orange retry suites use `Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_*.ts` and matching `.groovy`).
 
-1. Ensure `Test Suites/<name>.ts` is committed; use [../github-aramex-push/SKILL.md](../github-aramex-push/SKILL.md) only if the user asked to push.
-2. `gh workflow run aramex-ci.yml -f test_suite="Test Suites/<name>" -f environment=<profile>`
-3. If the workflow **choice list** does not include the new suite, tell the user to add it under `workflow_dispatch.inputs.test_suite.options` in `.github/workflows/aramex-ci.yml`, or run locally until the list is updated.
+### 2. Commit and push
 
-Do **not** auto-push or auto-run CI unless the user explicitly requests it.
+CI runs from the remote branch. Commit `Test Suites/<name>.ts` (and `.groovy` if created), plus any workflow edit from step 1.
+
+- Use [../github-aramex-push/SKILL.md](../github-aramex-push/SKILL.md) when the user asked to push; otherwise stage/commit and tell the user to push before dispatch if the suite is not on `origin`.
+
+### 3. Dispatch Orange HRM CI
+
+From the repo root (after push when the new suite or workflow change is required on remote):
+
+```bash
+gh workflow run orange-hrm-ci.yml \
+  -f test_suite="Test Suites/<name>" \
+  -f execution_profile="<profile>"
+```
+
+Use `<profile>` = `default` unless the user named another profile listed in `execution_profile.options`.
+
+### 4. Confirm run
+
+```bash
+gh run list --workflow=orange-hrm-ci.yml --limit 3
+```
+
+Share the run URL in the delivery summary. Do not paste `KATALON_API_KEY` or other secrets.
+
+### Local execution (opt-in only)
+
+Only if the user explicitly says **run locally** or **Katalon Studio**: open the suite in Katalon or use `katalonc` with `-testSuitePath` and `-executionProfile`. This is **not** the default for this skill.
+
+Do **not** auto-push or auto-dispatch CI unless the user explicitly requests `run` / CI / push.
 
 ## Phase 6 — Deliver
 
@@ -169,7 +204,7 @@ Do **not** auto-push or auto-run CI unless the user explicitly requests it.
 **Failed in report:** <n>
 **Included in retry (Done bugs):** <m>
 **Retry suite:** `Test Suites/<name>.ts` [Created | Updated]
-**Run:** [Not requested | Local steps | CI workflow dispatched]
+**Run:** [Not requested | `orange-hrm-ci.yml` dispatched (link) | Push required before dispatch]
 
 ### Included (failed + eligible Bug)
 | Katalon TC | Jira TC | Eligible bug(s) | Bug status |

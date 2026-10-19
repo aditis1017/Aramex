@@ -55,5 +55,5 @@ Copy `isReuseDriver` / `usingDataBindingAtTestSuiteLevel` from the source suite 
 
 ## After write
 
-1. Tell the user the suite path and how to run (`run: yes` / CI / Katalon Studio).
+1. Tell the user the suite path. When they want execution, use **GitHub Actions** ([orange-hrm-ci.yml](../../../.github/workflows/orange-hrm-ci.yml)): add the suite to workflow `test_suite` options if needed, commit/push, then `gh workflow run orange-hrm-ci.yml -f test_suite="Test Suites/<name>" -f execution_profile=default`. Do not default to local Katalon unless they ask.
 2. Optional Jira comment on each **Done** Bug: `Automation retry suite: Test Suites/<name>.ts` — only if the user asks.

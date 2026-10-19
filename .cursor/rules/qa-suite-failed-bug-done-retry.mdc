@@ -17,6 +17,6 @@ When the user wants to **trigger** or **re-run** only **failed** Katalon test ca
 2. Map failures to Jira Test Cases (story-scoped when a story key is provided).
 3. Resolve linked **Bug** issues; keep only bugs matching: **Bugs ticket != New && Bug Ticket == Done**.
 4. Write `Test Suites/<SOURCE>_BUG_DONE_RETRY_<date>.ts` with **only** those failed cases.
-5. Run locally or dispatch CI **only** if the user asked to execute.
+5. When the user asked to execute, dispatch [`.github/workflows/orange-hrm-ci.yml`](.github/workflows/orange-hrm-ci.yml) on GitHub (`gh workflow run orange-hrm-ci.yml` with `test_suite` + `execution_profile`) after commit/push — not local Katalon unless they explicitly want local.
 
 Do not add passing tests or failures without an eligible **Done** bug unless the user explicitly overrides the filter.
