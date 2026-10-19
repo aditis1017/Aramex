@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify login with valid credentials on OrangeHRM demo (CCIPH-648 / Jira TC CCIPH-649 / TC_LOGIN_001). Acceptance: credentials must be valid; user reaches Dashboard with navigation visible.</description>
+   <name>TC_LOGIN_001</name>
+   <tag>CCIPH-648,CCIPH-649,Login-Orange,OrangeHRM</tag>
+   <comment>Jira Story: https://aramex.atlassian.net/browse/CCIPH-648 | Test Case: https://aramex.atlassian.net/browse/CCIPH-649</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>lo-cciph648-login-001-4a1b-9c0d-8e7f-000000000001</testCaseGuid>
+</TestCaseEntity>

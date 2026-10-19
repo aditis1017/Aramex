@@ -1033,4 +1033,25 @@
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>OrangeHRM demo login URL (CCIPH-648 Login-Orange module).</description>
+      <initValue>'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'</initValue>
+      <name>ORANGE_HRM_LOGIN_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>OrangeHRM demo username (public demo credentials).</description>
+      <initValue>'Admin'</initValue>
+      <name>ORANGE_HRM_USERNAME</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>OrangeHRM demo password (public demo credentials).</description>
+      <initValue>'admin123'</initValue>
+      <name>ORANGE_HRM_PASSWORD</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
