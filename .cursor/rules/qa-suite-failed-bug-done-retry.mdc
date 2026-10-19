@@ -1,0 +1,22 @@
+---
+description: >-
+  When the user asks to re-run failed suite tests linked to fixed/Done Jira bugs,
+  bug-done verification, or /qa-suite-failed-bug-done-retry, follow the skill that
+  filters failures by Bug status Done (not New) and builds a retry Test Suite.
+globs: Reports/**/*
+alwaysApply: false
+---
+
+# Suite failed + Bug Done → retry suite
+
+When the user wants to **trigger** or **re-run** only **failed** Katalon test cases from a **Test Suite** that are linked to **Jira Bugs** in **Done** status (and not **New**), follow `.cursor/skills/qa-suite-failed-bug-done-retry/SKILL.md`.
+
+## Required behaviour
+
+1. Parse the suite **JUnit_Report.xml** and collect failures.
+2. Map failures to Jira Test Cases (story-scoped when a story key is provided).
+3. Resolve linked **Bug** issues; keep only bugs matching: **Bugs ticket != New && Bug Ticket == Done**.
+4. Write `Test Suites/<SOURCE>_BUG_DONE_RETRY_<date>.ts` with **only** those failed cases.
+5. Run locally or dispatch CI **only** if the user asked to execute.
+
+Do not add passing tests or failures without an eligible **Done** bug unless the user explicitly overrides the filter.

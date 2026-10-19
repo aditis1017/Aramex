@@ -21,6 +21,7 @@ on:
           - Test Suites/Feedback_PatchRelease-TEST_SUITE
           - Test Suites/CCI_APM_CCIPH-104_SUITE
           - Test Suites/CCI_APM_CCIPH-634_SUITE
+          - Test Suites/CCI_APM_CCIPH-634_SUITE_BUG_DONE_RETRY_20261019
           - Test Suites/GL-TEST_SUITE
           - Test Suites/EP-TEST_SUITE
           - Test Suites/EP-AR-TEST_SUITE
@@ -48,7 +49,7 @@ jobs:
           submodules: false
 
       - name: Validate Katalon project
-        shell: pwsh
+        shell: powershell
         env:
           TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
           EXECUTION_PROFILE: ${{ github.event.inputs.environment || 'dev' }}
@@ -67,7 +68,7 @@ jobs:
           Write-Output "Environment: $env:EXECUTION_PROFILE"
 
       - name: Require Katalon API key
-        shell: pwsh
+        shell: powershell
         env:
           KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
         run: |
@@ -82,7 +83,7 @@ jobs:
           java-version: "21"
 
       - name: Prepare Katalon project
-        shell: pwsh
+        shell: powershell
         run: |
           if (-not (Test-Path -Path Keywords -PathType Container)) {
             throw "Keywords folder is missing."

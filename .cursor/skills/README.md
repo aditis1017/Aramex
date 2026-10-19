@@ -26,6 +26,7 @@ description: >-
 | co-pilot-automation-skill | `/co-pilot-automation-skill CCIPH-###` | Katalon from linked Test Cases (legacy path) |
 | **github-aramex-push** | `/github-aramex-push` + commit message | Push the current branch to `github` (`aditis1017/Aramex`) and start GitHub Actions |
 | **github-aramex-ci-self-heal** | `/github-aramex-ci-self-heal` + commit message | Stage all, pull, resolve conflicts, push, then re-execute a failed CI run up to 3 times |
+| **qa-suite-failed-bug-done-retry** | `/qa-suite-failed-bug-done-retry` + suite or report | Retry suite: failed TCs only, linked Bug status **Done** (not **New**); optional `run` / CI |
 
 Manual sub-tasks + xlsx (no Cursor skill folder — lives under cci-skills):
 
@@ -58,6 +59,7 @@ Manual sub-tasks + xlsx (no Cursor skill folder — lives under cci-skills):
 | co-pilot-automation-skill | co-pilot-automation-skill |
 | qa-jira-defect-logger-subtask-assignee | qa-jira-defect-logger-subtask-assignee |
 | qa-jira-suite-result-updater | qa-jira-suite-result-updater |
+| qa-suite-failed-bug-done-retry | qa-suite-failed-bug-done-retry |
 | qa-knowledge-retriever | qa-knowledge-retriever |
 | qa-test-case-writer | qa-test-case-writer |
 | github-aramex-push | github-aramex-push |
