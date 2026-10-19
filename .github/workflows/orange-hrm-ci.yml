@@ -83,7 +83,7 @@ jobs:
           projectPath: ${{ github.workspace }}/Corp.microservice.ccm-automation.prj
           args: >-
             -noSplash
-            -retry=0
+            -retry=1
             -testSuitePath="Test Suites/Login-Orange-TEST_SUITE"
             -executionProfile="${{ github.event.inputs.execution_profile || 'default' }}"
             -browserType="Chrome (headless)"
