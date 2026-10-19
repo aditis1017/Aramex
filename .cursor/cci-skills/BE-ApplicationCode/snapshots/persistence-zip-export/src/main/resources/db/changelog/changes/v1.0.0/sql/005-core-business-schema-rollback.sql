@@ -1,0 +1,2 @@
+-- Drop charge_type_doc_id_mapping and business indexes are dropped with tables
+-- Use dedicated dev reset for full schema teardown

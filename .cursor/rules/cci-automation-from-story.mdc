@@ -1,0 +1,40 @@
+---
+description: >-
+  When the user asks to automate a CCIPH story, generate Katalon scripts from Jira
+  test cases, or invokes /cci-automation-from-story, follow
+  .cursor/skills/cci-automation-from-story/SKILL.md. Use FE/BE under
+  .cursor/cci-skills for locators and existing Keywords for methods. Supports test
+  cases from qa-manual-test-case (linked issues) and cci-manual-tc-subtask-xlsx
+  (sub-tasks).
+alwaysApply: false
+---
+
+# CCI automation from User Story
+
+## Input
+
+- **Required:** `CCIPH-###`
+- **Optional:** `linked-only`, `subtasks-only`, `required`, `keys …`, `no suite`, `no jira update`
+
+## Skill
+
+[`.cursor/skills/cci-automation-from-story/SKILL.md`](../skills/cci-automation-from-story/SKILL.md)
+
+## Prerequisites
+
+Manual tests must exist from one of:
+
+- `qa-manual-test-case` (linked **Test Case** issues), or
+- `cci-manual-tc-subtask-xlsx` (**Sub-task** + xlsx)
+
+## Application source (locators / methods)
+
+- `.cursor/cci-skills/FE-ApplicationCode/`
+- `.cursor/cci-skills/BE-ApplicationCode/services/`
+- Reuse repo `Object Repository/` and `Keywords/` first
+
+## Framework output
+
+`Test Cases/`, `Scripts/`, `Object Repository/`, `Keywords/`, `Test Suites/` per [framework-structure.md](../skills/cci-automation-from-story/framework-structure.md).
+
+Do not wait for Yes/Proceed. Do not invent Jira keys or locators without FE/OR evidence.

@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 027-service-charge-mapping-entity-seed-v2
+      author: custom-charges
+      comment: Seed entity service_charge_mapping rows (RUH/DHA/JED DTA to ECS/EC3)
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: service_codes
+        - tableExists:
+            tableName: service_charge_mapping
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM service_charge_mapping where from_entity!='Global'
+      changes:
+        - sqlFile:
+            path: sql/027-service-charge-mapping-entity-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/027-service-charge-mapping-entity-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

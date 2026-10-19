@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 021-market-structure-category-values-v1
+      author: custom-charges
+      comment: Update MARKET_STRUCTURE values and remove DEACTIVATED from ACCOUNT_STATUS
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: category_value
+        - tableExists:
+            tableName: ap_account
+        - tableExists:
+            tableName: ar_account
+        - sqlCheck:
+            expectedResult: 1
+            sql: |
+              SELECT CASE
+                WHEN COUNT(*) > 0 THEN 1
+                ELSE 0
+              END
+              FROM (
+                SELECT 1
+                FROM category_value cv
+                JOIN category c ON c.id = cv.category_id
+                WHERE c.code = 'MARKET_STRUCTURE'
+                  AND cv.code = 'DIRECT'
+                  AND cv.is_active = true
+                UNION ALL
+                SELECT 1
+                FROM category_value cv
+                JOIN category c ON c.id = cv.category_id
+                WHERE c.code = 'ACCOUNT_STATUS'
+                  AND cv.code = 'DEACTIVATED'
+              ) pending
+      changes:
+        - sqlFile:
+            path: sql/021-market-structure-category-values.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/021-market-structure-category-values-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,98 @@
+Section,Category,Item,Value / Metric,Secondary Value,Notes
+Document Info,Project,Title,AI-Assisted Test Automation - Stakeholder & Client Brief,,
+Document Info,Project,Name,Corp. Microservice CCM Test Automation (Katalon Studio),,
+Document Info,Project,Prepared by,Automation Lead,,
+Document Info,Project,Audience,"Business stakeholders, delivery leadership, client sponsors",,
+Document Info,Project,Reporting period,May 2025 - September 2025,,
+Document Info,Project,Data source,Automation Doc - Sheet1.csv,,
+Executive Summary,Narrative,Period delivery summary,"Delivered planned module automation for CCM using Katalon Studio and AI-assisted engineering while absorbing frequent requirement and scope changes (May-Sep 2025)",,
+Executive Summary,Outcome,Module automation (agreed scope),Achieved for the current phase,,"Regression suites in place across in-scope CCM modules"
+Executive Summary,Outcome,AI-assisted delivery velocity,6-8 test cases per day,,"Reviewed, production-ready"
+Executive Summary,Outcome,Traditional scripting baseline,1-2 test cases per day,,Same complexity
+Executive Summary,Outcome,Ongoing work - hotfix backlog,~44 test cases,,Patch/hotfix releases
+Executive Summary,Outcome,Velocity multiplier (approx),4x to 6x,,AI vs manual baseline
+Executive Summary,Narrative,Stakeholder message,"Module automation is a milestone; patch/hotfix automation continues each release with predictable AI-assisted capacity",,
+Timeline,Phase,Foundation & planning,May 2025,,"Framework alignment, module prioritization, tracker baseline, environment/test data"
+Timeline,Phase,Build under changing specs,Jun-Jul 2025,,"Highest requirement churn; script and Object Repository updates"
+Timeline,Phase,Stabilization & regression hardening,Aug 2025,,"Suite execution, flake reduction, module sign-off preparation"
+Timeline,Phase,Module automation closure,Sep 2025,,"In-scope module automation achieved; handover to release-support model"
+Timeline,Phase,Forward - patch/hotfix,Oct onward (continuous),,"Automate new/changed scenarios per release"
+Requirement Changes,Impact type,Updated functional flows,,,After business review
+Requirement Changes,Impact type,UI/layout changes,,,Driven by patch and minor releases
+Requirement Changes,Impact type,Scope clarifications per module,,,In vs out of regression for this phase
+Requirement Changes,Impact type,Hotfix branch scenarios,,,New or revised test scenarios when defects fixed
+Requirement Changes,Impact type,Tracker vs Katalon alignment,,,Manual catalog vs automation assets
+Requirement Changes,Without AI,Impact at 1-2 TC/day,"Rework on locators, steps, test data delays module sign-off",,
+Requirement Changes,With AI,Impact at 6-8 TC/day,Sustained new automation and updates when specs stabilized,,Lead ensures correctness and framework consistency
+Milestone,Statement,Module automation achieved,"We have achieved module automation for the agreed CCM modules in the current phase",,"Katalon regression suites; CCIPH traceability"
+Milestone,Clarification,Scope basis,Delivery against automation scope agreed May-Sep,,Not every row in master catalog
+Milestone,Value delivered,Repeatable regression,,,Per module before major releases
+Milestone,Value delivered,Faster feedback,,,"AP/AR, uploads, search, entity management, configuration"
+Milestone,Value delivered,Maintainable assets,,,"Keywords, centralized locators, self-healing where enabled"
+Milestone,Value delivered,ROI model documented,,,For ongoing patch/hotfix work
+Module Coverage,Global Settings,Total TC,98,64 in scope,61 automated - Scoped automation largely delivered
+Module Coverage,AP Management,Total TC,36,34 in scope,34 automated - In-scope target met
+Module Coverage,AR Management,Total TC,74,60 in scope,50 automated - Scoped coverage delivered; catalog extension possible
+Module Coverage,B2B Shipment,Total TC,44,26 in scope,26 automated - In-scope target met
+Module Coverage,Charge Creation,Total TC,217,scope TBD,10 automated - Not part of current module milestone
+Module Coverage,Custom Search - 360 View,Total TC,124,107 in scope,110 automated - Strong coverage vs scope
+Module Coverage,Entity Management - AP,Total TC,128,124 in scope,141 automated - Scope met; variants may exceed module total
+Module Coverage,Entity Management - AR,Total TC,124,124 in scope,83 automated - Per phased scope agreement
+Module Coverage,Roles & Permission,Total TC,61,37 in scope,25 automated - Per phased scope
+Module Coverage,Upload Estimates / Actuals,Total TC,164,164 in scope,164 automated - 100% of scoped module
+Module Coverage,Portfolio Total,Total TC,1070,840 in scope,704 automated - ~66% of full catalog
+Client Presentation,Guidance,Module milestone sign-off,Use To Be Automated column,,Especially AP B2B Upload Estimates/Actuals and agreed AR Entity Custom Search Global Settings Roles
+Client Presentation,Guidance,66% catalog meaning,Remaining catalog depth and future phases,,Not failure of May-Sep module objective
+Client Presentation,Guidance,Gaps Total vs Automated,Superseded tests deferred modules pending patch additions,,Explain requirement changes
+Hotfix Backlog,Volume,Test cases to automate,44,,Patch/hotfix related new and updated scenarios
+Hotfix Backlog,Work type,New defect-fix scenarios,New tests or suite extensions,,
+Hotfix Backlog,Work type,UI or validation rule changes,Object Repository and script updates,,
+Hotfix Backlog,Work type,Regression for production fixes,Targeted suite runs and release-tagged cases,,
+Hotfix Backlog,Work type,Data or API contract tweaks,Test data and keyword updates,,
+Hotfix Effort (44 TC),Without AI,Velocity,1 TC per day,44 working days,~2.0 months
+Hotfix Effort (44 TC),Without AI,Velocity,2 TC per day,22 working days,~1.0 month
+Hotfix Effort (44 TC),Without AI,Velocity,1.5 TC per day (planning),29 working days,~1.3 months
+Hotfix Effort (44 TC),With AI (reviewed),Velocity,6 TC per day,7-8 working days,under 2 weeks
+Hotfix Effort (44 TC),With AI (reviewed),Velocity,8 TC per day,5-6 working days,~1 week
+Hotfix Effort (44 TC),With AI (reviewed),Velocity,7 TC per day (planning),6 working days,~1.3 weeks
+Hotfix Effort (44 TC),Summary,Manual range,22-44 working days,,
+Hotfix Effort (44 TC),Summary,AI-assisted range,6-8 working days,,
+Hotfix Effort (44 TC),Summary,Days saved (mid-range),~21-23 working days,,Before env and UAT coordination
+Hotfix Effort (44 TC),Recommendation,Capacity plan,1-1.5 weeks focused AI-assisted automation,,Clear 44-case backlog then standing release checklist
+ROI - Time Efficiency,Metric,Test creation / update velocity,1-2 vs 6-8 TC per day,4x-6x throughput,Net new and rework
+ROI - Time Efficiency,Metric,Requirement churn,Multiple replans,Faster rewrite of steps locators data files,
+ROI - Time Efficiency,Metric,RCA on failures,Env app script mix,AI-assisted triage; lead signs off classification,
+ROI - Time Efficiency,Metric,Maintenance after UI patches,Ongoing,Bulk updates and self-healing locators,
+ROI - Quality & Coverage,Signal,Module regression,Executable before major releases,,In-scope areas
+ROI - Quality & Coverage,Signal,Upload Estimates / Actuals,164/164 automated,,Full scoped module
+ROI - Quality & Coverage,Signal,Broader catalog,Future phases,,e.g. Charge Creation expansion
+ROI - Quality & Coverage,Signal,Patch/hotfix coverage,Defect leakage reduction,,When tests added per fix
+ROI - Financial (illustrative),Formula,Manual effort days,N = 44,44 / 1.5 = ~29 days,
+ROI - Financial (illustrative),Formula,AI-assisted days,N = 44,44 / 7 = ~6 days,
+ROI - Financial (illustrative),Formula,Days saved,N = 44,~23 working days,Multiply by blended daily rate for labor ROI
+ROI - Financial (illustrative),Indirect savings,Shorter regression cycles,,,
+ROI - Financial (illustrative),Indirect savings,Less emergency manual testing before prod,,,
+AI Governance,Principle,Human-in-the-loop,Lead review on every AI-assisted script,,Especially financial and permission flows
+AI Governance,Principle,Framework-first,Keywords Object Repository Data Files,,No duplicate frameworks
+AI Governance,Principle,Security,No credentials in scripts,,Profiles and secure stores only
+AI Governance,Principle,Traceability,Tests linked to modules and CCIPH work items,,
+AI Governance,Principle,Maintainability,Dynamic locators and self-healing,,Absorb patch-driven UI changes
+AI Governance,Principle,Velocity claim basis,6-8 TC/day,,Correct reviewed output only
+Risks & Mitigations,Risk,Continued requirement change,Mitigation: AI-assisted updates + versioned tracker; change impact per release,,
+Risks & Mitigations,Risk,Patch/hotfix backlog,Mitigation: Reserve capacity; prioritize production-fixed paths,,
+Risks & Mitigations,Risk,Tracker vs repo drift,Mitigation: Reconcile sheet with Katalon after each major patch,,
+Risks & Mitigations,Risk,Flaky tests after hotfix UI,Mitigation: Object Repository updates explicit waits smoke suite per patch,,
+Stakeholder Asks,Request,Acknowledge module automation milestone,May-September phase,,
+Stakeholder Asks,Request,Defined SLA for patch/hotfix automation,Within N days of stable build,,
+Stakeholder Asks,Request,Stable test environment,For hotfix verification,,
+Stakeholder Asks,Request,Priority list when patch volume high,P1 production paths first,,
+Stakeholder Asks,Request,Optional Phase 2 scope,Charge Creation expansion decision,,
+Conclusion,Summary,May-Sep delivery,Module automation for agreed scope despite significant requirement movement,,
+Conclusion,Summary,AI velocity sustained,6-8 reviewed test cases per day,,
+Conclusion,Summary,Forward work,~44 hotfix test cases,~1 week AI-assisted vs 1-2 months manual,
+Conclusion,Recommendation,Client sign-off,Module milestone + hotfix automation capacity in release planning + ROI tracking,,
+Talking Points,1,We finished module automation for this phase,,,Regression-ready Katalon suites for agreed CCM modules
+Talking Points,2,Requirements changed often May-Sep,,,AI shortened rework not just initial coding
+Talking Points,3,66% catalog vs 100% module scope,,,Different lenses; use scope column for sign-off
+Talking Points,4,44 hotfix tests queued,,,6-8 days AI-assisted vs 22-44 days manual; ~3-4 weeks saved
+Talking Points,5,4x-6x velocity,,,6-8 vs 1-2 TC/day validated on this project

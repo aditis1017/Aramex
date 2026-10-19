@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-service-codes-seed-v1
+      author: custom-charges
+      comment: Seed service codes (type D, info_axs_id updates, and type C)
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: service_codes
+        - tableExists:
+            tableName: entity
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM service_codes WHERE created_by = 'SYSTEM'
+      changes:
+        - sqlFile:
+            path: sql/008-service-codes-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/008-service-codes-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

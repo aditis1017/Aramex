@@ -1,0 +1,12 @@
+screens:
+  RATE_SHEET:
+    - Service Code
+    - Description
+    - Shipment Type
+    - Business Type
+    - Category Type
+    - Rate Type 1
+    - Value 1
+  B2B_CONDITION:
+    - Keyword
+    - Match Type

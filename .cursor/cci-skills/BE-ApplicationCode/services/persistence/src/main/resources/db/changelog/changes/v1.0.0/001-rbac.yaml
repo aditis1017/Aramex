@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-rbac-v1
+      author: custom-charges
+      comment: Create RBAC tables and indexes (modules, permissions, roles, users, junction tables)
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: modules
+      changes:
+        - sqlFile:
+            path: sql/001-rbac.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/001-rbac-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

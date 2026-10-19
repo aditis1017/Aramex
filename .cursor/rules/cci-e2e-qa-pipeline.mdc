@@ -1,0 +1,29 @@
+---
+description: >-
+  When the user asks for end-to-end QA, full pipeline, e2e-pipeline, or
+  /cci-e2e-qa-pipeline with a CCIPH User Story, run
+  .cursor/skills/cci-e2e-qa-pipeline/SKILL.md. Functional sub-tasks + xlsx,
+  then required automation, Automated label, QA in-Progress, RTM. Not for bare
+  CCIPH key alone.
+alwaysApply: false
+---
+
+# CCI E2E QA Pipeline
+
+## Input
+
+- **Required:** `CCIPH-###`
+- **Optional:** `scope`, `automate all`, `draft only`, `environment dev` (default) or `environment staging`
+
+## Skill
+
+[`.cursor/skills/cci-e2e-qa-pipeline/SKILL.md`](../skills/cci-e2e-qa-pipeline/SKILL.md)
+
+## Order (do not skip)
+
+1. Functional TCs → Jira **QA sub-tasks** + **Test Case.xlsx** (assignee = user who triggered pipeline)
+2. Katalon automation for **Automation (Y/N)=Y** only — OR + Keywords + Scripts + Suite; FE/BE under `.cursor/cci-skills/`
+3. Jira: label **`Automated`**, status **`QA in-Progress`** on automated sub-tasks
+4. **CCI-RTM.xlsx** under `qa/traceability/rtm/`
+
+Do not wait for Yes/Proceed. Do not use bare story key without e2e/pipeline wording.

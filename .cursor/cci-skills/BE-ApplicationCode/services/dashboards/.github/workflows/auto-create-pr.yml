@@ -1,0 +1,231 @@
+name: Auto Create Pull Request
+
+on:
+  push:
+    branches-ignore:
+      - development
+      - main
+      - master
+      - test
+      - stage
+      - uat
+      - specifyImplementation
+      - 'release-*'
+      - 'test-*'
+      - 'stage-*'
+      - 'uat-*'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+# Prevent duplicate runs for the same branch while a job is already running.
+concurrency:
+  group: auto-create-pr-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  auto-create-pr:
+    # Only create PRs for feature/work branches — not environment or release branches.
+    if: >-
+      github.event_name == 'push' &&
+      github.ref_name != 'development' &&
+      github.ref_name != 'main' &&
+      github.ref_name != 'master' &&
+      github.ref_name != 'test' &&
+      github.ref_name != 'stage' &&
+      github.ref_name != 'uat' &&
+      github.ref_name != 'specifyImplementation' &&
+      !startsWith(github.ref_name, 'release-') &&
+      !startsWith(github.ref_name, 'test-') &&
+      !startsWith(github.ref_name, 'stage-') &&
+      !startsWith(github.ref_name, 'uat-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build pull request metadata
+        id: pr-meta
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          if ! git rev-parse --verify origin/development >/dev/null 2>&1; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Base branch 'development' does not exist. Skipping."
+            exit 0
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          git fetch origin development --quiet
+
+          LATEST_COMMIT_SUBJECT="$(git log -1 --pretty=%s)"
+          LATEST_COMMIT_HASH="$(git log -1 --pretty=%h)"
+          LATEST_COMMIT_BODY="$(git log -1 --pretty=%b)"
+
+          COMMITS_BLOCK="$(git log --oneline origin/development..HEAD 2>/dev/null | sed 's/^/- /' || true)"
+          if [ -z "$COMMITS_BLOCK" ]; then
+            COMMITS_BLOCK="- <!-- No commits ahead of development -->"
+          fi
+
+          CHANGED_FILES_BLOCK="$(git diff --name-only origin/development...HEAD 2>/dev/null | sed 's/^/- `/' | sed 's/$/`/' || true)"
+          if [ -z "$CHANGED_FILES_BLOCK" ]; then
+            CHANGED_FILES_BLOCK="- <!-- No file changes detected against development -->"
+          fi
+
+          TICKET_REF="$(echo "$BRANCH_NAME" | grep -oiE '[A-Z][A-Z0-9]+-[0-9]+' | head -1 || true)"
+
+          BRANCH_READABLE="$(echo "$BRANCH_NAME" | sed -E 's|^[^/]+/||' | tr '/_.-' ' ' | awk '{
+            for (i = 1; i <= NF; i++) {
+              $i = toupper(substr($i, 1, 1)) substr($i, 2)
+            }
+            print
+          }')"
+
+          if [ -n "$BRANCH_READABLE" ]; then
+            PR_TITLE="${BRANCH_READABLE}: ${LATEST_COMMIT_SUBJECT}"
+          else
+            PR_TITLE="${LATEST_COMMIT_SUBJECT}"
+          fi
+          PR_TITLE="$(printf '%s' "$PR_TITLE" | head -c 250)"
+
+          {
+            if [ -f ".github/pull_request_template.md" ]; then
+              echo "<!-- PR body follows .github/pull_request_template.md -->"
+              echo ""
+            fi
+            echo "## Task / Requirement"
+            echo ""
+            echo "<!-- Describe the task, ticket, or requirement this PR addresses."
+            echo "Include the issue/ticket reference where applicable. -->"
+            echo ""
+            if [ -n "$TICKET_REF" ]; then
+              echo "Detected ticket reference from branch name: **${TICKET_REF}**"
+              echo ""
+              echo "<!-- Confirm and expand the task/requirement details below. -->"
+            else
+              echo "<!-- Could not determine the task automatically from the branch name."
+              echo "Please describe the task, ticket, or requirement below. -->"
+            fi
+            echo ""
+            echo "- Branch: \`${BRANCH_NAME}\`"
+            echo ""
+            echo "## What Was Changed"
+            echo ""
+            echo "### Commits since \`development\`"
+            echo ""
+            echo "$COMMITS_BLOCK"
+            echo ""
+            echo "### Changed files"
+            echo ""
+            echo "$CHANGED_FILES_BLOCK"
+            echo ""
+            echo "## Implementation Details"
+            echo ""
+            echo "- Latest commit (\`${LATEST_COMMIT_HASH}\`): ${LATEST_COMMIT_SUBJECT}"
+            if [ -n "$LATEST_COMMIT_BODY" ]; then
+              echo ""
+              echo '```'
+              echo "$LATEST_COMMIT_BODY"
+              echo '```'
+            else
+              echo "- <!-- Add implementation details if the commit message does not fully explain the approach. -->"
+            fi
+            echo ""
+            echo "## Testing"
+            echo ""
+            echo "- [ ] Unit tests added/updated"
+            echo "- [ ] Existing tests pass"
+            echo "- [ ] Manually tested"
+            echo ""
+            echo "### Test Details"
+            echo ""
+            echo "- <!-- Add test evidence -->"
+            echo ""
+            echo "## Impact / Risks"
+            echo ""
+            echo "- <!-- Describe impact and risks -->"
+            echo ""
+            echo "## Checklist"
+            echo ""
+            echo "- [ ] Task/requirement is clearly addressed"
+            echo "- [ ] Changes are limited to the scope of the task"
+            echo "- [ ] Tests are passing"
+            echo "- [ ] Code has been reviewed"
+            echo "- [ ] Documentation updated if required"
+            echo "- [ ] No unintended breaking changes"
+            echo ""
+            echo "## Related Issue / Ticket"
+            echo ""
+            if [ -n "$TICKET_REF" ]; then
+              echo "Related ticket (from branch): **${TICKET_REF}**"
+              echo ""
+            fi
+            echo "Closes #"
+          } > /tmp/pr-body.md
+
+          {
+            echo "title<<EOF"
+            printf '%s\n' "$PR_TITLE"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          cp /tmp/pr-body.md "$GITHUB_WORKSPACE/.auto-pr-body.md"
+
+      - name: Create pull request to development
+        if: steps.pr-meta.outputs.skip != 'true'
+        env:
+          PR_TITLE: ${{ steps.pr-meta.outputs.title }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const fs = require('fs');
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const head = context.ref.replace('refs/heads/', '');
+            const base = 'development';
+            const headRef = `${owner}:${head}`;
+            const title = process.env.PR_TITLE;
+            const body = fs.readFileSync(`${process.env.GITHUB_WORKSPACE}/.auto-pr-body.md`, 'utf8');
+
+            core.info(`Checking for open PR: head=${headRef}, base=${base}`);
+
+            const { data: existing } = await github.rest.pulls.list({
+              owner,
+              repo,
+              head: headRef,
+              base,
+              state: 'open',
+              per_page: 1,
+            });
+
+            if (existing.length > 0) {
+              core.info(`Open PR already exists: #${existing[0].number}`);
+              return;
+            }
+
+            try {
+              const { data: created } = await github.rest.pulls.create({
+                owner,
+                repo,
+                title,
+                head,
+                base,
+                body,
+                maintainer_can_modify: true,
+              });
+
+              core.info(`Created pull request #${created.number}: ${created.html_url}`);
+            } catch (error) {
+              core.error(`Failed to create pull request: ${error.message}`);
+              if (error.response?.data) {
+                core.error(JSON.stringify(error.response.data));
+              }
+              throw error;
+            }

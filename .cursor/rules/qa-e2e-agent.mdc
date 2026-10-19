@@ -1,0 +1,25 @@
+---
+description: >-
+  When the user gives a CCIPH User Story and asks for e2e / full pipeline /
+  qa-e2e-agent / stakeholder demo, run the CCI E2E QA Agent: Jira Functional TCs
+  → assign to Reporter → Required Katalon automation → story Test Suite → PASS/FAIL labels.
+alwaysApply: false
+---
+
+# CCI E2E QA Agent (story-only)
+
+When the user provides a **CCIPH User Story** key and wants end-to-end QA (or `/qa-e2e-agent`), follow `.cursor/skills/qa-e2e-agent/SKILL.md`.
+
+## Input
+
+- **Only required:** `CCIPH-###`
+
+## Order (do not skip)
+
+1. **Functional TCs** — `qa-manual-test-case`: create Test Cases, `createIssueLink` to the story, labels `Functional Test Case` (+ `SANITY` / `REGRESSION` / `AUTOMATION` as applicable).
+2. **Assign** each new TC to **its own Reporter** (`editJiraIssue` assignee = reporter accountId; else story reporter).
+3. **Automate Required TCs only** — `co-pilot-automation-skill` with those keys. Reuse existing `Keywords/` and `Object Repository/` before adding new locators or methods.
+4. **Suite + run** — `Test Suites/CCI_<MODULE>_<STORY>_SUITE.ts`, then trigger Chrome (`katalonc` + `KATALON_API_KEY`, or Katalon Studio). Never embed API keys.
+5. **Results** — `qa-jira-suite-result-updater`. Prefer status Pass/Fail; if missing, **labels `PASS` and `FAIL`**.
+
+Do **not** wait for Yes/Proceed. Do **not** invent Jira keys or locators.

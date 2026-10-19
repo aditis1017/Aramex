@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-rbac-seed-v1
+      author: custom-charges
+      comment: Seed RBAC modules, roles, permissions, users, and role-permission matrix
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: modules
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM modules
+      changes:
+        - sqlFile:
+            path: sql/002-rbac-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/002-rbac-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

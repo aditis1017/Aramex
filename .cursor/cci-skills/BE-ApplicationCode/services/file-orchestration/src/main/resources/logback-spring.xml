@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <springProperty scope="context" name="SERVICE_NAME" source="spring.application.name"/>
+    <property name="LOG_FILE" value="${LOG_FILE:-logs/application.log}"/>
+
+    <!-- Server / Docker: record-tracking JSON on stdout for Fluent Bit -->
+    <appender name="RECORD_TRACKING_JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="com.customcharge.persistencelayer.recordtracking.ObservabilityLogEncoder"/>
+    </appender>
+
+    <appender name="ASYNC_OBSERVABILITY_CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>8192</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+        <includeCallerData>false</includeCallerData>
+        <appender-ref ref="RECORD_TRACKING_JSON_CONSOLE"/>
+    </appender>
+
+    <!-- Local / dev: single mixed file (plain text + JSON record_tracking via MixedFormatFileLayout) -->
+    <springProfile name="local">
+        <appender name="APPLICATION_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>logs/application.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+                <maxFileSize>50MB</maxFileSize>
+                <maxHistory>7</maxHistory>
+                <totalSizeCap>1GB</totalSizeCap>
+            </rollingPolicy>
+            <layout class="com.customcharge.persistencelayer.recordtracking.MixedFormatFileLayout">
+                <plainPattern>${FILE_LOG_PATTERN}</plainPattern>
+            </layout>
+        </appender>
+
+        <appender name="ASYNC_OBSERVABILITY_FILE" class="ch.qos.logback.classic.AsyncAppender">
+            <queueSize>8192</queueSize>
+            <discardingThreshold>0</discardingThreshold>
+            <neverBlock>true</neverBlock>
+            <includeCallerData>false</includeCallerData>
+            <appender-ref ref="APPLICATION_FILE"/>
+        </appender>
+
+        <logger name="com.customcharge.persistencelayer.recordtracking.RecordTrackingLogger"
+                level="INFO"
+                additivity="false">
+            <appender-ref ref="ASYNC_OBSERVABILITY_FILE"/>
+        </logger>
+
+        <logger name="com.customcharge.persistencelayer.observability.MetricSnapshotPublisher"
+                level="INFO"
+                additivity="false">
+            <appender-ref ref="ASYNC_OBSERVABILITY_FILE"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="APPLICATION_FILE"/>
+        </root>
+    </springProfile>
+
+    <!-- Server (uat, stage, prod, common, etc.): console only -->
+    <springProfile name="!local">
+        <logger name="com.customcharge.persistencelayer.recordtracking.RecordTrackingLogger"
+                level="INFO"
+                additivity="false">
+            <appender-ref ref="ASYNC_OBSERVABILITY_CONSOLE"/>
+        </logger>
+
+        <logger name="com.customcharge.persistencelayer.observability.MetricSnapshotPublisher"
+                level="INFO"
+                additivity="false">
+            <appender-ref ref="ASYNC_OBSERVABILITY_CONSOLE"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>

@@ -1,0 +1,110 @@
+# Maps Katalon automation modules to FE routes and BE services.
+# Update when new Test Cases/ folders or app areas are added.
+
+version: 1
+project: CCM-Custom-Charges
+jira_project: CCIPH
+
+modules:
+  - katalon_folder: "AP Management"
+    fe_routes:
+      - "app/customs-management/ap-management"
+    be_services:
+      - persistence
+      - dashboards
+    object_repository: "Object Repository/AP Management"
+    notes: "AP account sync, filters, GL-related UI"
+
+  - katalon_folder: "AR Management"
+    fe_routes:
+      - "app/customs-management/ar-management"
+    be_services:
+      - persistence
+      - dashboards
+    object_repository: "Object Repository/AR Management"
+
+  - katalon_folder: "B2B-Shipment"
+    fe_routes:
+      - "app/customs-management/b2b-keywords-manager"
+    be_services:
+      - shipment
+      - persistence
+    object_repository: "Object Repository/B2B-Shipment"
+
+  - katalon_folder: "ChargeCreation"
+    fe_routes:
+      - "app/components"
+    be_services:
+      - calculator
+      - shipment
+      - persistence
+    object_repository: "Object Repository/ChargeCreation"
+    notes: "Charge types ECD, DTC, DTA, ECS, etc."
+
+  - katalon_folder: "CustomSearch_360ViewScreen"
+    fe_routes:
+      - "app/customs-management"
+    be_services:
+      - dashboards
+      - persistence
+    object_repository: "Object Repository/CustomSearch_360ViewScreen"
+
+  - katalon_folder: "Entity Management-AP"
+    fe_routes:
+      - "app/customs-management/entity-settings"
+    be_services:
+      - persistence
+      - global-settings
+    object_repository: "Object Repository/Entity Management-AP"
+
+  - katalon_folder: "Entity Management-AR"
+    fe_routes:
+      - "app/customs-management/entity-settings"
+    be_services:
+      - persistence
+      - global-settings
+    object_repository: "Object Repository/Entity Management-AR"
+
+  - katalon_folder: "Global Settings"
+    fe_routes:
+      - "app/customs-management/global-settings"
+    be_services:
+      - global-settings
+      - persistence
+    object_repository: "Object Repository/Global Settings"
+
+  - katalon_folder: "Roles&Permission"
+    fe_routes:
+      - "app/customs-management/roles-permissions"
+    be_services:
+      - persistence
+    object_repository: "Object Repository/Roles&Permission"
+
+  - katalon_folder: "Upload_Estimate_Actuals"
+    fe_routes:
+      - "app/customs-management"
+    be_services:
+      - file-orchestration
+      - persistence
+    object_repository: "Object Repository/Upload_Estimate_Actuals"
+    data_files: "Data Files/fixtures"
+
+  - katalon_folder: "Upload Charges"
+    fe_routes:
+      - "app/customs-management"
+    be_services:
+      - file-orchestration
+      - calculator
+    object_repository: "Object Repository/Upload_Estimate_Actuals"
+
+  - katalon_folder: "Customs Management-Login"
+    fe_routes:
+      - "app/login"
+    be_services: []
+    notes: "Entra ID / MSAL — auth only"
+
+  - katalon_folder: "Feedback_PatchRelease"
+    fe_routes: []
+    be_services:
+      - persistence
+    notes: "Regression bucket for patch feedback"

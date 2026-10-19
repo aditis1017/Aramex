@@ -1,0 +1,116 @@
+---
+description: >-
+  Push Katalon automation code on the current branch to origin with optional
+  GitLab CLI / API / Push Option Merge Request creation. Use when the user asks
+  to push, commit and push, sync with Git, or invokes /katalon-git-push with a
+  commit message. Pull origin/main (or master) into the current branch before push.
+  Do not use for a bare story key or for e2e pipeline work.
+alwaysApply: false
+---
+
+# Katalon Git push with GitLab integration
+
+When the user invokes **`/katalon-git-push`** or asks to push Katalon automation code and supplies a **commit message**, run this workflow on the **current branch**. Invoking this skill is the approval to commit and push. Do not ask for a second Yes/Proceed.
+
+## Input
+
+- **Required:** commit message (one or two sentences, why the change exists).
+- **Branch:** the branch already checked out. Do not create or switch branches unless the user names a target branch in the same request.
+- **Optional:** GitLab MR flag or prompt (e.g., `--mr`, `--create-mr`, or when user requests creating a Merge Request).
+
+If the message is missing, stop and ask for it. Do not invent a message and do not push.
+
+## Prerequisites (stop on failure)
+
+Run these before any commit or push. Do not change git config, credentials, or remotes.
+
+1. `git --version` succeeds and `git rev-parse --is-inside-work-tree` is `true`.
+2. `origin` exists (`git remote get-url origin`). Do not print tokens if the URL contains any.
+3. `git config user.name` and `git config user.email` are already set. If either is empty, stop and tell the user to set identity themselves. Do not run `git config`.
+4. Working tree is not in the middle of a merge, rebase, or cherry-pick. If it is, stop and report the state.
+5. Current branch is not `main`, `master`, or `release/*`. Do not commit or push those branches. Tell the user to check out a feature branch.
+6. Target base branch detection: check if `origin/main` exists via `git rev-parse --verify origin/main`. If not, check `origin/master`. Use the detected base branch for pulls. If neither exists, stop.
+7. **GitLab Integration Check** (when remote is GitLab or user requests MR creation):
+   - **Method A (Native GitLab Push Options - Zero Install):** Supported directly by GitLab server via `git push -o mr.create`.
+   - **Method B (GitLab CLI - `glab`):** Check if `glab --version` is available and `glab auth status` is authenticated.
+   - **Method C (GitLab REST API):** Check if `$env:GITLAB_TOKEN` (or `$env:CI_JOB_TOKEN`) is set in the environment. Never echo or display the token.
+
+## Safety
+
+- Never `git push --force`, `--force-with-lease`, `reset --hard`, `clean`, or `--no-verify`.
+- Never update git config. Never skip hooks. Never amend unless the user explicitly asked and the amend rules in user rules are all met.
+- Never stage secrets: `.env`, `credentials.json`, `*.pem`, `*.key`, files whose contents contain API keys, passwords, tokens, or private keys. If any are part of the change, stop and name the files. Do not commit them.
+- Never stage Katalon generated output: `Reports/`, `bin/`, `Libs/`, `build/`, `.cache/`, `.classpath`, `.project`, `output/` (except `output/.gitkeep`), `Downloads/*` (except `Downloads/.gitkeep`).
+- Do not stage `BE-ApplicationCode/` unless the user explicitly includes it in the same request.
+
+## Order (do not skip)
+
+Run status, diff, and recent log in parallel first:
+
+```text
+git status
+git diff
+git diff --staged
+git log -8 --oneline
+```
+
+1. **Fetch.** `git fetch origin`.
+2. **Pull base branch (`main` or `master`) into the current branch.**
+   - Run `git pull origin main` (or `origin/master` if `main` does not exist) as a merge, not rebase.
+   - If local edits would be overwritten, commit the allowed Katalon files first (steps 3–4), then run the pull again.
+   - If the pull reports conflicts, stop. List the conflicted files. Do not push. Do not force the merge.
+3. **Stage Katalon source only.** `git add` the paths that exist among: `Test Cases`, `Test Suites`, `Scripts`, `Keywords`, `Object Repository`, `Profiles`, `Data Files`, `Test Listeners`, `Include`, `Checkpoints`, `settings`, `*.prj`, `.gitignore`, `.cursor`. Add any other path the user named in the same request. Do not use `git add -A` or `git add .`.
+4. **Commit.** If nothing is staged, skip the commit. Otherwise commit with the user's message. On PowerShell use a here-string:
+
+```powershell
+git commit -m @"
+Commit message here.
+
+"@
+```
+
+   If a hook rejects the commit, fix the reported issue and create a new commit. Do not amend and do not use `--no-verify`.
+5. **Pull base branch again** when step 2 was deferred until after the commit. Same conflict rule: stop, do not push.
+6. **Push the current branch.**
+   - **Standard Git Push:**
+     `git push -u origin HEAD`
+   - **GitLab Native Push Option (Creates MR automatically during push):**
+     If remote is GitLab or MR creation is requested:
+     ```powershell
+     git push -u origin HEAD -o mr.create -o mr.target=main -o mr.title="<Commit Message Title>" -o mr.description="<Commit Message Body>"
+     ```
+     *(Substitute `main` or `master` based on the base branch detected)*
+   - If the push is rejected because the remote moved, pull from base branch once more, then push again only if that pull is clean.
+   - If it fails for authentication, stop. Tell the user to sign in with Git Credential Manager or SSH. Do not ask for a token or password.
+7. **GitLab MR Management (CLI or API fallback):**
+   - **If `glab` is installed & authenticated:**
+     Check if MR already exists:
+     ```powershell
+     glab mr list --source-branch <current-branch>
+     ```
+     If none exists and MR creation is desired:
+     ```powershell
+     glab mr create --title "<Commit Message Title>" --description "<Commit Message Body>" --target-branch <base-branch> --yes
+     ```
+   - **If using GitLab REST API** (via PowerShell `Invoke-RestMethod` and `$env:GITLAB_TOKEN`):
+     ```powershell
+     $headers = @{ "PRIVATE-TOKEN" = $env:GITLAB_TOKEN }
+     $projectId = [System.Uri]::EscapeDataString("<group/repo>")
+     $body = @{
+       source_branch = "<current-branch>"
+       target_branch = "<base-branch>"
+       title         = "<Commit Message Title>"
+       description   = "<Commit Message Body>"
+     } | ConvertTo-Json
+     Invoke-RestMethod -Uri "https://<gitlab-host>/api/v4/projects/$projectId/merge_requests" -Method Post -Headers $headers -Body $body -ContentType "application/json"
+     ```
+8. **Verify.** `git status` and `git status -sb`. Confirm the branch tracks `origin` and the commit is on the remote.
+
+## Report
+
+- Current branch name and whether base branch (`origin/main` / `origin/master`) was merged cleanly or already up to date.
+- Commit hash and the message used, or state that there was nothing to commit.
+- Push result and remote tracking status.
+- GitLab MR status: MR URL or link generated (via GitLab push option output, `glab`, or API).
+- Paths committed, and paths left unstaged (generated output, secrets, or `BE-ApplicationCode/`).
+

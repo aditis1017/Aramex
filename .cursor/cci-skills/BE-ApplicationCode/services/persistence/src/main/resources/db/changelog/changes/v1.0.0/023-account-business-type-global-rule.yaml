@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 023-account-business-type-global-rule-v1
+      author: custom-charges
+      comment: Rename G_BUSINESS_TYPE label and add G_ACCOUNT_BUSINESS_TYPE global rule criteria
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: category
+        - tableExists:
+            tableName: category_value
+        - sqlCheck:
+            expectedResult: 1
+            sql: |
+              SELECT CASE
+                WHEN COUNT(*) > 0 THEN 1
+                ELSE 0
+              END
+              FROM (
+                SELECT 1
+                FROM category_value cv
+                JOIN category c ON c.id = cv.category_id
+                WHERE c.code = 'GLOBAL_RULE'
+                  AND cv.code = 'G_BUSINESS_TYPE'
+                  AND cv.label = 'Business Type'
+                UNION ALL
+                SELECT 1
+                WHERE NOT EXISTS (
+                  SELECT 1 FROM category_value WHERE code = 'G_ACCOUNT_BUSINESS_TYPE'
+                )
+              ) pending
+      changes:
+        - sqlFile:
+            path: sql/023-account-business-type-global-rule.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/023-account-business-type-global-rule-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

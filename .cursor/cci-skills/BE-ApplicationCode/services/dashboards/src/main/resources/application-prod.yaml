@@ -1,0 +1,155 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: ${CONTEXT_PATH:/dashboard}
+    session:
+      cookie:
+        secure: true
+  forward-headers-strategy: framework
+  max-http-request-header-size: ${MAX_HTTP_REQUEST_HEADER_SIZE:64KB}
+javers:
+  sqlSchemaManagementEnabled: ${JAVERS_SCHEMA_ENABLED:false}
+
+management:
+  info:
+    build:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    persistAuthorization: true
+
+logging:
+  level:
+    org.apache.poi.xssf.eventusermodel.XSSFSheetXMLHandler: WARN
+    org.apache.poi: WARN
+
+spring:
+  cache:
+    type: redis
+    redis:
+      time-to-live: ${API_CACHE_TTL:10m}
+      cache-null-values: false
+      key-prefix: "dashboard-api::"
+  application:
+    name: dashboard-service
+#  rabbitmq:
+#    host: ${RABBITMQ_HOST:dummy}
+#    port: ${RABBITMQ_PORT:dummy}
+#    username: ${RABBITMQ_USERNAME:dummy}
+#    password: ${RABBITMQ_PASSWORD:dummy}
+#    virtual-host: ${RABBITMQ_VIRTUAL_HOST:/}
+#    listener:
+#      simple:
+#        concurrency: 1
+#        max-concurrency: 1
+
+#queue:
+#  hb-cci-msg5: HB_CCI_MSG5
+#  autoconfigure:
+#    exclude:
+#      - io.awspring.cloud.autoconfigure.s3.S3AutoConfiguration
+#      - io.awspring.cloud.autoconfigure.sqs.SqsAutoConfiguration
+
+mvp:
+  persistence:
+    datasource:
+      url: ${DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:globalsettings}?currentSchema=${DB_SCHEMA:public}}
+      username: ${DATASOURCE_USERNAME:postgres}
+      password: ${DATASOURCE_PASSWORD:Tarundeep}
+      driver-class-name: ${DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+      maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:20}
+      minimum-idle: ${DATASOURCE_MIN_IDLE:5}
+      routing:
+        enabled: ${DATASOURCE_ROUTING_ENABLED:true}
+        fallback-to-write: ${DATASOURCE_ROUTING_FALLBACK_TO_WRITE:true}
+      write:
+        url: ${DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:globalsettings}?currentSchema=${DB_SCHEMA:public}}
+        username: ${DATASOURCE_USERNAME:postgres}
+        password: ${DATASOURCE_PASSWORD:Tarundeep}
+        pool-name: ${DATASOURCE_WRITE_POOL_NAME:DashboardsWritePool}
+        maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:20}
+        minimum-idle: ${DATASOURCE_MIN_IDLE:5}
+      read:
+        url: ${READ_DATASOURCE_URL:jdbc:postgresql://${READ_DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:globalsettings}?currentSchema=${DB_SCHEMA:public}}
+        username: ${DATASOURCE_USERNAME:postgres}
+        password: ${DATASOURCE_PASSWORD:Tarundeep}
+        pool-name: ${DATASOURCE_READ_POOL_NAME:DashboardsReadPool}
+        maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:20}
+        minimum-idle: ${DATASOURCE_MIN_IDLE:5}
+    redis:
+      enabled: ${REDIS_ENABLED:true}
+      host: ${REDIS_HOST:localhost}
+      password: ${REDIS_PASSWORD:}
+      port: ${REDIS_PORT:6379}
+    security:
+      entra:
+        enabled: ${ENTRA_SECURITY_ENABLED:true}
+        public-paths:
+          - /health
+          - /health/**
+          - /dashboard/health
+          - /dashboard/health/**
+          - /actuator/**
+          - /dashboard/actuator/**
+          - /dashboard/swagger-ui/**
+          - /dashboard/v3/api-docs/**
+          - /swagger-ui/**
+          - /v3/api-docs/**
+          - /api/auth/logout
+          - /dashboard/api/auth/logout
+    liquibase:
+      enabled: ${LIQUIBASE_ENABLED:true}
+    jpa:
+      enabled: ${JPA_ENABLED:true}
+      ddl-auto: none
+      show-sql: ${JPA_SHOW_SQL:true}
+      default_schema: ${DB_SCHEMA:public}
+    swagger:
+      enabled: ${SWAGGER_ENABLED:true}
+      title: ${SWAGGER_TITLE:API Documentation}
+      description: ${SWAGGER_DESCRIPTION:API Description}
+      version: ${SWAGGER_VERSION:1.0.0}
+      server-url: ${SWAGGER_SERVER_URL:https://cc.aramex.com}${CONTEXT_PATH:/dashboard}
+    javers:
+      enabled: ${JAVERS_ENABLED:true}
+    export:
+      enabled: ${EXPORT_ENGINE_ENABLED:true}
+      chunk-size: ${EXPORT_CHUNK_SIZE:2000}
+    drools:
+      enabled: ${DROOLS_ENABLED:false}
+    aws:
+      sqs:
+        enabled: ${AWS_SQS_ENABLED:true}
+        region: ${AWS_REGION:ap-south-1}
+        access-key: ${AWS_ACCESS_KEY_ID:}
+        secret-key: ${AWS_SECRET_ACCESS_KEY:}
+        endpoint: ${AWS_SQS_ENDPOINT:}
+        queues:
+          - name: ${BATCH_INPUT_QUEUE:custom-charge-file-input}
+      s3:
+        enabled: ${AWS_S3_ENABLED:true}
+        region: ${AWS_REGION:ap-south-1}
+        access-key: ${AWS_ACCESS_KEY_ID:}
+        secret-key: ${AWS_SECRET_ACCESS_KEY:}
+        endpoint: ${AWS_S3_ENDPOINT:}
+        default-bucket: ${S3_DEFAULT_BUCKET:}
+
+dashboard:
+  file-upload: {}
+  entity-charges:
+    query-timeout-ms: ${DASHBOARD_ENTITY_CHARGES_QUERY_TIMEOUT_MS:30000}
+
+app:
+  cors:
+    allowed-origins:
+      - https://cc.aramex.com
+    allowed-methods:
+      - "*"
+    allowed-headers:
+      - "*"
+    allow-credentials: true

@@ -1,0 +1,14 @@
+{
+  "queues": [
+    {
+      "name": "custom-charges-shipment-ingest",
+      "visibilityTimeout": 900,
+      "messageRetentionPeriod": 1209600,
+      "receiveMessageWaitTimeSeconds": 20
+    },
+    {
+      "name": "custom-charges-shipment-ingest-dlq",
+      "messageRetentionPeriod": 1209600
+    }
+  ]
+}

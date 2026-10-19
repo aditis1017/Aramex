@@ -1,0 +1,1769 @@
+code,name,country_code,is_active
+NIC,Aramex,CY,TRUE
+CAI,Aramex,EG,TRUE
+ATH,Geniki Taxydromiki SA,GR,TRUE
+BOM,Aramex,IN,TRUE
+BEY,Aramex,LB,TRUE
+JRS,Aramex,PS,TRUE
+DHA,Aramex,SA,TRUE
+JED,Aramex,SA,TRUE
+RUH,Saudi Tal for Commerce and Contracts LTD - aramex,SA,TRUE
+DAM,Al Fares Establishment – Syria aramex agent,SY,TRUE
+DXB,Aramex,AE,TRUE
+SAH,Aramex,YE,TRUE
+XBR,Universal Express,BE,TRUE
+XDB,Aramex/ Twoway Forwarding & Logistics,IE,TRUE
+XMX,AIR EXPRESS S.a.S,IT,TRUE
+BOR,Itella Logistics AB,SE,TRUE
+XLJ,"Cargo-Partner d.o.o.,",SI,TRUE
+SHS,SF Hong Kong (China Delivery Agent),CN,TRUE
+XML,RAF International Forwarding Phils. Inc.,PH,TRUE
+MLE,Service through Aramex Sri Lanka,MV,TRUE
+XSE,"Heung-A Logistics Co., LTD",KR,TRUE
+XLO,"ABX World Nigeria LTD,",NG,TRUE
+TIP,Aramex,LY,TRUE
+DEL,Aramex India Private Limited,IN,TRUE
+MAA,Aramex,IN,TRUE
+HYD,Aramex,IN,TRUE
+KTM,Aramex,NP,TRUE
+XTP,"Rattan Express Co. LTD.,",TW,TRUE
+BAH,Aramex,BH,TRUE
+SOF,Aramex,BG,TRUE
+YUL,Aramex,CA,TRUE
+ADD,Aramex,ET,TRUE
+PAR,Aramex,FR,TRUE
+HKG,Aramex - Hong Kong Office,HK,TRUE
+THR,Aramex,IR,TRUE
+GSO,Aramex,JO,TRUE
+AMM,Aramex,JO,TRUE
+KWI,Aramex,KW,TRUE
+KHI,Leopards Courier Services (Pvt) Limited,PK,TRUE
+DOH,Aramex,QA,TRUE
+CMB,Aramex Lanka (Pvt) Ltd,LK,TRUE
+KRT,Aramex,SD,TRUE
+GVA,Aramex,CH,TRUE
+AUH,Aramex,AE,TRUE
+LON,Aramex,GB,TRUE
+JFK,Aramex,US,TRUE
+DKZ,DPD Kazakhstan,KZ,TRUE
+CAS,Aramex International Morocco,MA,TRUE
+IST,Aramex,TR,TRUE
+DUZ,DPD Uzbekistan,UZ,TRUE
+DCA,ARAMEX,US,TRUE
+BRU,LIEGE CARGO AGENCY,BE,TRUE
+MAD,MRW Internacional,ES,TRUE
+WSI,Toll Priority / DPEX,SG,TRUE
+WAW,DPD,PL,TRUE
+MIA,IBC,US,TRUE
+HDP,DPD Hungary,CZ,TRUE
+SEL,"GDA Korea Co., Ltd",KR,TRUE
+LAD,Service through Aramex South Africa,AO,TRUE
+ANU,Service through IBC Miami,AG,TRUE
+BUE,Service through IBC Miami,AR,TRUE
+AUA,Service through IBC Miami,AW,TRUE
+VIE,Cargo-Partner GmbH,AT,TRUE
+MSQ,Service through MOW,BY,TRUE
+COO,AF&CIE Benin Sarl,BJ,TRUE
+BDA,Service through IBC Miami,BM,TRUE
+LPB,Service through IBC Miami,BO,TRUE
+SJJ,Service through Aramex Dubai,BA,TRUE
+GBE,Aramex Botswana,BW,TRUE
+RIO,Service through IBC Miami,BR,TRUE
+OUA,International Logistics Solutions,BF,TRUE
+BJM,One World Couriers Burundi S.A.,BI,TRUE
+PNH,"PDEX WORLD WIDE EXPRESS LOGISTICS CO.,LTD.",KH,TRUE
+DLA,Service through SAGA Express,CM,TRUE
+LPA,Cacesa,RY,TRUE
+SID,Service through Aramex Dubai,CV,TRUE
+BGF,Service through SAGA Express,CF,TRUE
+NDJ,Service through SAGA Express,TD,TRUE
+SCL,Service through IBC Miami,CL,TRUE
+BOG,Service through IBC Miami,CO,TRUE
+SJO,Service through IBC Miami,CR,TRUE
+ABJ,La Poste de Cote D’Ivoire,CI,TRUE
+ZAG,PRIMACOSPED D.O.O. AIRFREIGHT OFFICE EXPORT/IMPORT,HR,TRUE
+FIH,Service through Aramex Dubai,CD,TRUE
+JIB,Aramex Djibouti,DJ,TRUE
+DOM,Service through IBC Miami,DM,TRUE
+SDQ,Service through IBC Miami,DO,TRUE
+GYE,Service through IBC Miami,EC,TRUE
+SAL,Service through IBC Miami,SV,TRUE
+CAY,Service through IBC Miami,GF,TRUE
+LBV,Global Fret Gabon,GA,TRUE
+ACC,Aramex,GH,TRUE
+GND,Service through IBC Miami,GD,TRUE
+PTP,Service through IBC Miami,GP,TRUE
+GUM,Service through Aramex Dubai,GU,TRUE
+GUA,Service through IBC Miami,GT,TRUE
+CKY,Argui Express Sarl,GN,TRUE
+GEO,Service through IBC Miami,GY,TRUE
+PAP,Service through IBC Miami,HT,TRUE
+PBH,Service through Aramex India,BT,TRUE
+TGU,Service through IBC Miami,HN,TRUE
+BUD,GDA Hungary Ltd.,HU,TRUE
+PTH,Aramex India Pvt Ltd.,IN,TRUE
+KIN,Service through IBC Miami,JM,TRUE
+ALA,Bekk Courier Kazakhstan LLP,KZ,TRUE
+NBO,Aramex Kenya Limited,KE,TRUE
+FRU,Service through Aramex Dubai,KG,TRUE
+ROB,Swift Logistics Services,LR,TRUE
+SKP,Service through Aramex Dubai,MK,TRUE
+TNR,Celero ltd,MG,TRUE
+LLW,Service through Aramex South Africa,MW,TRUE
+BKO,BKO Africa ports,ML,TRUE
+MLA,Aramex,MT,TRUE
+FDF,Service through IBC Miami,MQ,TRUE
+NKC,Service through Aramex Dubai,MR,TRUE
+MRU,Celero Ltd,MU,TRUE
+MEX,Service through IBC Miami,MX,TRUE
+KIV,Molinari SRL,MD,TRUE
+RGN,Service through Aramex Singapore,MM,TRUE
+MGA,Service through IBC Miami,NI,TRUE
+BFS,Service thorugh Aramex London,GB,TRUE
+CUR,Service through IBC Miami,AN,TRUE
+DYU,Service through IZZ Express - TAS,TJ,TRUE
+DAR,Aramex Tanzania,TZ,TRUE
+BKK,"GDA CO., LTD THAILAND",TH,TRUE
+LFW,SOCIETE DES POSTES DU TOGO / EMS TOGO,TG,TRUE
+POS,Service through IBC Miami,TT,TRUE
+TNS,POST RAPIDE,TN,TRUE
+ASB,Service through Aramex Istanbul,TM,TRUE
+PLS,Service through IBC Miami,TC,TRUE
+MNL,RAF INTL FWDG PHILS. INC.,PH,TRUE
+EBB,Aramex Uganda Limited,UG,TRUE
+IEV,Molinari SRL,UA,TRUE
+MVD,Service through IBC Miami,UY,TRUE
+VAC,Service through Air Express Milan,VA,TRUE
+CCS,Service through IBC Miami,VE,TRUE
+LUN,Service through Aramex South Africa,ZM,TRUE
+RUN,Service through Celero/ Mauritius,RE,TRUE
+MOW,COURIER SERVICE EXPRESS,RU,TRUE
+KGL,Target Today Delivery Limited,RW,TRUE
+SAR,Service through Milan,SM,TRUE
+DKR,TEX COURRIER,SN,TRUE
+SEZ,Service through Celero/ Mauritius,SC,TRUE
+FNA,Intermarkets (SL) Limited,SL,TRUE
+LJU,City Express d.o.o.,SI,TRUE
+SKB,Service through IBC Miami,KN,TRUE
+SVD,Service through IBC Miami,VC,TRUE
+GCM,Service through IBC Miami,KY,TRUE
+GIB,Service through Aramex London,GI,TRUE
+MAC,Service through Aramex Hong Kong/ HKG,MO,TRUE
+REK,Service through Aramex Dubai,IS,TRUE
+NIM,Service through Aramex Dubai,NE,TRUE
+DUB,Twoway Forwarding & Logistics,IE,TRUE
+TPE,YCS EXPRESS GROUP,TW,TRUE
+MIL,AIR EXPRESS SRL,IT,TRUE
+BUH,DPD Dynamic Parcel Distribution S.A.,RO,TRUE
+ASM,Service through Aramex Dubai /DXB,ER,TRUE
+DAC,Aramex,BD,TRUE
+BLR,Aramex,IN,TRUE
+XAT,Atege GMBH - Head Office Contacts-Non Operational,DE,TRUE
+XGV,Gondrand International AG,CH,TRUE
+WHK,Toll Priority / DPEX,HK,TRUE
+XLG,Freight available go to main office,DZ,TRUE
+XME,Lawson World Wide Forwarding Pty Ltd/Melbourne,AU,TRUE
+JER,Service thorugh Aramex London,GB,TRUE
+LRX,TRANS EXPRESS LTD,GB,TRUE
+RSE,VIVA XPRESS,GB,TRUE
+MMO,ARAMEX-ICS,AE,TRUE
+JDA,Aramex,JO,TRUE
+IRO,Aramex,IN,TRUE
+PNQ,Aramex,IN,TRUE
+COK,Aramex,IN,TRUE
+NEX,GLS GERMANY GMBH & CO. OHG,DE,TRUE
+BTS,Aramex,SK,TRUE
+PRG,Aramex,CZ,TRUE
+SSG,Service through Aramex Dubai,GQ,TRUE
+MCT,Aramex,OM,TRUE
+RYD,Aramex,JO,TRUE
+DRO,Aramex,AE,TRUE
+XCP,.,DK,TRUE
+XTY,"Net International Corp.,",JP,TRUE
+XSK,"TIR International Freight Forwarders ltd.,",MK,TRUE
+YVA,Service through Aramex Dubai,KM,TRUE
+ZRH,Aramex,CH,TRUE
+XBH,PEGASUS - SCS (Supply-Chain Solutions),RO,TRUE
+VAD,Service through Aramex Switzerland,LI,TRUE
+KUF,Aramex,MY,TRUE
+ROM,AIR EXPRESS SRL,IT,TRUE
+TRN,AIR EXPRESS SRL,IT,TRUE
+MEL,TOLL PRIORITY GLOBAL,AU,TRUE
+CPH,LEMAN EXPRESS DIVISION,DK,TRUE
+STO,Best Transport AB.,SE,TRUE
+TLV,GCX Global Courier & Express Services LTD.,IL,TRUE
+AKL,Fastway Couriers (Auckland),NZ,TRUE
+JNS,DAWN WING,ZA,TRUE
+MAN,Aramex (UK) Limited,GB,TRUE
+GOC,Kerry EAS Logistics Ltd.,CN,TRUE
+EMX,LYNX (FELTHAM POINT),GB,TRUE
+JKT,PT Global Distribution Alliance,ID,TRUE
+TXG,YCS EXPRESS GROUP,TW,TRUE
+XBD,SAVINO DEL BENE ARGENTINA S.A.,AR,TRUE
+XSO,PostNord Sverige AB,SE,TRUE
+XNS,No Service / DTC Only,BS,TRUE
+GDA,GDA Members,JO,TRUE
+GLA,CURRIE EUROPEAN TRANSPORT,GB,TRUE
+SIN,Aramex,SG,TRUE
+MUK,"Access USA Shipping, LLC",US,TRUE
+ASO,Service through Aramex Dubai,AS,TRUE
+SYD,TOLL PRIORITY GLOBAL,AU,TRUE
+CIS,Service through Aramex Dubai,CX,TRUE
+CKI,Service through Aramex Dubai,CC,TRUE
+RAR,Service through Aramex Dubai,CK,TRUE
+SUV,Service through Aramex Dubai,FJ,TRUE
+PPT,Service through Aramex Dubai,PF,TRUE
+TRW,Service through Aramex Dubai,KI,TRUE
+MSI,Service through Aramex Dubai,MH,TRUE
+TKK,Not Serviced,FM,TRUE
+INU,Service through Aramex Dubai,NR,TRUE
+NOU,Service through Aramex Dubai,NC,TRUE
+NIU,NOT SERVICED,NU,TRUE
+SPN,Service through Aramex Dubai,MP,TRUE
+ROR,Not Serviced,PW,TRUE
+POM,Service through Aramex Dubai,PG,TRUE
+PCN,NOT SERVICED,PN,TRUE
+APW,Service through Aramex Dubai,WS,TRUE
+HIR,Service through Aramex Dubai,SB,TRUE
+TBU,Service through Aramex Dubai,TO,TRUE
+FUN,Service through Aramex Dubai,TV,TRUE
+VLI,Service through Aramex Dubai,VU,TRUE
+WFI,NOT SERVICED,WF,TRUE
+TIA,AlbaKontroll,AL,TRUE
+ORR,Delivery through BCN,AD,TRUE
+EVN,MAIL EXPRESS CO,AM,TRUE
+BAK,Pegasus MMC /A Franchisee of Aramex,AZ,TRUE
+TBS,Aramex Georgia LLC,GE,TRUE
+AXA,Service through IBC Miami,AI,TRUE
+NAS,Service through IBC Miami,BS,TRUE
+BGI,Service through IBC Miami,BB,TRUE
+BZE,Service through IBC Miami,BZ,TRUE
+EIS,Service through IBC Miami,VG,TRUE
+STT,Service through IBC Miami,VI,TRUE
+PTY,Service through IBC Miami,PA,TRUE
+ASU,Service through IBC Miami,PY,TRUE
+LIM,Service through IBC Miami,PE,TRUE
+SJU,Service through IBC Miami,PR,TRUE
+SLU,Service through IBC Miami,LC,TRUE
+PBM,Service through IBC Miami,SR,TRUE
+YKU,.,MY,TRUE
+VNO,LITGINA UAB,LT,TRUE
+FAE,Service through Aramex Dubai,FO,TRUE
+TLL,DK LOGISTICS OU,EE,TRUE
+GOH,Service through Aramex Dubai,GL,TRUE
+TYO,"SGH Global Japan Co., Ltd",JP,TRUE
+RIX,Pasta Un Kurjeru Serviss,LV,TRUE
+MSU,Service through Aramex Dubai,LS,TRUE
+LUX,LIEGE CARGO AGENCY,LU,TRUE
+MNI,Service through IBC Miami,MS,TRUE
+VTE,Service through Bangkok/ BNK,LA,TRUE
+BWN,Service through Aramex Singapore,BN,TRUE
+MPM,Service through Aramex South Africa,MZ,TRUE
+WDH,Flamingo Couriers proprietary limited,NA,TRUE
+LOS,ARAMEX DELIVERY SERVICES LTD,NG,TRUE
+OSL,NULL,NO,TRUE
+MTS,Phangisa Transport,SZ,TRUE
+SGN,Hop Nhat International Express JSC – HCM Branch,VN,TRUE
+XAJ,No Service / DTC Only,CI,TRUE
+XAA,No Service / DTC Only,GH,TRUE
+XEN,No Service / DTC Only,UG,TRUE
+XHR,No Service / DTC Only,ZW,TRUE
+XLK,No Service / DTC Only,ZM,TRUE
+HEL,LEMAN FINLAND OY,FI,TRUE
+ALG,Service through DXB HUB,DZ,TRUE
+UPS,Aramex,US,TRUE
+XLU,C/O UNIVERSAL EXPRESS BRU/BEGLIUM,LU,TRUE
+LIS,MRW Internacional,PT,TRUE
+XRE,Icetransport,IS,TRUE
+BJL,Service through Aramex Dubai,GM,TRUE
+BKI,Aramex Sabah,MY,TRUE
+PEK,Aramex-Sinotrans Beijing,CN,TRUE
+SZX,Aramex International Shenzhen,CN,TRUE
+XBK,"GLOBAL DISTRIBUTION ALLIANCE (THAILAND) CO.,LTD.",TH,TRUE
+CAN,Aramex-Sinotrans Guangzhou,CN,TRUE
+CKG,Kerry EAS Logistics Ltd.,CN,TRUE
+CTU,Kerry EAS Logistics Ltd.,CN,TRUE
+DLC,KERRY EAS LOGISTICS LTD.,CN,TRUE
+PEJ,Kerry EAS Logistics Ltd.,CN,TRUE
+SHN,Kerry EAS Logistics Ltd.,CN,TRUE
+TAO,KERRY EAS LOGISTICS LTD.,CN,TRUE
+TSN,Kerry EAS Logistics Ltd.,CN,TRUE
+WUH,Kerry EAS Logistics Ltd.,CN,TRUE
+XMN,Kerry EAS Logistics Ltd.,CN,TRUE
+HMI,NOT SERVICED,HM,TRUE
+IBG,PELTRANSPORT Ltd,IL,TRUE
+NOI,Service through Aramex Dubai,NF,TRUE
+CEB,RAF INTL FWDG PHILS. INC.,PH,TRUE
+WAR,C.Hartwig Gdynia S.A.,PL,TRUE
+WAS,C.Hartwig Gdynia S.A.,PL,TRUE
+BGW,Aramex,IQ,TRUE
+XKI,Molinari SRL,MD,TRUE
+CPT,Cape Town,ZA,TRUE
+DUR,Durban,ZA,TRUE
+PRY,Pretoria,ZA,TRUE
+BCN,MRW Internacional,ES,TRUE
+ZBU,AIR EXPRESS SRL,IT,TRUE
+BGY,AIR EXPRESS SRL,IT,TRUE
+FLR,AIR EXPRESS SRL,IT,TRUE
+KIC,"NAMSUNG GDA Co., Ltd",KR,TRUE
+KKN,"NAMSUNG GDA Co., Ltd",KR,TRUE
+PUS,"NAMSUNG GDA Co., Ltd",KR,TRUE
+XDM,Aramex,SA,TRUE
+IPH,JADE LOGISTIC SERVICES,MY,TRUE
+JHB,ABX EXPRESS MALAYSIA,MY,TRUE
+KBR,ABX EXPRESS MALAYSIA,MY,TRUE
+KCH,Direct Connections Company,MY,TRUE
+KUA,ABX EXPRESS MALAYSIA,MY,TRUE
+MKL,ABX EXPRESS MALAYSIA,MY,TRUE
+MKZ,ABX EXPRESS MALAYSIA,MY,TRUE
+PEN,CJS LOGISTICS SERVICE NORTH SDN BHD,MY,TRUE
+XBN,ABX EXPRESS MALAYSIA,MY,TRUE
+HSC,YCS EXPRESS GROUP,TW,TRUE
+HSY,YCS EXPRESS GROUP,TW,TRUE
+KHH,YCS EXPRESS GROUP,TW,TRUE
+TAY,YCS EXPRESS GROUP,TW,TRUE
+TNN,YCS EXPRESS GROUP,TW,TRUE
+BKA,"GDA CO., LTD THAILAND",TH,TRUE
+CNX,"GDA CO., LTD THAILAND",TH,TRUE
+SRI,"GDA CO., LTD THAILAND",TH,TRUE
+HKT,"GDA CO., LTD THAILAND",TH,TRUE
+YAO,EXPRESS HANDLING SERVICES,CM,TRUE
+AGP,MRW International,ES,TRUE
+SVQ,MRW International,ES,TRUE
+VIT,MRW International,ES,TRUE
+VLC,MRW Internacional,ES,TRUE
+XBE,Lawson Worldwide Forwarding Pty Ltd/Brisbane,AU,TRUE
+XPE,Lawson Worldwide Forwarding Pty Ltd/Perth,AU,TRUE
+PNR,Service through SAGA EXPRESS,CG,TRUE
+BZV,Service through Aramex Dubai,CG,TRUE
+TOK,NOT SERVICED,TK,TRUE
+TXT,YCS EXPRESS GROUP,TW,TRUE
+VAL,Vaal Triangle,ZA,TRUE
+YTA,.,UZ,TRUE
+YDY,.,TJ,TRUE
+XAB,"Globalink,",TM,TRUE
+YKB,.,AF,TRUE
+EVR,Mail-Express Ltd,AM,TRUE
+XMM,Two Way Vanguard,GB,TRUE
+BXO,Service through Aramex Dubai,GW,TRUE
+SAO,PGL Brasil Ltda.,BR,TRUE
+KBL,Service through Aramex Dubai,AF,TRUE
+LGG,Aramex,BE,TRUE
+XOS,Airsped AS - OSL,NO,TRUE
+PLT,PILOT AIR FREIGHT,US,TRUE
+XLS,IFS Group,PE,TRUE
+YZA,.,HR,TRUE
+BSL,ARAMEX,CH,TRUE
+MYO,Service through Celero/ Mauritius,YT,TRUE
+MCM,Service through Aramex Paris,MC,TRUE
+XBJ,Aramex China,CN,TRUE
+XRG,C/O GDA Thailand,MM,TRUE
+XAS,C/O AIR EXPRESS ITALIA,SM,TRUE
+YFU,.,KG,TRUE
+GOT,Express Partner,SE,TRUE
+BEG,cargo-partner d.o.o.,RS,TRUE
+TAS,IZZ EXPRESS ltd.,UZ,TRUE
+WAB,DSV Air & Sea (Germany) GmbH,DE,TRUE
+AMS,Aramex,NL,TRUE
+PBB,PBB GLOBAL LOGISTICS INC.,US,TRUE
+XJI,C/O AIC ADD,DJ,TRUE
+PLZ,Port Elizabeth,ZA,TRUE
+EAC,EAST AFRICAN CARGO,BE,TRUE
+WLG,Aramex Fastway New Zealand,NZ,TRUE
+ATC,Advanced Telecom Co,SA,TRUE
+TNT,TNT EUROPEAN AIR & ROAD,GB,TRUE
+CCU,Aramex,IN,TRUE
+FRA,Sovereign Courier GmbH,DE,TRUE
+BER,Sovereign Courier GmbH,DE,TRUE
+CGN,Sovereign Courier GmbH,DE,TRUE
+HAJ,NIGHT& DAY GLOBAL COURIER LOGISTIC GMBH,DE,TRUE
+MHM,GDA GERMANY,DE,TRUE
+MUC,Sovereign Courier GmbH,DE,TRUE
+NUE,Sovereign Courier GmbH,DE,TRUE
+STR,Sovereign Courier GmbH,DE,TRUE
+HRE,Service through Aramex South Africa,ZW,TRUE
+DUS,Sovereign Courier GmbH,DE,TRUE
+LAX,Aramex,US,TRUE
+HAM,Sovereign Courier GmbH,DE,TRUE
+SLO,TRANS EXPRESS Ltd.,GB,TRUE
+ATL,.,US,TRUE
+ORD,Aramex Chicago,US,TRUE
+IOM,Service through Aramex London,IM,TRUE
+SAG,Saga Express,FR,TRUE
+WMO,MODERNLINE DISTRIBUTION LLC,AE,TRUE
+SIH,Aramex,SG,TRUE
+WJU,JUPITER AIR OCEANIA LTD,AU,TRUE
+ABZ,ANC EXPRESS,GB,TRUE
+ALY,Aramex,EG,TRUE
+ANK,ARAMEX,TR,TRUE
+LML,Aramex,CY,TRUE
+DLV,DPD LV,GB,TRUE
+DEE,DPD EE,GB,TRUE
+DLT,DPD LT,GB,TRUE
+DDE,DPD DE,GB,TRUE
+DFR,DPD FR,GB,TRUE
+AMA,Al Madaen,US,TRUE
+SRQ,"Access USA Shipping, LLC",US,TRUE
+PER,TOLL PRIORITY GLOBAL,AU,TRUE
+WAX,DSV Air & Sea (Germany) GmbH,DE,TRUE
+RMM,Aramex,PS,TRUE
+XNB,No Service / DTC Only,KE,TRUE
+BNE,TOLL PRIORITY GLOBAL,AU,TRUE
+ADL,TOLL PRIORITY GLOBAL,AU,TRUE
+XHL,ACEX OY,FI,TRUE
+SNN,Aramex,IE,TRUE
+GET,GULF ELECTRONICS FOR TECHNICAL,SA,TRUE
+XLV,GREENCARRIER LATVIA SIA,LV,TRUE
+XVN,Litgina UAB,LT,TRUE
+XEV,No Service / DTC Only,UA,TRUE
+XJN,.,ZA,TRUE
+XJB,No Service / DTC Only,ZA,TRUE
+GZM,ARROW EXPRESS LTD,MT,TRUE
+FLW,C/O PERSONALIS ENTREGAS PERSONALIZADAS S.A.,PT,TRUE
+FNC,MRW INTERNACIONAL PORTUGAL,PT,TRUE
+XAU,C/O AIC Hong Kong,MO,TRUE
+LIX,MRW International,ES,TRUE
+XDL,Two Way Vanguard,IE,TRUE
+XSN,Twoway Vanguard Forwarding & Logistics,IE,TRUE
+XGO,PostNord Sverige AB,SE,TRUE
+XAX,.,SE,TRUE
+XPO,Universal Global Logistics,PT,TRUE
+OSA,"Net International Corp.,",JP,TRUE
+MMA,IdrottsBudet AB,SE,TRUE
+XSY,Lawson Worldwide Forwarding Pty Ltd/Sydney,AU,TRUE
+XAD,Lawson Worldwide Forwarding Pty Ltd/Adelaide,AU,TRUE
+XMO,"TRANSPORT ACCION, S.A.",MX,TRUE
+XRI,PGL Brasil Ltda.,BR,TRUE
+HAV,Service through IBC Miami,CU,TRUE
+BRE,Atege GmbH / BRE Air and Sea,DE,TRUE
+XCG,Atege GmbH / CGN Air and Sea,DE,TRUE
+XDU,Atege GmbH / DUS Air and Sea,DE,TRUE
+XFR,Atege GmbH / FRA Air,DE,TRUE
+XHA,Atege GmbH / HAJ Air,DE,TRUE
+XHM,Atege GmbH / HAM Air,DE,TRUE
+XHB,.,DE,TRUE
+XMU,ATEGE Allgemeine Transportgesellschaft,DE,TRUE
+XST,Atege GmbH / STR Air and Sea,DE,TRUE
+XLE,Contact Aramex Geneva,LI,TRUE
+XSH,Aramex/SHA,CN,TRUE
+DXH,ARAMEX DUBAI HUB,AE,TRUE
+YPA,.,PA,TRUE
+YSS,.,SV,TRUE
+YGT,.,GT,TRUE
+YCO,.,HN,TRUE
+YMG,.,NI,TRUE
+YSA,.,CR,TRUE
+KDH,"GLOBAL CO., LTD",AF,TRUE
+AET,Airport Emercency Team,JO,TRUE
+EHS,Express handling Services,FR,TRUE
+XAC,"Pancargo Freight Service, (Alternative)",ES,TRUE
+XBL,"Pancargo Freight Service, (Alternative)",ES,TRUE
+XBI,"Pancargo Freight Service, (Alternative)",ES,TRUE
+XMD,"Pancargo Freight Service, (Alternative)",ES,TRUE
+XVL,"Pancargo Freight Service, (Alternative)",ES,TRUE
+ZAC,.,ES,TRUE
+ZBC,.,ES,TRUE
+ZMA,.,ES,TRUE
+ZVL,.,ES,TRUE
+DIL,Service through Aramex Dubai,TP,TRUE
+ZYY,.,CA,TRUE
+ZYV,.,CA,TRUE
+ZYU,.,CA,TRUE
+ZYO,.,CA,TRUE
+ZYZ,.,CA,TRUE
+KTH,ARAMEX,NP,TRUE
+XLI,Universal Global Logistics,PT,TRUE
+XAV,.,PT,TRUE
+SGX,"ALPHA EXPRESS CO., LTD",VN,TRUE
+WCN,GLS Spain,ES,TRUE
+WAD,GLS Spain,ES,TRUE
+KIH,ARAMEX,IR,TRUE
+ULN,Through Aramex Dubai,MN,TRUE
+KHX,UNS - BlueEx,PK,TRUE
+HAN,"ALPHA EXPRESS CO., LTD",VN,TRUE
+XMS,Aramex,NL,TRUE
+LHE,ARAMEX SMS,PK,TRUE
+ISB,ARAMEX SMS,PK,TRUE
+YVR,FB CANADA EXPRESS,CA,TRUE
+LLP,Linked Logistics Pty Ltd,AU,TRUE
+MGQ,Mogadishu – MGQ EACS,SO,TRUE
+ZOT,.,CA,TRUE
+YAN,.,KZ,TRUE
+YYZ,Aramex,CA,TRUE
+XJU,No Service / DTC Only,PR,TRUE
+XKO,No Service / DTC Only,ML,TRUE
+YUX,FB CANADA EXPRESS,CA,TRUE
+RWP,ARAMEX SMS,PK,TRUE
+XSL,"Atwin Logistics Co.,Ltd.",KR,TRUE
+XYA,No Service / DTC Only,CM,TRUE
+XBG,ABC European Air & Sea Cargo Distribution d.o.o.,RS,TRUE
+WBR,PRIORITY AIRFREIGHT LTD.,GB,TRUE
+WNY,PRIORITY AIRFREIGHT N.Y. LTD.,US,TRUE
+IFD,Infofort,AE,TRUE
+ILN,PBB Global Logistics,US,TRUE
+WGM,SOVEREIGN SPEED GMBH,DE,TRUE
+WLH,SOVEREIGN SPEED LHR,GB,TRUE
+WAM,KDZ Express BV,NL,TRUE
+WBU,SOVEREIGN SPEED BRU,BE,TRUE
+WCS,COURIER SERVICE EXPRESS,RU,TRUE
+IFC,INFOFORT CAIRO,EG,TRUE
+IFS,Infofort,SA,TRUE
+XSG,"ASE AIR SEA EXPRESS LTD. C/O RTG CO., LTD",VN,TRUE
+XBC,Savino Del Bene S.L.,ES,TRUE
+XMA,Savino Del Bene S.L.,ES,TRUE
+VGO,Savino Del Bene S.L.,ES,TRUE
+ABX,EAM Global Logistics PTE LTD,US,TRUE
+CHC,FASTWAY COURIERS CANTERBURY,NZ,TRUE
+ELS,East London,ZA,TRUE
+XPL,.,ZA,TRUE
+AIL,Aramex,AE,TRUE
+LRL,RICO LOGISTICS,GB,TRUE
+XZA,PRIMACOSPED D.O.O. AIRFREIGHT OFFICE EXPORT/IMPORT,HR,TRUE
+WMX,COURIER SERVICE EXPRESS,RU,TRUE
+ANC,ANC EXPRESS,GB,TRUE
+WGE,GEOPOST INTERCONTINENTAL,FR,TRUE
+IFA,INFOFORT AMMAN,JO,TRUE
+OPO,MRW INTERNACIONAL PORTUGAL,PT,TRUE
+ZBW,No Service / DTC Only,BW,TRUE
+WBE,Berco Express,ZA,TRUE
+YAG,No Service / DTC Only,AG,TRUE
+ZAL,No Service / DTC Only,AL,TRUE
+ZAN,No Service / DTC Only,AN,TRUE
+XAO,No Service / DTC Only,AO,TRUE
+ZAS,No Service / DTC Only,AS,TRUE
+ZAW,Geant Supermarket,BH,TRUE
+ZBA,Geant Supermarket,BH,TRUE
+ZBB,No Service / DTC Only,BB,TRUE
+ZBF,No Service / DTC Only,BF,TRUE
+ZBI,No Service / DTC Only,BI,TRUE
+ZBJ,No Service / DTC Only,BJ,TRUE
+ZBM,No Service / DTC Only,BM,TRUE
+ZBN,No Service / DTC Only,BN,TRUE
+ZBO,No Service / DTC Only,BO,TRUE
+ZBT,No Service / DTC Only,BT,TRUE
+ZBY,No Service / DTC Only,BY,TRUE
+OBY,Ocean consolidators,LB,TRUE
+ZCD,South City Aircon,IN,TRUE
+ZCF,No Service / DTC Only,CF,TRUE
+ZCG,No Service / DTC Only,CG,TRUE
+ZCK,No Service / DTC Only,CK,TRUE
+ZCL,South City Aircon,IN,TRUE
+XCM,SKY LOGIN CARGO SAS,CO,TRUE
+ZCU,No Service / DTC Only,CU,TRUE
+ZCV,No Service / DTC Only,CV,TRUE
+ZDM,No Service / DTC Only,DM,TRUE
+ZDO,No Service / DTC Only,DO,TRUE
+ZEC,No Service / DTC Only,EC,TRUE
+ZFJ,No Service / DTC Only,FJ,TRUE
+ZFK,No Service / DTC Only,FK,TRUE
+ZFM,No Service / DTC Only,FM,TRUE
+ZFO,No Service / DTC Only,FO,TRUE
+ZGA,No Service / DTC Only,GA,TRUE
+ZGD,No Service / DTC Only,GD,TRUE
+ZGF,No Service / DTC Only,GF,TRUE
+ZGI,No Service / DTC Only,GI,TRUE
+ZGL,No Service / DTC Only,GL,TRUE
+ZGM,No Service / DTC Only,GM,TRUE
+ZGN,No Service / DTC Only,GN,TRUE
+ZGP,No Service / DTC Only,GP,TRUE
+ZGU,No Service / DTC Only,GU,TRUE
+ZGW,No Service / DTC Only,GW,TRUE
+ZGY,No Service / DTC Only,GY,TRUE
+ZHT,No Service / DTC Only,HT,TRUE
+ZJM,No Service / DTC Only,JM,TRUE
+ZKH,No Service / DTC Only,KH,TRUE
+ZKM,No Service / DTC Only,KM,TRUE
+ZKN,No Service / DTC Only,KN,TRUE
+ZKP,No Service / DTC Only,KP,TRUE
+ZLC,No Service / DTC Only,LC,TRUE
+ZLR,No Service / DTC Only,LR,TRUE
+ZLS,No Service / DTC Only,LS,TRUE
+ZMG,No Service / DTC Only,MG,TRUE
+ZMH,No Service / DTC Only,MH,TRUE
+ZMP,No Service / DTC Only,MP,TRUE
+ZMQ,No Service / DTC Only,MQ,TRUE
+ZMR,No Service / DTC Only,MR,TRUE
+ZMW,No Service / DTC Only,MW,TRUE
+ZMZ,No Service / DTC Only,MZ,TRUE
+ZNA,No Service / DTC Only,NA,TRUE
+ZNC,No Service / DTC Only,NC,TRUE
+ZNE,No Service / DTC Only,NE,TRUE
+ZNR,No Service / DTC Only,NR,TRUE
+ZNU,No Service / DTC Only,NU,TRUE
+ZPF,No Service / DTC Only,PF,TRUE
+ZPG,No Service / DTC Only,PG,TRUE
+ZPM,No Service / DTC Only,PM,TRUE
+ZPW,No Service / DTC Only,PW,TRUE
+ZPY,No Service / DTC Only,PY,TRUE
+ZRE,No Service / DTC Only,RE,TRUE
+ZRW,No Service / DTC Only,RW,TRUE
+ZSB,No Service / DTC Only,SB,TRUE
+ZSC,No Service / DTC Only,SC,TRUE
+ZSN,No Service / DTC Only,SN,TRUE
+ZSR,No Service / DTC Only,SR,TRUE
+ZST,No Service / DTC Only,ST,TRUE
+ZSZ,No Service / DTC Only,SZ,TRUE
+ZTC,No Service / DTC Only,TC,TRUE
+ZTD,No Service / DTC Only,TD,TRUE
+ZTG,No Service / DTC Only,TG,TRUE
+ZTO,No Service / DTC Only,TO,TRUE
+ZTT,No Service / DTC Only,TT,TRUE
+ZTV,No Service / DTC Only,TV,TRUE
+XMV,KENEPLUS MULTIMODAL TRANSPORT S.A.,UY,TRUE
+ZVE,No Service / DTC Only,VE,TRUE
+ZVU,No Service / DTC Only,VU,TRUE
+ZWS,No Service / DTC Only,WS,TRUE
+ZYT,No Service / DTC Only,YT,TRUE
+SHT,No Service / DTC Only,FR,TRUE
+ZVI,No Service / DTC Only,VI,TRUE
+WCP,BERCO EXPRESS,ZA,TRUE
+XGQ,No Service / DTC Only,GQ,TRUE
+OVI,.,AT,TRUE
+ORK,Aramex,IE,TRUE
+ANR,Universal Express,BE,TRUE
+OZA,PRIMACOSPED D.O.O.,HR,TRUE
+WAP,DPD POLSKA Sp. z o.o,PL,TRUE
+OCP,.,DK,TRUE
+OHE,Posten Logistik SCM Oy.,FI,TRUE
+LEH,.,FR,TRUE
+OBU,.,HU,TRUE
+ORE,Icetransport,IS,TRUE
+ZKB,.,AF,TRUE
+OEV,.,AM,TRUE
+ODU,"Two Way Vanguard Forwarding Logistics Ltd,",IE,TRUE
+OAK,.,AZ,TRUE
+OTB,Globalink,GE,TRUE
+OPT,Globalink,GE,TRUE
+YAL,.,KZ,TRUE
+ANX,.,KZ,TRUE
+YKT,.,KZ,TRUE
+YAS,.,KZ,TRUE
+YAT,.,KZ,TRUE
+ATO,.,KZ,TRUE
+YSK,.,KZ,TRUE
+YFR,.,KG,TRUE
+OIV,Molinari SRL,MD,TRUE
+ZDY,.,TJ,TRUE
+OAB,Globalink,TM,TRUE
+OTM,.,TM,TRUE
+ZTA,.,UZ,TRUE
+OMI,Air Express S.R.L,IT,TRUE
+KMS,Aramex Ghana Limited,GH,TRUE
+ORI,GREENCARRIER LATVIA SIA,LV,TRUE
+OVN,Litgina UAB,LT,TRUE
+OLU,C/O Universal Express / Ziegler Group - Belgium,LU,TRUE
+OSP,TIR International Freight Forwarders LTD,MK,TRUE
+RTM,Aramex,NL,TRUE
+OOS,.,NO,TRUE
+OWA,.,PL,TRUE
+OTY,Net International Corp,JP,TRUE
+OKA,Net International Corp,JP,TRUE
+OSE,"Heung-A Logistics Co., LTD/ Head Office",KR,TRUE
+OBS,"Heung-A Logistics Co., LTD",KR,TRUE
+OMA,C/O AIC HONG KONG,MO,TRUE
+OPK,.,MY,TRUE
+OLI,.,PT,TRUE
+WSA,SAGAWA GLOBAL EXPRESS Co. Ltd.,JP,TRUE
+OML,RAF International Forwarding Phils. Inc.,PH,TRUE
+OSI,.,SG,TRUE
+OTP,Rattan Express Co Ltd,TW,TRUE
+OBK,"GLOBAL DISTRIBUTION ALLIANCE (THAILAND) CO.,LTD.",TH,TRUE
+ORG,C/O GDA THAILAND,MM,TRUE
+OME,Lawson worldwide Forwarding Pty Ltd,AU,TRUE
+OAU,.,NZ,TRUE
+OOB,.,RO,TRUE
+OMO,.,RU,TRUE
+OLJ,Cargo-Partner d.o.o.,SI,TRUE
+ALC,"Pancargo Freight Service, (Alternative)",ES,TRUE
+OST,PostNord Sverige AB,SE,TRUE
+OBL,Gondrand International AG,CH,TRUE
+OLN,.,AT,TRUE
+OOP,.,PT,TRUE
+OBC,"Pancargo Freight Service, (Alternative)",ES,TRUE
+OOM,"Pancargo Freight Service, (Alternative)",ES,TRUE
+OGO,PostNord Sverige AB,SE,TRUE
+OMM,.,SE,TRUE
+OBD,.,AR,TRUE
+ORO,PGL Brasil Ltda,BR,TRUE
+OLS,No Service / DTC Only,PE,TRUE
+OMR,.,MU,TRUE
+OLG,"ABX World Nigeria LTD,",NG,TRUE
+OTU,.,TN,TRUE
+FPC,Aramex,EG,TRUE
+WTA,Target Express,GB,TRUE
+OSX,SCANCARGO AS,NO,TRUE
+OJN,.,ZA,TRUE
+OIP,.,MY,TRUE
+OPE,.,MY,TRUE
+BJS,Aramex,CN,TRUE
+OSH,Aramex China,CN,TRUE
+WTG,ATEGE INTERNATIONALE SPEDITION,DE,TRUE
+REX,HRADFLUTNINGAR EHF,IS,TRUE
+OMW,.,RU,TRUE
+OCS,OCS,CA,TRUE
+WSP,SPRING,IN,TRUE
+IFK,INFOFORT KUWAIT,KW,TRUE
+ORX,CITY AIR EXPRESS,IE,TRUE
+AAM,Aramex,NL,TRUE
+DBC,Aramex,IE,TRUE
+CVT,Aramex,GB,TRUE
+BHX,Aramex,GB,TRUE
+MST,TWOWAY - MAASTRICHT,NL,TRUE
+HEY,Aramex,GB,TRUE
+BOS,TWOWAY - BOSTON,US,TRUE
+XHK,TWOWAY - HONGKONG,HK,TRUE
+HAX,Sovereign Courier GmbH,DE,TRUE
+CLR,ARAMEX,JO,TRUE
+WIB,IB Express,ES,TRUE
+LNN,Aramex,GB,TRUE
+LDD,VANGUARD - LONDON/COLNBROOK,GB,TRUE
+CJB,Aramex,IN,TRUE
+AMD,Aramex,IN,TRUE
+GOI,Aramex India Pvt. Ltd,IN,TRUE
+BHO,MAHDUR EXPRESS,IN,TRUE
+JAI,Aramex India Pvt Limited,IN,TRUE
+LKO,Aramex India Pvt Limited,IN,TRUE
+WLC,LIEGE CARGO AGENCY,BE,TRUE
+FRX,Sovereign Courier GmbH,DE,TRUE
+BRM,GDA GERMANY,DE,TRUE
+IBX,CACESA,ES,TRUE
+IFQ,INFOFORT QATAR,QA,TRUE
+IFB,INFOFORT BAHRAIN,BH,TRUE
+MDK,Madraka Branch,SA,TRUE
+OIT,TECNOFREIGHT S.R.L. (ALTERNATIVE),IT,TRUE
+BIE,GDA GERMANY,DE,TRUE
+DTM,GDA GERMANY,DE,TRUE
+OSN,Sovereign Courier GmbH,DE,TRUE
+FMO,GDA GERMANY,DE,TRUE
+IXO,Samir EnterPrise,IN,TRUE
+NGP,Aramex India Pvt Limited,IN,TRUE
+RAJ,Aramex,IN,TRUE
+TRV,SHIVEX COURIER & CARGO PVT. LTD,IN,TRUE
+CLT,SARGAM ENTERPRISES,IN,TRUE
+LUD,Aramex India Pvt Ltd,IN,TRUE
+JDR,SIMPLEX EXPRESS SERVICES,IN,TRUE
+IXC,Aramex India Pvt Limited,IN,TRUE
+IXU,M/S.Shri enterprises,IN,TRUE
+ISK,JETEDGE,IN,TRUE
+KUR,M/s TCS WORLDWIDE,IN,TRUE
+PTR,M/s ASHA ENTERPRISES,IN,TRUE
+GDD,BOM-GIM COURIERS,IN,TRUE
+JAL,ONEDAY COURIER,IN,TRUE
+KNU,ENBEE SERVICES,IN,TRUE
+TRI,S.P. NETWORK,IN,TRUE
+AWF,AdabwaFan,LB,TRUE
+YTO,Aramex Canada Inc.,CA,TRUE
+PFW,DPD,GB,TRUE
+OMC,"TRANSPORT ACCION, S.A.",MX,TRUE
+XCL,Transaircargo Ltda,CL,TRUE
+ECC,EASTERN CONNECTION,US,TRUE
+WYI,SINOTRANS AIR TRANSPORTATION DEVELOPMENT CO. LTD,CN,TRUE
+UIS,EXPRESS SERVICES LTD,GB,TRUE
+OSC,Transaircargo LTDA,CL,TRUE
+DXP,ARAMEX PERISHABLE'S,AE,TRUE
+WAC,ACTIVAIR AUSTRALIA PTY LTD,AU,TRUE
+COV,EXPRESS MESSENGER SYSTEMS,US,TRUE
+XMC,ACEX RUSSIA,RU,TRUE
+OMS,ACEX RUSSIA,RU,TRUE
+SUU,M/S LEO INTERNATIONAL,IN,TRUE
+VPI,M/s KALIA ENTERPRISES,IN,TRUE
+KAR,GN Courier,IN,TRUE
+DOC,DOCMAN LIMITED,AE,TRUE
+XKB,Move One Logistics,AF,TRUE
+OKB,Move One Logistics,AF,TRUE
+OAL,.,KZ,TRUE
+XTA,Move One Logistics/Move One Relocations Uzbekistan,UZ,TRUE
+OTA,Move One Logistics/Move One Relocations Uzbekistan,UZ,TRUE
+XFU,Move One LLC,KG,TRUE
+OFR,Move One LLC,KG,TRUE
+XDY,Move One Logistics/Move One Relocations Tajikistan,TJ,TRUE
+ODY,Move One Logistics/Move One Relocations Tajikistan,TJ,TRUE
+OBN,Savino Del Bene S.L.,ES,TRUE
+OMD,Savino Del Bene S.L.,ES,TRUE
+WFO,FORWARD GROUP LOGISTICS & TRANSPORTATION Ltd,HK,TRUE
+XCI,No Service / DTC Only,CX,TRUE
+XAN,No Service / DTC Only,AD,TRUE
+XXA,No Service / DTC Only,AI,TRUE
+XWF,No Service / DTC Only,GB,TRUE
+XVT,No Service / DTC Only,LA,TRUE
+XGC,No Service / DTC Only,KY,TRUE
+XUA,No Service / DTC Only,AW,TRUE
+XSJ,No Service / DTC Only,BA,TRUE
+XWS,No Service / DTC Only,EH,TRUE
+XBZ,No Service / DTC Only,BZ,TRUE
+XTR,No Service / DTC Only,KI,TRUE
+XPC,No Service / DTC Only,PN,TRUE
+XLP,No Service / DTC Only,RY,TRUE
+XSV,No Service / DTC Only,SJ,TRUE
+XMB,No Service / DTC Only,MS,TRUE
+XTO,No Service / DTC Only,TK,TRUE
+XBF,No Service / DTC Only,GB,TRUE
+XJE,Service through Aramex London,JE,TRUE
+XHI,No Service / DTC Only,HM,TRUE
+XFI,No Service / DTC Only,CD,TRUE
+XVA,No Service / DTC Only,VA,TRUE
+XIO,No Service / DTC Only,IM,TRUE
+XNO,No Service / DTC Only,NF,TRUE
+XDI,No Service / DTC Only,TP,TRUE
+XVD,No Service / DTC Only,VC,TRUE
+XEI,No Service / DTC Only,VG,TRUE
+XWI,No Service / DTC Only,WF,TRUE
+XCK,No Service / DTC Only,CC,TRUE
+XTI,No Service / DTC Only,TL,TRUE
+XBT,No Service / DTC Only,IO,TRUE
+WRO,FAN COURIER EXPRESS SRL,RO,TRUE
+BFX,REIDS TRANSPORT,ZA,TRUE
+BRX,GENT TRANSPORT,GB,TRUE
+SHY,Aramex,CN,TRUE
+EIN,Aramex,NL,TRUE
+WFA,WORLD FREIGHT ALLIANCE ADMIN OFFICE,JO,TRUE
+SLT,ARAMEX SMS,PK,TRUE
+PEW,ARAMEX SMS,PK,TRUE
+YSD,ACTIVAIR AUSTRALIA PTY LTD,AU,TRUE
+YTP,Starlink Freight Systems LTD,TW,TRUE
+YSH,STARLINK FREIGHT SYSTEM(SHANGHAI) LTD.,CN,TRUE
+YNI,STARLINK FREIGHT SYSTEM (NINGBO) LTD.,CN,TRUE
+YTI,STARLINK FREIGHT SYSTEM(TIANJIN) LTD.,CN,TRUE
+YJN,Cargo Care,ZA,TRUE
+YLA,Bolivian LOGISTICS S.R.L.,BO,TRUE
+YCA,GLOBAL TRANSPORT SERVICES LATIN AMERICA S.A.C.,PE,TRUE
+YTK,NANKAI EXPRESS CO LTD,JP,TRUE
+WCH,CHINA COURIER SERVICE CORPORATION,CN,TRUE
+DXT,ARAMEX DUBAI TRAINING,AE,TRUE
+AMT,Aramex,JO,TRUE
+LPR,ARAMEX LPR,IN,TRUE
+YSG,FANS TRANS (CHINA) LTD,CN,TRUE
+DLR,DUBAI LA REDOUTE,FR,TRUE
+JNH,ARAMEX SOUTH AFRICA HUB,ZA,TRUE
+CYI,YCS EXPRESS GROUP,TW,TRUE
+FSD,ARAMEX SMS,PK,TRUE
+MUX,ARAMEX SMS,PK,TRUE
+UET,ARAMEX SMS,PK,TRUE
+NBX,ONE WORLD COURIER,GB,TRUE
+TRA,Training,JO,TRUE
+FDL,Fodel PUDO,KW,TRUE
+WPT,AEROPOINT DELIVERY SOLUTIONS,US,TRUE
+TGD,Service through Aramex Dubai,ME,TRUE
+YMI,"ASG Milano ""Cash basis only""",IT,TRUE
+YMA,"ASG Malpensa ""Cash basis only""",IT,TRUE
+YTR,"ASG Treviso ""Cash basis only""",IT,TRUE
+YGE,"ASG Genova ""Cash basis only""",IT,TRUE
+YRO,"ASG Roma ""Cash basis only""",IT,TRUE
+YNA,"ASG Napoli ""Cash basis only""",IT,TRUE
+WDC,DC FORINTOS,UA,TRUE
+CCO,ARAMEX,IN,TRUE
+YSN,SHANGHAI BLUE CLOUD INTERNATIONAL FORWARDING CO.,CN,TRUE
+XIA,YCS EXPRESS GROUP,CN,TRUE
+IXW,QUICK SERVICE,IN,TRUE
+IFM,INFOFORT MUSCAT,OM,TRUE
+CGP,Aramex,BD,TRUE
+WNA,NATIONAL COURIER,TZ,TRUE
+BOH,Aramex,IN,TRUE
+PAK,.,PK,TRUE
+PEC,DNJ EXPRESS,CN,TRUE
+SHC,DNJ EXPRESS,CN,TRUE
+SZC,DNJ Express,CN,TRUE
+NYC,IBC NEW YORK,US,TRUE
+LAC,IBC LOS ANGELES,US,TRUE
+YYC,IBC TORONTO,CA,TRUE
+CBS,"CBS Messenger Service, Inc",US,TRUE
+XGR,W.F.F. LTD World Freight Forwarders Internation,GR,TRUE
+TKD,FAN EXPRESS LTD.,GH,TRUE
+GZA,ARAMEX MALTA Ltd.,MT,TRUE
+XBM,Atege GMBH / BER Air,DE,TRUE
+SUI,PEOPLE'S POST,GE,TRUE
+ODX,Anchorage Shipping,AE,TRUE
+OUK,Andante,GB,TRUE
+OBE,Carga Seacon,BE,TRUE
+OGR,Magic Air,DE,TRUE
+OSW,Vanguard Logistics Sweden,SE,TRUE
+OFI,Vanguard Logistics Finland,FI,TRUE
+ONR,Vanguard Logistics Norway,NO,TRUE
+ODN,Vanguard Logistics Denmark,DK,TRUE
+ORF,Confreight France,FR,TRUE
+OKX,Confreight UK,GB,TRUE
+OGX,Confreight Germany,DE,TRUE
+OBX,Confrieght Bulguim,BE,TRUE
+OPP,Freightcon Rotterdam,NL,TRUE
+OSR,Dachser - Switzerland,CH,TRUE
+ODH,Dachser - Germany,DE,TRUE
+OHO,Road Air,NL,TRUE
+OAP,Contrans Logistik Gmbh,DE,TRUE
+OFA,Graveleau,FR,TRUE
+OBR,Logimasters,BR,TRUE
+OXS,Freightcon Barcelona,ES,TRUE
+ODM,Mahe,DK,TRUE
+OND,Nordicon - Finland,FI,TRUE
+OEA,Motherlines Shipping,AE,TRUE
+OFC,Daher International,FR,TRUE
+OSG,"Sigma Trans ""Deleted""",IT,TRUE
+OFN,Waco,FI,TRUE
+OTR,Transglobal,GB,TRUE
+ODF,Dachser - Germany,DE,TRUE
+OBI,Bestway International,CN,TRUE
+JTO,CLASQUIN FRANCE,FR,TRUE
+JPA,CLASQUIN CDG,FR,TRUE
+JSI,CLASQUIN SINGAPORE PTE LTD,SG,TRUE
+JTY,CLASQUIN JAPAN CO LTD,JP,TRUE
+JCH,EVOX LOGISTICS INC,US,TRUE
+JAX,Blue Streak Couriers,US,TRUE
+MBA,ARAMEX KENYA LIMITED,KE,TRUE
+OTL,.,EE,TRUE
+PNX,"JG WORLDWIDE CO., LTD",KH,TRUE
+IIF,PT. Aramex Indonesia Internation Freight Services,ID,TRUE
+WGD,GDA NETHERLANDS B.V.,NL,TRUE
+PRN,Service through Aramex Dubai,XZ,TRUE
+MCO,Blue Streak Couriers,US,TRUE
+AIJ,Aramex International Services - Jordan,JO,TRUE
+TML,3 M Logistics,ZA,TRUE
+TPA,Blue Streak Couriers,US,TRUE
+WZX,"YCS EXPRESS GROUP SHENZHEN CO.,LTD.",CN,TRUE
+AUS,US Army,JO,TRUE
+MAR,UNITED COMMERCIAL GROUP SARL,MA,TRUE
+LYS,LOGISTIC VIP/HELIOS,FR,TRUE
+BON,IBC,AN,TRUE
+FPO,IBC C/O GLOBAL CUSTOM BROKERS,BS,TRUE
+SJF,IBC,VI,TRUE
+SXM,IBC,AN,TRUE
+OTH,Wholesaler - Other,JO,TRUE
+SPA,Special Agent,CN,TRUE
+OUS,DACHSER USA,US,TRUE
+OIS,SBB International Transportation Istanbul,TR,TRUE
+OMN,CONFREIGHT ITALIA SPA,IT,TRUE
+OHK,Famous Pacific Shipping (HK) Ltd.,HK,TRUE
+OWI,"Gulf American Lines, Inc.",US,TRUE
+YLI,"Stevens Global Logistics, Inc-USA",US,TRUE
+CCK,Global Transportation Services Pvt. Ltd.,IN,TRUE
+COH,Global Transportation Services Pvt. Ltd.,IN,TRUE
+AMU,Aramex,MU,TRUE
+HYA,Global Transportation Services Pvt. Ltd.,IN,TRUE
+BNG,Global Transportation Services Pvt. Ltd.,IN,TRUE
+CHN,Global Transportation Services Pvt. Ltd.,IN,TRUE
+CBT,Global Transportation Services Pvt. Ltd.,IN,TRUE
+MUM,Global Transportation Services Pvt. Ltd.,IN,TRUE
+GUJ,Global Transportation Services Pvt. Ltd.,IN,TRUE
+OLH,.,PK,TRUE
+JQZ,YCS EXPRESS GROUP,CN,TRUE
+AMC,Aramex,EG,TRUE
+CAC,DNJ EXPRESS,CN,TRUE
+FDX,Mark 3 agent JFK,US,TRUE
+EBL,Aramex,IQ,TRUE
+BTF,BTG Internationale Spedition GmbH,DE,TRUE
+LNS,Aramex UK Limited - Shop N Ship,GB,TRUE
+MFD,Metrofile,AE,TRUE
+AIT,AIT Worldwide Logistics,US,TRUE
+LYN,Lynden International,US,TRUE
+BTB,BTG Internationale Spedition GmbH,DE,TRUE
+BTN,BTG Internationale Spedition GmbH,ES,TRUE
+BTP,BTG Internationale Spedition GmbH,DE,TRUE
+CPA,Currie European SA,FR,TRUE
+SDB,SAVINO DEL BENE SPA,IT,TRUE
+UKR,International Express Ltd./A Franchisee of Aramex,UA,TRUE
+LIL,OCS France,FR,TRUE
+MRS,LOGISTIC VIP/HELIOS,FR,TRUE
+ALR,Aramex Algerie,DZ,TRUE
+NMR,Namerah Humrani,SA,TRUE
+HGS,Hargeisa – HGA EACS Franchise,OS,TRUE
+CPL,Australian Couriers Pty Ltd,AU,TRUE
+AIX,ASSISPED s.p.a.,IT,TRUE
+KDY,Hilmy Sulaiman,LK,TRUE
+IBK,Investment Bank,JO,TRUE
+ASL,Aramex Special Logistics LLC,AE,TRUE
+OJO,Access Freight International (Pty) Ltd,ZA,TRUE
+RGS,Singapore Regional,SG,TRUE
+CTC,Headquarters - CNTC,CN,TRUE
+OCM,SKY LOGIN CARGO SAS,CO,TRUE
+PKR,ARAMEX - POKHARA,NP,TRUE
+CTG,CTG-Aramex (UK) Limited,GB,TRUE
+XUD,Malcolm Total Logistics,NZ,TRUE
+OUD,Malcolm Total Logistics,NZ,TRUE
+OMV,KENEPLUS MULTIMODAL TRANSPORT S.A.,UY,TRUE
+XOL,.,NO,TRUE
+OOL,.,NO,TRUE
+JAY,Jaysingpur,IN,TRUE
+GPK,GORAKHPUR,IN,TRUE
+BLE,BAREILLY,IN,TRUE
+MAT,MATHURA,IN,TRUE
+GYA,Gaya,IN,TRUE
+GON,Gondia,IN,TRUE
+LAT,Latur,IN,TRUE
+JLQ,Elastic Run,IN,TRUE
+MCS,Master Courier Service (MCS),AE,TRUE
+BTA,BTG AUGSBURG,DE,TRUE
+EUR,European Freight,IE,TRUE
+NHL,Nahel E-commerce LLC,AE,TRUE
+RPR,M/s Seven Hills Express Courier Service,IN,TRUE
+SHX,Aramex,CN,TRUE
+TNJ,Transit in Jordan,JO,TRUE
+GSC,Aramex,AE,TRUE
+JAZ,JAZEERA LLC,KG,TRUE
+LOH,LON RHQ,GB,TRUE
+HSK,Aramex Alaska,US,TRUE
+FLD,Aramex Florida,US,TRUE
+VRN,Aramex Virginia,US,TRUE
+OHI,Aramex Ohio,US,TRUE
+TXS,Aramex Texas Ltd,US,TRUE
+DGZ,KobEx LLC,KG,TRUE
+PRO,Ghana RO,GH,TRUE
+TMU,Temu DIM in HK,HK,TRUE
+HAS,Aramex Germany,DE,TRUE
+FRS,translogistik,DE,TRUE
+TST,testt,JO,TRUE
+KZT,ETT delivery LLC,KZ,TRUE
+AAA,TEST,JO,TRUE
+TDY,NS ENTERPRISES,IN,TRUE
+KTT,SRI ASSOCIATES,IN,TRUE
+KZM,VINCERE BUSINESS,IN,TRUE
+FLY,FLYER WORLDWIDE EXPRESS,IN,TRUE
+DHL,MUNDEWADI ENTERPRISES,IN,TRUE
+MHL,MUNDEWADI ENTERPRISES,IN,TRUE
+SWI,STAVYA TRANSTECH PVT LTD,IN,TRUE
+MOL,MUNDEWADI ENTERPRISES,IN,TRUE
+RMU,M/S PRATEEK ENTERPRISES,IN,TRUE
+TRR,SGL LOGISTICS,IN,TRUE
+PAM,RELEX SOLUTIONS,IN,TRUE
+MJI,PHONIX GROUP OF COMPANIES,IN,TRUE
+GGN,Aramex India PVT Ltd.,IN,TRUE
+IDA,Aramex India PVT Ltd.,IN,TRUE
+ROU,HABIBI COURIER,IN,TRUE
+CHQ,Abr Al-Awtan,SA,TRUE
+KUL,Aramex Malaysia SDN BHD,MY,TRUE
+PRC,PATNA ENTERPRISES,IN,TRUE
+SPJ,INSTANT COURIERS,IN,TRUE
+RNG,B B COURIER SERVICE,IN,TRUE
+DBG,INSTANT COURIERS,IN,TRUE
+VIM,Stavya Transtech Privite limited,IN,TRUE
+WWW,Aramex Wholesale,AE,TRUE
+DNR,M/S SUPER SPEED COURIER SERVICES,IN,TRUE
+GCX,Gulf CX,BH,TRUE
+PNL,Abha courier,IN,TRUE
+GDL,D.C.ENTERPRISES,IN,TRUE
+BTW,MATOSHREE ENTERPRISES,IN,TRUE
+SQI,M/S PARMAR LOGISTIC,IN,TRUE
+CSR,DELIVERY FAST,IN,TRUE
+SAY,Samtha,SA,TRUE
+BIS,Besh,SA,TRUE
+ABA,Abu Arish,SA,TRUE
+SAB,Sabiya,SA,TRUE
+YOD,Yodel UK,GB,TRUE
+CGY,LOBO ASSOCIATES,IN,TRUE
+ELO,YUSO LOGISTICS,IN,TRUE
+SHQ,Abr Al-Awtan,SA,TRUE
+RAN,RANIYA,SA,TRUE
+KHU,KURMA,SA,TRUE
+TUR,TURBA,SA,TRUE
+TPX,"DPE International Co.,Ltd",TW,TRUE
+ERA,XPEDITE XPRESS LOGISTICS,IN,TRUE
+NDL,S.L.V.ENTERPRISES,IN,TRUE
+SDP,YUSUF ENTERPRISES,IN,TRUE
+XCF,Clasquin France SA,FR,TRUE
+HJR,Hajer Arrow Company Ltd,SA,TRUE
+TRG,Freight Training Entity,US,TRUE
+DCC,Aramex consolidation center,AE,TRUE
+XHO,Airtrans Logistics International Ltd.,HK,TRUE
+XEA,Radius International,US,TRUE
+XBS,Giant Transportes Nac E In't Ltda,BR,TRUE
+XTK,Nankai Express Co.Ltd.,JP,TRUE
+XWN,Tri-Ad Freight Forwarding Ltd.,CA,TRUE
+GEU,Service through Sovereign Courier - GEU,DE,TRUE
+DGE,SYNWOO LOGISTICS LLP,IN,TRUE
+CHP,Anishs services,IN,TRUE
+GDN,INDIAN COURIER SERVICE,IN,TRUE
+RVT,V V ENTERPRISES,IN,TRUE
+SKY,SKYWAYS AIR SERVICES PVT.LTD.,IN,TRUE
+NLK,FOR OYE BUYER SALES HUB,IN,TRUE
+ITA,NUKEN ENTERPRISE,IN,TRUE
+DJG,INA ENTERPRISE,IN,TRUE
+DBY,GG ENTREPRISE,IN,TRUE
+CJE,CITY EXPRESS LOCAL COURIER,IN,TRUE
+BRP,KB COURIER SERVICE,IN,TRUE
+BME,M/S PAREEK ENTERPRISES (BARMER),IN,TRUE
+UWC,Universal worldwide Courier & Cargo,IN,TRUE
+GLB,Globeflight Worldwide Express UK LTD,ZA,TRUE
+KAD,Gajanan enterprises,IN,TRUE
+ROH,abha courierf,IN,TRUE
+PLN,Bhushan Enterprises,IN,TRUE
+WSM,Riyaz Enterprises,IN,TRUE
+MAL,EVANS COURIER,IN,TRUE
+WEX,WEX24 Corp,US,TRUE
+NRY,METROMOT EXPRESS,IN,TRUE
+KRY,ARISEN EXPRESS,IN,TRUE
+GEE,SERA (VIC) Pty Ltd The Stephen Fisher Family Trust,AU,TRUE
+CNC,Gladstone District Transport Logistics Pty Ltd,AU,TRUE
+WOL,M & N Couriers Pty Ltd,AU,TRUE
+BDB,RICKSUE Pty Ltd,AU,TRUE
+TVL,Coastal Integrity Business Pty Ltd ATF,AU,TRUE
+TOO,Kevdon Enterprises Pty Ltd,AU,TRUE
+TNW,KTB Enterprises Pty Ltd,AU,TRUE
+SUN,Savi Sun Pty Ltd ATF The Savi Trust,AU,TRUE
+PQQ,Shelband Pty Ltd,AU,TRUE
+OAG,Central West Couriers Pty Ltd,AU,TRUE
+NTH,Tribel Pty Ltd,AU,TRUE
+MKY,Mt Ossa Harvesting Pty Ltd,AU,TRUE
+LAU,Fast (TAS) Pty Ltd,AU,TRUE
+NEW,Viacitius Management Pty Ltd,AU,TRUE
+HOB,B-H Ventures Pty Ltd ATF B-H Family Trust,AU,TRUE
+ARL,Aramex,AE,TRUE
+GLD,Cubic Sea Pty Ltd,AU,TRUE
+CMN,Aramex Morocco Logistics,MA,TRUE
+CFS,The Five Princesses Pty Ltd,AU,TRUE
+CCC,LMD Couriers Pty Ltd,AU,TRUE
+CBR,Casper International Pty Ltd,AU,TRUE
+CNS,Jaler Pty Ltd ATF Inusu Trust,AU,TRUE
+BRI,Global Express Couriers Pty Ltd,AU,TRUE
+BEN,Kacadasi Pty Ltd,AU,TRUE
+ALB,EJLA Pty Ltd,AU,TRUE
+MXO,Estafeta,MX,TRUE
+NPE,FASTWAY COURIERS HAWKES BAY,NZ,TRUE
+IVC,FASTTWAY COURIERS SOUTHLAND,NZ,TRUE
+DUN,FASTWAY COURIERS OTAGO,NZ,TRUE
+WES,FASTWAY COURIERS WEST COAST,NZ,TRUE
+WBB,Globex Express Couriers Ltd,UG,TRUE
+NSN,FASTWAY COURIERS NELSON,NZ,TRUE
+CWY,Aramex Causeway,SA,TRUE
+WEL,FASTWAY COURIERS WELLINGTON,NZ,TRUE
+NPL,FASTWAY COURIERS TARANAKI,NZ,TRUE
+WAG,FASTWAY COURIERS WANGANUI,NZ,TRUE
+XDD,Seko Logistics Pvt. Ltd. Co,ET,TRUE
+PMR,FASTWAY COURIERS PALMERSTON NORTH,NZ,TRUE
+MAS,FASTWAY COURIERS WAIRARAPA,NZ,TRUE
+GIS,FASTWAY COURIERS GISBORNE,NZ,TRUE
+ROT,FASTWAY COURIERS ROTORUA,NZ,TRUE
+TGA,FASTWAY COURIERS TAURANGA,NZ,TRUE
+HLZ,FASTWAY COURIERS HAMILTON,NZ,TRUE
+WRE,FASTWAY COURIERS WHANGAREI,NZ,TRUE
+TUN,Aramex Tunisia,TN,TRUE
+JUB,Service through Aramex Dubai,SS,TRUE
+PJS,Aramex PJSC,AE,TRUE
+LOC,CourierPlus Services Limited,NG,TRUE
+DBT,N. P.G. EXPRESS,IN,TRUE
+IFN,InfoFort Kenya,KE,TRUE
+XWO,JAS-FBG S.A.,PL,TRUE
+XNR,Ziegler Deurne,BE,TRUE
+FZL,InfoFort Lusaka,ZM,TRUE
+FTT,InfoFort Tunis,TN,TRUE
+MMS,ARAMEX-ICS,SA,TRUE
+DAX,Next Courier & Logistics,TZ,TRUE
+SCT,Portshepstone,ZA,TRUE
+SLX,CJ Logistics Corporation,KR,TRUE
+MIX,Victoria Secret Business,US,TRUE
+COT,DEKSHAN EXPRESS COURIER,IN,TRUE
+AFK,WINGS COURIER,IN,TRUE
+ILX,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+ILS,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+ILM,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+ILF,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+ILH,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+ILD,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+ILB,IPSEN AIR LOGISTICS GMBH,DE,TRUE
+SZV,Suzhou,CN,TRUE
+HGF,test,OS,TRUE
+DGT,DANYAS GENERAL TRADING LLC,AE,TRUE
+HGL,Test,OS,TRUE
+KNK,MAHAVEER COMMUNICATIONS,IN,TRUE
+LGT,Paritosh Halder,IN,TRUE
+TRT,ttt,JO,TRUE
+XFT,Fans Trans International Ltd,HK,TRUE
+XFC,Fans Trans (China) Ltd,HK,TRUE
+ORT,Orion ils Logistics,ZA,TRUE
+DTD,DTDC Express Ltd.,IN,TRUE
+LOG,SIPACK warehousing,NL,TRUE
+FWP,Fastway Couriers ( Perth,AU,TRUE
+NHT,SUBHAS CHANDRA MANDAL,IN,TRUE
+ASN,MONDAL COURIER SERVICE,IN,TRUE
+BHC,HABIBI COURIER,IN,TRUE
+LMP,M/S FLY KING EXPRESS,IN,TRUE
+GAO,Lourdes Enterprise,IN,TRUE
+VRL,PAVAN COURIER SERVICE,IN,TRUE
+DRR,Shree Gajanand Enterprises,IN,TRUE
+KJP,PATTAR LOGISTICS,IN,TRUE
+QAR,Aramex Qara,SA,TRUE
+JNX,DAWN WING,ZA,TRUE
+HRI,M/S HARDOI COMMUNICATION,IN,TRUE
+HJI,M/s Courier Service,IN,TRUE
+SNI,M/s Global Enterprise,IN,TRUE
+DBB,A.C.S. Logistics,IN,TRUE
+XLF,LCA AFRICA LOGISTICS (LCA),TG,TRUE
+XSB,Bir Dunya Company,TM,TRUE
+JNB,Aramex,ZA,TRUE
+FLN,IFLN,US,TRUE
+YDS,Connor Anderson International,AU,TRUE
+FWM,Fastway Couriers ( Melbourne,AU,TRUE
+PLA,JAG COMMUNICATION & LOGISTICS,IN,TRUE
+EDA,FALCON ENTERPRISES,IN,TRUE
+UAA,AL BADAR GROUP OF COMPANIES,IN,TRUE
+UPM,United Parcel Service,IN,TRUE
+UPB,UPS INDIA PVT LTD,IN,TRUE
+PCM,SRI VAARU SERVICES,IN,TRUE
+UBX,united Business xpress LTD,GB,TRUE
+OCK,OCS INDIA PVT.LTD,IN,TRUE
+UPK,United Parcel Service,IN,TRUE
+ICL,INTERGRATED COURIER & LOGISTICS,IN,TRUE
+REL,RELIABLE LOGISTICS,IN,TRUE
+KPD,aramex India Pvt Ltd,IN,TRUE
+GUI,SUN BRIGHT EXPRESS,IN,TRUE
+WAN,BIDYUT SARKAR,IN,TRUE
+RSI,Ganesh Enterprises,IN,TRUE
+TOL,Fastway forwarding Agent – Toll,AU,TRUE
+HMA,Al Hamdaniyah,SA,TRUE
+VIR,SRI VEL AND COMPANY,IN,TRUE
+TSI,SRI BALAJI ENTERPRISES,IN,TRUE
+THE,J.J ENTERPRISES,IN,TRUE
+ALU,CHIDAMBARAM LOGISTICS REACH,IN,TRUE
+STI,Startrack International,GB,TRUE
+BQA,BISWAMBHAR DUTTA,IN,TRUE
+RJI,M/S. SPEED COURIER SERVICES,IN,TRUE
+PGH,M/S SHOBHA COURIER & CARGO (P) LTD,IN,TRUE
+KIR,RIDDHI SIDDHI ENTERPRISES,IN,TRUE
+OCX,OCS INDIA PVT.LTD,IN,TRUE
+UPX,United Parcel Service,IN,TRUE
+DTC,Direct to Consignee,JO,TRUE
+ANN,Shailesh enterprises,IN,TRUE
+DNJ,Bhushan Enterprises,IN,TRUE
+APS,Australia Post Sydney,AU,TRUE
+JND,Karan international,IN,TRUE
+PNN,Abha Courier,IN,TRUE
+MHV,Anjani Express Parcel Services,IN,TRUE
+SAD,Devchandbhai patel,IN,TRUE
+BIY,AADARSH EXPRESS SERVICE,IN,TRUE
+ETJ,Palak Enterprises,IN,TRUE
+SGR,PSG Express Services,IN,TRUE
+ASK,Maa Ambe Traders,IN,TRUE
+WAH,DSV Air & Sea (Germany) GmbH,DE,TRUE
+ALL,Aramex India p ltd,IN,TRUE
+PVR,Dawn Express,IN,TRUE
+VLA,j j enterprises,IN,TRUE
+MGR,Surakshini Securities & Intelligence Svcs Pvt Ltd,IN,TRUE
+UPA,Lowprice Online,IN,TRUE
+ADM,Adom,FR,TRUE
+KEL,Sovereign Courier GmbH,DE,TRUE
+TRF,Aramex,GB,TRUE
+TPT,SRI ANJANA COURIERS,IN,TRUE
+CLD,Aramex,QA,TRUE
+TJR,S.P NETWORK,IN,TRUE
+DHN,Supriya Enterprises,IN,TRUE
+YYX,The Messengers International,CA,TRUE
+HJP,Airlinker Courier Service,IN,TRUE
+DMZ,Aramex Dammam Zohur,SA,TRUE
+FNJ,Service through Aramex Dubai,KP,TRUE
+ULA,OULA,SA,TRUE
+IVR,Served through SAGA Express,CI,TRUE
+PTS,Cargo-partner Logistics Pte. Ltd.,SG,TRUE
+APX,Cargo-partner Asia Pacific Limited,CN,TRUE
+SGB,Sadleirs Global Logistics (Brisbane),AU,TRUE
+SGP,Sadleirs Global Logistics (Perth),AU,TRUE
+BGS,BOLIVIAN GROUP SRL,BO,TRUE
+ACL,Customs Agency Services Pty Ltd,AU,TRUE
+SFI,International Freight Shipping SAC (IFS),PE,TRUE
+TPG,TOLL PRIORITY GLOBAL,AU,TRUE
+SHW,sharoorah,SA,TRUE
+CHI,AIT Worldwide Logistics,US,TRUE
+PIT,AIT Worldwide Logistics,US,TRUE
+DEN,AIT Worldwide Logistics,US,TRUE
+HNS,M/S S.K ENTERPRISES,IN,TRUE
+YES,YES INFO ENTERPRISES PRIVATE LIMITED,IN,TRUE
+PBD,JALARAM SALES,IN,TRUE
+KGN,Vansiya services,IN,TRUE
+ALI,ABHA DISTRIBUTOR,IN,TRUE
+MDP,M/S. Ajay enterprises,IN,TRUE
+DRT,DART AIR SERVICE,IN,TRUE
+FNL,InfoFort Nigeria,NG,TRUE
+HST,Ameen Travels,IN,TRUE
+SHA,Aramex-Sinotrans Shanghai 5,CN,TRUE
+KTE,Pushpa Courier and cargo services,IN,TRUE
+HGY,DEBABRATA SAMANTA,IN,TRUE
+TKA,M/S S.R.XPRESS,IN,TRUE
+ABU,UBS GLOBAL EXPRESS,IN,TRUE
+JJN,M/S MAHALA ENTERPRISES,IN,TRUE
+STA,PARCEL AND CARGO EXPRESS,IN,TRUE
+BAD,M/S.Hendve logistic,IN,TRUE
+BED,URMILA ENTERPRISES,IN,TRUE
+SSR,REAL TIME SERVICE,IN,TRUE
+KYI,SUKHI ENTERPRISE,IN,TRUE
+RPT,SRM EXPRESS,IN,TRUE
+BKL,Ameen Travels,IN,TRUE
+DOL,DOLLAR XPRESS,IN,TRUE
+WAT,SAMAY AGENCIES,IN,TRUE
+BTL,KONTRACT COURIER BUTWAL,NP,TRUE
+BIR,KONTRACT COURIER,NP,TRUE
+BHR,AIR FLIGHT EXPRESS,NP,TRUE
+UPC,UPS,IN,TRUE
+NLD,OM COURIER SERVICE,IN,TRUE
+TUA,M/S GUVEST INDIA,IN,TRUE
+STP,M/S FLY KING EXPRESS,IN,TRUE
+XSD,Scan Global Logistics A/S,DK,TRUE
+SKS,M/s. LAKSHMI ENTERPRISES,IN,TRUE
+EBC,Ecommerce - Spain/BCN,ES,TRUE
+EST,EXPRESS IT,IN,TRUE
+UWX,UNITED WORLDWIDE EXPRESS,IN,TRUE
+BFN,Bloemfontein,ZA,TRUE
+NLP,Nelspruit,ZA,TRUE
+GRJ,George,ZA,TRUE
+KIM,Kimberley,ZA,TRUE
+PMB,Pietermaritzburg,ZA,TRUE
+PTG,Polokwane,ZA,TRUE
+RUS,Rustenberg,ZA,TRUE
+STB,Stellenbosch,ZA,TRUE
+DDL,Aramex In't Hava Kargo ve Kurye A.S.,TR,TRUE
+DMA,Aramex Dammam Atheer,SA,TRUE
+BGK,Prakash,IN,TRUE
+DBU,K K Murthy,IN,TRUE
+NOQ,NP COMMUNICATION,IN,TRUE
+RGJ,HIMANGSHU ENTERPRISES,IN,TRUE
+COB,SUPERFAST COURIER,IN,TRUE
+CKD,M/s OM COURIERS AND CARGO SERVICES,IN,TRUE
+JKR,NEWGEN ENTERPRISES,IN,TRUE
+IFU,Infofort Uganda,UG,TRUE
+SNG,M/S MG RETAILS,IN,TRUE
+BTE,M/S GIRRAJI DEVI,IN,TRUE
+RBL,M/S SHOBHA COMMUNICATION,IN,TRUE
+FWS,Fastway Couriers,AU,TRUE
+JBP,aramex India Pvt Ltd,IN,TRUE
+KNW,M/S VANSIYA SERVICES,IN,TRUE
+NPU,BIPASHA.COM,IN,TRUE
+DMV,New Age Solution,IN,TRUE
+BGN,Akash Surekha,IN,TRUE
+NLV,Easy Delivery,IN,TRUE
+GLT,Be Stylist,IN,TRUE
+BRD,Ratan Lal Pandey,IN,TRUE
+LMG,Gulokash Dutta,IN,TRUE
+BPR,MUNU SUTRADHAR,IN,TRUE
+TEZ,Sibabada Biswas,IN,TRUE
+JTT,Pankaj kr Tamuli,IN,TRUE
+BGD,Aramex regional LLC,IQ,TRUE
+SPD,Speedex,AE,TRUE
+UNL,Universal,AE,TRUE
+UCD,Universal Courier-DHL,KE,TRUE
+KTW,M/s INTEGRITY PARTNERS,IN,TRUE
+BSR,M/S.Global services,IN,TRUE
+PTM,MIDINDIA SHIPPING,IN,TRUE
+BVC,M/S.ANJANI EXPRESS PARCEL SERVICE,IN,TRUE
+GNA,Motherland Courier,IN,TRUE
+TEN,Right Time Express,IN,TRUE
+DRW,Shri Balaji Enterprises,IN,TRUE
+DGR,Maa Chandi Courier Service,IN,TRUE
+BJU,Riddhi Siddhi Enterprises,IN,TRUE
+BGP,MAA NIRMALA AGENCY,IN,TRUE
+PUM,NEW JITS COURIER SERVICE,IN,TRUE
+GRM,A.R.P ENTERPRISE,IN,TRUE
+BUI,M/s ANSH INTERNATIONAL (BALLIA),IN,TRUE
+SKR,M/s ANSH INTERNATIONAL (BALLIA),IN,TRUE
+ANT,M/S ASSOCIATE COURIER CARGO & CO LOADERS,IN,TRUE
+VEN,Vendors,JO,TRUE
+XYT,British American Tobacco,EG,TRUE
+DBA,Duba,SA,TRUE
+DGJ,SHREE RAJA GANAPATHY ENTERPRISES,IN,TRUE
+JAJ,M/S SURJEET COURIER,IN,TRUE
+BLT,M/S MAHA KHETESHWAR AGENCY,IN,TRUE
+SUP,IT Support,JO,TRUE
+YGR,Santoshimaa Enterprises,IN,TRUE
+MYA,Mahaveera Enterprises,IN,TRUE
+ROP,M/S YASH COURIERS,IN,TRUE
+MKS,M/S AMAR SINGH,IN,TRUE
+NDT,M/S SHREE KARDHAR ENTERPRISES,IN,TRUE
+BHA,ARAMEX INDIA PVT LTD -Behala,IN,TRUE
+SKU,East Malaysia Power Sdn Bhd,MY,TRUE
+DAZ,M/s LANCER EXPRESS SERVICES,IN,TRUE
+AWY,ZEUS COURIER,IN,TRUE
+PTB,PRO PARTNERS,IN,TRUE
+MLM,V.SAFE COMMINICATION,IN,TRUE
+TRL,THANKAM SERVICES,IN,TRUE
+PGT,INTEGRATED ENTERPRISES,IN,TRUE
+OHA,DHANYA COMMUNICATIONS,IN,TRUE
+KYJ,BENSONS,IN,TRUE
+GFC,Gefco,FR,TRUE
+MVI,Pavan courier,IN,TRUE
+MSA,M/S ROYALE TOURS & TRAVELS SERVICES,IN,TRUE
+AKV,Edelivery,IN,TRUE
+NLS,SANTHI ENTERPRISES,IN,TRUE
+PVA,Sethu Lakshmi narasimhaswamy enterprises,IN,TRUE
+CCT,ERG Logitech Solutions,IN,TRUE
+RCP,Ashitosh Associates,IN,TRUE
+YMU,M/s Rajdhani Air Express Pvt Ltd.,IN,TRUE
+FZD,M/s. R. J. ASSOCIATES,IN,TRUE
+CHG,Dyamalamba Enterprises,IN,TRUE
+MPL,Vijaya Enterprises,IN,TRUE
+UNA,M/s. RADHA KRISHAN ENTERPRISES,IN,TRUE
+BAN,M/s. A TO Z AGENCY,IN,TRUE
+FDK,M/s. ROBBY COURIER AGENCY,IN,TRUE
+KSG,M/s. GANESHA TRADERS,IN,TRUE
+SGU,E-TEL,IN,TRUE
+NIK,DPD Switzerland,CH,TRUE
+QSH,Aramex Qatif Shati,SA,TRUE
+MBZ,Aramex Hofuf Mubaraz,SA,TRUE
+ABQ,Aramex Abqaiq,SA,TRUE
+XLM,Tranco JSC,KZ,TRUE
+AMX,Tracking Deferred Service,IO,TRUE
+OLP,OVERSEAS LOGISTICS PVT. LTD,IN,TRUE
+FLP,Flyer Worldwide Express,IN,TRUE
+OEP,OVERSEAS LOGISTICS PVT. LTD,IN,TRUE
+REP,RELIABLE,IN,TRUE
+ASP,OVERSEAS LOGISTICS PVT. LTD,IN,TRUE
+PCP,Pacific Express Corporation,IN,TRUE
+UBP,UB EXPRESS,IN,TRUE
+RAP,RAJWING,IN,TRUE
+EAP,OVERSEAS LOGISTICS PVT. LTD,IN,TRUE
+GSH,GAASH,IL,TRUE
+SEP,OCS Delivery Agent,IN,TRUE
+CMF,Aramex Lanka (Pvt) Ltd,LK,TRUE
+PBU,PT Global Distribution fts,ID,TRUE
+ORP,ORBIT TRANS EXPRESS,IN,TRUE
+VEP,OVERSEAS LOGISTICS PVT. LTD,IN,TRUE
+SSP,SSS Express,IN,TRUE
+BAP,BALAJI MEXMAIL (ICL ),IN,TRUE
+AFD,Aramex (UK) limited,GB,TRUE
+ELK,ELEKS Software,UA,TRUE
+ANP,ANS EXPRESS,IN,TRUE
+XLL,AIT Worldwide Logistics,US,TRUE
+XMF,AIT Worldwide Logistics,US,TRUE
+SFO,AIT Worldwide Logistics,US,TRUE
+EWR,AIT Worldwide Logistics,US,TRUE
+MWO,Online Orders Customer Support,RU,TRUE
+DAW,al-dawaa Pharmacy,SA,TRUE
+FWI,Fastway Ireland,IE,TRUE
+CSS,Aramex,ZA,TRUE
+RCB,Richards Bay,ZA,TRUE
+XYG,CONVASO GmbH,DE,TRUE
+XYU,Verst Group,US,TRUE
+ITN,PHSE USA Corporation,US,TRUE
+IAH,AIT Worldwide Logistics,US,TRUE
+DFW,AIT Worldwide Logistics,US,TRUE
+XTT,AIT Worldwide Logistics,US,TRUE
+DPC,DPD,CH,TRUE
+WOA,JAS-FBG S.A.,PL,TRUE
+AKJ,ISHA ENTERPRISES,IN,TRUE
+KGR,TELEMATE,IN,TRUE
+SLA,R.S. SELVA AGENCIES,IN,TRUE
+HPT,SUN ENTERPRISES,IN,TRUE
+BJP,SRI RAGHAVEER SERVICES,IN,TRUE
+UDP,GURUDEV ENTERPRISES,IN,TRUE
+RPJ,M/S M.D ENTERPRISES,IN,TRUE
+FZR,M/S HPL LOGISTICS PVT. LTD (FEROZEPUR),IN,TRUE
+PAL,M/S VYAS ENTERPRISES (PALI),IN,TRUE
+BAT,M/S TRANSCONTINENTAL EXPRESS (BATALA),IN,TRUE
+KMA,S.K. LOGISTICS,IN,TRUE
+GOD,M/s. MAYUR AGENCIES,IN,TRUE
+UJJ,Mamta enterprises,IN,TRUE
+BIA,SKYLARK EXPRESS,IN,TRUE
+BMT,Sai Services,IN,TRUE
+ASE,ASE AIRSEA EXPRESS LTD.,TW,TRUE
+IXZ,ANDAMAN ISLAND EXPRESS,IN,TRUE
+GDG,Basavapranav Courier Services,IN,TRUE
+AIR,AIRLINKER COURIER SERVICE,IN,TRUE
+MLS,Lily express,IN,TRUE
+BPC,Coral Infotech,IN,TRUE
+TKR,SRS World Wide,IN,TRUE
+JLJ,Elegant Express Courier,IN,TRUE
+BRC,TEJ EXPRESS,IN,TRUE
+IFR,Infofort,AE,TRUE
+BHU,M.R.ENTERPRISE,IN,TRUE
+DWX,S.S. LOGISTICS,IN,TRUE
+MIR,AAIRBORNE INTERNATIONAL,IN,TRUE
+ENO,Ecommerce - Norway,NO,TRUE
+ECH,Ecommerce - Switzerland,CH,TRUE
+ECZ,Ecommerce - Czech Republic,CZ,TRUE
+EBG,Ecommerce - Bulgaria,BG,TRUE
+ELV,Ecommerce - Latvia,LV,TRUE
+ESK,Ecommerce - Slovakia,SK,TRUE
+ELT,Ecommerce - Lithuania,LT,TRUE
+ERO,Ecommerce - Romania,RO,TRUE
+EHU,Ecommerce - Hungary,HU,TRUE
+EIE,Ecommerce - Ireland,IE,TRUE
+EHR,Ecommerce - Croatia,HR,TRUE
+EFR,Ecommerce - France,FR,TRUE
+ESI,Ecommerce - Slovenia,SI,TRUE
+EBE,Ecommerce - Belgium,BE,TRUE
+ELU,Ecommerce - Luxembourg,LU,TRUE
+ENL,Ecommerce - Netherlands,NL,TRUE
+EGR,Ecommerce - Greece,GR,TRUE
+EMT,Ecommerce - Malta,MT,TRUE
+ECY,Ecommerce - Cyprus,CY,TRUE
+EIT,Ecommerce - Italy,IT,TRUE
+EPT,Ecommerce - Portugal,PT,TRUE
+ESP,Ecommerce - Spain,ES,TRUE
+ESE,Online Orders Customer Support,SE,TRUE
+EDK,Online Orders Customer Support,DK,TRUE
+EFI,Online Orders Customer Support,FI,TRUE
+EPL,Ecommerce - Poland,PL,TRUE
+TLZ,Aramex Logistics- Zarzis,TN,TRUE
+VTM,M/S Abhaya Anjaneya Agencies,IN,TRUE
+SME,Sri Varavina Malleshwara Enterprises,IN,TRUE
+KGP,A1 Ansar Courier,IN,TRUE
+XLN,DAVIS TRUCKING LLC,US,TRUE
+ALM,Aramex Logistics LLC ( Azubeir),OM,TRUE
+KRM,SIR LOGISTICS,IN,TRUE
+ILG,Ipsen logistics GMBH,DE,TRUE
+GER,Service through Aramex London - GER,DE,TRUE
+XBB,Gondrand Kft.,HU,TRUE
+MCC,Aramex Sydney,AU,TRUE
+DPK,DPD Kazakhstan,GB,TRUE
+SEU,SEUR,GB,TRUE
+AZM,ASM Transport,GB,TRUE
+PND,Post Nord,GB,TRUE
+RMG,Royal Mail,GB,TRUE
+BRT,Bartolini,GB,TRUE
+SYA,Aramex Sydney ( Mailcall ),AU,TRUE
+SIY,Yogesh Dubey,IN,TRUE
+DRC,Prinsel Mail International (PMI),CD,TRUE
+PUR,M/s Puri Express,IN,TRUE
+SIV,Sanjib Baruah,IN,TRUE
+AGE,M/S NEX LOGISTICS,IN,TRUE
+RIC,M/s RISHI COURIER SERVICE,IN,TRUE
+ONT,M/s OM SAI ENTERPRISES,IN,TRUE
+ANS,M/s ANSH INTERNATIONAL (Mirzapur),IN,TRUE
+OEN,M/S NEX LOGISTIC,IN,TRUE
+ANI,M/s ANSH INTERNATIONAL (Azamgarh),IN,TRUE
+RJB,M/s R.J.BROTHERS (Aligarh),IN,TRUE
+SSS,M/s SUPER SOLUTION SERVICE,IN,TRUE
+COE,M/s CONTINENTAL EXPRESS,IN,TRUE
+GBX,Bayusuf Clearing and Forwarding,BW,TRUE
+BID,M/s Shantalingeshwar Courier Services,IN,TRUE
+BGM,Aramex India Pvt Ltd,IN,TRUE
+RIY,Doha Al Tareeq,SA,TRUE
+LOX,TRANEX,NG,TRUE
+NDE,XPO Logistics,GB,TRUE
+JFS,JAS-FBG S.A,DE,TRUE
+XTL,ACEX ESTONIA,EE,TRUE
+CAP,Customs Agency Services Pty Limited,AU,TRUE
+DAS,DACHSER SE,DE,TRUE
+KAC,Aramex Saudi L.L.C,SA,TRUE
+JOP,M/S ANSH INTERNATIONAL (JAUNPUR),IN,TRUE
+BBK,M/S. INSHA EXPRESS,IN,TRUE
+RSD,Randhir Singh Store,IN,TRUE
+MTE,Matree Enterprise,IN,TRUE
+PJE,M/S Neel Kanth Super Express,IN,TRUE
+CAF,Cargo Air Freight LTD,IE,TRUE
+HAE,Home Agent Entity,AE,TRUE
+RMT,Red Mile Interactive General Trading LLC,AE,TRUE
+NCT,Aramex International,CH,TRUE
+HMH,M/S GUNJAN COURIER SERVICE,IN,TRUE
+YTL,SUNRISE ENTERPRISES,IN,TRUE
+AMI,EKVIRA AGENCIES,IN,TRUE
+WLD,SAMEDAY COURIERS,IN,TRUE
+IXY,SHIKHA ENTERPRISE,IN,TRUE
+OTX,"OTX Logistics, Inc",US,TRUE
+CBK,CBKSoft Yazilim A.S.,TR,TRUE
+VSG,Shivalaya Enterprises,IN,TRUE
+EXT,Extensya,JO,TRUE
+BRS,CDS LOJISTIK SAN.TIC.A.S.,TR,TRUE
+EPP,Easy Pack Plus Self Storage LLC,AE,TRUE
+MAK,Mark 3 Agent,GB,TRUE
+BMK,Bani Malik,SA,TRUE
+TDF,Time Definite Express,GB,TRUE
+OMF,.,IT,TRUE
+PNA,PostNet Advertising,ZA,TRUE
+PNS,PostNet South Africa,ZA,TRUE
+DHI,SUPER KINETIC EXPRESS,NP,TRUE
+KEP,AIR FLIGHT EXPRESS,NP,TRUE
+AGR,aramex India Pvt Ltd,IN,TRUE
+AZL,Aramex Associates-AIZAWL,IN,TRUE
+AKO,TUMPA DAS,IN,TRUE
+AIH,M/s PAREEK ENTERPRISES,IN,TRUE
+AAP,M/s WORLDWIDE EXPRESS SOLUTIONS,IN,TRUE
+AMN,Aramex Associates-AHMED NAGAR,IN,TRUE
+ATQ,Aramex,IN,TRUE
+BBI,Aramex,IN,TRUE
+BCH,KRISHNA SERVICES,IN,TRUE
+BDQ,M/s MAHAJAN NETWORK,IN,TRUE
+BHJ,M/s VIPIN AIR PACK,IN,TRUE
+BOT,Aramex Associates-BOKARO,IN,TRUE
+CAA,Aramex Associates-KANNUR,IN,TRUE
+CTK,Aramex,IN,TRUE
+CTR,SRI ANJANA COURIERS,IN,TRUE
+VAV,M/s JAI MAA TRANSPORT,IN,TRUE
+DHR,Aramex Associates-Dharwad,IN,TRUE
+DLE,Aramex Associates-DHULE,IN,TRUE
+DIB,KNS Agencies,IN,TRUE
+DMN,Aramex Associates-DIU,IN,TRUE
+DUU,Aramex Associates-DURG,IN,TRUE
+GAU,Aramex,IN,TRUE
+GNT,MANJU ENTERPRISES,IN,TRUE
+GTK,M/S. Liberty Express,IN,TRUE
+APO,M/s. APEX OVERSEAS,IN,TRUE
+GWL,Aramex Associates-GWALIOR,IN,TRUE
+HIA,M/S MAHA DEV COURIER AGENCY,IN,TRUE
+AVL,Arnav Logistics,IN,TRUE
+IDR,Aramex,IN,TRUE
+IXA,Aramex Associates-Agartala,IN,TRUE
+IXB,Aramex Associates-DARJILING,IN,TRUE
+IXD,Aramex,IN,TRUE
+IXE,Aramex Associates-Mangalore,IN,TRUE
+IXG,M/S MAHAJAN NETWORK (GURDASPUR),IN,TRUE
+IXJ,Aramex,IN,TRUE
+IXM,aramex India Pvt Ltd,IN,TRUE
+IXR,Aramex Associates-RANCHI,IN,TRUE
+JGA,Aramex Associates-JAMNAGAR,IN,TRUE
+JLR,Ankit Enterprises,IN,TRUE
+JOD,Aramex Associates-JODHPUR,IN,TRUE
+EGD,SOHAM INTERNATIONAL,IN,TRUE
+KIA,New Age Solution,IN,TRUE
+GUN,aramex India Pvt Ltd,IN,TRUE
+TKU,M/s Sri Pujitha Enterprises,IN,TRUE
+KRR,Aramex Associates-KARUR,IN,TRUE
+KYM,Aramex Associates-KOTTAYAM,IN,TRUE
+LDA,LAXMI COURIER SERVICES,IN,TRUE
+LKS,M/S HPL LOGISTICS PVT.LTD.(MOGA),IN,TRUE
+LWA,Aramex Associates-ALWAR,IN,TRUE
+GLO,M/s Global Express,IN,TRUE
+MRT,M/S NEX LOGISTICS,IN,TRUE
+RAA,NEW PERFECT INTERNATIONAL PARCEL SERVICE,IN,TRUE
+NGL,THE PROFESSIONAL COURIERS,IN,TRUE
+NLR,SOARES ENTERPRISES,IN,TRUE
+OOG,M/s YASH ASSOCIATES,IN,TRUE
+PAT,Aramex,IN,TRUE
+RAH,RAHUL AGENCIES,IN,TRUE
+PBV,SAI KRIPA ENTERPRISES,IN,TRUE
+PDY,aramex India Pvt Ltd,IN,TRUE
+PMM,Aramex Associates-WEST KAMENG,IN,TRUE
+PTT,Aramex Associates-PANIPAT,IN,TRUE
+PTL,Aramex,IN,TRUE
+SDE,aramex India Pvt Ltd,IN,TRUE
+RGD,M/S AMAN ENTERPRISES (BHILWARA),IN,TRUE
+RHK,Aramex Associates-ROHTAK,IN,TRUE
+RJY,M/s Sahasra Enterprises,IN,TRUE
+RRM,Multimode logistic,IN,TRUE
+RTN,Aramex Associates-RATNAGIRI,IN,TRUE
+TDE,M/S TRADE WORLD COURIER (YAMUNANAGAR),IN,TRUE
+YGL,You Gee Link & Services,IN,TRUE
+SHL,Aramex Associates-Shillong G.P.O.,IN,TRUE
+DEV,Dev Associates,IN,TRUE
+ILA,Aramex Associates-Silvassa,IN,TRUE
+SLR,Aramex,IN,TRUE
+SOB,M/s A-ONE EXPRESS,IN,TRUE
+SXR,Aramex Associates-SRINAGAR,IN,TRUE
+TCR,Aramex Associates-THRISSUR,IN,TRUE
+TRP,Aramex,IN,TRUE
+TRZ,KRISHNA COMMUNICATION,IN,TRUE
+TTN,FRIENDS COMMUNICATIONS,IN,TRUE
+UDR,aramex India Pvt Ltd,IN,TRUE
+UJN,AYAN GUPTA,IN,TRUE
+UPD,M/s J.P.SHARMA,IN,TRUE
+VLR,M/s WAHEGURU AGENCY,IN,TRUE
+VNS,Aramex,IN,TRUE
+VTZ,Aramex Associates-VISAKHAPATNAM,IN,TRUE
+WRR,Aramex Associates-WARDHA,IN,TRUE
+WGL,PPC ENTERPRISES,IN,TRUE
+LGJ,ARAMEX-ICS Belgium,BE,TRUE
+KHJ,Al-Kharj Franchisee,SA,TRUE
+IFT,InfoFort Tanzania,TZ,TRUE
+EUS,US E-commerce,US,TRUE
+NLL,SRI BALAJI AGENCIES,IN,TRUE
+BMV,M/s Lasya International,IN,TRUE
+MBN,M/s Gajanana Enterprises,IN,TRUE
+PET,Azizia Agent,SA,TRUE
+WNZ,NZ POST CORPORATE OFFICE,NZ,TRUE
+HGA,Hargeisa – HGA EACS Franchise,SO,TRUE
+DXF,DXB flower center,AE,TRUE
+DPR,Armadillo Business Parcel T/A DPD Russia,GB,TRUE
+SPR,SPSR Express,GB,TRUE
+PFC,Parcelforce Worldwide,GB,TRUE
+NSK,NORSK EUROPEAN WHOLESALE LTD,GB,TRUE
+LNX,Linehaul Express Ltd,GB,TRUE
+HTH,Hart 2 Hart Express Ltd,GB,TRUE
+GEM,Gem Worldwide Limited,GB,TRUE
+DPP,DPD Polska SP Z.O.O,GB,TRUE
+DPG,DPD (GMBH),GB,TRUE
+DPD,DPD UK LTD,GB,TRUE
+CWF,Countrywide Freight Group,GB,TRUE
+VPM,M/s Sree Vayuvega Worldwide Express,IN,TRUE
+KHM,PUJITH ENTERPRISES,IN,TRUE
+RJH,M/s SM Associates,IN,TRUE
+VJW,M/s G.B. Associates,IN,TRUE
+KPP,KUMAR COURIERS,IN,TRUE
+EUE,Service through aramex LON,GB,TRUE
+IFG,Infofort Ghana,GH,TRUE
+XVE,V A C Speditionsgesellschaft m.b.H.,AT,TRUE
+CBD,M/S HORIZON EXPRESS WORLD WIDE,IN,TRUE
+HSS,Ganesh Enterprises,IN,TRUE
+BCC,Bahrain call Center,BH,TRUE
+MYN,Transmarine Logistics Asia Pte Ltd,MM,TRUE
+BNK,"Aramex (Thailand) Co., Ltd.",TH,TRUE
+FPK,InfoFort Karachi,PK,TRUE
+FBD,InfoFort Dhaka,BD,TRUE
+XPB,Puma Cargo,AR,TRUE
+SYM,Aramex Sydney,AU,TRUE
+EET,Ecommerce - Estonia,EE,TRUE
+EAT,Ecommerce - Austria,AT,TRUE
+DWD,Dawadmi,SA,TRUE
+RSS,ALRass,SA,TRUE
+ONZ,Onaiza,SA,TRUE
+BUR,Buridah,SA,TRUE
+TOQ,Thoqba office,SA,TRUE
+LYA,Layan for Cargo,SA,TRUE
+HVR,Srikalika Enterprises,IN,TRUE
+DMM,Ideal World Dammam,SA,TRUE
+SET,Sehat,SA,TRUE
+SFW,Safwa,SA,TRUE
+RAS,Ras Tanoura,SA,TRUE
+QAT,Qatif,SA,TRUE
+XHE,Oy Tavatur Shipping Ltd,FI,TRUE
+MAJ,Majarda,SA,TRUE
+SBT,SabtAlAlaya,SA,TRUE
+WWS,Aramex Wholesale,SG,TRUE
+APA,M/s SWASTIK LOGISTICS,IN,TRUE
+MKN,MakkahNuzha,SA,TRUE
+MOH,MohailAseer,SA,TRUE
+AHB,Abha,SA,TRUE
+RAB,Rabigh,SA,TRUE
+QUN,Qunfutha,SA,TRUE
+BHH,Bisha,SA,TRUE
+EAM,Najran,SA,TRUE
+LNG,LONG PATH’S AIR CARGO EST.,SA,TRUE
+SAM,Samer Street Branch,SA,TRUE
+AJR,Aramex Associates-AJMER,IN,TRUE
+TRK,Turok Masayia,SA,TRUE
+AMB,Aramex,IN,TRUE
+AMR,M/S. F.M. Logistic,IN,TRUE
+AND,M/S SAFE & GO COURIER SERVICE,IN,TRUE
+BAV,M/s ONEXPRESS COURIER & CARGO,IN,TRUE
+STK,Istekdam Branch,SA,TRUE
+BRL,M/S UNIVERSAL LOGISTICS EXPRESS,IN,TRUE
+BTI,Aramex,IN,TRUE
+DAV,Aramex Associates-Davangere,IN,TRUE
+DDN,Aramex,IN,TRUE
+THL,Tahliah Outlet,SA,TRUE
+GUL,Aramex Associates-GULBARGA,IN,TRUE
+IMP,Aramex Associates-Imphal,IN,TRUE
+JLD,CITIZEN INTERNATIONAL,IN,TRUE
+KOL,Jet Express Courier Services,IN,TRUE
+KOT,M/S SHRI MANIDHARI TRADERS,IN,TRUE
+KRN,Aramex Associates-KARNAL,IN,TRUE
+LDH,Aramex India Pvt Ltd,IN,TRUE
+MBD,M/S PARTEEK ENTERPRISES,IN,TRUE
+MYS,Aramex Associates-MYSORE,IN,TRUE
+PBR,M/s SWASTIK LOGISTICS (Alwar),IN,TRUE
+QLN,Aramex Associates-KOLLAM,IN,TRUE
+SAN,Aramex Associates-SANGLI,IN,TRUE
+SAT,Gajanan Enterprises,IN,TRUE
+SHR,Aramex Associates-SAHARANPUR,IN,TRUE
+SLM,aramex India Pvt Ltd,IN,TRUE
+SML,M/S CHIRAG ENTERPRISES (BEAWAR),IN,TRUE
+SRT,Aramex India Pvt Ltd,IN,TRUE
+MIZ,Meera Enterprises-Franchise,IN,TRUE
+VAP,DM Worldwide Express,IN,TRUE
+XXB,Aramex Associates-HARIDWAR,IN,TRUE
+RCR,Raichur,IN,TRUE
+BLL,Bellary,IN,TRUE
+MLT,Mailnet Express,SA,TRUE
+IFL,Infofort Algeria,DZ,TRUE
+CNP,Chandrapur,IN,TRUE
+ABT,Baha,SA,TRUE
+SER,Seur Internacional Express,ES,TRUE
+OMU,Multilogistics S.p.A.,IT,TRUE
+FLB,Infofort Beirut,LB,TRUE
+SMC,TEST SMART,AE,TRUE
+SMA,Dubai Logistics City,AE,TRUE
+DEH,Aramex India Private Limited,IN,TRUE
+USP,USPS,US,TRUE
+TSS,test,JO,TRUE
+PZU,Port Sudan Branch,SD,TRUE
+LRO,SriLanka RO,LK,TRUE
+PAC,PARCELAT LOCKERS,SA,TRUE
+RAC,RAC International Terminals,SA,TRUE
+TAQ,CN QingDao Office,CN,TRUE
+HGH,CN Hangzhou Office,CN,TRUE
+DDD,DareenTest,JO,TRUE
+FAX,Mark 3 agent JFK,US,TRUE
+BRO,Lebanon RO,LB,TRUE
+HKY,Aramex Hong Kong Ltd,HK,TRUE
+SHD,Shein Dubai,AE,TRUE

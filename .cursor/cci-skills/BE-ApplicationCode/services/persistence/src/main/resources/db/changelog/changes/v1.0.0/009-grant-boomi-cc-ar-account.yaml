@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009-grant-boomi-cc-ar-account-v1
+      author: custom-charges
+      comment: Grant Boomi CC access to ar_account and custom_charge schema
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: ar_account
+        - not:
+            or:
+              - changeSetExecuted:
+                  id: 009-grant-boomi-cc-ar-account-v1
+                  author: custom-charges
+              - changeSetExecuted:
+                  id: 009-account-config-seed-v1
+                  author: custom-charges
+      changes:
+        - sqlFile:
+            path: sql/009-grant-boomi-cc-ar-account.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/009-grant-boomi-cc-ar-account-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

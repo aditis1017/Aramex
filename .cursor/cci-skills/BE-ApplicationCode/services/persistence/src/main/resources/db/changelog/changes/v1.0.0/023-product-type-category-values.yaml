@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 023-product-type-category-values-v1
+      author: custom-charges
+      comment: Add missing PRODUCT_TYPE category values under G_PRODUCT_TYPE
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: category
+        - tableExists:
+            tableName: category_value
+        - sqlCheck:
+            expectedResult: 1
+            sql: |
+              SELECT COUNT(*)
+              FROM category_value
+              WHERE code = 'G_PRODUCT_TYPE'
+        - sqlCheck:
+            expectedResult: 0
+            sql: |
+              SELECT COUNT(*)
+              FROM category_value
+              WHERE code = 'ATL'
+      changes:
+        - sqlFile:
+            path: sql/023-product-type-category-values.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/023-product-type-category-values-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

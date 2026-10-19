@@ -1,0 +1,28 @@
+# Record when FE/BE reference trees were refreshed from upstream repos.
+
+version: 1
+last_updated: "2026-10-16"
+updated_by: "QA structure setup"
+
+frontend:
+  path: FE-ApplicationCode
+  upstream_repo: Corp.microservice.custom-charges-fe
+  branch: ""
+  commit: ""
+
+backend:
+  path: BE-ApplicationCode
+  services:
+    - name: persistence
+      path: BE-ApplicationCode/services/persistence
+    - name: shipment
+      path: BE-ApplicationCode/services/shipment
+    - name: calculator
+      path: BE-ApplicationCode/services/calculator
+    - name: global-settings
+      path: BE-ApplicationCode/services/global-settings
+    - name: file-orchestration
+      path: BE-ApplicationCode/services/file-orchestration
+    - name: dashboards
+      path: BE-ApplicationCode/services/dashboards
+  notes: "snapshots/persistence-zip-export retained for diff only"

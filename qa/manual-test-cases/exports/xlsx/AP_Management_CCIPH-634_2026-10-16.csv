@@ -1,0 +1,21 @@
+Screen Name,JIRA User Story ID,JIRA Test Case ID,JIRA Test Case Title,JIRA Test Case Description,Test Case Scenario,Test Steps,Expected Result,Priority,Severity,Test Case Type,Automation (Y/N),Automation Execution Status,Automation Remarks,Functional (Pass/Fail),Functional Remarks
+AP Management,CCIPH-634,CCIPH-637,Open Create AP Account page from AP Management search,Verify Create AP Account page opens when user clicks Create AP Account (AC1). Preconditions: Environment staging; URL https://stage-cc.aramex.com/customs-management/ap-management; Role System Admin or Customs Manager.,Navigate to Create AP Account,"1. Log in to Customs Management on staging.
+2. Open AP Management module.
+3. Click Create AP Account.",Create AP Account form page is displayed.,High,Critical,Functional Testing,Y,Not Run,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_001/Script634001.groovy,,
+AP Management,CCIPH-634,CCIPH-639,Verify all Create AP Account fields per AC1,Confirm mandatory optional and read-only fields on Create AP Account match AC1. Preconditions: Environment staging; URL https://stage-cc.aramex.com/customs-management/ap-management; Role System Admin or Customs Manager.,Create AP Account field layout,"1. Log in and navigate to AP Management.
+2. Open Create AP Account.
+3. Review all fields on the form.",Account Number Account Name Country Entity Status Rate Currency Billing Currency Market Structure (optional) and Account Type (Vendor read-only) are present with expected labels.,High,Critical,Functional Testing,Y,Not Run,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_002/Script634002.groovy,,
+AP Management,CCIPH-634,CCIPH-638,Account Type displays Vendor as read-only,Validate Account Type is read-only Vendor on Create AP Account. Preconditions: Environment staging; URL https://stage-cc.aramex.com/customs-management/ap-management; Role System Admin or Customs Manager.,Account Type read-only,"1. Log in and open Create AP Account.
+2. Locate Account Type field.
+3. Attempt to change Account Type value.",Account Type shows Vendor and cannot be edited.,High,Major,Functional Testing,Y,Not Run,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_003/Script634003.groovy,,
+AP Management,CCIPH-634,CCIPH-640,Create AP Account with mandatory fields and Save,Create a new AP account using all mandatory fields; optional Market Structure may be set. Preconditions: Environment staging; URL https://stage-cc.aramex.com/customs-management/ap-management; Role System Admin or Customs Manager; SysData values available.,Happy path create AP account,"1. Log in and open Create AP Account.
+2. Enter unique Account Number (max 15) and Account Name (max 150).
+3. Select Country Entity Status Rate Currency and Billing Currency from SysData lists.
+4. Click Save.
+5. Search AP Management for the new account name.",AP Account is created successfully and appears in search results. No SAP integration for MVP.,High,Critical,Functional Testing,Y,Not Run,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_004/Script634004.groovy,,
+AP Management,CCIPH-634,CCIPH-641,Mandatory validation when Save without required fields,Verify validation when Save is clicked without mandatory data. Preconditions: Environment staging; URL https://stage-cc.aramex.com/customs-management/ap-management; Role System Admin or Customs Manager.,Negative mandatory validation,"1. Log in and open Create AP Account.
+2. Leave mandatory fields empty.
+3. Click Save.",User cannot save; mandatory field validation messages are shown and account is not created.,High,Major,Functional Testing,Y,Not Run,Scripts/AP Management/CCIPH-634/TC_APM_NEG_001/Script634005.groovy,,
+AP Management,CCIPH-634,CCIPH-642,Create AP Account without optional Market Structure,Verify account can be saved when optional Market Structure is not selected. Preconditions: Environment staging; URL https://stage-cc.aramex.com/customs-management/ap-management; Role System Admin or Customs Manager.,Optional field omitted,"1. Log in and open Create AP Account.
+2. Complete all mandatory fields; leave Market Structure blank.
+3. Click Save.",AP Account is created successfully without Market Structure.,Medium,Moderate,Functional Testing,N,,Manual only — Automation (Y/N)=N,,

@@ -1,0 +1,24 @@
+template header
+classPath
+conditions
+targetValue
+setterMethod
+end
+
+package rules
+
+template "global-rule-template"
+
+rule "GlobalRule"
+no-loop true
+when
+    $shipment : @{classPath}(
+        @{conditions}
+    )
+then
+
+    $shipment.@{setterMethod}("@{targetValue}");
+    update($shipment);
+end
+
+end template

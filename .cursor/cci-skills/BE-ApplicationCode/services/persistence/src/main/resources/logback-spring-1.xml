@@ -1,0 +1,54 @@
+<!--<configuration>-->
+
+<!--    &lt;!&ndash; Get service name &ndash;&gt;-->
+<!--    <springProperty scope="context"-->
+<!--                    name="SERVICE_NAME"-->
+<!--                    source="spring.application.name"/>-->
+
+<!--    &lt;!&ndash; Log directory &ndash;&gt;-->
+<!--    <property name="LOG_PATH" value="logs/${SERVICE_NAME}" />-->
+
+<!--    &lt;!&ndash; Console Appender &ndash;&gt;-->
+<!--    <appender name="CONSOLE"-->
+<!--              class="ch.qos.logback.core.ConsoleAppender">-->
+
+<!--        <encoder>-->
+<!--            <pattern>-->
+<!--                %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{service}] [%thread] [tx:%X{traceId}] %logger - %msg%n-->
+<!--            </pattern>-->
+<!--        </encoder>-->
+
+<!--    </appender>-->
+
+<!--    &lt;!&ndash; File Appender &ndash;&gt;-->
+<!--    <appender name="FILE"-->
+<!--              class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+
+<!--        <file>${LOG_PATH}/${SERVICE_NAME}.log</file>-->
+
+<!--        <rollingPolicy-->
+<!--                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+
+<!--            <fileNamePattern>-->
+<!--                ${LOG_PATH}/${SERVICE_NAME}-%d{yyyy-MM-dd}.log-->
+<!--            </fileNamePattern>-->
+
+<!--            <maxHistory>30</maxHistory>-->
+
+<!--        </rollingPolicy>-->
+
+<!--        <encoder>-->
+<!--            <pattern>-->
+<!--                %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{service}] [%thread] [tx:%X{traceId}] %logger - %msg%n-->
+<!--            </pattern>-->
+<!--        </encoder>-->
+
+<!--    </appender>-->
+
+<!--    &lt;!&ndash; Root Logger &ndash;&gt;-->
+<!--    <root level="INFO">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--        <appender-ref ref="FILE"/>-->
+<!--    </root>-->
+
+<!--</configuration>-->

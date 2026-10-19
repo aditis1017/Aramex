@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 040-shipment-xml-data-v1
+      author: custom-charges
+      comment: Store inbound shipment XML payloads for audit and troubleshooting
+      changes:
+        - sqlFile:
+            path: sql/040-shipment-xml-data.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true

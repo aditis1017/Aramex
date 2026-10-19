@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 031-account-defaults-ksa-and-others-v1
+      author: custom-charges
+      comment: Set account default_account_number, default_ar_account_number, and default_cash_account for KSA and other entities
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: account
+        - sqlCheck:
+            expectedResult: 1
+            sql: |
+              SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+              FROM account
+              WHERE (
+                    (account_nature = 'ENTITY_SETTINGS'
+                     AND entity_code IN ('DHA', 'RUH', 'JED')
+                     AND charge_type = 'ECD'
+                     AND default_account_number IS DISTINCT FROM '1100053259')
+                 OR (entity_code IN ('DHA', 'RUH', 'JED')
+                     AND charge_type = 'DTA'
+                     AND default_ar_account_number IS DISTINCT FROM 'ASL001')
+                 OR (charge_type IN ('DTC', 'DTS', 'DT3')
+                     AND entity_code = 'JED'
+                     AND default_cash_account IS DISTINCT FROM '6005420')
+                 OR (charge_type IN ('DTC', 'DTS', 'DT3')
+                     AND entity_code = 'DHA'
+                     AND default_cash_account IS DISTINCT FROM 'CASHDHA')
+                 OR (charge_type IN ('DTC', 'DTS', 'DT3')
+                     AND entity_code = 'RUH'
+                     AND default_cash_account IS DISTINCT FROM '1001')
+                 OR (account_nature = 'ENTITY_SETTINGS'
+                     AND entity_code NOT IN ('DHA', 'RUH', 'JED')
+                     AND charge_type IN ('ECS', 'EC3')
+                     AND default_account_number IS DISTINCT FROM 'ASL001')
+              )
+      changes:
+        - sqlFile:
+            path: sql/031-account-defaults-ksa-and-others.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/031-account-defaults-ksa-and-others-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

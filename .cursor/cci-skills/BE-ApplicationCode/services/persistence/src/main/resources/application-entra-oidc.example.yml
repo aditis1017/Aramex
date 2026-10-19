@@ -1,0 +1,52 @@
+# Example: enable Microsoft Entra ID (OIDC) JWT security for consuming Spring Boot applications.
+#
+# Prerequisites (same Redis server as the rest of the persistence layer):
+#   mvp.persistence.redis.enabled: true
+#   mvp.persistence.redis.host / port / password / database  (e.g. REDIS_HOST, REDIS_PORT, REDIS_PASSWORD)
+#
+#   mvp.persistence.security.entra.enabled: true
+
+mvp:
+  persistence:
+    redis:
+      enabled: ${REDIS_ENABLED:true}
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:0}
+    security:
+      entra:
+        enabled: ${ENTRA_SECURITY_ENABLED:false}
+        entra-config-refresh-interval-ms: 60000
+        # Optional: shared secret for dashboard POST /api/auth/entra/lifecycle/user/deactivate (header X-Entra-Lifecycle-Secret).
+        # lifecycle-webhook-secret: ${ENTRA_LIFECYCLE_WEBHOOK_SECRET:}
+        public-paths:
+          - /actuator/health
+          - /actuator/health/**
+          - /swagger-ui/**
+          - /v3/api-docs/**
+          - /v3/api-docs/**
+          - /api/auth/logout
+          - /dashboard/api/auth/logout
+          - /globalSettings/api/auth/logout
+          - /api/auth/entra/lifecycle/user/deactivate
+          - /dashboard/api/auth/entra/lifecycle/user/deactivate
+        token-revocation-enabled: true
+        jwks-redis-ttl: PT1H
+        discovery-cache-ttl: PT30M
+        http-connect-timeout: PT5S
+        http-read-timeout: PT10S
+        retry-max-attempts: 3
+        retry-backoff: PT0.2S
+        # Role code (roles.code) for JIT when token roles do not map — required for first-time login with unmapped token roles.
+        # jit-provisioning-role-code: ${ENTRA_JIT_PROVISIONING_ROLE_CODE:VIEWER}
+
+# Redis string keys (same instance as mvp.persistence.redis):
+#   entra.tenant.id       -> Microsoft Entra tenant ID
+#   entra.client.id       -> Application (client) ID used as JWT audience
+#   entra.issuer.url      -> OIDC discovery base (GET {url}/.well-known/openid-configuration)
+#                           mock:  http://mock-entra:9000  (local Docker; see docs/ENTRA_IDP_MODES.md)
+#                           real:  https://login.microsoftonline.com/<tenant-id>/v2.0
+#   entra:jwks            -> JWKS JSON cache (written by the library, TTL from jwks-redis-ttl)
+#
+# Docker: copy repo .env.example to .env and set ENTRA_IDP_MODE=mock|real (see docs/ENTRA_IDP_MODES.md).

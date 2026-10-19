@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 036-migration-status-category-value-v1
+      author: custom-charges
+      comment: Add MIGRATION_STATUS system flag for DDP shipment migration
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: category
+        - tableExists:
+            tableName: category_value
+        - sqlCheck:
+            expectedResult: 0
+            sql: |
+              SELECT COUNT(*)
+              FROM category_value
+              WHERE code = 'MIGRATION_STATUS'
+      changes:
+        - sqlFile:
+            path: sql/036-migration-status-category-value.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/036-migration-status-category-value-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

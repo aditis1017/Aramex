@@ -1,0 +1,70 @@
+#server:
+#  port: ${SERVER_PORT:8080}
+#  servlet:
+#    context-path: ${CONTEXT_PATH:/global-setting}
+#javers:
+#  sqlSchemaManagementEnabled: ${JAVERS_SCHEMA_ENABLED:true}
+#
+#spring:
+#  application:
+#    name: global-setting-service
+#  rabbitmq:
+#    host: ${RABBITMQ_HOST}
+#    port: ${RABBITMQ_PORT}
+#    username: ${RABBITMQ_USERNAME}
+#    password: ${RABBITMQ_PASSWORD}
+#    virtual-host: ${RABBITMQ_VIRTUAL_HOST}
+#    connection-timeout: 15000
+#
+#mvp:
+#  persistence:
+#    datasource:
+#      url: ${DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:globalsettings}?currentSchema=${DB_SCHEMA:public}}
+#      username: ${DATASOURCE_USERNAME:postgres}
+#      password: ${DATASOURCE_PASSWORD:postgres}
+#      driver-class-name: ${DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+#    redis:
+#      enabled: ${REDIS_ENABLED:true}
+#      host: ${REDIS_HOST:localhost}
+#      password: ${REDIS_PASSWORD:password}
+#      port: ${REDIS_PORT:6379}
+#    jpa:
+#      enabled: ${JPA_ENABLED:true}
+#      ddl-auto: ${JPA_DDL_AUTO:validate}
+#      show-sql: ${JPA_SHOW_SQL:true}
+#      default_schema: ${DB_SCHEMA:public}
+#    liquibase:
+#      enabled: ${LIQUIBASE_ENABLED:true}
+#      change-log: classpath:db/changelog/db.changelog-master.yaml
+#
+#spring:
+#  liquibase:
+#    enabled: ${LIQUIBASE_ENABLED:true}
+#    change-log: classpath:db/changelog/db.changelog-master.yaml
+#    aws:
+#      sqs:
+#        enabled: false
+#        region: ${AWS_REGION}
+#        access-key: ${AWS_ACCESS_KEY_ID}
+#        secret-key: ${AWS_SECRET_ACCESS_KEY}
+#      s3:
+#        enabled: false
+#        region: ${AWS_REGION}
+#        access-key: ${AWS_ACCESS_KEY_ID}
+#        secret-key: ${AWS_SECRET_ACCESS_KEY}
+#        default-bucket: ${S3_DEFAULT_BUCKET}
+#
+#      lambda:
+#        enabled: false
+#        region: ${AWS_REGION}
+#        access-key: ${AWS_ACCESS_KEY_ID}
+#        secret-key: ${AWS_SECRET_ACCESS_KEY}
+#        function-name: ${AWS_LAMBDA_FUNCTION_NAME:s3-upload-lambda}
+#    rabbitmq:
+#      topology-config-location: classpath:rabbitmq.json
+#      enabled: false
+#    javers:
+#      enabled: ${JAVERS_ENABLED:true}
+#    drools:
+#      enabled: ${DROOLS_ENABLED:true}
+#

@@ -1,0 +1,26 @@
+---
+description: >-
+  When the user gives a CCIPH User Story and asks for e2e / full pipeline /
+  cci-e2e-pipeline / stakeholder demo, run the CCI E2E Pipeline Agent: Jira
+  Functional TCs → assign to Reporter → Required Katalon → story Test Suite →
+  PASS/FAIL labels. Do not modify existing skills.
+alwaysApply: false
+---
+
+# CCI E2E Pipeline Agent (story-only)
+
+When the user wants **end-to-end QA** (or `/cci-e2e-pipeline` / `/e2e-pipeline`), follow `.cursor/skills/cci-e2e-qa-pipeline/SKILL.md` (same as `/cci-e2e-qa-pipeline`).
+
+Do **not** treat a **bare** `CCIPH-###` (no e2e / pipeline / stakeholder wording) as this Agent.
+
+## Input
+
+- **Only required:** `CCIPH-###`
+
+## Order (do not skip)
+
+See **cci-e2e-qa-pipeline** skill: sub-task + xlsx → automation (Y only) → **Automated** label → **QA in-Progress** → **CCI-RTM.xlsx**.
+
+Optional after pipeline: run suite → `qa-jira-suite-result-updater`.
+
+Do **not** wait for Yes/Proceed. Do **not** invent Jira keys or locators.

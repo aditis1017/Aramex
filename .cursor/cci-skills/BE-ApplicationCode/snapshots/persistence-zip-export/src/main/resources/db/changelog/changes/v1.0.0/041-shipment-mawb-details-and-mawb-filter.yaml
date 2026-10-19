@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 041-shipment-mawb-details-and-mawb-filter-v2
+      author: custom-charges
+      comment: Shipment MAWB details table, MAWB_FILTER category value, and global setting seed
+      changes:
+        - sqlFile:
+            path: sql/041-shipment-mawb-details-and-mawb-filter.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/041-shipment-mawb-details-and-mawb-filter-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true

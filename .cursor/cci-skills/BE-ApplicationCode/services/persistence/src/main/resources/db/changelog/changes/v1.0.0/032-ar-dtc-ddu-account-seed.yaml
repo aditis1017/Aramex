@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 032-ar-dtc-ddu-account-seed-v1
+      author: custom-charges
+      comment: Seed AR DTC charge configs with ar_custom_type DDU for target account/entity pairs
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: ar_account
+        - tableExists:
+            tableName: account
+      changes:
+        - sqlFile:
+            path: sql/032-ar-dtc-ddu-account-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/032-ar-dtc-ddu-account-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true

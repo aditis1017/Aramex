@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-entra-guid-seed-v1
+      author: custom-charges
+      comment: Seed Entra GUID to entity mapping
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: entra_guid_entity_map
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM entra_guid_entity_map
+      changes:
+        - sqlFile:
+            path: sql/007-entra-guid-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/007-entra-guid-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 043-entity-info-axs-id-v1
+      author: custom-charges
+      comment: Add info_axs_id to entity and backfill from Companies data
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: entity
+        - not:
+            columnExists:
+              tableName: entity
+              columnName: info_axs_id
+      changes:
+        - sqlFile:
+            path: sql/043-entity-info-axs-id.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/043-entity-info-axs-id-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

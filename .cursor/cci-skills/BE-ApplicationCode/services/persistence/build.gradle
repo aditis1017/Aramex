@@ -1,0 +1,189 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.liquibase.gradle' version '2.2.2'
+
+    id 'jacoco'
+    id 'org.sonarqube' version '4.4.1.3373'
+}
+
+group = 'com.customcharge'
+version = project.findProperty("persistenceVersion")
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:3.5.13'
+        mavenBom 'io.awspring.cloud:spring-cloud-aws-dependencies:3.4.2'
+        mavenBom 'software.amazon.awssdk:bom:2.25.20'
+    }
+}
+
+dependencies {
+
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+    api 'org.liquibase:liquibase-core'
+    api 'org.springframework.boot:spring-boot-starter-web'
+    api 'io.micrometer:micrometer-core'
+    api "org.javers:javers-spring-boot-starter-sql:7.5.0"
+
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:3.4.2'
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-sqs:3.4.2'
+
+    implementation 'software.amazon.awssdk:lambda:2.25.20'
+    implementation 'software.amazon.awssdk:sqs:2.25.20'
+
+    implementation 'org.drools:drools-core:8.44.0.Final'
+    implementation 'org.drools:drools-compiler:8.44.0.Final'
+    implementation 'org.drools:drools-mvel:8.44.0.Final'
+    implementation 'org.kie:kie-api:8.44.0.Final'
+
+    api 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.16'
+//    api 'org.javers:javers-spring-boot-starter-sql:7.11.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    implementation 'org.apache.poi:poi-ooxml:5.2.5'
+    api 'org.springframework.boot:spring-boot-starter-logging'
+    implementation 'net.logstash.logback:logstash-logback-encoder:8.0'
+
+    api 'org.springframework.boot:spring-boot-starter-security'
+    api 'org.springframework.boot:spring-boot-starter-webflux'
+    api 'com.nimbusds:nimbus-jose-jwt:9.37.3'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'com.h2database:h2'
+    testImplementation 'com.squareup.okhttp3:mockwebserver'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    liquibaseRuntime 'org.liquibase:liquibase-core'
+    liquibaseRuntime 'org.postgresql:postgresql'
+    liquibaseRuntime 'info.picocli:picocli:4.7.6'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-parameters']
+}
+
+tasks.named('javadoc') {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    failOnError = false
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+tasks.register("printPersistenceVersion") {
+    doLast {
+        println project.findProperty("persistenceVersion")
+    }
+}
+
+jacoco {
+    toolVersion = project.findProperty("jacoco.toolVersion") ?: "0.8.13"
+}
+
+def jacocoExcludes = project.findProperty("jacoco.excludes")
+        ?.split(",")
+        ?.collect { it.trim() }
+        ?.findAll { !it.isEmpty() }
+        ?: []
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
+    classDirectories.setFrom(
+            files(classDirectories.files.collect {
+                fileTree(dir: it, exclude: jacocoExcludes)
+            })
+    )
+}
+
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
+    violationRules {
+        rule {
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+//                minimum = 0.90
+            }
+        }
+    }
+    classDirectories.setFrom(jacocoTestReport.classDirectories)
+}
+
+tasks.named('check') {
+    dependsOn jacocoTestCoverageVerification
+}
+
+tasks.named('sonarqube') {
+    dependsOn test, jacocoTestReport
+}
+
+tasks.named('jar') {
+    archiveBaseName.set('persistence-layer')
+}
+
+liquibase {
+    activities {
+        main {
+            changelogFile 'src/main/resources/db/changelog/db.changelog-master.yaml'
+            url project.findProperty('liquibaseUrl') ?: System.getenv('LIQUIBASE_URL') ?: 'jdbc:postgresql://localhost:5432/custom_charge'
+            username project.findProperty('liquibaseUsername') ?: System.getenv('LIQUIBASE_USERNAME') ?: 'postgres'
+            password project.findProperty('liquibasePassword') ?: System.getenv('LIQUIBASE_PASSWORD') ?: 'postgres'
+            driver 'org.postgresql.Driver'
+            logLevel 'info'
+        }
+    }
+    runList = 'main'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", project.findProperty("sonar.projectKey")
+        property "sonar.projectName", project.findProperty("sonar.projectName")
+        property "sonar.host.url", project.findProperty("sonar.host.url")
+        property "sonar.login", System.getenv("SONAR_TOKEN") ?: project.findProperty("sonar.login")
+        property "sonar.exclusions", project.findProperty("sonar.exclusions")
+        property "sonar.coverage.exclusions", project.findProperty("sonar.coverage.exclusions")
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.customcharge'
+            artifactId = 'persistence-layer'
+            version = project.version
+        }
+    }
+}

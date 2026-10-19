@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-reference-data-seed-v2
+      author: custom-charges
+      comment: Seed currency, category values, and charge type doc id mapping
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM category_value
+      changes:
+        - sqlFile:
+            path: sql/006-reference-data-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/006-reference-data-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

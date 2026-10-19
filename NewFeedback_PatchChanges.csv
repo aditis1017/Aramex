@@ -1,0 +1,428 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Steps,Expected Result,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,Functional (Pass/Fail),Functional Remarks
+B2B Keyword / Classification,CCIPH-476,B2B-001,Verify Consignee is classified as B2B when Consignee Name matches a configured B2B keyword,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Wait until the Customs Management home page is fully loaded.
+4. From the left navigation menu, click B2B Classification.
+5. Download the B2B Keywords template and prepare an Excel row with Keyword matching the test Consignee Name and Match Type = Exact (or as required).
+6. Click Browse/Choose File, select the Excel file, and click Upload/Save.
+7. Verify upload success message is displayed.
+8. Trigger shipment ingestion for a test AWB with Consignee Name exactly matching the configured keyword (InfoAXS feed or standard ingestion flow).
+9. Wait until charge creation/classification processing completes.
+10. From the left navigation menu, click Custom Search.
+11. Apply filter Category = Low Value (LV), Customs Type = DDU, Shipment Business Type = B2B, and Charge Status = Pending Calculation (adjust filters if shipment differs).
+12. Enter the test AWB Number in the Tracking Number field and click Search.
+13. Click the matching result row to open Charge Detail 360 View.
+14. In the Shipment Details / Customs & Goods section, locate Shipment Business Type (or Business Type per build).
+15. Verify Shipment Business Type displays B2B.",Shipment is classified as B2B when Consignee Name matches an active B2B keyword.,Critical,,No,,,Pass,-
+B2B Keyword / Classification,CCIPH-476,B2B-002,Verify Consignee is classified as B2C when Consignee Name does not match any B2B keyword,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click B2B Classification.
+4. Upload a valid B2B keyword Excel (e.g. Keyword = UNIQUEB2BKEY, Match Type = Exact) and confirm success.
+5. Process a shipment with Consignee Name that does not contain or equal any configured keyword (e.g. John Retail Customer).
+6. Wait until shipment processing completes.
+7. From the left navigation menu, click Custom Search.
+8. Apply filter Category = Low Value (LV), Customs Type = DDU, Shipment Business Type = B2C, and Charge Status = Pending Calculation.
+9. Enter the test AWB Number and click Search.
+10. Open Charge Detail 360 View for the result.
+11. In Shipment Details / Customs & Goods, verify Shipment Business Type displays B2C.",Shipment is classified as B2C when Consignee Name does not match any active B2B keyword.,Critical,,No,,,Pass,-
+B2B Keyword / Classification,CCIPH-476,B2B-003,Verify B2B classification based on configured keyword matching type (Exact/Contains/End With/Start With),"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click B2B Classification.
+4. Upload keyword row Keyword = ARAMEX LLC, Match Type = Exact; save and confirm success.
+5. Process shipment AWB-B2B-EXACT with Consignee Name = ARAMEX LLC.
+6. From the left navigation menu, click Custom Search, search AWB-B2B-EXACT, open 360 View, and verify Shipment Business Type = B2B.
+7. Return to B2B Classification and upload keyword Keyword = TRADING, Match Type = Contains; confirm success.
+8. Process shipment AWB-B2B-CON with Consignee Name = Global TRADING Company.
+9. Click Custom Search, search AWB-B2B-CON, open 360 View, and verify Shipment Business Type = B2B.
+10. Repeat for Start With and End With match types with dedicated keywords and Consignee Names per match rule.
+11. For each AWB, verify classification in 360 View matches the configured Match Type behavior.",Exact and Contains matching work according to the configured Match Type and matching Consignees are classified as B2B.,High,,Yes,,,Pass,-
+B2B Keyword / Classification,CCIPH-476,B2B-004,Verify B2B/B2C classification is independent of Payment Type,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure B2B keyword Keyword = PAYTEST CORP, Match Type = Exact via B2B Classification upload.
+4. Process shipment AWB-PAY-1 with Consignee Name = PAYTEST CORP and Payment Type = Cash; wait for processing.
+5. Process shipment AWB-PAY-2 with same Consignee Name = PAYTEST CORP and Payment Type = Account; wait for processing.
+6. Process shipment AWB-PAY-3 with non-matching Consignee Name and Payment Type = Cash.
+7. Process shipment AWB-PAY-4 with same non-matching Consignee Name and Payment Type = Account.
+8. From the left navigation menu, click Custom Search.
+9. Search each AWB, open 360 View, and record Shipment Business Type for all four shipments.
+10. Verify AWB-PAY-1 and AWB-PAY-2 both show B2B regardless of Payment Type.
+11. Verify AWB-PAY-3 and AWB-PAY-4 both show B2C regardless of Payment Type.","Matching Consignee Name is classified as B2B and non-matching Consignee Name as B2C, regardless of Payment Type. Payment Type must not influence classification.",Critical,,No,,,Pass,-
+B2B Keyword / Classification,CCIPH-476,B2B-005,Verify default B2C classification when Consignee Name is blank/null or no active B2B keyword exists,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Process shipment AWB-BLANK with blank or null Consignee Name via ingestion; wait for processing.
+4. From the left navigation menu, click Custom Search.
+5. Enter AWB-BLANK, click Search, open 360 View, and verify Shipment Business Type = B2C.
+6. (Optional) Deactivate or remove all active B2B keywords via B2B Classification if test environment allows.
+7. Process shipment AWB-NOKEY with any Consignee Name; wait for processing.
+8. Search AWB-NOKEY in Custom Search, open 360 View, and verify Shipment Business Type defaults to B2C.",Shipment is classified as B2C and the system should not fail due to blank Consignee Name or absence of B2B keywords.,High,,No,,,Pass,-
+B2B Keyword / Classification,CCIPH-476,B2B-006,Verify classification uses the latest saved B2B keyword configuration,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click B2B Classification.
+4. Upload keyword Keyword = ABC, Match Type = Exact and confirm success.
+5. Process shipment with Consignee Name = ABC; wait for processing.
+6. Click Custom Search, search the AWB, open 360 View, and verify Shipment Business Type = B2B.
+7. Return to B2B Classification; update keyword ABC (deactivate, delete, or replace per UI capability) so it no longer matches.
+8. Re-process or ingest the same Consignee Name = ABC on a new AWB.
+9. Search the new AWB in Custom Search, open 360 View, and verify Shipment Business Type reflects latest keyword configuration (e.g. B2C if keyword inactive).","Classification should use the latest saved active keyword configuration. Once the keyword is no longer active/configured, the Consignee should not be classified as B2B based on that keyword.",High,,No,,,Pass,-
+B2B Keyword / Classification,CCIPH-476,B2B-007,Verify B2B/B2C classification is correctly reflected in downstream/API/DB processing,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Configure B2B keyword via B2B Classification (Keyword = DOWNSTREAM TEST, Match Type = Exact).
+4. Process shipment AWB-DS-B2B with matching Consignee Name; process AWB-DS-B2C with non-matching Consignee Name.
+5. From the left navigation menu, click Custom Search.
+6. Search AWB-DS-B2B, open 360 View, note Shipment Business Type = B2B and Account Business Type if shown.
+7. Click ECD tab (or applicable charge tab), verify charge grid loads and Business Type-driven fields align with B2B.
+8. Search AWB-DS-B2C, open 360 View, verify Shipment Business Type = B2C.
+9. Validate downstream effect: open applicable charge tab and confirm rates/rule selection uses B2C path (or query DB/API per test access for business_type column on shipment record).",Matching Consignee is consistently classified as B2B and non-matching Consignee as B2C across applicable systems. Payment Type must not override the classification.,Critical,,No,,,Pass,-
+Global Settings,CCIPH-561,Rules_001,Verify Account Business Type and Shipment Business Type dropdowns are available while creating DDU/DDP rules,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click Global Settings.
+4. Click the DDU tab.
+5. Click Add Rule (or equivalent Add New Rule control).
+6. On the Add Rule popup, expand Filter Conditions or rule criteria section.
+7. Verify Account Business Type dropdown is visible and selectable.
+8. Verify Shipment Business Type dropdown is visible and selectable.
+9. Close or cancel the popup.
+10. Click the DDP tab.
+11. Click Add Rule and repeat steps 6–8 for DDP rule creation.",Account Business Type and Shipment Business Type dropdowns are displayed and available for selection while creating DDU/DDP rules.,Critical,,Yes,,,Pass,-
+Global Settings,CCIPH-561,Rules_002,Verify Account Business Type dropdown values are correctly mapped with the selected AR Account Business Type,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Search and open an AR Account configured with Account Business Type = B2B (note Account Number).
+5. Note the Account Business Type value on the account screen.
+6. From the left navigation menu, click Global Settings.
+7. Open DDU tab and click Add Rule.
+8. In rule criteria, select or map the same AR Account (or Account Business Type filter).
+9. Open Account Business Type dropdown and verify available values include B2B and B2C and match AR Account configuration labels.
+10. Select Account Business Type = B2B and save rule with minimal valid filter conditions.
+11. Process a shipment using the selected AR Account.
+12. Click Custom Search, search AWB, open 360 View, and verify Account Business Type on shipment matches AR Account (B2B).",Account Business Type used for rule evaluation matches the Business Type configured against the respective AR Account.,Critical,,Yes,,,Pass,-
+Global Settings,CCIPH-561,Rules_003,Verify Shipment Business Type is determined using the Consignee Name B2B/B2C classification logic,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Upload B2B keyword Consignee Keyword = SHIPBT CORP, Match Type = Exact via B2B Classification.
+4. Process shipment AWB-SBT-1 with Consignee Name = SHIPBT CORP.
+5. Process shipment AWB-SBT-2 with Consignee Name = Retail Consumer Name.
+6. From the left navigation menu, click Custom Search.
+7. Search AWB-SBT-1, open 360 View, verify Shipment Business Type = B2B in Shipment Details.
+8. Search AWB-SBT-2, open 360 View, verify Shipment Business Type = B2C in Shipment Details.",Consignee matching a B2B keyword returns B2B as Shipment Business Type. Consignee not matching any B2B keyword returns B2C. The value used for rule evaluation must match the Consignee Name classification logic.,Critical,,Yes,,,Pass,-
+Global Settings,CCIPH-561,Rules_004,Verify DDU/DDP rule fires when both Account Business Type and Shipment Business Type match the configured rule values,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click Global Settings > DDU tab.
+4. Click Add Rule; set Account Business Type = B2B and Shipment Business Type = B2B; add distinguishing filter (e.g. Category = Low Value); save rule.
+5. Configure AR Account with Account Business Type = B2B.
+6. Upload B2B keyword matching test Consignee Name.
+7. Process DDU shipment with that AR Account and matching Consignee Name.
+8. From the left navigation menu, click Custom Search.
+9. Apply filters LV, DDU, B2B, Pending Calculation; enter AWB and click Search.
+10. Open 360 View; verify shipment classification (Customs Type DDU, Shipment Business Type B2B, Account Business Type B2B).
+11. Verify rule outcome applied (e.g. expected Category/Customs Type/charge behavior per rule configuration and Activity Logs if available).",Rule is successfully matched and fired when both Account Business Type and Shipment Business Type match the configured values.,Critical,,Yes,,,Pass,-
+Global Settings,CCIPH-561,Rules_005,Verify DDU/DDP rule does not fire when either Account Business Type or Shipment Business Type does not match,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Create Global Settings DDU rule with Account Business Type = B2B and Shipment Business Type = B2B.
+4. Process shipment A: AR Account B2B + Consignee non-matching (Shipment Business Type B2C).
+5. Process shipment B: AR Account B2C + Consignee matching B2B keyword (Shipment Business Type B2B).
+6. From the left navigation menu, click Custom Search.
+7. Search shipment A AWB, open 360 View, verify rule did not fire (compare against baseline shipment without rule).
+8. Search shipment B AWB, open 360 View, verify rule did not fire.
+9. Optionally check Activity Logs or rule history for no match entry for both AWBs.",Rule must not fire when either configured business type does not match the actual values. Both conditions must be satisfied.,Critical,,Yes,,,Pass,-
+Global Settings / Ratesheet,CCIPH-561,Rules_006,Verify Shipment Business Type in Ratesheet is mapped using the same Consignee Name B2B/B2C logic,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Configure B2B keyword via B2B Classification.
+4. From the left navigation menu, click Entity Management; select test Entity (e.g. Riyadh RUH).
+5. Open Ratesheet / Public Rate Sheet section; add rate with Shipment Business Type = B2B for a service code (e.g. VAT on ECD).
+6. Add second rate row with Shipment Business Type = B2C for same charge context if needed.
+7. Process shipment with Consignee matching B2B keyword; note AWB.
+8. Process shipment with non-matching Consignee; note AWB.
+9. Click Custom Search; for B2B AWB apply LV, DDU, B2B, Pending Calculation; search and open 360 View.
+10. Click ECD tab; note VAT (or configured service code) contracted/calculated value.
+11. Copy Billing Destination from 360 View.
+12. Go to Entity Management > selected Entity > ECD tab > Ratesheet; pick Shipment Business Type = B2B and service code VAT; perform rate calculation manually per configured rate.
+13. Compare calculated value with ECD tab VAT value in Custom Search 360 View.
+14. Repeat steps 9–13 for B2C AWB and B2C ratesheet row.",Shipment Business Type in Ratesheet is derived using the same Consignee Name classification logic: keyword match → B2B; no match → B2C. The appropriate Ratesheet is applied accordingly.,Critical,,Yes,,,Pass,-
+Global Settings / Ratesheet,CCIPH-561,Rules_007,Verify Account Business Type and Shipment Business Type are consistently used across Global Settings rule firing and Ratesheet processing,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Configure AR Account with Account Business Type = B2B.
+4. Configure B2B keyword for test Consignee.
+5. Create Global Settings DDU rule with Account Business Type = B2B and Shipment Business Type = B2B.
+6. Configure Entity Ratesheet with matching Account Business Type and Shipment Business Type filters for ECD VAT.
+7. Process matching shipment (B2B account + B2B consignee).
+8. Click Custom Search; apply LV, DDU, B2B, Pending Calculation; search AWB; open 360 View.
+9. Verify rule-fired attributes on shipment (category/customs type per rule).
+10. Click ECD tab; copy Billing Destination and VAT value.
+11. Navigate Entity Management > Entity per Billing Destination > ECD > Ratesheet; select Shipment Business Type B2B and service code VAT; calculate expected rate.
+12. Compare with 360 View VAT value.
+13. Process non-matching shipment (mismatched Account or Shipment Business Type); repeat search and verify neither rule nor B2B-only ratesheet applies.","Account Business Type is taken from the AR Account configuration and Shipment Business Type is taken from Consignee Name B2B/B2C classification. Both values remain consistent between Global Settings and Ratesheet processing, and the correct rule/Ratesheet is applied only for matching combinations.",Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_001,Verify Insurance Value field is displayed in 360 View,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Custom Search.
+4. Apply filter Category = Low Value (LV), Customs Type = DDU, Shipment Business Type = B2C, and Charge Status = Pending Calculation.
+5. Enter a valid test AWB Number in the Tracking Number field and click Search.
+6. Click the matching result row to open Charge Detail 360 View.
+7. Locate the Shipment Details section (or Insurance subsection if grouped separately).
+8. Verify Insurance Value field label is visible and aligned with other shipment detail fields.
+9. Verify Insurance Value displays a numeric value or formatted placeholder per design.",Insurance Value field is visible with the correct label and UI placement.,High,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_002,Verify Insurance Value displays 0.00 when no value is available,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Identify or process a test AWB with no insurance amount in source data.
+4. From the left navigation menu, click Custom Search.
+5. Enter the test AWB Number and click Search.
+6. Open Charge Detail 360 View.
+7. Navigate to Shipment Details section.
+8. Verify Insurance Value field displays 0.00 (or 0.00 with correct currency format per UI).",Insurance Value displays 0.00 instead of '-' or blank.,High,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_003,Verify Account Business Type is derived from the mapped AR Account,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Search AR Account used on test shipment; open account and note Account Business Type (e.g. B2B).
+5. From the left navigation menu, click Custom Search.
+6. Enter AWB linked to that AR Account and click Search.
+7. Open Charge Detail 360 View.
+8. In Shipment Details, verify Account Business Type matches AR Management value.
+9. Return to AR Management and confirm Account Number on shipment matches opened AR Account.",Account Business Type displays the same value (B2B/B2C) configured against the AR Account.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_004,Verify Account Business Type displays '-' when AR Account is unavailable,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Identify or process Cash/Prepaid/3rd-party (C/P/3) shipment with no AR Account generated.
+4. From the left navigation menu, click Custom Search.
+5. Enter the test AWB Number and click Search.
+6. Open Charge Detail 360 View.
+7. In Shipment Details, verify Account Business Type field displays '-' (hyphen).
+8. Verify AR Account Number field is blank or not populated as per design.",Account Business Type displays '-'.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_005,Verify Shipment Business Type is displayed as B2B when Consignee Name matches a configured keyword,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Confirm Consignee Name exists in B2B Keywords via B2B Classification (upload if missing).
+4. Process or locate AWB for shipment with that Consignee Name.
+5. From the left navigation menu, click Custom Search.
+6. Apply filters as needed; enter AWB and click Search.
+7. Open Charge Detail 360 View.
+8. In Shipment Details / Customs & Goods row 2, verify Shipment Business Type field displays B2B.",Shipment Business Type displays B2B based on the Consignee Name keyword match.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_006,Verify Shipment Business Type defaults to B2C when no keyword match exists,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Use AWB whose Consignee Name is not in B2B Keywords list.
+4. From the left navigation menu, click Custom Search.
+5. Enter AWB Number and click Search.
+6. Open Charge Detail 360 View.
+7. Verify Shipment Business Type field displays B2C.",Shipment Business Type displays B2C when no keyword match is found.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_007,Verify Account Business Type and Shipment Business Type work independently,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Open Custom Search and search AWB-A where AR Account Business Type = B2B and Consignee has no keyword match.
+4. Open 360 View; verify Account Business Type = B2B and Shipment Business Type = B2C.
+5. Search AWB-B where AR Account Business Type = B2C and Consignee matches B2B keyword.
+6. Open 360 View; verify Account Business Type = B2C and Shipment Business Type = B2B.
+7. Confirm both fields can show different values on the same shipment without overriding each other.","Account Business Type reflects the AR Account value, while Shipment Business Type is independently derived from Consignee Name.",Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_008,Verify Payment Reference column is displayed and maps the uploaded SADAD Number,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals (or File Upload > Actuals).
+4. Download Actuals template if required; populate AWB and unique SADAD Number in Payment Reference column.
+5. Upload file and wait for success confirmation.
+6. From the left navigation menu, click Custom Search.
+7. Enter uploaded AWB and click Search.
+8. Open Charge Detail 360 View.
+9. Navigate to Charges table / cost section grid.
+10. Locate Payment Reference column header.
+11. Verify Payment Reference value equals uploaded SADAD Number.",Payment Reference is displayed in the Charges table and exactly matches the uploaded SADAD Number.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_009,Verify duplicate Payment Reference is restricted within the same shipment only,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Upload Actual file for AWB-DUP-1 with Payment Reference = PR001; confirm success.
+5. Upload second Actual file for same AWB-DUP-1 with Payment Reference = PR001.
+6. Observe upload validation message or error on second upload.
+7. Verify second upload is rejected or flagged as duplicate within same shipment per business rule.
+8. Open Custom Search, search AWB-DUP-1, open 360 View, and verify only one valid Payment Reference mapping exists.",System rejects the second upload and displays duplicate Payment Reference validation.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_010,Verify the same Payment Reference is allowed across different shipments,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Upload Actual for Shipment A (AWB-A) with Payment Reference = PR001; confirm success.
+5. Upload Actual for Shipment B (AWB-B) with Payment Reference = PR001; confirm success.
+6. Click Custom Search; search AWB-A, open 360 View, verify Payment Reference = PR001 in Charges table.
+7. Search AWB-B, open 360 View, verify Payment Reference = PR001 in Charges table.
+8. Confirm both uploads succeeded without cross-shipment duplicate error.",Same Payment Reference is accepted in different shipments and displayed correctly in both shipments.,Critical,,Yes,,,Pass,-
+360 View Screen of Shipment,CCIPH-569,Changes_011,Verify Business Type label is renamed to Shipment Business Type throughout 360 View,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Custom Search.
+4. Enter any valid AWB and click Search.
+5. Open Charge Detail 360 View.
+6. Review Shipment Details section field labels.
+7. Review Customs & Goods section (row 2) field labels.
+8. Verify label reads Shipment Business Type and legacy label Business Type is not shown in 360 View contexts.",All occurrences display Shipment Business Type. No Business Type label exists on the 360 View screen.,Medium,,Yes,,,Pass,-
+AR Management,CCIPH-560,AR_TYPE001,Verify Business Type is renamed to Account Business Type,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Click Add Account (or open existing account).
+5. On Add Account screen, verify field label shows Account Business Type (not Business Type).
+6. Open same account in Edit mode; verify Account Business Type label.
+7. Open same account in View mode; verify Account Business Type label.",The field label is displayed as 'Account Business Type' everywhere. No 'Business Type' label is visible.,High,,Yes,,,Pass,-
+AR Management,CCIPH-560,AR_TYPE002,Verify the specified fields are read-only,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Search and open an existing AR Account.
+5. Click Edit.
+6. Attempt to modify each field documented as read-only (click/type in control).
+7. Verify read-only fields do not accept input or show disabled/greyed styling.
+8. Click Save.
+9. Reopen account in View mode and confirm read-only field values unchanged.",Read-only fields do not allow editing and their values remain unchanged after Save.,Critical,,Yes,,,Pass,-
+AR Management,CCIPH-560,AR_TYPE003,"Verify Customs Type is removed from DTA, DTS and DT3 tabs","1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Open any AR Account.
+5. Click DTA tab; scan all fields and verify Customs Type field is not present.
+6. Click DTS tab; verify Customs Type field is not present.
+7. Click DT3 tab; verify Customs Type field is not present.","Customs Type field is not displayed in DTA, DTS and DT3 tabs.",High,,Yes,,,Pass,-
+AR Management,CCIPH-560,AR_TYPE004,Verify Customs Type is moved under Account Information and remains editable,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Open an AR Account in Edit mode.
+5. Locate Account Information section.
+6. Verify Customs Type field is displayed under Account Information.
+7. Change Customs Type to a different valid value.
+8. Click Save.
+9. Reopen account and verify Customs Type retains updated value.","Customs Type is available only under Account Information, is editable, and the updated value is saved successfully.",Critical,,Yes,,,Pass,-
+Global Settings / AR Management,CCIPH-560,AR_TYPE005,Verify 'Select' option is available in dropdowns to reset existing values,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Navigate to screen containing updated dropdowns (e.g. AR Management Edit or Global Settings Add Rule).
+4. Open a dropdown that previously had a saved value; select any non-empty option.
+5. Reopen the same dropdown.
+6. Verify Select option is available at top of list.
+7. Choose Select.
+8. Save the record.
+9. Reopen record and verify field is cleared or reset per design.",Dropdown contains 'Select' as the reset option and the value is saved as None/Null.,Critical,,Yes,,,Pass,-
+Global Settings / AR Management,CCIPH-560,AR_TYPE006,Verify resetting one dropdown does not impact other fields,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Open existing AR Account or rule record in Edit mode.
+4. Populate all mandatory fields with known values.
+5. Reset one dropdown using Select option.
+6. Click Save.
+7. Reopen record.
+8. Verify only the reset dropdown field changed; all other populated fields retain prior values.",Only the selected dropdown is reset; all other field values remain unchanged.,High,,Yes,,,Pass,-
+Upload Actuals / 360 View Screen,CCIPH-549,BOE_001,"Verify Declaration Number is mapped to BOE1, BOE2, BOE3 and Additional Response","1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Prepare Actual file with Declaration Numbers for BOE1, BOE2, BOE3, and Additional Response columns for test AWB.
+5. Upload file and confirm success.
+6. From the left navigation menu, click Custom Search.
+7. Search uploaded AWB and open Charge Detail 360 View.
+8. Locate BOE1, BOE2, BOE3, and Additional Response fields.
+9. Verify each field displays the Declaration Number from the uploaded file.","BOE1, BOE2, BOE3 and Additional Response display the exact Declaration Numbers uploaded in the actual file.",Critical,,Yes,,,Pass,-
+Upload Actuals / 360 View Screen,CCIPH-549,BOE_002,Verify each BOE field retains its respective Declaration Number,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Upload Actual with BOE1 = DEC-B1-001, BOE2 = DEC-B2-002, BOE3 = DEC-B3-003 for test AWB.
+5. Confirm upload success.
+6. Click Custom Search; search AWB; open 360 View.
+7. Verify BOE1 = DEC-B1-001.
+8. Verify BOE2 = DEC-B2-002.
+9. Verify BOE3 = DEC-B3-003.
+10. Confirm values are not swapped across fields.",Each BOE field displays its respective Declaration Number without overwrite or interchange.,High,,Yes,,,Pass,-
+Upload Actuals,CCIPH-549,BOE_003,Verify duplicate Declaration Number is not allowed within the same shipment,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Upload Actual for AWB-BOE-DUP with Declaration Number DEC001 on BOE1; confirm success.
+5. Upload second Actual for same AWB with Declaration Number DEC001 on BOE2 or duplicate mapping.
+6. Observe validation error on second upload.
+7. Verify duplicate within same shipment is rejected.",System rejects the second upload and displays duplicate Declaration Number validation.,Critical,,Yes,,,Pass,-
+Upload Actuals,CCIPH-549,BOE_004,Verify duplicate Declaration Number is not allowed across different shipments,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Upload Actual for Shipment A with Declaration Number DEC001; confirm success.
+5. Upload Actual for Shipment B with Declaration Number DEC001.
+6. Observe system response on second upload.
+7. Verify cross-shipment duplicate Declaration Number is rejected per requirement.",System rejects the second upload. Declaration Number must be globally unique across all shipments.,Critical,,Yes,,,Pass,-
+Upload Actuals / 360 View Screen,CCIPH-549,BOE_005,Verify unique Declaration Numbers are accepted and mapped correctly across different shipments,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Upload Actuals.
+4. Upload Actual for Shipment A with Declaration Number DEC001; confirm success.
+5. Upload Actual for Shipment B with Declaration Number DEC002; confirm success.
+6. Click Custom Search; open 360 View for Shipment A; verify Declaration Number fields show DEC001.
+7. Open 360 View for Shipment B; verify Declaration Number fields show DEC002.",Both uploads are successful and each shipment displays its respective Declaration Number correctly in the mapped BOE fields.,High,,Yes,,,Pass,-
+Custom Search / 360 View,CCIPH-578,Charges_001,Verify DT3 charge is generated at the Third Party Entity,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Custom Search.
+4. Apply filters as needed; search AWB with Third Party Entity populated (3rd party flow).
+5. Click Search and open Charge Detail 360 View.
+6. Click DT3 tab in charge tabs strip.
+7. Verify DT3 charge row is generated and visible.
+8. Verify charge is associated with Third Party Entity (not destination-only entity).",DT3 charge is created under the Third Party Entity and Billing Entity is the Third Party Entity,Critical,,Yes,,,Pass,-
+360 View,CCIPH-578,Charges_002,Verify AR Account Number and AR Account Name are populated from Third Party details,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management; confirm Third Party Account Number exists.
+4. Click Custom Search; search shipment whose Third Party Number matches that AR Account.
+5. Open 360 View and click DT3 tab.
+6. Verify AR Account Number matches Third Party account from shipment.
+7. Verify AR Account Name matches AR Management account name.",AR Account Number equals Third Party Number and AR Account Name equals Third Party Name,Critical,,Yes,,,Pass,-
+360 View,CCIPH-578,Charges_003,Verify AR Account fields remain blank when Third Party Account is unavailable,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Click Custom Search; search shipment with Third Party Number not present in AR Management.
+4. Open 360 View and click DT3 tab.
+5. Verify AR Account Number field is blank.
+6. Verify AR Account Name field is blank.",AR Account Number and AR Account Name remain blank,Critical,,Yes,,,Pass,-
+360 View,CCIPH-578,Charges_004,Verify Billing Entity and Billing Country are derived from Third Party information,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Click Custom Search; search AWB with valid Third Party Entity and Country on shipment.
+4. Open 360 View; click DT3 tab.
+5. Verify Billing Entity matches Third Party Entity from shipment/Additional Details.
+6. Verify Billing Country matches Third Party Country.",Billing Entity equals Third Party Entity and Billing Country equals Third Party Country,High,,Yes,,,Pass,-
+AR Management / Entity Settings / 360 View,CCIPH-578,Charges_005,Verify AR DT3 Ratesheet is applied when a matching AR Ratesheet exists,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. From the left navigation menu, click AR Management; open Third Party AR Account; configure DT3 Ratesheet matching shipment conditions (Shipment Business Type, service code).
+4. From the left navigation menu, click Entity Management; configure Entity DT3 Ratesheet as backup.
+5. Process shipment with matching Third Party AR Account.
+6. Click Custom Search; search AWB; open 360 View; click DT3 tab.
+7. Note service code and charge amount; copy Billing Destination.
+8. Return to AR Management > account DT3 Ratesheet; verify matching row applies.
+9. Compare 360 View DT3 charge with AR Ratesheet expected calculation.",DT3 charge is calculated using the AR Account Ratesheet and Entity Ratesheet is not applied,Critical,,Yes,,,Pass,-
+AR Management / Entity Settings / 360 View,CCIPH-578,Charges_006,Verify Entity DT3 Ratesheet is applied when AR Ratesheet exists but no AR Ratesheet matches,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Configure AR DT3 Ratesheet with non-matching Shipment Business Type or filters.
+4. Configure Entity DT3 Ratesheet on Third Party Entity with matching conditions.
+5. Process qualifying shipment.
+6. Click Custom Search; search AWB; open 360 View; click DT3 tab.
+7. Verify charge amount aligns with Entity DT3 Ratesheet not AR Ratesheet.",DT3 charge is calculated using the Third Party Entity Ratesheet,Critical,,Yes,,,Pass,-
+AR Management / Entity Settings,CCIPH-578,Charges_007,Verify no DT3 Ratesheet is applied when neither AR nor Entity Ratesheet matches,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Configure AR and Entity DT3 Ratesheets with non-matching conditions for test shipment profile.
+4. Process shipment.
+5. Click Custom Search; search AWB; open 360 View; click DT3 tab.
+6. Verify no contracted rate from mismatched sheets is applied (charge pending or zero per design).",No DT3 Ratesheet is applied and no DT3 charge is generated,Critical,,Yes,,,Pass,-
+Entity Settings / 360 View,CCIPH-578,Charges_008,Verify Entity DT3 Ratesheet is applied when AR Account is unavailable,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. Use shipment whose Third Party Number is not in AR Management.
+4. Configure matching Entity DT3 Ratesheet on Third Party Entity.
+5. Process shipment.
+6. Click Custom Search; search AWB; open 360 View; click DT3 tab.
+7. Verify DT3 charge calculated from Entity Ratesheet.",DT3 charge is generated using the Third Party Entity Ratesheet,Critical,,Yes,,,Pass,-
+Entity Settings / 360 View,CCIPH-578,Charges_009,Verify no DT3 charge is generated when AR Account and Entity Ratesheet are unavailable,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Use shipment without Third Party AR Account and ensure no Entity DT3 Ratesheet match.
+4. Process shipment.
+5. Click Custom Search; search AWB; open 360 View.
+6. Click DT3 tab.
+7. Verify DT3 charge is not generated or shows not applicable per design.",No DT3 charge is generated because no applicable Ratesheet exists,Critical,,Yes,,,Pass,-
+360 View,CCIPH-578,Charges_010,Verify DT3 charge currency is derived from the Third Party Entity,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Super Admin using valid test credentials.
+3. In Entity Management set Third Party Entity currency (e.g. AED for DXB).
+4. Process shipment billed to that Third Party Entity.
+5. Click Custom Search; search AWB; open 360 View; click DT3 tab.
+6. Verify Currency column/field on DT3 charge matches Third Party Entity local currency.",DT3 charge currency matches the configured currency of the Third Party Entity,High,,Yes,,,Pass,-
+AR Management / Entity Management,CCIPH-564,Rename_001,Verify Business Type column is renamed to Shipment Business Type in AR Ratesheets table,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click AR Management.
+4. Open any AR Account.
+5. Navigate to Ratesheets table section.
+6. Verify column header reads Shipment Business Type.
+7. Verify legacy header Business Type is not displayed.",The column is displayed as Shipment Business Type and Business Type is not visible,High,,Yes,,,Pass,-
+AR Management / Entity Management,CCIPH-564,Rename_002,Verify Business Type column is renamed to Shipment Business Type in Entity Ratesheets table,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. From the left navigation menu, click Entity Management.
+4. Select any Entity (e.g. RUH).
+5. Open Ratesheets tab.
+6. Verify table column header reads Shipment Business Type.",The column is displayed as Shipment Business Type and Business Type is not visible,High,,Yes,,,Pass,-
+AR Management / Entity Management,CCIPH-564,Rename_003,Verify Shipment Business Type values are displayed correctly after rename,"1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. Open AR Management account with existing Ratesheet rows containing B2B and B2C.
+4. Verify Shipment Business Type column shows B2B and B2C values correctly.
+5. Open Entity Management > Entity > Ratesheets tab.
+6. Verify Shipment Business Type column shows B2B and B2C values correctly.",The existing B2B/B2C values are retained correctly and only the column label is changed,High,,Yes,,,Pass,-
+AR Management / Entity Management,CCIPH-564,Rename_004,"Verify the renamed column is reflected consistently across Add, Edit and View Ratesheet screens","1. Open http://stage-cc.aramex.com/customs-management in Chrome.
+2. Login as Customs Manager using valid test credentials.
+3. AR Management: open Add Ratesheet screen; verify field label Shipment Business Type.
+4. Open Edit Ratesheet for existing row; verify Shipment Business Type label and value.
+5. Open View Ratesheet; verify Shipment Business Type label and value.
+6. Entity Management: repeat steps 3–5 on Entity Ratesheets Add, Edit, and View screens.
+7. Confirm no screen still shows old Business Type label in ratesheet context.",Shipment Business Type is displayed consistently across all Ratesheet screens with no Business Type label remaining,Medium,,Yes,,,Pass,-

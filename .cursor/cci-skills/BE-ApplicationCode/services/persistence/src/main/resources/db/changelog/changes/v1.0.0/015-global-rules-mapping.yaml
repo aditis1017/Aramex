@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 014-global-rules-mapping-v1
+      author: custom-charges
+      comment: Global rules and service charge mapping (045, 047)
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: global_rule_criteria
+        - tableExists:
+            tableName: service_codes
+        - sqlCheck:
+            expectedResult: 0
+            sql: |
+              SELECT COUNT(*) FROM service_charge_mapping m
+              JOIN service_codes src ON m.from_service_code = src.id
+              WHERE src.service_code = 'Disbursement Fee'
+                AND src.charge_type = 'DTA'
+                AND m.charge_type = 'ECS'
+                AND m.from_entity = 'Global'
+                AND m.to_entity = 'Global'
+      changes:
+        - sqlFile:
+            path: sql/015-global-rules-mapping.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/015-global-rules-mapping-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

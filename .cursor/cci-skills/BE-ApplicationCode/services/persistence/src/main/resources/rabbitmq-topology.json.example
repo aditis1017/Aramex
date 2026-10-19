@@ -1,0 +1,8 @@
+{
+  "exchangeName": "orchestration-exchange",
+  "durable": true,
+  "queues": [
+    { "name": "my-queue-one", "routingKey": "routing.key.one" },
+    { "name": "my-queue-two", "routingKey": "routing.key.two" }
+  ]
+}

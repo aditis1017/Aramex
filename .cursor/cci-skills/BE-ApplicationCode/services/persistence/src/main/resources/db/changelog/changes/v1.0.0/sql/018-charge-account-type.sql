@@ -1,0 +1,2 @@
+ALTER TABLE charge
+    ADD COLUMN IF NOT EXISTS account_type VARCHAR(50);

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-core-business-schema-v1
+      author: custom-charges
+      comment: Create core business tables, indexes, and charge type doc id mapping
+      changes:
+        - sqlFile:
+            path: sql/005-core-business-schema.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/005-core-business-schema-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

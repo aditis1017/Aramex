@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-infrastructure-schema-v1
+      author: custom-charges
+      comment: Create JaVers audit and Spring Batch metadata tables
+      changes:
+        - sqlFile:
+            path: sql/003-infrastructure-schema.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/003-infrastructure-schema-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

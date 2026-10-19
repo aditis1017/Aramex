@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 028-account-default-ar-ruh-dha-jed-v1
+      author: custom-charges
+      comment: Set default_ar_account_number ASL001 for RUH/DHA/JED ENTITY_SETTINGS DTA
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: account
+        - sqlCheck:
+            expectedResult: 1
+            sql: |
+              SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+              FROM account
+              WHERE entity_code IN ('RUH', 'DHA', 'JED')
+                AND account_nature = 'ENTITY_SETTINGS'
+                AND charge_type = 'DTA'
+                AND (default_ar_account_number IS DISTINCT FROM 'ASL001')
+      changes:
+        - sqlFile:
+            path: sql/028-account-default-ar-ruh-dha-jed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/028-account-default-ar-ruh-dha-jed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 022-global-rule-criteria-seed-v1
+      author: custom-charges
+      comment: Add GLOBAL_RULE criteria for Customs Type, Business Type, and FRDM Flag
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: category
+        - tableExists:
+            tableName: category_value
+        - sqlCheck:
+            expectedResult: 0
+            sql: |
+              SELECT COUNT(*)
+              FROM category_value
+              WHERE code IN ('G_CUSTOMS_TYPE', 'G_BUSINESS_TYPE', 'G_FRDM_FLAG')
+      changes:
+        - sqlFile:
+            path: sql/022-global-rule-criteria-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/022-global-rule-criteria-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

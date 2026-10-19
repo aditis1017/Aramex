@@ -1,0 +1,16 @@
+---
+description: >-
+  When the user asks to push to Git and self-heal a failed CI/CD run, re-execute
+  a failed pipeline, or invokes /github-aramex-ci-self-heal, follow
+  .cursor/skills/github-aramex-ci-self-heal/SKILL.md. The retry loop is 3, not 4.
+alwaysApply: false
+---
+
+# CI self-heal push
+
+Follow [`.cursor/skills/github-aramex-ci-self-heal/SKILL.md`](../skills/github-aramex-ci-self-heal/SKILL.md).
+
+- Stage all changes, then pull from `github`, resolve conflicts, and push.
+- Push only to `https://github.com/aditis1017/Aramex.git`.
+- Re-execute a failed Aramex CI run through GitHub Actions.
+- Stop after 3 pipeline runs. Do not start a 4th.

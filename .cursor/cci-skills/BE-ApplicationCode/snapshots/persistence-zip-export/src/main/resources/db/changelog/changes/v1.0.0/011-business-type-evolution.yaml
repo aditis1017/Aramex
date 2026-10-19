@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011-business-type-evolution-v1
+      author: custom-charges
+      comment: Business type evolution (035, 036, 050, 051)
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - not:
+            columnExists:
+              tableName: ar_account
+              columnName: business_segment
+      changes:
+        - sqlFile:
+            path: sql/011-business-type-evolution.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/011-business-type-evolution-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

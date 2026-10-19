@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 015-service-codes-sync-v1
+      author: custom-charges
+      comment: Sync service_codes delete, update, and insert from serviceCodes.xlsx source of truth (046)
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: service_codes
+        - not:
+            or:
+              - changeSetExecuted:
+                  id: 046-service-codes-sync-v2
+                  author: Balmukund Pandey
+              - changeSetExecuted:
+                  id: 015-service-codes-sync-v1
+                  author: custom-charges
+      changes:
+        - sqlFile:
+            path: sql/014-service-codes-sync.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

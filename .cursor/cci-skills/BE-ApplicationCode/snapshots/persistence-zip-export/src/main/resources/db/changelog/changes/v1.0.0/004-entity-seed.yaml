@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-entity-seed-v1
+      author: custom-charges
+      comment: Seed country and entity reference data
+      changes:
+        - sqlFile:
+            path: sql/004-entity-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/004-entity-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

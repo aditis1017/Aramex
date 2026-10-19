@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 021-charge-dashboard-pagination-indexes
+      author: custom-charges
+      comment: Composite indexes for entity-first charge dashboard pagination
+      changes:
+        - sqlFile:
+            path: sql/021-charge-dashboard-pagination-indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/021-charge-dashboard-pagination-indexes-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

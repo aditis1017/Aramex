@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 016-service-codes-description-update-v1
+      author: custom-charges
+      comment: Rename service_codes description from Handling fee to Admin Fee (052)
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: service_codes
+        - not:
+            or:
+              - changeSetExecuted:
+                  id: 052-service-codes-handling-fee-to-admin-fee
+                  author: Balmukund Pandey
+              - changeSetExecuted:
+                  id: 016-service-codes-description-update-v1
+                  author: custom-charges
+        - sqlCheck:
+            expectedResult: 1
+            sql: SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM service_codes WHERE service_description = 'Handling fee'
+      changes:
+        - sqlFile:
+            path: sql/016-service-codes-description-update.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

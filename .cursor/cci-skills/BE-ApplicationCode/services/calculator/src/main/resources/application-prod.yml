@@ -1,0 +1,134 @@
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+  servlet:
+    context-path: ${CONTEXT_PATH:/chargesCalculator}
+
+javers:
+  sqlSchemaManagementEnabled: ${JAVERS_SCHEMA_ENABLED:false}
+management:
+  info:
+    build:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+spring:
+  application:
+    name: chargesCalculator
+  lifecycle:
+    timeout-per-shutdown-phase: ${SHUTDOWN_PHASE_TIMEOUT:60s}
+  liquibase:
+    enabled: false
+
+customcharge:
+  record-tracking:
+    enabled: ${RECORD_TRACKING_ENABLED:false}
+    log-record-completed: ${RECORD_TRACKING_LOG_RECORD_COMPLETED:true}
+  metrics:
+    file-processing:
+      enabled: ${METRICS_FILE_PROCESSING_ENABLED:true}
+    snapshot:
+      enabled: ${METRICS_SNAPSHOT_ENABLED:true}
+      interval-ms: ${METRICS_SNAPSHOT_INTERVAL_MS:10000}
+
+mvp:
+  persistence:
+    datasource:
+      url: ${DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:rules}?currentSchema=${DB_SCHEMA:public}}
+      username: ${DATASOURCE_USERNAME:postgres}
+      password: ${DATASOURCE_PASSWORD:postgres}
+      driver-class-name: ${DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+      maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:20}
+      minimum-idle: ${DATASOURCE_MIN_IDLE:5}
+    redis:
+      enabled: ${REDIS_ENABLED:true}
+      host: ${REDIS_HOST:localhost}
+      password: ${REDIS_PASSWORD:}
+      port: ${REDIS_PORT:6379}
+    jpa:
+      enabled: ${JPA_ENABLED:true}
+      ddl-auto: none
+      show-sql: ${JPA_SHOW_SQL:true}
+      default_schema: ${DB_SCHEMA:public}
+      jdbc-batch-size: ${JPA_JDBC_BATCH_SIZE:50}
+      order-inserts: ${JPA_ORDER_INSERTS:true}
+      order-updates: ${JPA_ORDER_UPDATES:true}
+      jdbc-batch-versioned-data: ${JPA_JDBC_BATCH_VERSIONED_DATA:true}
+      default-batch-fetch-size: ${JPA_DEFAULT_BATCH_FETCH_SIZE:32}
+    exchange-rate:
+      url: ${EXCHANGE_RATE_URL:http://be-dotnet.aramex.net/corp.shippingapi.coredata.v1/api/DataUtilities/GetExchangeRate}
+    javers:
+      enabled: ${JAVERS_ENABLED:true}
+      async:
+        enabled: ${JAVERS_ASYNC_ENABLED:true}
+        pool-size: ${JAVERS_ASYNC_POOL_SIZE:4}
+    drools:
+      enabled: ${DROOLS_ENABLED:true}
+    calculator-helper:
+      enabled: ${CALCULATOR_HELPER_ENABLED:true}
+    security:
+      entra:
+        enabled: ${ENTRA_SECURITY_ENABLED:false}
+        public-paths:
+          - /health
+          - /chargesCalculator/health
+          - /health/**
+          - /chargesCalculator/health
+          - /chargesCalculator/health/**
+          - /actuator/**
+          - /chargesCalculator/actuator/**
+    swagger:
+      enabled: ${SWAGGER_ENABLED:true}
+      title: ${SWAGGER_TITLE:API Documentation}
+      description: ${SWAGGER_DESCRIPTION:API Description}
+      version: ${SWAGGER_VERSION:1.0.0}
+      server-url: ${SWAGGER_SERVER_URL:https://cc.aramex.com}${CONTEXT_PATH:/chargesCalculator}
+    aws:
+      sqs:
+        enabled: true
+        region: ${AWS_REGION:ap-south-1}
+        endpoint: ${AWS_SQS_ENDPOINT:}
+        access-key: ${AWS_ACCESS_KEY_ID:}
+        secret-key: ${AWS_SECRET_ACCESS_KEY:}
+      s3:
+        enabled: true
+        region: ${AWS_REGION:ap-south-1}
+        endpoint: ${AWS_S3_ENDPOINT:}
+        access-key: ${AWS_ACCESS_KEY_ID:}
+        secret-key: ${AWS_SECRET_ACCESS_KEY:}
+        default-bucket: ${S3_DEFAULT_BUCKET:}
+
+custom-charge:
+  notification:
+    sqs:
+      queue: ${NOTIFICATION_QUEUE:amx-nonprod-customcharges-dev-sqs-email-notifications}
+  shipment-details-api:
+    enabled: ${SHIPMENT_DETAILS_API_ENABLED:true}
+    url: ${SHIPMENT_DETAILS_API_URL:http://devbe01/corp.shippingapi.coredata.v1/api/DataUtilities/GetShipmentsDetails}
+    connect-timeout: ${SHIPMENT_DETAILS_CONNECT_TIMEOUT:5s}
+    read-timeout: ${SHIPMENT_DETAILS_READ_TIMEOUT:30s}
+  sqs:
+    listener-enabled: ${CUSTOM_CHARGE_SQS_LISTENER_ENABLED:true}
+    batch-output-queue: ${FILE_DATA_QUEUE:custom-charge-file-output}
+    listener-concurrency: ${CALC_LISTENER_CONCURRENCY:3}
+    listener-messages-per-poll: ${CALC_LISTENER_MESSAGES_PER_POLL:2}
+  chunk:
+    parallel-rows-enabled: ${CHUNK_PARALLEL_ROWS_ENABLED:true}
+    max-row-concurrency: ${CHUNK_MAX_ROW_CONCURRENCY:5}
+    row-logging-enabled: ${CHUNK_ROW_LOGGING_ENABLED:true}
+  error-report:
+    presigned-url-expiry-minutes: ${CUSTOM_CHARGE_PRESIGNED_URL_EXPIRY_MINUTES:1440}
+    upload-prefix: ${CUSTOM_CHARGE_ERROR_REPORT_UPLOAD_PREFIX:error-reports}
+
+app:
+  cors:
+    allowed-origins:
+      - http://cc.aramex.com
+    allowed-methods:
+      - "*"
+    allowed-headers:
+      - "*"
+    allow-credentials: true

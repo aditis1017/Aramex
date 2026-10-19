@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 042-shipment-mawb-console-varchar-v1
+      author: custom-charges
+      comment: Store MAWB console as string on shipment
+      changes:
+        - sqlFile:
+            path: sql/042-shipment-mawb-console-varchar.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/042-shipment-mawb-console-varchar-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

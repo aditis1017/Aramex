@@ -1,0 +1,7 @@
+JIRA Epic ID,JIRA User Story ID,JIRA User Story Title,JIRA Test Case ID,JIRA Test Case Title,Automation Status,Remark
+,CCIPH-634,AP Management | Create New AP Account,CCIPH-637,Open Create AP Account page from AP Management search,Automated,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_001/Script634001.groovy
+,CCIPH-634,AP Management | Create New AP Account,CCIPH-639,Verify all Create AP Account fields per AC1,Automated,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_002/Script634002.groovy
+,CCIPH-634,AP Management | Create New AP Account,CCIPH-638,Account Type displays Vendor as read-only,Automated,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_003/Script634003.groovy
+,CCIPH-634,AP Management | Create New AP Account,CCIPH-640,Create AP Account with mandatory fields and Save,Automated,Scripts/AP Management/CCIPH-634/TC_APM_FUNC_004/Script634004.groovy
+,CCIPH-634,AP Management | Create New AP Account,CCIPH-641,Mandatory validation when Save without required fields,Automated,Scripts/AP Management/CCIPH-634/TC_APM_NEG_001/Script634005.groovy
+,CCIPH-634,AP Management | Create New AP Account,CCIPH-642,Create AP Account without optional Market Structure,Not Applicable,Manual only — Automation (Y/N)=N

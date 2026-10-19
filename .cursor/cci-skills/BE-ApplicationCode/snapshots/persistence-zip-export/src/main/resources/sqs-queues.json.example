@@ -1,0 +1,17 @@
+{
+  "queues": [
+    {
+      "name": "my-queue",
+      "delaySeconds": 0,
+      "maximumMessageSize": 262144,
+      "messageRetentionPeriod": 345600,
+      "receiveMessageWaitTimeSeconds": 0,
+      "visibilityTimeout": 30,
+      "fifo": false
+    },
+    {
+      "name": "my-fifo-queue.fifo",
+      "fifo": true
+    }
+  ]
+}

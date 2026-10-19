@@ -1,0 +1,44 @@
+---
+description: >-
+  When the user asks for manual test cases as Jira Sub-tasks and/or Test Case.xlsx
+  for a CCIPH story, or invokes /cci-manual-tc-subtask-xlsx, follow the skill at
+  .cursor/cci-skills/cci-manual-tc-subtask-xlsx/SKILL.md. Apply cci-testcase.mdc
+  for test-type coverage (Functional, Integration, Regression, Performance,
+  Security, Accessibility, Usability).
+alwaysApply: false
+---
+
+# CCI manual TC — Sub-task + XLSX
+
+## Input
+
+- **Required:** `CCIPH-###` User Story key
+- **Optional:** `smoke` | `regression` | `full`, `draft only`
+
+## Skill
+
+Follow [`.cursor/cci-skills/cci-manual-tc-subtask-xlsx/SKILL.md`](../cci-skills/cci-manual-tc-subtask-xlsx/SKILL.md).
+
+## QA analysis
+
+When designing cases, also follow [cci-testcase.mdc](cci-testcase.mdc) for breadth (positive, negative, edge, regression impact).
+
+## Outputs
+
+1. Jira **Sub-task** per test case (`parent` = story)
+2. **Test Case.xlsx** (and CSV) under `qa/manual-test-cases/exports/xlsx/` using template  
+   `.cursor/cci-skills/Sample File Reference/Test Case.xlsx`
+
+## Test Case Type column
+
+Use exactly one of:
+
+- Functional Testing
+- Integration Testing
+- Regression Testing
+- Performance Testing
+- Security Testing
+- Accessibility Testing
+- Usability Testing
+
+Do not wait for Yes/Proceed unless the user said **draft only**.

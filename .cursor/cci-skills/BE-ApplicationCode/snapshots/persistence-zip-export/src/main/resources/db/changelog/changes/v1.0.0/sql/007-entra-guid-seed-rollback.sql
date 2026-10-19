@@ -1,0 +1,1 @@
+TRUNCATE TABLE entra_guid_entity_map RESTART IDENTITY;

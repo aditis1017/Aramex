@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 038-new-entity-account-config-seed-v1
+      author: custom-charges
+      comment: Seed ENTITY_SETTINGS accounts for entities added in 037-new-entity-seed
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: entity
+        - tableExists:
+            tableName: account
+      changes:
+        - sqlFile:
+            path: sql/038-new-entity-account-config-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/038-new-entity-account-config-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

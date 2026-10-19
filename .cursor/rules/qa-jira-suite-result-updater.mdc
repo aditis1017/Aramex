@@ -1,0 +1,29 @@
+---
+description: >-
+  When the user shares a Katalon Test Suite Report and a Jira User Story (or asks
+  to sync suite results for a story), run qa-jira-suite-result-updater: parse report
+  + story, update linked TCs PASS/FAIL, and create Bugs for corresponding failed TCs.
+globs: Reports/**/*
+alwaysApply: false
+---
+
+# Suite report + User Story → Jira sync (auto)
+
+When the user provides a **Test Suite Report** and a **Jira User Story** key, follow `.cursor/skills/qa-jira-suite-result-updater/SKILL.md`.
+
+## Required inputs
+
+1. **Report** — `Reports/...` folder or `JUnit_Report.xml`
+2. **User Story** — e.g. `CCIPH-385`
+
+## Required behaviour
+
+1. Parse `JUnit_Report.xml` from the report folder.
+2. Fetch the User Story (`getJiraIssue`) and build its **linked Test Case inventory**.
+3. Map each Katalon result to a story-linked Jira TC (script headers / inventory / JQL).
+4. Update each matched Jira TC: PASS or FAIL comment + labels + best-effort transition.
+5. For every **FAIL**: duplicate-check → create Bug (or comment on duplicate) → link Bug → Test Case **and** Bug → Story.
+6. Post one suite summary comment on the story if any FAIL.
+7. Deliver the Phase 6 sync summary with browse URLs.
+
+Do **not** wait for Yes/Proceed, invent Jira keys, or skip defect logging for mapped failed TCs.

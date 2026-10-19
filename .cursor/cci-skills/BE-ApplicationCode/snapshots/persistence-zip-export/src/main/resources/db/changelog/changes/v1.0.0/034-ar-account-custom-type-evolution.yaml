@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 034-ar-account-custom-type-evolution-v1
+      author: custom-charges
+      comment: Move ar_custom_type from account charge config to ar_account master
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - columnExists:
+            tableName: account
+            columnName: ar_custom_type
+      changes:
+        - sqlFile:
+            path: sql/034-ar-account-custom-type-evolution.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/034-ar-account-custom-type-evolution-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

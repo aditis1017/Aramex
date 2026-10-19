@@ -1,0 +1,140 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: ${CONTEXT_PATH:/globalSettings}
+    session:
+      cookie:
+        secure: true
+  forward-headers-strategy: framework
+javers:
+  sqlSchemaManagementEnabled: ${JAVERS_SCHEMA_ENABLED:true}
+
+management:
+  info:
+    build:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+spring:
+  cache:
+    type: redis
+    redis:
+      time-to-live: ${API_CACHE_TTL:10m}
+      cache-null-values: false
+      key-prefix: "global-settings-api::"
+  liquibase:
+    enabled: false
+  application:
+    name: globalSettings
+
+mvp:
+  persistence:
+    datasource:
+      url: ${DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:rules}?currentSchema=${DB_SCHEMA:public}}
+      username: ${DATASOURCE_USERNAME:postgres}
+      password: ${DATASOURCE_PASSWORD:postgres}
+      maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:10}
+      minimum-idle: ${DATASOURCE_MIN_IDLE:2}
+      driver-class-name: ${DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+      routing:
+        enabled: ${DATASOURCE_ROUTING_ENABLED:true}
+        fallback-to-write: ${DATASOURCE_ROUTING_FALLBACK_TO_WRITE:true}
+      write:
+        url: ${DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:rules}?currentSchema=${DB_SCHEMA:public}}
+        username: ${DATASOURCE_USERNAME:postgres}
+        password: ${DATASOURCE_PASSWORD:postgres}
+        pool-name: ${DATASOURCE_WRITE_POOL_NAME:GlobalSettingsWritePool}
+        maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:10}
+        minimum-idle: ${DATASOURCE_MIN_IDLE:2}
+      read:
+        url: ${READ_DATASOURCE_URL:jdbc:postgresql://${READ_DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:rules}?currentSchema=${DB_SCHEMA:public}}
+        username: ${DATASOURCE_USERNAME:postgres}
+        password: ${DATASOURCE_PASSWORD:postgres}
+        pool-name: ${DATASOURCE_READ_POOL_NAME:GlobalSettingsReadPool}
+        maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:10}
+        minimum-idle: ${DATASOURCE_MIN_IDLE:2}
+    redis:
+      enabled: ${REDIS_ENABLED:true}
+      host: ${REDIS_HOST:localhost}
+      password: ${REDIS_PASSWORD:}
+      port: ${REDIS_PORT:6379}
+    jpa:
+      enabled: ${JPA_ENABLED:true}
+      ddl-auto: ${JPA_DDL_AUTO:validate}
+      show-sql: ${JPA_SHOW_SQL:true}
+      default_schema: ${DB_SCHEMA:public}
+    javers:
+      enabled: ${JAVERS_ENABLED:true}
+    drools:
+      enabled: ${DROOLS_ENABLED:true}
+    export:
+      enabled: ${EXPORT_ENGINE_ENABLED:true}
+      chunk-size: ${EXPORT_CHUNK_SIZE:100}
+    swagger:
+      enabled: ${SWAGGER_ENABLED:true}
+      title: ${SWAGGER_TITLE:API Documentation}
+      description: ${SWAGGER_DESCRIPTION:API Description}
+      version: ${SWAGGER_VERSION:1.0.0}
+      server-url: ${SWAGGER_SERVER_URL:https://uat-cc.aramex.com}${CONTEXT_PATH:/globalSettings}
+    aws:
+      sqs:
+        enabled: true
+        region: ${AWS_REGION:ap-south-1}
+        endpoint: ${AWS_SQS_ENDPOINT:}
+        access-key: ${AWS_ACCESS_KEY_ID:}
+        secret-key: ${AWS_SECRET_ACCESS_KEY:}
+      s3:
+        enabled: ${EXPORT_S3_ENABLED:true}
+        region: ${AWS_REGION:}
+        accessKey: ${AWS_ACCESS_KEY_ID:}
+        secretKey: ${AWS_SECRET_ACCESS_KEY:}
+        default-bucket: ${S3_DEFAULT_BUCKET:}
+    security:
+      # Entra JWT uses mvp.persistence.redis above (no separate Redis connection).
+      entra:
+        enabled: ${ENTRA_SECURITY_ENABLED:true}
+        entra-config-refresh-interval-ms: ${ENTRA_CONFIG_REFRESH_MS:60000}
+        public-paths:
+          - /health
+          - /health/**
+          - /globalSettings/health
+          - /globalSettings/health/**
+          - /actuator/**
+          - /globalSettings/actuator/**
+          - /globalSettings/swagger-ui/**
+          - /globalSettings/v3/api-docs/**
+          - /swagger-ui/**
+          - /v3/api-docs/**
+          - /api/auth/logout
+          - /dashboard/api/auth/logout
+          - /globalSettings/api/auth/logout
+          - /v1/rules/sync
+          - /globalSettings/v1/rules/sync
+
+custom-charge:
+  notification:
+    sqs:
+      queue: ${NOTIFICATION_QUEUE:amx-nonprod-customcharges-dev-sqs-email-notifications}
+
+createRuleUiLink: ${CREATE_RULE_UI_LINK:https://uat-cc.aramex.com/customs-management/global-settings}
+mailNotificationRoles: ${NOTIFICATION_ROLES:SUPER_ADMIN,CUSTOMS_MANAGER,OPERATIONS_STAFF}
+
+global-settings:
+  sync:
+    on-startup-enabled: ${GLOBAL_SETTINGS_SYNC_ON_STARTUP:true}
+    scheduled-enabled: ${GLOBAL_SETTINGS_SYNC_SCHEDULED:true}
+    cron: ${GLOBAL_SETTINGS_SYNC_CRON:1 0 0 * * ?}
+    zone: ${GLOBAL_SETTINGS_SYNC_ZONE:UTC}
+
+app:
+  cors:
+    allowed-origins:
+      - https://uat-cc.aramex.com
+    allowed-methods:
+      - "*"
+    allowed-headers:
+      - "*"
+    allow-credentials: true

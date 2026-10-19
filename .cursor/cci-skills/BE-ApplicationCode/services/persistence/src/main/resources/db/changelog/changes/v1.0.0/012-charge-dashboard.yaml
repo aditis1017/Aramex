@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 012-charge-dashboard-v8
+      author: custom-charges
+      comment: Charge dashboard view; DT3 account from shipper party, recreate when view exists
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - or:
+            - sqlCheck:
+                expectedResult: 0
+                sql: SELECT COUNT(*) FROM information_schema.views WHERE table_schema = current_schema() AND table_name = 'v_entity_charge_dashboard'
+            - sqlCheck:
+                expectedResult: 0
+                sql: SELECT COUNT(*) FROM information_schema.columns WHERE table_schema = current_schema() AND table_name = 'v_entity_charge_dashboard' AND column_name = 'account_type'
+            - viewExists:
+                viewName: v_entity_charge_dashboard
+      changes:
+        - sqlFile:
+            path: sql/012-charge-dashboard.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/012-charge-dashboard-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

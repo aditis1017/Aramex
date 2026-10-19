@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009-account-config-seed-v1
+      author: custom-charges
+      comment: Seed entity settings accounts
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: entity
+        - tableExists:
+            tableName: account
+      changes:
+        - sqlFile:
+            path: sql/010-account-config-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/010-account-config-seed-rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

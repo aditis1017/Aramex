@@ -1,0 +1,16 @@
+---
+description: >-
+  When the user asks to push this project to https://github.com/aditis1017/Aramex.git,
+  trigger CI/CD on that repo, or invokes /github-aramex-push, follow
+  .cursor/skills/github-aramex-push/SKILL.md. Push only the github remote.
+alwaysApply: false
+---
+
+# Push to aditis1017/Aramex
+
+Follow [`.cursor/skills/github-aramex-push/SKILL.md`](../skills/github-aramex-push/SKILL.md).
+
+- Remote: `github` → `https://github.com/aditis1017/Aramex.git`
+- A push that includes `.github/workflows/aramex-ci.yml` starts GitHub Actions.
+- Do not push to `origin` as part of this workflow.
+- A commit message is required when there are changes to publish.

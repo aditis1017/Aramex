@@ -1,0 +1,1 @@
+ALTER TABLE entity DROP COLUMN IF EXISTS info_axs_id;

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 023-entity-charge-dashboard-slim-view-v4
+      author: custom-charges
+      comment: Drop STRING_AGG declarationnumber from dashboard view (grid BOE uses line-item specs)
+      changes:
+        - sqlFile:
+            path: sql/023-entity-charge-dashboard-slim-view.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

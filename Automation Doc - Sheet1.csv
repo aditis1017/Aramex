@@ -1,0 +1,11 @@
+Module,Total TC,To Be Automated,Automated TC,
+Global Settings,98,64,61,
+AP,36,34,34,
+AR,74,60,50,
+B2B Shipment,44,26,26,26
+Charge Creation,217,,10,
+Custom Search-360 View,124,107,110,
+Entity Management - AP,128,124,141,124
+Entity Management - AR,124,124,83,
+Roles & Permission,61,37,25,
+Upload Estimates / Actuals,164,164,164,

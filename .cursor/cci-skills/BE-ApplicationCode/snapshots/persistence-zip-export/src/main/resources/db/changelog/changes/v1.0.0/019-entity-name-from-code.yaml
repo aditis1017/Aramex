@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 019-entity-name-from-code-v1
+      author: custom-charges
+      comment: Set entity name to entity code for existing seeded rows
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: MARK_RAN
+        - tableExists:
+            tableName: entity
+      changes:
+        - sqlFile:
+            path: sql/019-entity-name-from-code.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sql:
+            sql: "-- entity names were corrected to match codes; no automatic rollback"

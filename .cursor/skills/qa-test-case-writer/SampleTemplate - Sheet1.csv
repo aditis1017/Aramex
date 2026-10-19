@@ -1,0 +1,5 @@
+Screen Name,User Story ID,ID,Test Case Description,Test Case Procedure,Test Steps,Acceptance Criteria,Expected Result,Priority,Department,Automation (Y/N),Automation Execution Status,Automation Remarks,"(Functional)
+Pass/Fail",Functional Remarks,Remarks.1,Assigned to,Status,Comments
+B2B Keywords Manager,CCIPH-226,TC_B2B_FUNC_001,Validate B2B Keywords Manager option is visible in left menu for Super Admin,,"1. Login as Super Admin
+2. Observe left-hand navigation menu
+3. Verify menu placement",,“B2B Keywords Manager” option should be visible above “Role and Permissions”,High,QA,Yes,Post MVP,,Pass,,,,,
