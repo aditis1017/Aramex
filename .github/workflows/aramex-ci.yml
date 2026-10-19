@@ -40,7 +40,7 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Windows, X64]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -73,20 +73,21 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: Use Java 21 for Katalon
-        run: |
-          sudo ln -sfn "$(readlink -f "$(which java)")" /usr/bin/java
-          /usr/bin/java -version
-
       - name: Prepare Katalon project
+        shell: pwsh
         run: |
-          test -d Keywords
-          test -f Corp.microservice.ccm-automation.prj
-          rm -f .project
-          mkdir -p /tmp/unused-katalon-projects
-          if [ -f Dummy-Test.prj ]; then
-            mv Dummy-Test.prj /tmp/unused-katalon-projects/
-          fi
+          if (-not (Test-Path -Path Keywords -PathType Container)) {
+            throw "Keywords folder is missing."
+          }
+          if (-not (Test-Path -Path Corp.microservice.ccm-automation.prj -PathType Leaf)) {
+            throw "Katalon project file is missing."
+          }
+          Remove-Item -Path .project -Force -ErrorAction SilentlyContinue
+          $unusedProjects = Join-Path $env:RUNNER_TEMP "unused-katalon-projects"
+          New-Item -Path $unusedProjects -ItemType Directory -Force | Out-Null
+          if (Test-Path -Path Dummy-Test.prj -PathType Leaf) {
+            Move-Item -Path Dummy-Test.prj -Destination $unusedProjects -Force
+          }
 
       - name: Run Katalon Runtime Engine
         uses: katalon-studio/katalon-studio-github-action@v4.0
