@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>staging</name>
+   <tag></tag>
+   <defaultProfile>false</defaultProfile>
+   <GlobalVariableEntity>
+      <description>AP Management search page (CCIPH-102). Set per environment.</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/ap-management'</initValue>
+      <name>AP_MANAGEMENT_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR Management search page (CCIPH-116). Set per environment.</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/ar-management'</initValue>
+      <name>AR_MANAGEMENT_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR Management Stage page URL. Used by navigateToStageArManagement().</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/ar-management'</initValue>
+      <name>Stage_AR_Env</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Customs Management â€” Global Settings page (CCIPH-30). Set per environment; used when login/session is established separately.</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>GLOBAL_SETTINGS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Customs Management entry (triggers Microsoft login redirect). Set in profile per environment.</description>
+      <initValue>'https://stage-cc.aramex.com/customs'</initValue>
+      <name>CUSTOMS_APP_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Microsoft Entra ID â€” sign-in email (UPN). Required for login unless you pass the email argument or set MS_AUTO_FETCH_OTP_FROM_EMAIL=true and use the same UPN in MS_IMAP_USER. Set in your local Katalon profile; leave empty in shared repos.</description>
+      <initValue>'SVC_CCI@aramex.com'</initValue>
+      <name>MS_LOGIN_EMAIL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Microsoft password if your tenant shows password after email. Prefer empty + device code / manual OTP. Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>MS_LOGIN_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>One-time email/Authenticator code when required. For local runs only; leave empty to use IMAP auto-fetch (MS_AUTO_FETCH_OTP_FROM_EMAIL) or manual browser entry.</description>
+      <initValue>''</initValue>
+      <name>MS_VERIFICATION_CODE</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>If true and MS_VERIFICATION_CODE is empty, polls IMAP (MS_IMAP_*) for a recent Microsoft-style OTP when the OTP field appears.</description>
+      <initValue>'false'</initValue>
+      <name>MS_AUTO_FETCH_OTP_FROM_EMAIL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP server host for OTP and notification emails (e.g. outlook.office365.com). Used when GS_EMAIL_IMAP_HOST is empty.</description>
+      <initValue>'outlook.office365.com'</initValue>
+      <name>MS_IMAP_HOST</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP SSL port (usually 993).</description>
+      <initValue>'993'</initValue>
+      <name>MS_IMAP_PORT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP username (mailbox address). When empty, MS_LOGIN_EMAIL is used for notification email tests.</description>
+      <initValue>''</initValue>
+      <name>MS_IMAP_USER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP password or app password. Never commit real values; use Profile override locally.</description>
+      <initValue>''</initValue>
+      <name>MS_IMAP_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Case-insensitive substring matched against the message From header (e.g. microsoft).</description>
+      <initValue>'microsoft'</initValue>
+      <name>MS_OTP_SENDER_CONTAINS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Only consider messages received within this many minutes when searching for an OTP.</description>
+      <initValue>'10'</initValue>
+      <name>MS_OTP_LOOKBACK_MINUTES</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Optional Java regex with one capturing group for the OTP digits. Leave empty to use built-in Microsoft-style patterns.</description>
+      <initValue>''</initValue>
+      <name>MS_OTP_REGEX</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Max seconds to poll IMAP while waiting for a matching OTP email.</description>
+      <initValue>'90'</initValue>
+      <name>MS_OTP_FETCH_MAX_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Seconds between IMAP poll attempts.</description>
+      <initValue>'5'</initValue>
+      <name>MS_OTP_FETCH_POLL_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Seconds to wait for manual MFA/OTP entry when MS_VERIFICATION_CODE is blank and OTP UI is shown.</description>
+      <initValue>'120'</initValue>
+      <name>MS_MFA_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Max seconds to wait for redirect back to stage-cc.aramex.com after Microsoft auth.</description>
+      <initValue>'180'</initValue>
+      <name>MS_LOGIN_MAX_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>If true, clicks Yes on Microsoft Stay signed in prompt when it appears.</description>
+      <initValue>'true'</initValue>
+      <name>MS_CLICK_STAY_SIGNED_IN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Customs Search page URL (CCIPH-21/22/23/26/120). Set per environment.</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/customs-search'</initValue>
+      <name>CUSTOMS_SEARCH_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'C:\\Users\\Aditi Singh\\Downloads\\Actuals-Upload-Template.xlsx'</initValue>
+      <name>UPLOAD_FILE_PATH</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs/upload-charges'</initValue>
+      <name>UPLOAD_CHARGES_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Legacy export path hint (prefix only). Prefer HISTORY_EXPORT_* variables.</description>
+      <initValue>'C:\\Users\\Aditi Singh\\Downloads\\Global-Settings-History-'</initValue>
+      <name>EXPORT_FILE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Folder where Global Settings History export .csv is saved (TC_GS_FUNC_067+).</description>
+      <initValue>'C:\\Users\\Aditi Singh\\Downloads'</initValue>
+      <name>HISTORY_EXPORT_DOWNLOADS_DIR</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Expected substring in exported History Excel file name.</description>
+      <initValue>'Global-Settings-History_'</initValue>
+      <name>HISTORY_EXPORT_FILE_NAME_PREFIX</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/ap-management'</initValue>
+      <name>AP_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/ar-management'</initValue>
+      <name>AR_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP host for Global Settings notification emails. Falls back to MS_IMAP_HOST when empty.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_HOST</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP port for Global Settings notification emails. Falls back to MS_IMAP_PORT when empty.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_PORT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Mailbox that receives Global Settings notification emails. Falls back to MS_IMAP_USER when empty.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_USER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>IMAP password for notification mailbox. Falls back to MS_IMAP_PASSWORD. Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>GS_EMAIL_IMAP_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Case-insensitive substring matched against notification email From header (e.g. noreply).</description>
+      <initValue>'noreply'</initValue>
+      <name>GS_EMAIL_SENDER_CONTAINS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Expected subject fragment for Global Setting Created notification.</description>
+      <initValue>'Global Setting Created'</initValue>
+      <name>GS_EMAIL_SUBJECT_CREATE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Max seconds to poll IMAP while waiting for a Global Settings notification email.</description>
+      <initValue>'120'</initValue>
+      <name>GS_EMAIL_FETCH_MAX_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Seconds between IMAP poll attempts for notification email verification.</description>
+      <initValue>'10'</initValue>
+      <name>GS_EMAIL_FETCH_POLL_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Wait time for negative email tests (CANCEL â€” no email should arrive).</description>
+      <initValue>'60'</initValue>
+      <name>GS_EMAIL_NEGATIVE_WAIT_SECONDS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'SVC_CCI@aramex.com'</initValue>
+      <name>Automation_User</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Entity Management / entity-level invoicing settings (CCIPH-85). Set per environment.</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/entity-settings'</initValue>
+      <name>ENTITY_SETTINGS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>Automation_Password</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Stage Customs Search page URL (CCIPH-21/22/23/26/120).</description>
+      <initValue>'https://stage-cc.aramex.com/customs'</initValue>
+      <name>CUSTOMS_SEARCH_URL_STAGE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Stage Customs login entry URL (CCIPH-21/23/26/120 stage runs).</description>
+      <initValue>'https://stage-cc.aramex.com/login'</initValue>
+      <name>STAGE_LOGIN_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Project-relative or absolute path to chromedriver.exe matching local Chrome (e.g. Drivers/chromedriver.exe).</description>
+      <initValue>'Drivers/chromedriver.exe'</initValue>
+      <name>CHROME_DRIVER_PATH</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>STAGE_APPLICATION</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/global-settings'</initValue>
+      <name>STAGE_GLOBALSETTINGS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>B2B Keywords Manager page URL (CCIPH-226). Used by navigateToB2BKeywordsManager() â€” same pattern as AP_MANAGEMENT_URL.</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/b2b-keywords-manager'</initValue>
+      <name>B2B_Keywords_Manager_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Katalon project-relative (or absolute) folder for B2B template exports (TC_B2B_006). Default: Downloads under project root. File is deleted after verification.</description>
+      <initValue>'Downloads'</initValue>
+      <name>B2B_TEMPLATE_DOWNLOADS_DIR</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/b2b-keywords-manager'</initValue>
+      <name>B2B_Keywords_Manager_Satge_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/entity-settings'</initValue>
+      <name>ENTITY_SETTINGS_STAGE_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Roles &amp; Permissions page URL (CCIPH-89). Used by navigateToRolesAndPermissions().</description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/roles-and-permissions'</initValue>
+      <name>ROLES_PERMISSIONS_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs-management/roles-permissions'</initValue>
+      <name>ROLES_PERMISSIONS_URL_STAGE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://stage-cc.aramex.com/customs'</initValue>
+      <name>CUSTOMS_APP_URL_STAGE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>PostgreSQL host for CCIPH-42 Shipment Creation DB validation. Set per environment.</description>
+      <initValue>''</initValue>
+      <name>CCI_DB_HOST</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>PostgreSQL port for CCIPH-42 DB validation (default 5432).</description>
+      <initValue>'5432'</initValue>
+      <name>CCI_DB_PORT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>PostgreSQL database name for CCIPH-42 DB validation.</description>
+      <initValue>''</initValue>
+      <name>CCI_DB_NAME</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>PostgreSQL user for CCIPH-42 DB validation. Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>CCI_DB_USER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>PostgreSQL password for CCIPH-42 DB validation. Set in local profile only.</description>
+      <initValue>''</initValue>
+      <name>CCI_DB_PASSWORD</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment table name for CCIPH-42 DB checks.</description>
+      <initValue>'shipment'</initValue>
+      <name>CCI_SHIPMENT_TABLE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Charge table name for CCIPH-42 DB checks.</description>
+      <initValue>'charge'</initValue>
+      <name>CCI_CHARGE_TABLE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR account table name for CCIPH-42 DB checks.</description>
+      <initValue>'ar_account'</initValue>
+      <name>CCI_AR_ACCOUNT_TABLE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Manual Override API endpoint (CCIPH-43). Set per environment for API tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_OVERRIDE_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Bearer token for Manual Override API (CCIPH-43). Set in local profile only.</description>
+      <initValue>''</initValue>
+      <name>CCI_OVERRIDE_API_TOKEN</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Notification log table for CCIPH-43 DB checks.</description>
+      <initValue>'notification_log'</initValue>
+      <name>CCI_OVERRIDE_NOTIFICATION_TABLE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Expected source_type value for manual override shipments (CCIPH-43).</description>
+      <initValue>'Manual Override'</initValue>
+      <name>CCI_MANUAL_OVERRIDE_SOURCE_VALUE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Sender filter for OPS override notification emails (CCIPH-43).</description>
+      <initValue>'noreply'</initValue>
+      <name>CCI_OVERRIDE_EMAIL_SENDER_CONTAINS</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment type column for CCIPH-44 DB checks.</description>
+      <initValue>'shipment_type'</initValue>
+      <name>CCI_SHIPMENT_TYPE_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Destination entity column for CCIPH-44 DB checks.</description>
+      <initValue>'destination_entity'</initValue>
+      <name>CCI_DESTINATION_ENTITY_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Alternate shipper account (not 72104493) for CCIPH-44 negative scenario.</description>
+      <initValue>'00000001'</initValue>
+      <name>CCI_DOM_DDU_ALT_ACCOUNT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>CMT column for CCIPH-45 shipment type DB checks.</description>
+      <initValue>'cmt'</initValue>
+      <name>CCI_CMT_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Product type column for CCIPH-45 shipment type DB checks.</description>
+      <initValue>'product_type'</initValue>
+      <name>CCI_PRODUCT_TYPE_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>3rd party entity column for CCIPH-45 shipment type DB checks.</description>
+      <initValue>'third_party_entity'</initValue>
+      <name>CCI_THIRD_PARTY_ENTITY_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipper number column for CCIPH-45 shipment type DB checks.</description>
+      <initValue>'shipper_account_number'</initValue>
+      <name>CCI_SHIPPER_NUMBER_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR account custom type column for CCIPH-45 DDO validation.</description>
+      <initValue>'custom_type'</initValue>
+      <name>CCI_AR_CUSTOM_TYPE_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipper number linked to AR account with custom_type=DDO for TC_ST_005 seed data.</description>
+      <initValue>''</initValue>
+      <name>CCI_DDO_SHIPPER_NUMBER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Allocated entity column for CCIPH-46 entity allocation DB checks.</description>
+      <initValue>'allocated_entity'</initValue>
+      <name>CCI_ALLOCATED_ENTITY_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Entity master table for default cash account lookup (CCIPH-46).</description>
+      <initValue>'entity'</initValue>
+      <name>CCI_ENTITY_TABLE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>DDP ASL account for in-scope destination entities (CCIPH-46 AC1).</description>
+      <initValue>'ASL001'</initValue>
+      <name>CCI_DDP_ASL_ACCOUNT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Fallback default cash account when entity table lookup is unavailable (CCIPH-46).</description>
+      <initValue>''</initValue>
+      <name>CCI_DEFAULT_CASH_ACCOUNT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Destination entity outside RUH/JED/DHA for TC_ALLOC_002 (CCIPH-46).</description>
+      <initValue>'DXB'</initValue>
+      <name>CCI_OUT_OF_SCOPE_ENTITY</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR account in scope (RUH/JED/DHA entity) for TC_ALLOC_004 seed data (CCIPH-46).</description>
+      <initValue>''</initValue>
+      <name>CCI_ALLOC_AR_ACCOUNT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>AR account with out-of-scope entity for TC_ALLOC_006 seed data (CCIPH-46).</description>
+      <initValue>''</initValue>
+      <name>CCI_ALLOC_OUT_OF_SCOPE_AR_ACCOUNT</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Charge status column name in charge table (CCIPH-121).</description>
+      <initValue>'status'</initValue>
+      <name>CCI_CHARGE_STATUS_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>ECD charge creation REST API endpoint (CCIPH-121). Leave empty to skip live API calls.</description>
+      <initValue>''</initValue>
+      <name>CCI_CHARGE_CREATION_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Bearer token for CCI_CHARGE_CREATION_API_URL (CCIPH-121). Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>CCI_CHARGE_CREATION_API_TOKEN</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>DDO-eligible shipment tracking number for CCIPH-121 ECD DDO tests. Falls back to shipper lookup when empty.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECDD_ELIGIBLE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Ineligible shipment tracking number for CCIPH-121 negative eligibility tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECDD_INELIGIBLE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Default entity code for ECD DDO charge creation API payload (CCIPH-121).</description>
+      <initValue>'RUH'</initValue>
+      <name>CCI_ECDD_DEFAULT_ENTITY</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with ECD status Pending Calculation (no estimate) for CCIPH-74.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECD_PENDING_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with ECD status Due for CCIPH-74 re-upload tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECD_DUE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment created with estimation data and ECD Due for CCIPH-74.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECD_WITH_ESTIMATION_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>High-value shipment tracking for CCIPH-74 HV calculation tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECD_HV_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Low-value shipment tracking for CCIPH-74 LV rate sheet tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECD_LV_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Private shipment tracking for CCIPH-74 invoicing field validation.</description>
+      <initValue>''</initValue>
+      <name>CCI_ECD_PRIVATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Default destination currency for ECD charge calculation (CCIPH-74).</description>
+      <initValue>'SAR'</initValue>
+      <name>CCI_ECD_DEFAULT_CURRENCY</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>GetExchangeRate API URL for CCIPH-74 currency conversion tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_EXCHANGE_RATE_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>When true, simulate exchange rate API failure for CCIPH-74 TC_CURR_005.</description>
+      <initValue>'false'</initValue>
+      <name>CCI_EXCHANGE_RATE_SIMULATE_FAILURE</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>When true, Duty Calculator integration tests run live; otherwise DB blank-amount validation only (CCIPH-121).</description>
+      <initValue>'false'</initValue>
+      <name>CCI_DUTY_CALCULATOR_ENABLED</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>DDO-eligible shipment with ECD+DTC for CCIPH-122. Falls back to CCI_ECDD_ELIGIBLE_TRACKING / shipper lookup.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_DDO_ELIGIBLE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Ineligible shipment tracking for CCIPH-122 negative DTC creation tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_DDO_INELIGIBLE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with invalid/blocked ECD status for CCIPH-122 TC_DTC_DDO_005.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_DDO_INVALID_ECD_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with multiple ECD service lines for CCIPH-122 TC_DTC_DDO_003.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_DDO_MULTI_ECD_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Default entity code for DTC downstream charge creation API payload (CCIPH-122).</description>
+      <initValue>'RUH'</initValue>
+      <name>CCI_DTC_DDO_DEFAULT_ENTITY</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Downstream DTC charge creation REST API endpoint (CCIPH-122). Leave empty to skip live API calls.</description>
+      <initValue>''</initValue>
+      <name>CCI_DOWNSTREAM_CHARGE_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Bearer token for CCI_DOWNSTREAM_CHARGE_API_URL (CCIPH-122). Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>CCI_DOWNSTREAM_CHARGE_API_TOKEN</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>DTC charge update REST API endpoint (CCIPH-122). Use {id} placeholder or trailing slash base.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_UPDATE_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>DTC calculation API URL for CCIPH-76 rate sheet / recalc tests. Falls back to CCI_CHARGE_CALCULATION_API_URL / CCI_DOWNSTREAM_CHARGE_API_URL.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_CALCULATION_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Qualifying DDU shipment with ECD+DTC for CCIPH-76 calculation tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_ELIGIBLE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Cash DDU shipment for CCIPH-76 entity public rate tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_CASH_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Account DDU shipment with AR contract rate for CCIPH-76.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_ACCOUNT_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Account DDU shipment without AR rate (entity fallback) for CCIPH-76.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_ACCOUNT_FALLBACK_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with no rate sheet configured for CCIPH-76 negative test.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_NO_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with fixed-rate DTC service code for CCIPH-76 TC_DTC_007.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_FIXED_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with percentage-rate DTC service code for CCIPH-76 TC_DTC_008.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_PERCENT_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Non-invoiced DTC shipment for CCIPH-76 ECD recalc tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTC_NON_INVOICED_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>DTA calculation API URL for CCIPH-77 intercompany rate tests. Falls back to CCI_CHARGE_CALCULATION_API_URL.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_CALCULATION_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Qualifying intercompany shipment for CCIPH-77 DTA creation tests.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_ELIGIBLE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment without shipper account for CCIPH-77 TC_DTA_003 negative test.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_NO_SHIPPER_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment without debiting entity mapping for CCIPH-77 TC_DTA_005 negative test.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_MISSING_MAPPING_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Intercompany shipment with AR contract DTA rate for CCIPH-77 TC_DTA_006.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_AR_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Intercompany shipment with entity public DTA rate (no AR) for CCIPH-77 TC_DTA_007.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_ENTITY_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Intercompany shipment with seller DTA rate fallback for CCIPH-77 TC_DTA_008.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_SELLER_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with no DTA rate sheet for CCIPH-77 TC_DTA_009 negative test.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_NO_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with fixed-rate DTA service code for CCIPH-77 TC_DTA_011/012.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_FIXED_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment with percentage-rate DTA service code for CCIPH-77 TC_DTA_013-015.</description>
+      <initValue>''</initValue>
+      <name>CCI_DTA_PERCENT_RATE_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Default entity for CCIPH-77 DTA calculation API payload.</description>
+      <initValue>'RUH'</initValue>
+      <name>CCI_DTA_DEFAULT_ENTITY</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Charge table billing account column for CCIPH-77 ASL001 validation.</description>
+      <initValue>'billing_account'</initValue>
+      <name>CCI_BILLING_ACCOUNT_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Charge table debiting entity column for CCIPH-77 DTA validation.</description>
+      <initValue>'debiting_entity'</initValue>
+      <name>CCI_DEBITING_ENTITY_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Charge table billing context column for CCIPH-77 Intercompany validation.</description>
+      <initValue>'billing_context'</initValue>
+      <name>CCI_BILLING_CONTEXT_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Locked flag column in charge table for CCIPH-122 DTC DDO tests.</description>
+      <initValue>'is_locked'</initValue>
+      <name>CCI_CHARGE_LOCKED_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Source ECD reference column on DTC charge row for CCIPH-122 linkage validation.</description>
+      <initValue>'parent_charge_id'</initValue>
+      <name>CCI_CHARGE_SOURCE_ECD_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>InfoAXS / RabbitMQ message injection API for SH013 and SH267 (CCIPH-326). Leave empty to use pre-seeded shipments.</description>
+      <initValue>''</initValue>
+      <name>CCI_INFOAXS_MESSAGE_API_URL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Bearer token for CCI_INFOAXS_MESSAGE_API_URL (CCIPH-326). Never commit secrets.</description>
+      <initValue>''</initValue>
+      <name>CCI_INFOAXS_MESSAGE_API_TOKEN</name>
+      <protected>true</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Optional filesystem path to custom SH013 XML template with ${trackingNumber}, ${costOfGoods}, ${shipperNumber} placeholders (CCIPH-326).</description>
+      <initValue>''</initValue>
+      <name>CCI_INFOAXS_SH013_TEMPLATE_PATH</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Optional filesystem path to custom SH267 XML template with ${trackingNumber}, ${comment1} placeholders (CCIPH-326).</description>
+      <initValue>''</initValue>
+      <name>CCI_INFOAXS_SH267_TEMPLATE_PATH</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment table column for Cost of Goods (CCIPH-326).</description>
+      <initValue>'goods_value'</initValue>
+      <name>CCI_COG_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment table column for CC Charges / Shipping Charges from SH267 Comment1 (CCIPH-326).</description>
+      <initValue>'shipping_charges'</initValue>
+      <name>CCI_CC_CHARGES_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Shipment table column for calculated CIF value (CCIPH-326).</description>
+      <initValue>'cif_value'</initValue>
+      <name>CCI_CIF_COLUMN</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>UI field label for Cost of Goods on charge detail (CCIPH-326).</description>
+      <initValue>'Goods value'</initValue>
+      <name>CCI_COG_UI_LABEL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>UI field label for Shipping / CC Charges on charge detail (CCIPH-326).</description>
+      <initValue>'Shipping charges'</initValue>
+      <name>CCI_SHIPPING_CHARGES_UI_LABEL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>UI field label for CIF value on charge detail (CCIPH-326).</description>
+      <initValue>'CIF value'</initValue>
+      <name>CCI_CIF_UI_LABEL</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Poll timeout (seconds) waiting for SH013/SH267 message consumption (CCIPH-326).</description>
+      <initValue>'120'</initValue>
+      <name>CCI_CIF_MESSAGE_POLL_TIMEOUT_SEC</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Poll interval (seconds) between SH013/SH267 DB checks (CCIPH-326).</description>
+      <initValue>'5'</initValue>
+      <name>CCI_CIF_MESSAGE_POLL_INTERVAL_SEC</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Pre-seeded shipment tracking for CCIPH-326 DB-only runs when message API is unavailable.</description>
+      <initValue>''</initValue>
+      <name>CCI_CIF_SEED_TRACKING</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Default shipper account for SH013 CIF test messages (CCIPH-326).</description>
+      <initValue>''</initValue>
+      <name>CCI_CIF_DEFAULT_SHIPPER</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Default entity for CCIPH-326 CIF Custom Search validation.</description>
+      <initValue>'RUH'</initValue>
+      <name>CCI_CIF_DEFAULT_ENTITY</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>

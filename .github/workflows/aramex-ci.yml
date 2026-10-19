@@ -5,9 +5,37 @@ on:
   workflow_dispatch:
     inputs:
       test_suite:
-        description: Katalon test suite path
-        required: false
+        description: Katalon test suite to execute
+        required: true
+        type: choice
         default: Test Suites/ChargeCreation-TEST_SUITE
+        options:
+          - Test Suites/ChargeCreation-TEST_SUITE
+          - Test Suites/B2B-Shipment-TEST_SUITE
+          - Test Suites/ShipmentCreation-TEST_SUITE
+          - Test Suites/AP-TEST_SUITE
+          - Test Suites/AP
+          - Test Suites/AR-TEST_SUITE
+          - Test Suites/Upload_Estimate_Actuals-TEST_SUITE
+          - Test Suites/CustomSearch_360ViewScreen-TEST_SUITE
+          - Test Suites/Feedback_PatchRelease-TEST_SUITE
+          - Test Suites/CCI_APM_CCIPH-104_SUITE
+          - Test Suites/CCI_APM_CCIPH-634_SUITE
+          - Test Suites/GL-TEST_SUITE
+          - Test Suites/EP-TEST_SUITE
+          - Test Suites/EP-AR-TEST_SUITE
+          - Test Suites/CCIPH-225
+          - Test Suites/TEST-SUITE
+          - Test Suites/FinalTestSuite
+          - "Test Suites/Roles&Permission-TEST_SUITE"
+      environment:
+        description: Execution environment
+        required: true
+        type: choice
+        default: dev
+        options:
+          - dev
+          - staging
 
 jobs:
   ci:
@@ -17,37 +45,32 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate Katalon project
+        env:
+          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
+          EXECUTION_PROFILE: ${{ github.event.inputs.environment || 'dev' }}
         run: |
           test -f Corp.microservice.ccm-automation.prj
-          test -d "Test Cases"
-          test -d "Test Suites"
-          test -d Keywords
-          echo "Katalon project layout is valid."
+          test -f "$TEST_SUITE.ts"
+          test -f "Profiles/$EXECUTION_PROFILE.glbl"
+          echo "Suite: $TEST_SUITE"
+          echo "Environment: $EXECUTION_PROFILE"
 
       - name: Run Katalon Runtime Engine
         env:
           KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
-          EXTRA_SUITE: ${{ github.event.inputs.test_suite }}
+          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
+          EXECUTION_PROFILE: ${{ github.event.inputs.environment || 'dev' }}
         run: |
           if [ -z "$KATALON_API_KEY" ]; then
-            echo "CI triggered. KATALON_API_KEY is not set, so Runtime Engine was skipped."
-            echo "Add repository secret KATALON_API_KEY to execute Katalon on the next push."
-            exit 0
+            echo "KATALON_API_KEY is not configured. Add it as a repository secret."
+            exit 1
           fi
           wget -q https://download.katalon.com/cloud/studio/command-line/katalon.zip
           unzip -q katalon.zip
-          suites="Test Suites/ChargeCreation-TEST_SUITE|Test Suites/B2B-Shipment-TEST_SUITE"
-          if [ -n "$EXTRA_SUITE" ] && [ "$EXTRA_SUITE" != "Test Suites/ChargeCreation-TEST_SUITE" ] && [ "$EXTRA_SUITE" != "Test Suites/B2B-Shipment-TEST_SUITE" ]; then
-            suites="$suites|$EXTRA_SUITE"
-          fi
-          failed=0
-          IFS='|' read -ra SUITE_LIST <<< "$suites"
-          for suite in "${SUITE_LIST[@]}"; do
-            echo "Running $suite"
-            ./katalon -noSplash -runMode=console \
-              -projectPath="$(pwd)/Corp.microservice.ccm-automation.prj" \
-              -testSuitePath="$suite" \
-              -browserType="Chrome" \
-              -apiKey="$KATALON_API_KEY" || failed=1
-          done
-          exit $failed
+          echo "Executing $TEST_SUITE on $EXECUTION_PROFILE"
+          ./katalon -noSplash -runMode=console \
+            -projectPath="$(pwd)/Corp.microservice.ccm-automation.prj" \
+            -testSuitePath="$TEST_SUITE" \
+            -executionProfile="$EXECUTION_PROFILE" \
+            -browserType="Chrome" \
+            -apiKey="$KATALON_API_KEY"
