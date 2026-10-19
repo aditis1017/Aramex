@@ -12,10 +12,20 @@ on:
       - "Keywords/Login_Orange/**"
       - "Test Suites/Login-Orange-TEST_SUITE.ts"
       - "Test Suites/Login-Orange-TEST_SUITE.groovy"
+      - "Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_*.ts"
+      - "Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_*.groovy"
       - "Profiles/default.glbl"
       - ".github/workflows/orange-hrm-ci.yml"
   workflow_dispatch:
     inputs:
+      test_suite:
+        description: Katalon test suite to execute (Login-Orange)
+        required: true
+        type: choice
+        default: Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_20261019
+        options:
+          - Test Suites/Login-Orange-TEST_SUITE
+          - Test Suites/Login-Orange-TEST_SUITE_BUG_DONE_RETRY_20261019
       execution_profile:
         description: Katalon execution profile (OrangeHRM vars live in default)
         required: true
@@ -35,7 +45,7 @@ jobs:
 
       - name: Validate Katalon project (Login-Orange)
         env:
-          TEST_SUITE: Test Suites/Login-Orange-TEST_SUITE
+          TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/Login-Orange-TEST_SUITE' }}
           EXECUTION_PROFILE: ${{ github.event.inputs.execution_profile || 'default' }}
         run: |
           set -euo pipefail
@@ -84,7 +94,7 @@ jobs:
           args: >-
             -noSplash
             -retry=1
-            -testSuitePath="Test Suites/Login-Orange-TEST_SUITE"
+            -testSuitePath="${{ github.event.inputs.test_suite || 'Test Suites/Login-Orange-TEST_SUITE' }}"
             -executionProfile="${{ github.event.inputs.execution_profile || 'default' }}"
             -browserType="Chrome (headless)"
             -apiKey=${{ secrets.KATALON_API_KEY }}
