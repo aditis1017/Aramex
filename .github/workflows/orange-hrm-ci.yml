@@ -27,6 +27,9 @@ on:
 jobs:
   orange-hrm:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -77,6 +80,7 @@ jobs:
           fi
 
       - name: Run Katalon Runtime Engine (Login-Orange)
+        id: katalon
         uses: katalon-studio/katalon-studio-github-action@v4.0
         with:
           version: "11.5.0"
@@ -84,9 +88,46 @@ jobs:
           args: >-
             -noSplash
             -retry=0
+            -runMode=console
             -testSuitePath="Test Suites/Login-Orange-TEST_SUITE"
             -executionProfile="${{ github.event.inputs.execution_profile || 'default' }}"
             -browserType="Chrome (headless)"
             -apiKey=${{ secrets.KATALON_API_KEY }}
+            -report.folderPath=Reports
+            -reportFileName=OrangeHRM-${{ github.run_id }}
             --config
             -webui.autoUpdateDrivers=true
+
+      - name: Upload Katalon test reports (HTML, JUnit, screenshots)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: katalon-reports-orange-hrm-${{ github.run_number }}
+          path: Reports/**
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Publish JUnit results to GitHub Checks
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: Reports/**/JUnit_Report.xml
+          check_name: Orange HRM — Katalon JUnit
+          comment_mode: off
+          fail_on: nothing
+
+      - name: Job summary — where to find reports
+        if: always()
+        run: |
+          set +e
+          junit="$(find Reports -name 'JUnit_Report.xml' 2>/dev/null | head -n 1)"
+          {
+            echo "### Katalon test report (Orange HRM)"
+            if [ -n "$junit" ]; then
+              echo "- **JUnit:** \`$junit\`"
+            else
+              echo "- **JUnit:** not found under \`Reports/\` (see failed Katalon step logs)."
+            fi
+            echo "- **Full report:** open this run → **Artifacts** → \`katalon-reports-orange-hrm-${{ github.run_number }}\` (HTML, logs, screenshots)."
+            echo "- **Checks tab:** JUnit summary under **Orange HRM — Katalon JUnit**."
+          } >> "$GITHUB_STEP_SUMMARY"

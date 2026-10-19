@@ -50,6 +50,9 @@ on:
 jobs:
   ci:
     runs-on: [self-hosted, Windows, X64]
+    permissions:
+      contents: read
+      checks: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -107,6 +110,7 @@ jobs:
           }
 
       - name: Run Katalon Runtime Engine
+        id: katalon
         uses: katalon-studio/katalon-studio-github-action@v4.0
         with:
           version: "11.5.0"
@@ -114,9 +118,43 @@ jobs:
           args: >-
             -noSplash
             -retry=0
+            -runMode=console
             -testSuitePath="${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}"
             -executionProfile="${{ github.event.inputs.environment || 'dev' }}"
             -browserType="Chrome (headless)"
             -apiKey=${{ secrets.KATALON_API_KEY }}
+            -report.folderPath=Reports
+            -reportFileName=Aramex-${{ github.run_id }}
             --config
             -webui.autoUpdateDrivers=true
+
+      - name: Upload Katalon test reports (HTML, JUnit, screenshots)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: katalon-reports-aramex-${{ github.run_number }}
+          path: Reports/**
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Publish JUnit results to GitHub Checks
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: Reports/**/JUnit_Report.xml
+          check_name: Aramex — Katalon JUnit
+          comment_mode: off
+          fail_on: nothing
+
+      - name: Job summary — where to find reports
+        if: always()
+        shell: powershell
+        run: |
+          $junit = Get-ChildItem -Path Reports -Recurse -Filter JUnit_Report.xml -ErrorAction SilentlyContinue | Select-Object -First 1
+          $summary = @(
+            "### Katalon test report (Aramex CI)"
+            if ($junit) { "- **JUnit:** ``$($junit.FullName)``" } else { "- **JUnit:** not found under ``Reports\`` (see failed Katalon step logs)." }
+            "- **Full report:** open this run → **Artifacts** → ``katalon-reports-aramex-${{ github.run_number }}`` (HTML, logs, screenshots)."
+            "- **Checks tab:** JUnit summary under **Aramex — Katalon JUnit**."
+          )
+          $summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
