@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
-   <description>Failed cases with Done bugs from Login-Orange-TEST_SUITE — report Reports/20261019_142346/Login-Orange-TEST_SUITE/20261019_142346/JUnit_Report.xml — executed 2026-10-19T08:54:11.526Z. Filter: Bugs ticket != New &amp;&amp; Bug Ticket == Done. Bugs: CCIPH-650.</description>
+   <description>Failed cases with Done bugs from Login-Orange-TEST_SUITE — report Reports/20261019_142346/Login-Orange-TEST_SUITE/20261019_142346/JUnit_Report.xml — executed 2026-10-19T08:54:11.526Z. Filter: Bugs ticket != New &amp;&amp; Bug Ticket == Done. Bugs: CCIPH-650. CI dispatch 2026-10-19.</description>
    <name>Login-Orange-TEST_SUITE_BUG_DONE_RETRY_20261019</name>
    <tag>failed-retry,bug-done,CCIPH-648,Login-Orange-TEST_SUITE</tag>
    <isRerun>false</isRerun>
