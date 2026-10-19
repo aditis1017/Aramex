@@ -48,24 +48,32 @@ jobs:
           submodules: false
 
       - name: Validate Katalon project
+        shell: pwsh
         env:
           TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
           EXECUTION_PROFILE: ${{ github.event.inputs.environment || 'dev' }}
         run: |
-          test -f Corp.microservice.ccm-automation.prj
-          test -f "$TEST_SUITE.ts"
-          test -f "Profiles/$EXECUTION_PROFILE.glbl"
-          echo "Suite: $TEST_SUITE"
-          echo "Environment: $EXECUTION_PROFILE"
+          $requiredFiles = @(
+            "Corp.microservice.ccm-automation.prj",
+            "$env:TEST_SUITE.ts",
+            "Profiles/$env:EXECUTION_PROFILE.glbl"
+          )
+          foreach ($file in $requiredFiles) {
+            if (-not (Test-Path -Path $file -PathType Leaf)) {
+              throw "Required Katalon file is missing: $file"
+            }
+          }
+          Write-Output "Suite: $env:TEST_SUITE"
+          Write-Output "Environment: $env:EXECUTION_PROFILE"
 
       - name: Require Katalon API key
+        shell: pwsh
         env:
           KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
         run: |
-          if [ -z "$KATALON_API_KEY" ]; then
-            echo "KATALON_API_KEY is not configured. Add it as a repository secret."
-            exit 1
-          fi
+          if ([string]::IsNullOrWhiteSpace($env:KATALON_API_KEY)) {
+            throw "KATALON_API_KEY is not configured. Add it as a repository secret."
+          }
 
       - name: Set up Java 21
         uses: actions/setup-java@v4
