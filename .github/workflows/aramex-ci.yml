@@ -58,7 +58,7 @@ jobs:
 
       - name: Run Katalon Runtime Engine
         env:
-          KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
+          KATALON_API_KEY: ${{ 20ede496-f885-406f-8b46-a0c4c3fa2f0c }}
           TEST_SUITE: ${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}
           EXECUTION_PROFILE: ${{ github.event.inputs.environment || 'dev' }}
         run: |
