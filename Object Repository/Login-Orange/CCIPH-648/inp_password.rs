@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//input[@name='password' and @type='pas']</value>
+         <value>//input[@name='password' and @type='pa']</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -21,6 +21,6 @@
          <value></value>
       </entry>
    </smartLocatorCollection>
-   <smartLocatorEnabled>true</smartLocatorEnabled>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
