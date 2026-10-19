@@ -81,47 +81,20 @@ jobs:
       - name: Prepare Katalon project
         run: |
           test -d Keywords
-          PRJ="$(pwd)/Corp.microservice.ccm-automation.prj"
-          test -f "$PRJ"
-          # Katalon uses the .prj absolute path as the Eclipse project name, with / encoded as %.
-          NAME=$(printf '%s' "$PRJ" | sed 's/%/%%/g; s#/#%#g')
-          KEYWORDS="$(pwd)/Keywords"
-          printf '%s\n' \
-            '<?xml version="1.0" encoding="UTF-8"?>' \
-            '<projectDescription>' \
-            "  <name>${NAME}</name>" \
-            '  <comment></comment>' \
-            '  <projects></projects>' \
-            '  <buildSpec>' \
-            '    <buildCommand>' \
-            '      <name>org.eclipse.jdt.core.javabuilder</name>' \
-            '      <arguments></arguments>' \
-            '    </buildCommand>' \
-            '  </buildSpec>' \
-            '  <natures>' \
-            '    <nature>org.eclipse.jdt.groovy.core.groovyNature</nature>' \
-            '    <nature>org.eclipse.jdt.core.javanature</nature>' \
-            '  </natures>' \
-            '  <linkedResources>' \
-            '    <link>' \
-            '      <name>Keywords</name>' \
-            '      <type>2</type>' \
-            "      <location>${KEYWORDS}</location>" \
-            '    </link>' \
-            '  </linkedResources>' \
-            '</projectDescription>' > .project
-          echo "Eclipse project name: $NAME"
+          test -f Corp.microservice.ccm-automation.prj
+          rm -f .project
+          mkdir -p /tmp/unused-katalon-projects
+          if [ -f Dummy-Test.prj ]; then
+            mv Dummy-Test.prj /tmp/unused-katalon-projects/
+          fi
 
       - name: Run Katalon Runtime Engine
-        id: katalon
-        continue-on-error: true
         uses: katalon-studio/katalon-studio-github-action@v4.0
         with:
-          version: "11.6.0"
-          projectPath: ${{ github.workspace }}
+          version: "11.5.0"
+          projectPath: ${{ github.workspace }}/Corp.microservice.ccm-automation.prj
           args: >-
             -noSplash
-            -consoleLog
             -retry=0
             -testSuitePath="${{ github.event.inputs.test_suite || 'Test Suites/ChargeCreation-TEST_SUITE' }}"
             -executionProfile="${{ github.event.inputs.environment || 'dev' }}"
@@ -129,11 +102,3 @@ jobs:
             -apiKey=${{ secrets.KATALON_API_KEY }}
             --config
             -webui.autoUpdateDrivers=true
-
-      - name: Show Katalon workspace log
-        if: always()
-        run: |
-          find /tmp -path '*/.metadata/.log' -print -exec tail -n 160 {} \;
-          if [ "${{ steps.katalon.outcome }}" != "success" ]; then
-            exit 1
-          fi
