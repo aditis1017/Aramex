@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify Create AP Account form fields (CCIPH-652 / TC_APM_FUNC_002 / CCIPH-654)</description>
+   <name>TC_APM_FUNC_002</name>
+   <tag>CCIPH-652,CCIPH-654,APManagement,cci-katalon-from-jira</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-654</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph652-func-002-6520-aaaa-bbbb-cccc000002</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Admin smoke for Create AP access (CCIPH-652 / TC_APM_SEC_001 / CCIPH-660)</description>
+   <name>TC_APM_SEC_001</name>
+   <tag>CCIPH-652,CCIPH-660,APManagement,cci-katalon-from-jira</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-660 | Full RBAC manual</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph652-sec-001-6520-aaaa-bbbb-cccc000008</testCaseGuid>
+</TestCaseEntity>

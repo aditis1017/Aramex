@@ -7640,4 +7640,50 @@ input.dispatchEvent(new Event("change", { bubbles: true }));''',
 			failStop("createApAccountWithMandatoryFields failed: ${e.message}")
 		}
 	}
+
+	@Keyword
+	def verifyCreateApAccountNumberMaxLength(int maxLength = 15) {
+		try {
+			verifyCreateApAccountPageLoaded()
+			enterCreateApAccountNumber('9' * (maxLength + 1))
+			WebElement el = findCreateFormEditableInputElement('Account Number')
+			if (el == null) {
+				failStop('Account Number input not found on Create AP Account form.')
+			}
+			String value = (el.getAttribute('value') ?: '').trim()
+			if (value.length() > maxLength) {
+				failStop("Account Number value length ${value.length()} exceeds max ${maxLength}.")
+			}
+			String maxAttr = el.getAttribute('maxlength')
+			if (maxAttr != null && maxAttr.trim().isInteger() && maxAttr.toInteger() > maxLength) {
+				failStop("Account Number maxlength attribute ${maxAttr} exceeds expected ${maxLength}.")
+			}
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyCreateApAccountNumberMaxLength failed: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def verifyCreateApAccountNameMaxLength(int maxLength = 150) {
+		try {
+			verifyCreateApAccountPageLoaded()
+			enterCreateApAccountName('N' * (maxLength + 1))
+			WebElement el = findCreateFormEditableInputElement('Account Name')
+			if (el == null) {
+				failStop('Account Name input not found on Create AP Account form.')
+			}
+			String value = (el.getAttribute('value') ?: '').trim()
+			if (value.length() > maxLength) {
+				failStop("Account Name value length ${value.length()} exceeds max ${maxLength}.")
+			}
+			String maxAttr = el.getAttribute('maxlength')
+			if (maxAttr != null && maxAttr.trim().isInteger() && maxAttr.toInteger() > maxLength) {
+				failStop("Account Name maxlength attribute ${maxAttr} exceeds expected ${maxLength}.")
+			}
+			WebUI.takeScreenshot()
+		} catch (Exception e) {
+			failStop("verifyCreateApAccountNameMaxLength failed: ${e.message}")
+		}
+	}
 }
