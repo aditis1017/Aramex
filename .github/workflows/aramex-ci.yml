@@ -23,6 +23,7 @@ on:
           - Test Suites/CCI_APM_CCIPH-634_SUITE_BUG_DONE_RETRY_20261019
           - Test Suites/CCI_APM_CCIPH-652_SUITE
           - Test Suites/CCI_APM_CCIPH-652_SUITE_BUG_DONE_RETRY_20261020
+          - Test Suites/CCI_APM_CCIPH-662_SUITE
           - Test Suites/GL-TEST_SUITE
           - Test Suites/EP-TEST_SUITE
           - Test Suites/EP-AR-TEST_SUITE

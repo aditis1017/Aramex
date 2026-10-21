@@ -1,0 +1,18 @@
+Screen Name,JIRA User Story ID,JIRA Test Case ID,JIRA Test Case Title,JIRA Test Case Description,Test Case Scenario,Test Steps,Expected Result,Priority,Severity,Test Case Type,Automation (Y/N),Automation Execution Status,Automation Remarks,Functional (Pass/Fail),Functional Remarks
+AP Management,CCIPH-662,CCIPH-663,Create AP account with all mandatory fields and Active status,Verify create AP account happy path.,Happy path create,"1. Open AP Management and click Create AP Account
+2. Complete mandatory fields
+3. Click Save",AP account is created successfully.,High,Critical,Functional Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-664,Verify Create AP Account form fields and read-only Account Type,Verify form fields per AC1.,Form field verification,"1. Open Create AP Account
+2. Verify all fields and Account Type Vendor read-only",All fields display per AC1.,High,Major,Functional Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-665,Validation when mandatory fields empty on Save,Negative validation on Save.,Mandatory validation,"1. Open Create AP Account
+2. Leave mandatory fields empty
+3. Click Save",Validation prevents save.,High,Major,Functional Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-666,Account Number max length 15 characters,Verify Account Number max length.,Max length Account Number,"1. Enter more than 15 characters in Account Number",Field enforces 15 character limit.,Medium,Major,Functional Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-667,Account Name max length 150 characters,Verify Account Name max length.,Max length Account Name,"1. Enter more than 150 characters in Account Name",Field enforces 150 character limit.,Medium,Major,Functional Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-668,Create AP account with Market Structure Direct,Create with optional Market Structure Direct.,Market Structure Direct,"1. Complete mandatory fields
+2. Set Market Structure Direct
+3. Save",Account created with Direct market structure.,High,Major,Functional Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-669,SysData dropdowns populate Country Entity currencies,Regression SysData dropdowns.,SysData dropdowns,"1. Open Create AP Account
+2. Open Country Entity currency dropdowns",Dropdowns populated from SysData.,Medium,Major,Regression Testing,Y,,,,
+AP Management,CCIPH-662,CCIPH-670,Role access for Create AP Account,Security role access for create.,Role access,"1. Login as unauthorized role
+2. Attempt Create AP Account",Unauthorized users cannot create.,High,Critical,Security Testing,N,,,,

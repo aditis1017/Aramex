@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>SysData fields visible on Create AP form (CCIPH-662 / TC_APM_REG_001 / CCIPH-669)</description>
+   <name>TC_APM_REG_001</name>
+   <tag>CCIPH-662,CCIPH-669,APManagement,cci-katalon-from-jira</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-669</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph652-reg-001-6620-aaaa-bbbb-cccc000007</testCaseGuid>
+</TestCaseEntity>

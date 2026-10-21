@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Account Name max length 150 (CCIPH-662 / TC_APM_NEG_003 / CCIPH-667)</description>
+   <name>TC_APM_NEG_003</name>
+   <tag>CCIPH-662,CCIPH-667,APManagement,cci-katalon-from-jira</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-667</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph652-neg-003-6620-aaaa-bbbb-cccc000005</testCaseGuid>
+</TestCaseEntity>

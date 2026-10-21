@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Mandatory validation on Save (CCIPH-662 / TC_APM_NEG_001 / CCIPH-665)</description>
+   <name>TC_APM_NEG_001</name>
+   <tag>CCIPH-662,CCIPH-665,APManagement,cci-katalon-from-jira</tag>
+   <comment>Jira: https://aramex.atlassian.net/browse/CCIPH-665</comment>
+   <origin>GenAI</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ap-cciph652-neg-001-6620-aaaa-bbbb-cccc000003</testCaseGuid>
+</TestCaseEntity>
